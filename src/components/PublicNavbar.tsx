@@ -11,7 +11,13 @@ import Drawer from "@mui/material/Drawer";
 import Collapse from "@mui/material/Collapse";
 import Divider from "@mui/material/Divider";
 
-import { HiChevronDown, HiChevronRight, HiMagnifyingGlass, HiXMark, HiBars3 } from "react-icons/hi2";
+import {
+  HiChevronDown,
+  HiChevronRight,
+  HiMagnifyingGlass,
+  HiXMark,
+  HiBars3,
+} from "react-icons/hi2";
 import { MdOutlineWbSunny, MdNightlight } from "react-icons/md";
 
 interface SubItem {
@@ -73,8 +79,12 @@ function FindCareDropdown({ onClose }: { onClose: () => void }) {
     <div className="absolute top-full left-0 mt-2 w-64 rounded-xl shadow-2xl overflow-visible z-50 navbar-dropdown border border-[var(--navbar-border)]">
       <div className="py-2">
         {findCareItems.map((item) => (
-          <Link key={item.href} href={item.href} onClick={onClose}
-            className="flex items-center px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item">
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={onClose}
+            className="flex items-center px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
+          >
             {item.label}
           </Link>
         ))}
@@ -100,8 +110,12 @@ function FindCareDropdown({ onClose }: { onClose: () => void }) {
               <div className="w-52 rounded-xl shadow-2xl z-50 navbar-dropdown border border-[var(--navbar-border)]">
                 <div className="py-2">
                   {specialties.map((s) => (
-                    <Link key={s.href} href={s.href} onClick={onClose}
-                      className="flex items-center px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item">
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      onClick={onClose}
+                      className="flex items-center px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
+                    >
                       {s.label}
                     </Link>
                   ))}
@@ -119,13 +133,23 @@ function FindCareDropdown({ onClose }: { onClose: () => void }) {
 // Generic Simple Dropdown
 // ─────────────────────────────────────────────
 
-function SimpleDropdown({ items, onClose }: { items: SubItem[]; onClose: () => void }) {
+function SimpleDropdown({
+  items,
+  onClose,
+}: {
+  items: SubItem[];
+  onClose: () => void;
+}) {
   return (
     <div className="absolute top-full left-0 mt-2 w-60 rounded-xl shadow-2xl z-50 navbar-dropdown border border-[var(--navbar-border)]">
       <div className="py-2">
         {items.map((item) => (
-          <Link key={item.href} href={item.href} onClick={onClose}
-            className="flex items-center px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item">
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={onClose}
+            className="flex items-center px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
+          >
             {item.label}
           </Link>
         ))}
@@ -141,20 +165,30 @@ function SimpleDropdown({ items, onClose }: { items: SubItem[]; onClose: () => v
 function SearchOverlay({ onClose }: { onClose: () => void }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => { inputRef.current?.focus(); }, []);
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [onClose]);
 
   return (
     <div className="fixed inset-0 z-[200] flex items-start justify-center pt-24 px-4">
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
+      <div
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        onClick={onClose}
+      />
       <div className="relative w-full max-w-2xl navbar-dropdown rounded-2xl shadow-2xl border border-[var(--navbar-border)] overflow-hidden">
         <div className="flex items-center gap-3 px-5 py-3">
-          <HiMagnifyingGlass size={18} style={{ color: "var(--navbar-text-muted)", flexShrink: 0 }} />
+          <HiMagnifyingGlass
+            size={18}
+            style={{ color: "var(--navbar-text-muted)", flexShrink: 0 }}
+          />
           <InputBase
             inputRef={inputRef}
             id="navbar-search-input"
@@ -163,13 +197,21 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
             fullWidth
             sx={{ fontSize: "1rem", color: "var(--navbar-text)" }}
           />
-          <IconButton onClick={onClose} size="small" className="navbar-icon-btn" aria-label="Close search">
+          <IconButton
+            onClick={onClose}
+            size="small"
+            className="navbar-icon-btn"
+            aria-label="Close search"
+          >
             <HiXMark size={20} />
           </IconButton>
         </div>
         <Divider sx={{ borderColor: "var(--navbar-border)" }} />
         <div className="px-5 py-3">
-          <p className="text-xs font-medium" style={{ opacity: 0.5, color: "var(--navbar-text-muted)" }}>
+          <p
+            className="text-xs font-medium"
+            style={{ opacity: 0.5, color: "var(--navbar-text-muted)" }}
+          >
             Popular: Cardiology · Dermatology · Book Appointment
           </p>
         </div>
@@ -185,7 +227,12 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
 type DropdownKey = "find-care" | "services" | "resources" | "providers" | null;
 
 function NavDropdownItem({
-  id, label, activeDropdown, onMouseEnter, onMouseLeave, children,
+  id,
+  label,
+  activeDropdown,
+  onMouseEnter,
+  onMouseLeave,
+  children,
 }: {
   id: Exclude<DropdownKey, null>;
   label: string;
@@ -197,7 +244,11 @@ function NavDropdownItem({
   const isOpen = activeDropdown === id;
 
   return (
-    <div className="relative" onMouseEnter={() => onMouseEnter(id)} onMouseLeave={onMouseLeave}>
+    <div
+      className="relative"
+      onMouseEnter={() => onMouseEnter(id)}
+      onMouseLeave={onMouseLeave}
+    >
       <Button
         id={`nav-${id}-trigger`}
         aria-haspopup="true"
@@ -239,7 +290,11 @@ function NavDropdownItem({
 // Mobile Menu (MUI Drawer)
 // ─────────────────────────────────────────────
 
-function MobileMenu({ isDark, onClose, onToggleTheme }: {
+function MobileMenu({
+  isDark,
+  onClose,
+  onToggleTheme,
+}: {
   isDark: boolean;
   onClose: () => void;
   onToggleTheme: () => void;
@@ -247,13 +302,29 @@ function MobileMenu({ isDark, onClose, onToggleTheme }: {
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [specialtiesOpen, setSpecialtiesOpen] = useState(false);
 
-  const toggle = (key: string) => setOpenSection((prev) => (prev === key ? null : key));
+  const toggle = (key: string) =>
+    setOpenSection((prev) => (prev === key ? null : key));
 
   const sections = [
-    { key: "find-care", label: "Find Care", items: findCareItems, hasSub: true },
+    {
+      key: "find-care",
+      label: "Find Care",
+      items: findCareItems,
+      hasSub: true,
+    },
     { key: "services", label: "Services", items: servicesItems, hasSub: false },
-    { key: "resources", label: "Resources", items: resourcesItems, hasSub: false },
-    { key: "providers", label: "For Providers", items: providersItems, hasSub: false },
+    {
+      key: "resources",
+      label: "Resources",
+      items: resourcesItems,
+      hasSub: false,
+    },
+    {
+      key: "providers",
+      label: "For Providers",
+      items: providersItems,
+      hasSub: false,
+    },
   ];
 
   return (
@@ -261,24 +332,33 @@ function MobileMenu({ isDark, onClose, onToggleTheme }: {
       anchor="right"
       open
       onClose={onClose}
-      PaperProps={{
-        className: "navbar-mobile-panel",
-        sx: {
-          width: 320,
-          maxWidth: "100vw",
-          background: "var(--navbar-mobile-panel-bg)",
-          color: "var(--navbar-text)",
-          boxShadow: "none",
-        },
-      }}
       slotProps={{
-        backdrop: { style: { backdropFilter: "blur(4px)", background: "rgba(0,0,0,0.4)" } },
+        paper: {
+          className: "navbar-mobile-panel",
+          sx: {
+            width: 320,
+            maxWidth: "100vw",
+            background: "var(--navbar-mobile-panel-bg)",
+            color: "var(--navbar-text)",
+            boxShadow: "none",
+          },
+        },
+        backdrop: {
+          style: { backdropFilter: "blur(4px)", background: "rgba(0,0,0,0.4)" },
+        },
       }}
     >
       {/* Header */}
       <div className="flex items-center justify-between px-5 py-4">
-        <span className="text-base font-bold tracking-tight navbar-brand">Navigation</span>
-        <IconButton onClick={onClose} id="mobile-menu-close" className="navbar-icon-btn" aria-label="Close menu">
+        <span className="text-base font-bold tracking-tight navbar-brand">
+          Navigation
+        </span>
+        <IconButton
+          onClick={onClose}
+          id="mobile-menu-close"
+          className="navbar-icon-btn"
+          aria-label="Close menu"
+        >
           <HiXMark size={22} />
         </IconButton>
       </div>
@@ -298,7 +378,10 @@ function MobileMenu({ isDark, onClose, onToggleTheme }: {
                 size={14}
                 style={{
                   transition: "transform 0.2s",
-                  transform: openSection === section.key ? "rotate(180deg)" : "rotate(0deg)",
+                  transform:
+                    openSection === section.key
+                      ? "rotate(180deg)"
+                      : "rotate(0deg)",
                 }}
               />
             </button>
@@ -306,8 +389,12 @@ function MobileMenu({ isDark, onClose, onToggleTheme }: {
             <Collapse in={openSection === section.key} timeout={200}>
               <div className="mt-1 ml-4 border-l-2 border-[var(--navbar-accent-soft)] pl-3 space-y-0.5">
                 {section.items.map((item) => (
-                  <Link key={item.href} href={item.href} onClick={onClose}
-                    className="flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150 navbar-dropdown-item">
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={onClose}
+                    className="flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
+                  >
                     {item.label}
                   </Link>
                 ))}
@@ -323,15 +410,21 @@ function MobileMenu({ isDark, onClose, onToggleTheme }: {
                         size={14}
                         style={{
                           transition: "transform 0.2s",
-                          transform: specialtiesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                          transform: specialtiesOpen
+                            ? "rotate(180deg)"
+                            : "rotate(0deg)",
                         }}
                       />
                     </button>
                     <Collapse in={specialtiesOpen} timeout={200}>
                       <div className="ml-3 border-l border-[var(--navbar-border)] pl-3 mt-0.5 space-y-0.5">
                         {specialties.map((s) => (
-                          <Link key={s.href} href={s.href} onClick={onClose}
-                            className="flex items-center px-3 py-2 rounded-lg text-sm transition-colors duration-150 navbar-dropdown-item">
+                          <Link
+                            key={s.href}
+                            href={s.href}
+                            onClick={onClose}
+                            className="flex items-center px-3 py-2 rounded-lg text-sm transition-colors duration-150 navbar-dropdown-item"
+                          >
                             {s.label}
                           </Link>
                         ))}
@@ -356,12 +449,18 @@ function MobileMenu({ isDark, onClose, onToggleTheme }: {
           {isDark ? <MdOutlineWbSunny size={18} /> : <MdNightlight size={18} />}
           {isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
         </button>
-        <Link href="/auth/signin" onClick={onClose}
-          className="flex items-center justify-center w-full px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 navbar-mobile-item">
+        <Link
+          href="/sign-in"
+          onClick={onClose}
+          className="flex items-center justify-center w-full px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 navbar-mobile-item"
+        >
           Sign In
         </Link>
-        <Link href="/auth/register" onClick={onClose}
-          className="flex items-center justify-center w-full px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 navbar-cta-btn">
+        <Link
+          href="/register"
+          onClick={onClose}
+          className="flex items-center justify-center w-full px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 navbar-cta-btn"
+        >
           Get Started
         </Link>
       </div>
@@ -402,16 +501,26 @@ export default function PublicNavbar() {
 
   const closeDropdown = useCallback(() => setActiveDropdown(null), []);
 
-  const dropdownProps = { activeDropdown, onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave };
+  const dropdownProps = {
+    activeDropdown,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
+  };
 
   return (
     <>
-      <nav className={`navbar-root${scrolled ? " scrolled" : ""}`} aria-label="Main navigation">
+      <nav
+        className={`navbar-root${scrolled ? " scrolled" : ""}`}
+        aria-label="Main navigation"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-
             {/* Logo */}
-            <Link href="/" className="flex-shrink-0 flex items-center" aria-label="MediCare Home">
+            <Link
+              href="/"
+              className="flex-shrink-0 flex items-center"
+              aria-label="MediCare Home"
+            >
               <Image
                 src="/images/medicare-logo2.png"
                 alt="MediCare Logo"
@@ -424,20 +533,42 @@ export default function PublicNavbar() {
 
             {/* Desktop Nav Links */}
             <div className="hidden lg:flex items-center gap-1">
-              <NavDropdownItem id="find-care" label="Find Care" {...dropdownProps}>
+              <NavDropdownItem
+                id="find-care"
+                label="Find Care"
+                {...dropdownProps}
+              >
                 <FindCareDropdown onClose={closeDropdown} />
               </NavDropdownItem>
 
-              <NavDropdownItem id="services" label="Services" {...dropdownProps}>
+              <NavDropdownItem
+                id="services"
+                label="Services"
+                {...dropdownProps}
+              >
                 <SimpleDropdown items={servicesItems} onClose={closeDropdown} />
               </NavDropdownItem>
 
-              <NavDropdownItem id="resources" label="Resources" {...dropdownProps}>
-                <SimpleDropdown items={resourcesItems} onClose={closeDropdown} />
+              <NavDropdownItem
+                id="resources"
+                label="Resources"
+                {...dropdownProps}
+              >
+                <SimpleDropdown
+                  items={resourcesItems}
+                  onClose={closeDropdown}
+                />
               </NavDropdownItem>
 
-              <NavDropdownItem id="providers" label="For Providers" {...dropdownProps}>
-                <SimpleDropdown items={providersItems} onClose={closeDropdown} />
+              <NavDropdownItem
+                id="providers"
+                label="For Providers"
+                {...dropdownProps}
+              >
+                <SimpleDropdown
+                  items={providersItems}
+                  onClose={closeDropdown}
+                />
               </NavDropdownItem>
             </div>
 
@@ -460,23 +591,31 @@ export default function PublicNavbar() {
                 aria-label="Toggle theme"
                 size="small"
               >
-                {isDark ? <MdOutlineWbSunny size={18} /> : <MdNightlight size={18} />}
+                {isDark ? (
+                  <MdOutlineWbSunny size={18} />
+                ) : (
+                  <MdNightlight size={18} />
+                )}
               </IconButton>
 
               <Button
                 component={Link}
-                href="/auth/signin"
-                id="navbar-signin-btn"
+                href="/sign-in"
+                id="navbar-sign-in-btn"
                 variant="outlined"
-                className="navbar-signin-btn"
-                sx={{ borderRadius: "0.625rem", textTransform: "none", fontWeight: 600 }}
+                className="navbar-sign-in-btn"
+                sx={{
+                  borderRadius: "0.625rem",
+                  textTransform: "none",
+                  fontWeight: 600,
+                }}
               >
                 Sign In
               </Button>
 
               <Button
                 component={Link}
-                href="/auth/register"
+                href="/register"
                 id="navbar-get-started-btn"
                 className="navbar-cta-btn"
                 sx={{ borderRadius: "0.625rem", textTransform: "none" }}
@@ -504,7 +643,11 @@ export default function PublicNavbar() {
                 aria-label="Toggle theme"
                 size="small"
               >
-                {isDark ? <MdOutlineWbSunny size={18} /> : <MdNightlight size={18} />}
+                {isDark ? (
+                  <MdOutlineWbSunny size={18} />
+                ) : (
+                  <MdNightlight size={18} />
+                )}
               </IconButton>
 
               <IconButton
@@ -517,7 +660,6 @@ export default function PublicNavbar() {
                 <HiBars3 size={22} />
               </IconButton>
             </div>
-
           </div>
         </div>
       </nav>
