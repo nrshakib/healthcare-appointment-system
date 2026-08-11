@@ -275,7 +275,7 @@ function NavDropdownItem({
           color: "var(--navbar-text)",
           "&:hover": {
             background: "var(--navbar-item-hover-bg)",
-            color: "var(--navbar-item-active-text)",
+            color: "#06836B",
           },
         }}
       >
@@ -472,7 +472,7 @@ function MobileMenu({
 // Main Component
 // ─────────────────────────────────────────────
 
-export default function PublicNavbar() {
+export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<DropdownKey>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -513,19 +513,19 @@ export default function PublicNavbar() {
         className={`navbar-root${scrolled ? " scrolled" : ""}`}
         aria-label="Main navigation"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+        <div className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-18">
             {/* Logo */}
             <Link
               href="/"
-              className="flex-shrink-0 flex items-center"
+              className="shrink-0 flex items-center"
               aria-label="MediCare Home"
             >
               <Image
                 src="/images/medicare-logo2.png"
                 alt="MediCare Logo"
-                width={110}
-                height={44}
+                width={150}
+                height={80}
                 loading="eager"
                 priority
               />
@@ -606,8 +606,10 @@ export default function PublicNavbar() {
                 className="navbar-sign-in-btn"
                 sx={{
                   borderRadius: "0.625rem",
+                  border: "1px solid #06836B",
                   textTransform: "none",
                   fontWeight: 600,
+                  color: "#06836B",
                 }}
               >
                 Sign In

@@ -1,6 +1,14 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+}
+
 :root {
+  --primary: #06836b;
+  --secondary: #48ac98;
+
   --navbar-bg: rgba(255, 255, 255, 0.95);
   --navbar-bg-scrolled: rgba(255, 255, 255, 0.98);
   --navbar-border: rgba(0, 0, 0, 0.08);
@@ -9,10 +17,10 @@
   --navbar-dropdown-bg: #ffffff;
   --navbar-item-hover-bg: rgba(37, 99, 235, 0.06);
   --navbar-item-active-bg: rgba(37, 99, 235, 0.1);
-  --navbar-item-active-text: #2563eb;
-  --navbar-accent: #2563eb;
+  --navbar-item-active-text: #06836b;
+  --navbar-accent: #06836b;
   --navbar-accent-soft: rgba(37, 99, 235, 0.3);
-  --navbar-cta-bg: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+  --navbar-cta-bg: linear-gradient(135deg, #06836b 0%, #48ac98 100%);
   --navbar-cta-text: #ffffff;
   --navbar-mobile-panel-bg: #ffffff;
   --navbar-brand: #1a202c;
@@ -42,7 +50,9 @@
   border-bottom: 1px solid var(--navbar-border);
   backdrop-filter: blur(20px) saturate(1.6);
   -webkit-backdrop-filter: blur(20px) saturate(1.6);
-  transition: box-shadow 0.3s ease, background 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    background 0.3s ease;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -106,7 +116,9 @@
   color: var(--navbar-text-muted) !important;
   border-radius: 0.5rem !important;
   padding: 0.4rem !important;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 
 .navbar-icon-btn:hover {
@@ -122,7 +134,10 @@
   font-weight: 600 !important;
   font-size: 0.875rem !important;
   text-transform: none !important;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
 }
 
 .navbar-signin-btn:hover {
@@ -140,7 +155,10 @@
   font-size: 0.875rem !important;
   text-transform: none !important;
   box-shadow: 0 2px 12px rgba(37, 99, 235, 0.25) !important;
-  transition: opacity 0.15s, box-shadow 0.15s, transform 0.15s !important;
+  transition:
+    opacity 0.15s,
+    box-shadow 0.15s,
+    transform 0.15s !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
