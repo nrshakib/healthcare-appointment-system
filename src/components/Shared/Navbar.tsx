@@ -6,7 +6,6 @@ import { useState, useRef, useEffect, useCallback } from "react";
 
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import InputBase from "@mui/material/InputBase";
 import Drawer from "@mui/material/Drawer";
 import Collapse from "@mui/material/Collapse";
 import Divider from "@mui/material/Divider";
@@ -14,7 +13,6 @@ import Divider from "@mui/material/Divider";
 import {
   HiChevronDown,
   HiChevronRight,
-  HiMagnifyingGlass,
   HiXMark,
   HiBars3,
 } from "react-icons/hi2";
@@ -129,10 +127,7 @@ function FindCareDropdown({ onClose }: { onClose: () => void }) {
   );
 }
 
-// ─────────────────────────────────────────────
 // Generic Simple Dropdown
-// ─────────────────────────────────────────────
-
 function SimpleDropdown({
   items,
   onClose,
@@ -141,14 +136,14 @@ function SimpleDropdown({
   onClose: () => void;
 }) {
   return (
-    <div className="absolute top-full left-0 mt-2 w-60 rounded-xl shadow-2xl z-50 navbar-dropdown border border-[var(--navbar-border)]">
+    <div className="absolute top-full left-0 mt-2 w-60 rounded-xl shadow-2xl z-50 navbar-dropdown border border-(--navbar-border)">
       <div className="py-2">
         {items.map((item) => (
           <Link
             key={item.href}
             href={item.href}
             onClick={onClose}
-            className="flex items-center px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
+            className="flex items-center px-4 py-2.5 text-xs xl:text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
           >
             {item.label}
           </Link>
@@ -158,72 +153,8 @@ function SimpleDropdown({
   );
 }
 
-// ─────────────────────────────────────────────
-// Search Overlay
-// ─────────────────────────────────────────────
 
-function SearchOverlay({ onClose }: { onClose: () => void }) {
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [onClose]);
-
-  return (
-    <div className="fixed inset-0 z-[200] flex items-start justify-center pt-24 px-4">
-      <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      <div className="relative w-full max-w-2xl navbar-dropdown rounded-2xl shadow-2xl border border-[var(--navbar-border)] overflow-hidden">
-        <div className="flex items-center gap-3 px-5 py-3">
-          <HiMagnifyingGlass
-            size={18}
-            style={{ color: "var(--navbar-text-muted)", flexShrink: 0 }}
-          />
-          <InputBase
-            inputRef={inputRef}
-            id="navbar-search-input"
-            placeholder="Search doctors, clinics, specialties…"
-            className="navbar-search-input"
-            fullWidth
-            sx={{ fontSize: "1rem", color: "var(--navbar-text)" }}
-          />
-          <IconButton
-            onClick={onClose}
-            size="small"
-            className="navbar-icon-btn"
-            aria-label="Close search"
-          >
-            <HiXMark size={20} />
-          </IconButton>
-        </div>
-        <Divider sx={{ borderColor: "var(--navbar-border)" }} />
-        <div className="px-5 py-3">
-          <p
-            className="text-xs font-medium"
-            style={{ opacity: 0.5, color: "var(--navbar-text-muted)" }}
-          >
-            Popular: Cardiology · Dermatology · Book Appointment
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────
 // Desktop Nav Item with Dropdown
-// ─────────────────────────────────────────────
-
 type DropdownKey = "find-care" | "services" | "resources" | "providers" | null;
 
 function NavDropdownItem({
@@ -271,7 +202,7 @@ function NavDropdownItem({
           px: 1.5,
           py: 1,
           minWidth: "unset",
-          gap: 0.5,
+          gap: 0.1,
           color: "var(--navbar-text)",
           "&:hover": {
             background: "var(--navbar-item-hover-bg)",
@@ -286,10 +217,7 @@ function NavDropdownItem({
   );
 }
 
-// ─────────────────────────────────────────────
 // Mobile Menu (MUI Drawer)
-// ─────────────────────────────────────────────
-
 function MobileMenu({
   isDark,
   onClose,
@@ -440,22 +368,24 @@ function MobileMenu({
 
       {/* Footer */}
       <Divider sx={{ borderColor: "var(--navbar-border)" }} />
-      <div className="px-4 py-4 space-y-3">
+      <div className="px-4 py-4 space-y-2">
         <button
           id="mobile-theme-toggle"
           onClick={onToggleTheme}
-          className="flex items-center gap-2 w-full px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 navbar-mobile-item"
+          className="flex items-center justify-center gap-2 w-full px-4 py-1 rounded-xl text-sm font-semibold transition-all duration-200 navbar-mobile-item"
         >
           {isDark ? <MdOutlineWbSunny size={18} /> : <MdNightlight size={18} />}
           {isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
         </button>
+        <Divider sx={{ borderColor: "var(--navbar-border)" }} />
         <Link
           href="/sign-in"
           onClick={onClose}
-          className="flex items-center justify-center w-full px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 navbar-mobile-item"
+          className="flex items-center justify-center w-full px-4 py-1 rounded-xl text-sm font-semibold transition-all duration-200 navbar-mobile-item"
         >
           Sign In
-        </Link>
+        </Link>{" "}
+        <Divider sx={{ borderColor: "var(--navbar-border)" }} />
         <Link
           href="/register"
           onClick={onClose}
@@ -468,15 +398,12 @@ function MobileMenu({
   );
 }
 
-// ─────────────────────────────────────────────
 // Main Component
-// ─────────────────────────────────────────────
 
 export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<DropdownKey>(null);
-  const [searchOpen, setSearchOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -513,7 +440,7 @@ export default function Navbar() {
         className={`navbar-root${scrolled ? " scrolled" : ""}`}
         aria-label="Main navigation"
       >
-        <div className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[95%] xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-18">
             {/* Logo */}
             <Link
@@ -575,16 +502,6 @@ export default function Navbar() {
             {/* Right Actions — Desktop */}
             <div className="hidden lg:flex items-center gap-2">
               <IconButton
-                id="navbar-search-btn"
-                onClick={() => setSearchOpen(true)}
-                className="navbar-icon-btn"
-                aria-label="Open search"
-                size="small"
-              >
-                <HiMagnifyingGlass size={18} />
-              </IconButton>
-
-              <IconButton
                 id="navbar-theme-toggle"
                 onClick={() => setIsDark((d) => !d)}
                 className="navbar-icon-btn"
@@ -629,16 +546,6 @@ export default function Navbar() {
             {/* Mobile Right Actions */}
             <div className="flex lg:hidden items-center gap-1.5">
               <IconButton
-                id="mobile-search-btn"
-                onClick={() => setSearchOpen(true)}
-                className="navbar-icon-btn"
-                aria-label="Open search"
-                size="small"
-              >
-                <HiMagnifyingGlass size={18} />
-              </IconButton>
-
-              <IconButton
                 id="mobile-theme-btn"
                 onClick={() => setIsDark((d) => !d)}
                 className="navbar-icon-btn"
@@ -665,8 +572,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-
-      {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
 
       {mobileOpen && (
         <MobileMenu
