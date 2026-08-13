@@ -204,86 +204,88 @@ export default function TrustedDoctors() {
   ];
 
   return (
-    <div className="py-8 sm:py-12 lg:py-16 max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-5 sm:mb-6">
-        <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-900">
-          Meet Our Trusted Doctors
-        </p>
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-sm sm:text-base text-primary font-medium hover:underline"
-        >
-          <p>View All Doctors</p>
-          <FaArrowRight />
-        </Link>
-      </div>
+    <div className="py-8 sm:py-12 lg:py-16  bg-slate-50">
+      <div className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-5 sm:mb-6">
+          <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-900">
+            Meet Our Trusted Doctors
+          </p>
+          <Link
+            href="/"
+            className="flex items-center gap-2 text-sm sm:text-base text-primary font-medium hover:underline"
+          >
+            <p>View All Doctors</p>
+            <FaArrowRight />
+          </Link>
+        </div>
 
-      <div className="relative mb-4 sm:mb-6 lg:mb-5">
-        <Slider ref={sliderRef} {...settings}>
-          {doctors.map((doctor, index) => (
-            <div key={index} className="px-1.5 sm:px-2 py-2">
-              <div className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
-                <div className="relative h-44 sm:h-48 lg:h-56 xl:h-64 w-full bg-slate-100">
-                  <Image
-                    src={doctor.image}
-                    alt={doctor.name}
-                    fill
-                    className="object-fit"
-                  />
-                </div>
-                <div className="flex flex-col gap-2 sm:gap-3 p-3 sm:p-4">
-                  <div>
-                    <p className="text-sm sm:text-base font-semibold text-slate-900 truncate">
-                      {doctor.name}
-                    </p>
-                    <p className="text-xs sm:text-sm font-medium text-primary/70 truncate">
-                      {doctor.speciality}
-                    </p>
+        <div className="relative mb-4 sm:mb-6 lg:mb-5">
+          <Slider ref={sliderRef} {...settings}>
+            {doctors.map((doctor, index) => (
+              <div key={index} className="px-1.5 sm:px-2 py-2">
+                <div className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
+                  <div className="relative h-44 sm:h-48 lg:h-56 xl:h-64 w-full bg-slate-100">
+                    <Image
+                      src={doctor.image}
+                      alt={doctor.name}
+                      fill
+                      className="object-fit"
+                    />
                   </div>
-                  <div>
-                    <div className="flex items-center gap-1 text-xs sm:text-sm">
-                      <FaStar className="text-yellow-500" />
-                      <span className="font-semibold text-yellow-600">
-                        {doctor.rating}
-                      </span>
-                      <span className="text-slate-400">
-                        ({doctor.reviewCount})
-                      </span>
+                  <div className="flex flex-col gap-2 sm:gap-3 p-3 sm:p-4">
+                    <div>
+                      <p className="text-sm sm:text-base font-semibold text-slate-900 truncate">
+                        {doctor.name}
+                      </p>
+                      <p className="text-xs sm:text-sm font-medium text-primary/70 truncate">
+                        {doctor.speciality}
+                      </p>
                     </div>
-                    <p className="text-xs sm:text-sm text-slate-500">
-                      {doctor.experience}+ Years Exp.
+                    <div>
+                      <div className="flex items-center gap-1 text-xs sm:text-sm">
+                        <FaStar className="text-yellow-500" />
+                        <span className="font-semibold text-yellow-600">
+                          {doctor.rating}
+                        </span>
+                        <span className="text-slate-400">
+                          ({doctor.reviewCount})
+                        </span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-500">
+                        {doctor.experience}+ Years Exp.
+                      </p>
+                    </div>
+                    <p className="text-xs sm:text-sm font-semibold text-primary">
+                      ${doctor.consultationFee} / Consultation
                     </p>
                   </div>
-                  <p className="text-xs sm:text-sm font-semibold text-primary">
-                    ${doctor.consultationFee} / Consultation
+                </div>
+              </div>
+            ))}
+          </Slider>
+        </div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-4 sm:gap-6 bg-linear-to-r from-[#0b7761] to-[#19ac67] rounded-lg px-5 sm:px-8 lg:px-10 py-6 sm:py-5 text-white">
+          {stats.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={index}
+                className="flex items-center gap-2 sm:gap-3 justify-start lg:justify-start lg:border-l lg:first:border-l-0 lg:pl-6 lg:first:pl-0"
+              >
+                <Icon className="text-xl sm:text-3xl lg:text-4xl shrink-0" />
+                <div>
+                  <p className="text-base sm:text-xl font-bold leading-tight">
+                    {stat.value}
+                  </p>
+                  <p className="text-[10px] sm:text-sm leading-tight">
+                    {stat.label}
                   </p>
                 </div>
               </div>
-            </div>
-          ))}
-        </Slider>
-      </div>
-
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-4 sm:gap-6 bg-linear-to-r from-[#0b7761] to-[#19ac67] rounded-lg px-5 sm:px-8 lg:px-10 py-6 sm:py-5 text-white">
-        {stats.map((stat, index) => {
-          const Icon = stat.icon;
-          return (
-            <div
-              key={index}
-              className="flex items-center gap-2 sm:gap-3 justify-start lg:justify-start lg:border-l lg:first:border-l-0 lg:pl-6 lg:first:pl-0"
-            >
-              <Icon className="text-xl sm:text-3xl lg:text-4xl shrink-0" />
-              <div>
-                <p className="text-base sm:text-xl font-bold leading-tight">
-                  {stat.value}
-                </p>
-                <p className="text-[10px] sm:text-sm leading-tight">
-                  {stat.label}
-                </p>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

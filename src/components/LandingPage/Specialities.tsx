@@ -77,7 +77,7 @@ export default function Specialities() {
 
   return (
     <section className="w-full bg-white-50 py-10 sm:py-14 lg:py-16 overflow-hidden">
-      <div className="mx-auto flex w-full max-w-[90%] flex-col items-center px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex w-full max-w-[85%] flex-col items-center px-4 sm:px-6 lg:px-8">
         {/* top texts */}
         <div className="flex flex-col items-center justify-center gap-3 text-center">
           <p className="text-primary uppercase text-sm sm:text-base font-semibold tracking-wide">
