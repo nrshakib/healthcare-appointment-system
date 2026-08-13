@@ -86,7 +86,7 @@ export default function Testimonials() {
 
   return (
     <div className="py-12 sm:py-16 lg:py-20 bg-slate-50">
-      <div className="max-w-[75%] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="xl:max-w-[75%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-4 sm:mb-6 lg:mb-12">
           <p className="text-xs sm:text-sm font-bold tracking-[0.15em] text-emerald-600 uppercase mb-2">
             Patients Love Us

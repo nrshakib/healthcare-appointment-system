@@ -205,7 +205,7 @@ export default function TrustedDoctors() {
 
   return (
     <div className="py-8 sm:py-12 lg:py-16  bg-slate-50">
-      <div className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-5 sm:mb-6">
           <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-900">
             Meet Our Trusted Doctors
