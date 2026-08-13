@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import * as LuIcons from "react-icons/lu";
 import specialities from "@/utils/specialities";
 import { IconType } from "react-icons";
-import { Button } from "@mui/material";
 import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 
