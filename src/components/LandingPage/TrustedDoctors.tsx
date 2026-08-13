@@ -204,7 +204,7 @@ export default function TrustedDoctors() {
   ];
 
   return (
-    <div className="py-8 sm:py-12 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-8 sm:py-12 lg:py-16 max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-5 sm:mb-6">
         <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-900">
           Meet Our Trusted Doctors
@@ -223,7 +223,7 @@ export default function TrustedDoctors() {
           {doctors.map((doctor, index) => (
             <div key={index} className="px-1.5 sm:px-2 py-2">
               <div className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
-                <div className="relative h-44 sm:h-48 lg:h-56 w-full bg-slate-100">
+                <div className="relative h-44 sm:h-48 lg:h-56 xl:h-64 w-full bg-slate-100">
                   <Image
                     src={doctor.image}
                     alt={doctor.name}

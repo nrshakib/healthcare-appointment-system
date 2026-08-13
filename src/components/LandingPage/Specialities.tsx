@@ -15,7 +15,7 @@ export default function Specialities() {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
@@ -70,12 +70,14 @@ export default function Specialities() {
     const IconComponent = icons[iconName];
     if (!IconComponent) return null;
     const { text } = getColorClasses(color);
-    return <IconComponent className={`text-4xl ${text}`} />;
+    return (
+      <IconComponent className={`text-xl sm:text-3xl lg:text-4xl ${text}`} />
+    );
   };
 
   return (
     <section className="w-full bg-white-50 py-10 sm:py-14 lg:py-16 overflow-hidden">
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex w-full max-w-[90%] flex-col items-center px-4 sm:px-6 lg:px-8">
         {/* top texts */}
         <div className="flex flex-col items-center justify-center gap-3 text-center">
           <p className="text-primary uppercase text-sm sm:text-base font-semibold tracking-wide">
@@ -95,11 +97,11 @@ export default function Specialities() {
                 <div className="group flex min-h-56 sm:min-h-64 lg:min-h-70 flex-col items-center justify-between rounded-2xl border border-emerald-100/70 bg-white p-5 text-center shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl sm:p-6">
                   <div className="flex flex-col items-center">
                     <p
-                      className={`mb-4 flex h-16 w-16 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105 sm:h-20 sm:w-20 ${getColorClasses(speciality.color).bg}`}
+                      className={`mb-4 flex size-10 sm:size-12 lg:size-16 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105 sm:h-20 sm:w-20 ${getColorClasses(speciality.color).bg}`}
                     >
                       {getIcon(speciality.icon, speciality.color)}
                     </p>
-                    <h3 className="mb-2 text-lg sm:text-xl font-semibold text-slate-900">
+                    <h3 className="lg:mb-2 text-lg sm:text-xl font-semibold text-slate-900">
                       {speciality.name}
                     </h3>
                     <p className="text-sm leading-relaxed text-slate-500">
