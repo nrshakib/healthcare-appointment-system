@@ -353,7 +353,7 @@ export default function HeroSection() {
             {/* Doctor image */}
             <div className="absolute bottom-0 left-1/2 h-64 sm:h-95 xl:h-115 w-50 sm:w-70 xl:w-90 -translate-x-1/2 overflow-hidden">
               <Image
-                src="/images/heroDoctor.png"
+                src="/images/HeroDoctor.png"
                 alt="Doctor with arms crossed, wearing a white coat and stethoscope"
                 width={360}
                 height={480}
