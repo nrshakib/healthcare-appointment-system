@@ -2,6 +2,7 @@ const doctors = [
   {
     id: 1,
     name: "Dr. Sarah Ahmed",
+    gender: "Female",
     image: "/images/doctors/doctor-1.png",
     speciality: "Cardiologist",
     degree: "MBBS, MD (Cardiology), FACC",
@@ -10,10 +11,11 @@ const doctors = [
     experience: 12,
     consultationFee: 1200,
     consultationType: "In-person & Online",
-    chamberLocation: "Apollo Hospital, Dhaka",
+    location: "Apollo Hospital, Dhaka",
     about:
       "Dr. Sarah Ahmed is a board-certified cardiologist with over 12 years of experience in diagnosing and treating cardiovascular diseases. She specializes in interventional cardiology and heart failure management.",
-    education: "MBBS from Dhaka Medical College; MD (Cardiology) from BSMMU; Fellowship from American College of Cardiology",
+    education:
+      "MBBS from Dhaka Medical College; MD (Cardiology) from BSMMU; Fellowship from American College of Cardiology",
     services: [
       "ECG & Echocardiogram",
       "Angiography",
@@ -25,6 +27,7 @@ const doctors = [
   {
     id: 2,
     name: "Dr. Michael Rahman",
+    gender: "Male",
     image: "/images/doctors/doctor-2.png",
     speciality: "Neurologist",
     degree: "MBBS, MD (Neurology), FRCP",
@@ -33,7 +36,7 @@ const doctors = [
     experience: 10,
     consultationFee: 1000,
     consultationType: "In-person",
-    chamberLocation: "Square Hospital, Dhaka",
+    location: "Square Hospital, Dhaka",
     about:
       "Dr. Michael Rahman is an experienced neurologist specializing in stroke management, epilepsy, and neurodegenerative disorders. He is committed to providing comprehensive neurological care.",
     education:
@@ -49,6 +52,7 @@ const doctors = [
   {
     id: 3,
     name: "Dr. Emily Wilson",
+    gender: "Female",
     image: "/images/doctors/doctor-3.png",
     speciality: "Dermatologist",
     degree: "MBBS, DDVL, MD (Dermatology)",
@@ -57,7 +61,7 @@ const doctors = [
     experience: 8,
     consultationFee: 800,
     consultationType: "Online & In-person",
-    chamberLocation: "United Hospital, Dhaka",
+    location: "United Hospital, Dhaka",
     about:
       "Dr. Emily Wilson is a skilled dermatologist with expertise in treating skin, hair, and nail disorders. She offers both medical and cosmetic dermatology services.",
     education:
@@ -73,6 +77,7 @@ const doctors = [
   {
     id: 4,
     name: "Dr. James Anderson",
+    gender: "Male",
     image: "/images/doctors/doctor-4.png",
     speciality: "Orthopedic Surgeon",
     degree: "MBBS, MS (Orthopedics), FACS",
@@ -81,7 +86,8 @@ const doctors = [
     experience: 15,
     consultationFee: 1500,
     consultationType: "In-person",
-    chamberLocation: "Bangabandhu Sheikh Mujib Medical University Hospital, Dhaka",
+    location:
+      "Bangabandhu Sheikh Mujib Medical University Hospital, Dhaka",
     about:
       "Dr. James Anderson is a renowned orthopedic surgeon with extensive experience in joint replacement, spine surgery, and sports injury management.",
     education:
@@ -97,6 +103,7 @@ const doctors = [
   {
     id: 5,
     name: "Dr. Olivia Martin",
+    gender: "Female",
     image: "/images/doctors/doctor-5.png",
     speciality: "Pediatrician",
     degree: "MBBS, DCH, FCPS (Pediatrics)",
@@ -105,7 +112,7 @@ const doctors = [
     experience: 9,
     consultationFee: 900,
     consultationType: "Online & In-person",
-    chamberLocation: "Kidney Foundation Hospital, Dhaka",
+    location: "Kidney Foundation Hospital, Dhaka",
     about:
       "Dr. Olivia Martin is a caring pediatrician dedicated to the health and well-being of children from newborns to adolescents. She specializes in growth monitoring and childhood vaccinations.",
     education:
@@ -121,6 +128,7 @@ const doctors = [
   {
     id: 6,
     name: "Dr. Daniel Karim",
+    gender: "Male",
     image: "/images/doctors/doctor-6.png",
     speciality: "General Physician",
     degree: "MBBS, MD (Internal Medicine)",
@@ -129,7 +137,7 @@ const doctors = [
     experience: 7,
     consultationFee: 600,
     consultationType: "In-person & Online",
-    chamberLocation: "Popular Diagnostic Center, Dhaka",
+    location: "Popular Diagnostic Center, Dhaka",
     about:
       "Dr. Daniel Karim is a dedicated general physician providing comprehensive primary care. He focuses on preventive medicine and chronic disease management.",
     education:
@@ -145,6 +153,7 @@ const doctors = [
   {
     id: 7,
     name: "Dr. Sophia Williams",
+    gender: "Female",
     image: "/images/doctors/doctor-7.png",
     speciality: "Gynecologist",
     degree: "MBBS, FCPS (Gynecology & Obstetrics)",
@@ -153,7 +162,7 @@ const doctors = [
     experience: 13,
     consultationFee: 1100,
     consultationType: "In-person",
-    chamberLocation: "LABAID Hospital, Dhaka",
+    location: "LABAID Hospital, Dhaka",
     about:
       "Dr. Sophia Williams is a highly experienced gynecologist specializing in high-risk pregnancies, infertility treatment, and minimally invasive gynecological surgery.",
     education:
@@ -169,6 +178,7 @@ const doctors = [
   {
     id: 8,
     name: "Dr. Robert Hasan",
+    gender: "Male",
     image: "/images/doctors/doctor-8.png",
     speciality: "Ophthalmologist",
     degree: "MBBS, FCPS (Ophthalmology), FRCS",
@@ -177,7 +187,7 @@ const doctors = [
     experience: 11,
     consultationFee: 850,
     consultationType: "Online & In-person",
-    chamberLocation: "Ispahani Eye Hospital, Dhaka",
+    location: "Ispahani Eye Hospital, Dhaka",
     about:
       "Dr. Robert Hasan is a skilled ophthalmologist specializing in cataract surgery, glaucoma, and retinal diseases. He has performed over 5,000 successful eye surgeries.",
     education:
@@ -193,6 +203,7 @@ const doctors = [
   {
     id: 9,
     name: "Dr. Isabella Khan",
+    gender: "Female",
     image: "/images/doctors/doctor-9.png",
     speciality: "Psychiatrist",
     degree: "MBBS, MD (Psychiatry), MRCPsych",
@@ -201,7 +212,7 @@ const doctors = [
     experience: 10,
     consultationFee: 1000,
     consultationType: "Online & In-person",
-    chamberLocation: "National Institute of Mental Health, Dhaka",
+    location: "National Institute of Mental Health, Dhaka",
     about:
       "Dr. Isabella Khan is a compassionate psychiatrist with expertise in treating anxiety, depression, and mood disorders. She provides both medication management and psychotherapy.",
     education:
@@ -217,6 +228,7 @@ const doctors = [
   {
     id: 10,
     name: "Dr. William Chowdhury",
+    gender: "Male",
     image: "/images/doctors/doctor-10.png",
     speciality: "ENT Specialist",
     degree: "MBBS, FCPS (ENT), DOHNS",
@@ -225,7 +237,7 @@ const doctors = [
     experience: 8,
     consultationFee: 750,
     consultationType: "In-person & Online",
-    chamberLocation: "ENT Care Center, Dhaka",
+    location: "ENT Care Center, Dhaka",
     about:
       "Dr. William Chowdhury is an ENT specialist with a focus on sinus disorders, hearing loss, and throat conditions. He uses the latest endoscopic techniques.",
     education:
@@ -241,6 +253,7 @@ const doctors = [
   {
     id: 11,
     name: "Dr. Emma Hossain",
+    gender: "Female",
     image: "/images/doctors/doctor-11.png",
     speciality: "Endocrinologist",
     degree: "MBBS, MD (Endocrinology & Metabolism)",
@@ -249,7 +262,7 @@ const doctors = [
     experience: 14,
     consultationFee: 1200,
     consultationType: "In-person",
-    chamberLocation: "BIRDEM Hospital, Dhaka",
+    location: "BIRDEM Hospital, Dhaka",
     about:
       "Dr. Emma Hossain is a leading endocrinologist specializing in diabetes, thyroid disorders, and hormonal imbalances. She has published numerous research papers in her field.",
     education:
@@ -265,6 +278,7 @@ const doctors = [
   {
     id: 12,
     name: "Dr. Alexander Islam",
+    gender: "Male",
     image: "/images/doctors/doctor-12.png",
     speciality: "Gastroenterologist",
     degree: "MBBS, MD (Gastroenterology), FACG",
@@ -273,7 +287,7 @@ const doctors = [
     experience: 12,
     consultationFee: 1300,
     consultationType: "In-person & Online",
-    chamberLocation: "Digestive Disease Hospital, Dhaka",
+    location: "Digestive Disease Hospital, Dhaka",
     about:
       "Dr. Alexander Islam is an accomplished gastroenterologist with expertise in liver diseases, inflammatory bowel disease, and advanced endoscopic procedures.",
     education:
@@ -289,6 +303,7 @@ const doctors = [
   {
     id: 13,
     name: "Dr. Fatima Rahman",
+    gender: "Female",
     image: "/images/doctors/doctor-1.png",
     speciality: "Cardiologist",
     degree: "MBBS, MD (Cardiology)",
@@ -297,11 +312,10 @@ const doctors = [
     experience: 9,
     consultationFee: 1000,
     consultationType: "Online & In-person",
-    chamberLocation: "Care Hospital, Dhaka",
+    location: "Care Hospital, Dhaka",
     about:
       "Dr. Fatima Rahman specializes in preventive cardiology and cardiac rehabilitation. She is dedicated to helping patients manage their heart health through lifestyle modifications.",
-    education:
-      "MBBS from Dhaka Medical College; MD (Cardiology) from BSMMU",
+    education: "MBBS from Dhaka Medical College; MD (Cardiology) from BSMMU",
     services: [
       "Cardiac Rehabilitation",
       "Preventive Cardiology",
@@ -313,6 +327,7 @@ const doctors = [
   {
     id: 14,
     name: "Dr. Arif Hossain",
+    gender: "Male",
     image: "/images/doctors/doctor-2.png",
     speciality: "Neurologist",
     degree: "MBBS, MD (Neurology)",
@@ -321,10 +336,11 @@ const doctors = [
     experience: 7,
     consultationFee: 850,
     consultationType: "In-person",
-    chamberLocation: "Neurology Clinic, Dhaka",
+    location: "Neurology Clinic, Panchagarh",
     about:
       "Dr. Arif Hossain is a neurologist with a focus on movement disorders and neurodegenerative diseases. He provides comprehensive care for patients with Parkinson's and Alzheimer's.",
-    education: "MBBS from Mymensingh Medical College; MD (Neurology) from BSMMU",
+    education:
+      "MBBS from Mymensingh Medical College; MD (Neurology) from BSMMU",
     services: [
       "Parkinson's Disease Management",
       "Alzheimer's Care",
@@ -336,6 +352,7 @@ const doctors = [
   {
     id: 15,
     name: "Dr. Nusrat Jahan",
+    gender: "Female",
     image: "/images/doctors/doctor-3.png",
     speciality: "Dermatologist",
     degree: "MBBS, MD (Dermatology)",
@@ -344,10 +361,11 @@ const doctors = [
     experience: 11,
     consultationFee: 900,
     consultationType: "In-person & Online",
-    chamberLocation: "Skin & Hair Clinic, Dhaka",
+    location: "Skin & Hair Clinic, Dhaka",
     about:
       "Dr. Nusrat Jahan is a renowned dermatologist known for her expertise in treating chronic skin conditions and hair loss. She combines medical and aesthetic approaches.",
-    education: "MBBS from Chittagong Medical College; MD (Dermatology) from BSMMU",
+    education:
+      "MBBS from Chittagong Medical College; MD (Dermatology) from BSMMU",
     services: [
       "Hair Transplant Consultation",
       "Acne Treatment",
@@ -359,6 +377,7 @@ const doctors = [
   {
     id: 16,
     name: "Dr. Kamal Uddin",
+    gender: "Male",
     image: "/images/doctors/doctor-4.png",
     speciality: "Orthopedic Surgeon",
     degree: "MBBS, MS (Orthopedics)",
@@ -367,10 +386,11 @@ const doctors = [
     experience: 10,
     consultationFee: 1200,
     consultationType: "In-person",
-    chamberLocation: "Ortho Care Center, Dhaka",
+    location: "Ortho Care Center, Dhaka",
     about:
       "Dr. Kamal Uddin is an orthopedic surgeon specializing in joint replacement and trauma surgery. He uses minimally invasive techniques for faster recovery.",
-    education: "MBBS from Rajshahi Medical College; MS (Orthopedics) from BSMMU",
+    education:
+      "MBBS from Rajshahi Medical College; MS (Orthopedics) from BSMMU",
     services: [
       "Arthroscopic Surgery",
       "Joint Replacement",
@@ -382,6 +402,7 @@ const doctors = [
   {
     id: 17,
     name: "Dr. Rina Akter",
+    gender: "Female",
     image: "/images/doctors/doctor-5.png",
     speciality: "Pediatrician",
     degree: "MBBS, DCH, FCPS (Pediatrics)",
@@ -390,7 +411,7 @@ const doctors = [
     experience: 14,
     consultationFee: 1000,
     consultationType: "Online & In-person",
-    chamberLocation: "Children's Hospital, Dhaka",
+    location: "Children's Hospital, Dhaka",
     about:
       "Dr. Rina Akter is a highly respected pediatrician with a special interest in neonatal care and childhood immunization. She is known for her gentle approach with young patients.",
     education:
@@ -406,6 +427,7 @@ const doctors = [
   {
     id: 18,
     name: "Dr. Imran Khan",
+    gender: "Male",
     image: "/images/doctors/doctor-6.png",
     speciality: "General Physician",
     degree: "MBBS, MD (Internal Medicine)",
@@ -414,10 +436,11 @@ const doctors = [
     experience: 6,
     consultationFee: 500,
     consultationType: "Online & In-person",
-    chamberLocation: "Community Health Center, Dhaka",
+    location: "Community Health Center, Dhaka",
     about:
       "Dr. Imran Khan is a general physician focused on providing accessible and comprehensive primary healthcare services to patients of all ages.",
-    education: "MBBS from Sylhet MAG Osmani Medical College; MD (Internal Medicine) from BSMMU",
+    education:
+      "MBBS from Sylhet MAG Osmani Medical College; MD (Internal Medicine) from BSMMU",
     services: [
       "General Health Checkup",
       "Fever & Infection Treatment",
@@ -429,6 +452,7 @@ const doctors = [
   {
     id: 19,
     name: "Dr. Ayesha Siddiqua",
+    gender: "Female",
     image: "/images/doctors/doctor-7.png",
     speciality: "Gynecologist",
     degree: "MBBS, FCPS (Gynecology & Obstetrics)",
@@ -437,7 +461,7 @@ const doctors = [
     experience: 12,
     consultationFee: 1100,
     consultationType: "In-person",
-    chamberLocation: "Women's Care Hospital, Dhaka",
+    location: "Women's Care Hospital, Dhaka",
     about:
       "Dr. Ayesha Siddiqua is an expert in high-risk obstetrics and minimally invasive gynecological surgery. She is dedicated to women's health and wellness.",
     education:
@@ -453,6 +477,7 @@ const doctors = [
   {
     id: 20,
     name: "Dr. Mahbubur Rahman",
+    gender: "Male",
     image: "/images/doctors/doctor-8.png",
     speciality: "Ophthalmologist",
     degree: "MBBS, FCPS (Ophthalmology)",
@@ -461,10 +486,11 @@ const doctors = [
     experience: 9,
     consultationFee: 750,
     consultationType: "In-person & Online",
-    chamberLocation: "Vision Care Center, Dhaka",
+    location: "Vision Care Center, Dhaka",
     about:
       "Dr. Mahbubur Rahman is an ophthalmologist specializing in corneal diseases and refractive surgery. He is committed to restoring and preserving vision.",
-    education: "MBBS from Rajshahi Medical College; FCPS (Ophthalmology) from BCPS",
+    education:
+      "MBBS from Rajshahi Medical College; FCPS (Ophthalmology) from BCPS",
     services: [
       "Corneal Transplant",
       "Refractive Surgery",
@@ -476,6 +502,7 @@ const doctors = [
   {
     id: 21,
     name: "Dr. Tanzila Noor",
+    gender: "Female",
     image: "/images/doctors/doctor-9.png",
     speciality: "Psychiatrist",
     degree: "MBBS, MD (Psychiatry)",
@@ -484,7 +511,7 @@ const doctors = [
     experience: 8,
     consultationFee: 900,
     consultationType: "Online & In-person",
-    chamberLocation: "MindCare Clinic, Dhaka",
+    location: "MindCare Clinic, Dhaka",
     about:
       "Dr. Tanzila Noor is a psychiatrist specializing in adolescent mental health and mood disorders. She provides evidence-based treatments including CBT and medication management.",
     education: "MBBS from Dhaka Medical College; MD (Psychiatry) from BSMMU",
@@ -499,6 +526,7 @@ const doctors = [
   {
     id: 22,
     name: "Dr. Shafiul Alam",
+    gender: "Male",
     image: "/images/doctors/doctor-10.png",
     speciality: "ENT Specialist",
     degree: "MBBS, FCPS (ENT), MS (ENT)",
@@ -507,10 +535,11 @@ const doctors = [
     experience: 7,
     consultationFee: 700,
     consultationType: "In-person",
-    chamberLocation: "ENT & Head Neck Surgery Center, Dhaka",
+    location: "ENT & Head Neck Surgery Center, Dhaka",
     about:
       "Dr. Shafiul Alam is an ENT specialist with expertise in sinus surgery, head and neck oncology, and cochlear implants.",
-    education: "MBBS from Mymensingh Medical College; FCPS (ENT) from BCPS; MS (ENT) from BSMMU",
+    education:
+      "MBBS from Mymensingh Medical College; FCPS (ENT) from BCPS; MS (ENT) from BSMMU",
     services: [
       "Functional Endoscopic Sinus Surgery",
       "Cochlear Implant Evaluation",
@@ -522,6 +551,7 @@ const doctors = [
   {
     id: 23,
     name: "Dr. Priya Das",
+    gender: "Female",
     image: "/images/doctors/doctor-11.png",
     speciality: "Endocrinologist",
     degree: "MBBS, MD (Endocrinology)",
@@ -530,10 +560,11 @@ const doctors = [
     experience: 10,
     consultationFee: 1100,
     consultationType: "In-person & Online",
-    chamberLocation: "Endocrine Clinic, Dhaka",
+    location: "Endocrine Clinic, Dhaka",
     about:
       "Dr. Priya Das is an endocrinologist specializing in diabetes, thyroid, and adrenal disorders. She takes a holistic approach to hormonal health.",
-    education: "MBBS from Chittagong Medical College; MD (Endocrinology) from BSMMU",
+    education:
+      "MBBS from Chittagong Medical College; MD (Endocrinology) from BSMMU",
     services: [
       "Diabetes Care",
       "Thyroid Management",
@@ -545,6 +576,7 @@ const doctors = [
   {
     id: 24,
     name: "Dr. Sajjad Hossain",
+    gender: "Male",
     image: "/images/doctors/doctor-12.png",
     speciality: "Gastroenterologist",
     degree: "MBBS, MD (Gastroenterology)",
@@ -553,10 +585,11 @@ const doctors = [
     experience: 9,
     consultationFee: 1200,
     consultationType: "In-person",
-    chamberLocation: "Gastro & Liver Clinic, Dhaka",
+    location: "Gastro & Liver Clinic, Dhaka",
     about:
       "Dr. Sajjad Hossain is a gastroenterologist with extensive experience in managing liver diseases, peptic ulcers, and IBS. He performs advanced endoscopic procedures.",
-    education: "MBBS from Rajshahi Medical College; MD (Gastroenterology) from BSMMU",
+    education:
+      "MBBS from Rajshahi Medical College; MD (Gastroenterology) from BSMMU",
     services: [
       "ERCP",
       "Liver Biopsy",
@@ -568,6 +601,7 @@ const doctors = [
   {
     id: 25,
     name: "Dr. Nahid Akter",
+    gender: "Female",
     image: "/images/doctors/doctor-1.png",
     speciality: "Pulmonologist",
     degree: "MBBS, MD (Pulmonology), FCCP",
@@ -576,7 +610,7 @@ const doctors = [
     experience: 8,
     consultationFee: 950,
     consultationType: "In-person & Online",
-    chamberLocation: "Lung Care Center, Dhaka",
+    location: "Lung Care Center, Dhaka",
     about:
       "Dr. Nahid Akter is a pulmonologist specializing in asthma, COPD, and sleep disorders. She is dedicated to improving respiratory health.",
     education:
@@ -592,6 +626,7 @@ const doctors = [
   {
     id: 26,
     name: "Dr. Rezaul Karim",
+    gender: "Male",
     image: "/images/doctors/doctor-2.png",
     speciality: "Nephrologist",
     degree: "MBBS, MD (Nephrology), FRCP",
@@ -600,7 +635,7 @@ const doctors = [
     experience: 11,
     consultationFee: 1100,
     consultationType: "In-person",
-    chamberLocation: "Kidney Hospital, Dhaka",
+    location: "Kidney Hospital, Dhaka",
     about:
       "Dr. Rezaul Karim is a nephrologist with expertise in kidney transplantation, dialysis, and chronic kidney disease management.",
     education:
@@ -616,6 +651,7 @@ const doctors = [
   {
     id: 27,
     name: "Dr. Munira Begum",
+    gender: "Female",
     image: "/images/doctors/doctor-3.png",
     speciality: "Urologist",
     degree: "MBBS, FCPS (Urology), FEBU",
@@ -624,7 +660,7 @@ const doctors = [
     experience: 8,
     consultationFee: 1000,
     consultationType: "In-person & Online",
-    chamberLocation: "Urology & Nephrology Center, Dhaka",
+    location: "Urology & Nephrology Center, Dhaka",
     about:
       "Dr. Munira Begum is a urologist specializing in kidney stones, urinary tract infections, and female urology.",
     education:
@@ -640,6 +676,7 @@ const doctors = [
   {
     id: 28,
     name: "Dr. Farhana Islam",
+    gender: "Female",
     image: "/images/doctors/doctor-4.png",
     speciality: "Oncologist",
     degree: "MBBS, MD (Clinical Oncology), FRCR",
@@ -648,7 +685,7 @@ const doctors = [
     experience: 13,
     consultationFee: 1400,
     consultationType: "In-person",
-    chamberLocation: "National Cancer Institute, Dhaka",
+    location: "National Cancer Institute, Dhaka",
     about:
       "Dr. Farhana Islam is a clinical oncologist specializing in breast cancer, chemotherapy, and radiation therapy. She is dedicated to compassionate cancer care.",
     education:
@@ -664,6 +701,7 @@ const doctors = [
   {
     id: 29,
     name: "Dr. Ashraful Haque",
+    gender: "Male",
     image: "/images/doctors/doctor-5.png",
     speciality: "Hematologist",
     degree: "MBBS, MD (Hematology), FRCPath",
@@ -672,7 +710,7 @@ const doctors = [
     experience: 7,
     consultationFee: 1100,
     consultationType: "In-person",
-    chamberLocation: "Hematology Center, Dhaka",
+    location: "Hematology Center, Dhaka",
     about:
       "Dr. Ashraful Haque is a hematologist specializing in blood disorders, anemia, and clotting disorders. He provides expert diagnosis and treatment.",
     education:
@@ -688,6 +726,7 @@ const doctors = [
   {
     id: 30,
     name: "Dr. Shirin Sultana",
+    gender: "Female",
     image: "/images/doctors/doctor-6.png",
     speciality: "Neonatologist",
     degree: "MBBS, FCPS (Pediatrics), MD (Neonatology)",
@@ -696,7 +735,7 @@ const doctors = [
     experience: 10,
     consultationFee: 1200,
     consultationType: "In-person",
-    chamberLocation: "Neonatal Unit, Dhaka Medical College Hospital",
+    location: "Neonatal Unit, Dhaka Medical College Hospital",
     about:
       "Dr. Shirin Sultana is a neonatologist dedicated to the care of premature and critically ill newborns. She has extensive experience in NICU management.",
     education:
@@ -712,6 +751,7 @@ const doctors = [
   {
     id: 31,
     name: "Dr. Masud Rana",
+    gender: "Male",
     image: "/images/doctors/doctor-7.png",
     speciality: "Geriatrician",
     degree: "MBBS, MD (Geriatrics)",
@@ -720,7 +760,7 @@ const doctors = [
     experience: 9,
     consultationFee: 800,
     consultationType: "In-person & Online",
-    chamberLocation: "Geriatric Care Clinic, Dhaka",
+    location: "Geriatric Care Clinic, Dhaka",
     about:
       "Dr. Masud Rana specializes in the healthcare needs of older adults, focusing on chronic disease management, mobility, and cognitive health.",
     education: "MBBS from Rajshahi Medical College; MD (Geriatrics) from BSMMU",
@@ -735,6 +775,7 @@ const doctors = [
   {
     id: 32,
     name: "Dr. Tareq Mahmud",
+    gender: "Male",
     image: "/images/doctors/doctor-8.png",
     speciality: "General Surgeon",
     degree: "MBBS, FCPS (Surgery), MS (Surgery)",
@@ -743,10 +784,11 @@ const doctors = [
     experience: 14,
     consultationFee: 1000,
     consultationType: "In-person",
-    chamberLocation: "Surgery & Trauma Center, Dhaka",
+    location: "Surgery & Trauma Center, Dhaka",
     about:
       "Dr. Tareq Mahmud is a general surgeon with extensive experience in abdominal surgery, trauma care, and minimally invasive procedures.",
-    education: "MBBS from Dhaka Medical College; FCPS (Surgery) from BCPS; MS (Surgery) from BSMMU",
+    education:
+      "MBBS from Dhaka Medical College; FCPS (Surgery) from BCPS; MS (Surgery) from BSMMU",
     services: [
       "Laparoscopic Cholecystectomy",
       "Appendectomy",
@@ -758,6 +800,7 @@ const doctors = [
   {
     id: 33,
     name: "Dr. Liza Akter",
+    gender: "Female",
     image: "/images/doctors/doctor-9.png",
     speciality: "Plastic Surgeon",
     degree: "MBBS, FCPS (Plastic Surgery), FRCS",
@@ -766,7 +809,7 @@ const doctors = [
     experience: 11,
     consultationFee: 1800,
     consultationType: "In-person",
-    chamberLocation: "Aesthetic Surgery Clinic, Dhaka",
+    location: "Aesthetic Surgery Clinic, Dhaka",
     about:
       "Dr. Liza Akter is a plastic surgeon specializing in reconstructive surgery and cosmetic procedures. She is known for her artistic approach and patient-centered care.",
     education:
@@ -790,7 +833,7 @@ const doctors = [
     experience: 6,
     consultationFee: 650,
     consultationType: "In-person & Online",
-    chamberLocation: "ENT Clinic, Dhaka",
+    location: "ENT Clinic, Dhaka",
     about:
       "Dr. Saiful Islam is a young and dynamic ENT specialist focusing on sinus disorders, hearing impairments, and throat infections.",
     education: "MBBS from Mymensingh Medical College; FCPS (ENT) from BCPS",
@@ -805,6 +848,7 @@ const doctors = [
   {
     id: 35,
     name: "Dr. Rahim Uddin",
+    gender: "Male",
     image: "/images/doctors/doctor-11.png",
     speciality: "Dentist",
     degree: "BDS, MDS (Oral & Maxillofacial Surgery)",
@@ -813,10 +857,11 @@ const doctors = [
     experience: 10,
     consultationFee: 700,
     consultationType: "In-person",
-    chamberLocation: "Smile Dental Clinic, Dhaka",
+    location: "Smile Dental Clinic, Dhaka",
     about:
       "Dr. Rahim Uddin is a dentist specializing in oral surgery and implantology. He provides comprehensive dental care from routine checkups to complex surgeries.",
-    education: "BDS from Dhaka Dental College; MDS (Oral & Maxillofacial Surgery) from BSMMU",
+    education:
+      "BDS from Dhaka Dental College; MDS (Oral & Maxillofacial Surgery) from BSMMU",
     services: [
       "Dental Implants",
       "Root Canal Treatment",
@@ -828,6 +873,7 @@ const doctors = [
   {
     id: 36,
     name: "Dr. Shahnaz Parvin",
+    gender: "Female",
     image: "/images/doctors/doctor-12.png",
     speciality: "Anesthesiologist",
     degree: "MBBS, DA, FCPS (Anesthesiology)",
@@ -836,7 +882,7 @@ const doctors = [
     experience: 9,
     consultationFee: 800,
     consultationType: "In-person",
-    chamberLocation: "Anesthesia & Pain Management Clinic, Dhaka",
+    location: "Anesthesia & Pain Management Clinic, Dhaka",
     about:
       "Dr. Shahnaz Parvin is an anesthesiologist specializing in pain management and perioperative anesthesia. She ensures patient safety during surgical procedures.",
     education:
@@ -852,6 +898,7 @@ const doctors = [
   {
     id: 37,
     name: "Dr. Kamrul Hasan",
+    gender: "Male",
     image: "/images/doctors/doctor-1.png",
     speciality: "Allergist & Immunologist",
     degree: "MBBS, MD (Allergy & Immunology)",
@@ -860,10 +907,11 @@ const doctors = [
     experience: 6,
     consultationFee: 900,
     consultationType: "Online & In-person",
-    chamberLocation: "Allergy & Asthma Clinic, Dhaka",
+    location: "Allergy & Asthma Clinic, Dhaka",
     about:
       "Dr. Kamrul Hasan is an allergist and immunologist specializing in allergy testing, asthma management, and immune disorders.",
-    education: "MBBS from Chittagong Medical College; MD (Allergy & Immunology) from BSMMU",
+    education:
+      "MBBS from Chittagong Medical College; MD (Allergy & Immunology) from BSMMU",
     services: [
       "Allergy Testing",
       "Asthma Management",
@@ -875,6 +923,7 @@ const doctors = [
   {
     id: 38,
     name: "Dr. Sanjida Akter",
+    gender: "Female",
     image: "/images/doctors/doctor-2.png",
     speciality: "Radiologist",
     degree: "MBBS, MD (Radiology), FRCR",
@@ -883,22 +932,18 @@ const doctors = [
     experience: 8,
     consultationFee: 1000,
     consultationType: "In-person",
-    chamberLocation: "Diagnostic Imaging Center, Dhaka",
+    location: "Diagnostic Imaging Center, Dhaka",
     about:
       "Dr. Sanjida Akter is a radiologist specializing in MRI, CT, and ultrasound diagnostics. She provides accurate and timely radiological interpretations.",
     education:
       "MBBS from Dhaka Medical College; MD (Radiology) from BSMMU; FRCR from Royal College of Radiologists",
-    services: [
-      "MRI Scan",
-      "CT Scan",
-      "Ultrasound",
-      "Mammography",
-    ],
+    services: ["MRI Scan", "CT Scan", "Ultrasound", "Mammography"],
     availableDays: ["Sunday", "Tuesday", "Thursday"],
   },
   {
     id: 39,
     name: "Dr. Mehedi Hasan",
+    gender: "Male",
     image: "/images/doctors/doctor-3.png",
     speciality: "Physiotherapist",
     degree: "BPT, MPT (Orthopedic Physiotherapy)",
@@ -907,10 +952,11 @@ const doctors = [
     experience: 9,
     consultationFee: 600,
     consultationType: "In-person & Online",
-    chamberLocation: "PhysioCare Center, Dhaka",
+    location: "PhysioCare Center, Dhaka",
     about:
       "Dr. Mehedi Hasan is a physiotherapist specializing in orthopedic and neurological rehabilitation. He helps patients recover from injuries and surgeries.",
-    education: "BPT from Bangladesh Institute of Health Sciences; MPT (Orthopedic) from University of Dhaka",
+    education:
+      "BPT from Bangladesh Institute of Health Sciences; MPT (Orthopedic) from University of Dhaka",
     services: [
       "Manual Therapy",
       "Therapeutic Exercises",
@@ -922,6 +968,7 @@ const doctors = [
   {
     id: 40,
     name: "Dr. Nasreen Sultana",
+    gender: "Female",
     image: "/images/doctors/doctor-4.png",
     speciality: "Nutritionist & Dietitian",
     degree: "BSc (Nutrition & Food Science), MSc (Clinical Nutrition)",
@@ -930,7 +977,7 @@ const doctors = [
     experience: 10,
     consultationFee: 700,
     consultationType: "Online & In-person",
-    chamberLocation: "Nutrition & Wellness Clinic, Dhaka",
+    location: "Nutrition & Wellness Clinic, Dhaka",
     about:
       "Dr. Nasreen Sultana is a clinical nutritionist helping patients achieve their health goals through personalized diet plans and nutritional counseling.",
     education:
@@ -946,6 +993,7 @@ const doctors = [
   {
     id: 41,
     name: "Dr. Anisur Rahman",
+    gender: "Male",
     image: "/images/doctors/doctor-5.png",
     speciality: "General Surgeon",
     degree: "MBBS, FCPS (Surgery)",
@@ -954,7 +1002,7 @@ const doctors = [
     experience: 8,
     consultationFee: 900,
     consultationType: "In-person",
-    chamberLocation: "City Hospital, Dhaka",
+    location: "City Hospital, Dhaka",
     about:
       "Dr. Anisur Rahman is a general surgeon with expertise in laparoscopic procedures and emergency surgery. He has performed over 3,000 successful surgeries.",
     education: "MBBS from Chittagong Medical College; FCPS (Surgery) from BCPS",
@@ -969,6 +1017,7 @@ const doctors = [
   {
     id: 42,
     name: "Dr. Farzana Akter",
+    gender: "Female",
     image: "/images/doctors/doctor-6.png",
     speciality: "Obstetrician & Gynecologist",
     degree: "MBBS, FCPS (Obstetrics & Gynecology)",
@@ -977,7 +1026,7 @@ const doctors = [
     experience: 15,
     consultationFee: 1300,
     consultationType: "In-person",
-    chamberLocation: "Mother & Child Hospital, Dhaka",
+    location: "Mother & Child Hospital, Dhaka",
     about:
       "Dr. Farzana Akter is an obstetrician and gynecologist with extensive experience in high-risk pregnancies and gynecological oncology.",
     education:
@@ -993,6 +1042,7 @@ const doctors = [
   {
     id: 43,
     name: "Dr. Shahidul Islam",
+    gender: "Male",
     image: "/images/doctors/doctor-7.png",
     speciality: "Cardiologist",
     degree: "MBBS, MD (Cardiology), FESC",
@@ -1001,7 +1051,7 @@ const doctors = [
     experience: 9,
     consultationFee: 1100,
     consultationType: "In-person & Online",
-    chamberLocation: "Heart Foundation Hospital, Dhaka",
+    location: "Heart Foundation Hospital, Dhaka",
     about:
       "Dr. Shahidul Islam is a cardiologist specializing in interventional cardiology and electrophysiology. He has performed over 2,000 cardiac catheterizations.",
     education:
@@ -1017,6 +1067,7 @@ const doctors = [
   {
     id: 44,
     name: "Dr. Nazrul Islam",
+    gender: "Male",
     image: "/images/doctors/doctor-8.png",
     speciality: "General Physician",
     degree: "MBBS, MD (Internal Medicine)",
@@ -1025,10 +1076,11 @@ const doctors = [
     experience: 7,
     consultationFee: 600,
     consultationType: "Online",
-    chamberLocation: "Telemedicine Platform, Dhaka",
+    location: "Telemedicine Platform, Dhaka",
     about:
       "Dr. Nazrul Islam provides online general medical consultations, focusing on preventive care and chronic disease management. He offers convenient telemedicine services.",
-    education: "MBBS from Sylhet MAG Osmani Medical College; MD (Internal Medicine) from BSMMU",
+    education:
+      "MBBS from Sylhet MAG Osmani Medical College; MD (Internal Medicine) from BSMMU",
     services: [
       "Online Consultation",
       "Prescription Refill",
@@ -1040,6 +1092,7 @@ const doctors = [
   {
     id: 45,
     name: "Dr. Jannatul Ferdous",
+    gender: "Female",
     image: "/images/doctors/doctor-9.png",
     speciality: "Dermatologist",
     degree: "MBBS, DDVL",
@@ -1048,7 +1101,7 @@ const doctors = [
     experience: 8,
     consultationFee: 850,
     consultationType: "Online & In-person",
-    chamberLocation: "Derma Skin Clinic, Dhaka",
+    location: "Derma Skin Clinic, Dhaka",
     about:
       "Dr. Jannatul Ferdous is a dermatologist specializing in cosmetic dermatology and skin rejuvenation. She offers advanced laser and injectable treatments.",
     education: "MBBS from Dhaka Medical College; DDVL from IPGMER",
@@ -1063,6 +1116,7 @@ const doctors = [
   {
     id: 46,
     name: "Dr. Mizanur Rahman",
+    gender: "Male",
     image: "/images/doctors/doctor-10.png",
     speciality: "Orthopedic Surgeon",
     degree: "MBBS, MS (Orthopedics), FAB",
@@ -1071,7 +1125,7 @@ const doctors = [
     experience: 12,
     consultationFee: 1400,
     consultationType: "In-person",
-    chamberLocation: "Ortho & Spine Hospital, Dhaka",
+    location: "Ortho & Spine Hospital, Dhaka",
     about:
       "Dr. Mizanur Rahman is an orthopedic surgeon specializing in spine surgery and complex trauma. He uses advanced navigation techniques for precision.",
     education:
@@ -1087,6 +1141,7 @@ const doctors = [
   {
     id: 47,
     name: "Dr. Sharmin Akter",
+    gender: "Female",
     image: "/images/doctors/doctor-11.png",
     speciality: "Pediatrician",
     degree: "MBBS, FCPS (Pediatrics)",
@@ -1095,10 +1150,11 @@ const doctors = [
     experience: 8,
     consultationFee: 800,
     consultationType: "Online & In-person",
-    chamberLocation: "Happy Kids Clinic, Dhaka",
+    location: "Happy Kids Clinic, Dhaka",
     about:
       "Dr. Sharmin Akter is a pediatrician specializing in childhood allergies and asthma. She provides comprehensive care for children with chronic conditions.",
-    education: "MBBS from Rajshahi Medical College; FCPS (Pediatrics) from BCPS",
+    education:
+      "MBBS from Rajshahi Medical College; FCPS (Pediatrics) from BCPS",
     services: [
       "Childhood Asthma Management",
       "Allergy Testing",
@@ -1110,6 +1166,7 @@ const doctors = [
   {
     id: 48,
     name: "Dr. Zakir Hossain",
+    gender: "Male",
     image: "/images/doctors/doctor-12.png",
     speciality: "Gastroenterologist",
     degree: "MBBS, MD (Gastroenterology)",
@@ -1118,10 +1175,11 @@ const doctors = [
     experience: 7,
     consultationFee: 1000,
     consultationType: "In-person",
-    chamberLocation: "Digestive Health Clinic, Dhaka",
+    location: "Digestive Health Clinic, Dhaka",
     about:
       "Dr. Zakir Hossain is a gastroenterologist with a focus on liver diseases and endoscopy. He is committed to providing quality digestive health care.",
-    education: "MBBS from Mymensingh Medical College; MD (Gastroenterology) from BSMMU",
+    education:
+      "MBBS from Mymensingh Medical College; MD (Gastroenterology) from BSMMU",
     services: [
       "Liver Function Management",
       "Endoscopy",
@@ -1133,6 +1191,7 @@ const doctors = [
   {
     id: 49,
     name: "Dr. Afsana Begum",
+    gender: "Female",
     image: "/images/doctors/doctor-1.png",
     speciality: "Gynecologist",
     degree: "MBBS, FCPS (Gynecology & Obstetrics)",
@@ -1141,10 +1200,11 @@ const doctors = [
     experience: 10,
     consultationFee: 1000,
     consultationType: "In-person & Online",
-    chamberLocation: "Women's Wellness Clinic, Dhaka",
+    location: "Women's Wellness Clinic, Dhaka",
     about:
       "Dr. Afsana Begum is a gynecologist specializing in adolescent gynecology and reproductive health. She provides compassionate care for women of all ages.",
-    education: "MBBS from Dhaka Medical College; FCPS (Gynecology & Obstetrics) from BCPS",
+    education:
+      "MBBS from Dhaka Medical College; FCPS (Gynecology & Obstetrics) from BCPS",
     services: [
       "Adolescent Gynecology",
       "Reproductive Health",
@@ -1156,6 +1216,7 @@ const doctors = [
   {
     id: 50,
     name: "Dr. Mostafa Kamal",
+    gender: "Male",
     image: "/images/doctors/doctor-2.png",
     speciality: "Neurologist",
     degree: "MBBS, MD (Neurology)",
@@ -1164,10 +1225,11 @@ const doctors = [
     experience: 11,
     consultationFee: 1100,
     consultationType: "In-person",
-    chamberLocation: "Neuro Care Center, Dhaka",
+    location: "Neuro Care Center, Dhaka",
     about:
       "Dr. Mostafa Kamal is a neurologist specializing in epilepsy surgery and neurocritical care. He is at the forefront of neurological treatments in Bangladesh.",
-    education: "MBBS from Chittagong Medical College; MD (Neurology) from BSMMU",
+    education:
+      "MBBS from Chittagong Medical College; MD (Neurology) from BSMMU",
     services: [
       "Epilepsy Surgery Consultation",
       "Neurocritical Care",
