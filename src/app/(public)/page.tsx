@@ -1,6 +1,3 @@
-import Navbar from "@/components/Shared/Navbar";
-import Footer from "@/components/Shared/Footer";
-
 import HeroSection from "@/components/LandingPage/HeroSection";
 import Specialities from "@/components/LandingPage/Specialities";
 import TrustedDoctors from "@/components/LandingPage/TrustedDoctors";
@@ -12,7 +9,6 @@ import GetStarted from "@/components/LandingPage/GetStarted";
 export default function HomePage() {
   return (
     <>
-      <Navbar />
       <HeroSection />
       <Specialities />
       <TrustedDoctors />
@@ -20,7 +16,6 @@ export default function HomePage() {
       <Testimonials />
       <HealthArticles />
       <GetStarted />
-      <Footer />
     </>
   );
 }

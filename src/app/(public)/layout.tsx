@@ -1,12 +1,11 @@
 import Navbar from "@/components/Shared/Navbar";
 import Footer from "@/components/Shared/Footer";
-import HomePage from "./(public)/page";
 
-export default function Home() {
+export default function PublicLayout({ children }: LayoutProps<"/">) {
   return (
     <>
       <Navbar />
-      <HomePage />
+      <main className="flex-1">{children}</main>
       <Footer />
     </>
   );

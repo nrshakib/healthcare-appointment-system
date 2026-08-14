@@ -41,7 +41,7 @@ export default function Footer() {
       <div>
         <p className="text-lg font-semibold text-primary mb-2">Find Care</p>
         <div className="flex flex-col gap-.5 text-orange-400  text-sm sm:text-base">
-          <Link href="/" className="hover:text-primary">
+          <Link href="/find-care/doctors" className="hover:text-primary">
             Find a Doctor
           </Link>
           <Link href="/" className="hover:text-primary">

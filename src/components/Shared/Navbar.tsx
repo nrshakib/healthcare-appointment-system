@@ -24,7 +24,7 @@ interface SubItem {
 }
 
 const findCareItems: SubItem[] = [
-  { label: "Find a Doctor", href: "/find-care/doctor" },
+  { label: "Find a Doctor", href: "/find-care/doctors" },
   { label: "Find a Clinic", href: "/find-care/clinic" },
   { label: "Find a Hospital", href: "/find-care/hospital" },
   { label: "Available Today", href: "/find-care/available-today" },
@@ -74,7 +74,7 @@ function FindCareDropdown({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className="absolute top-full left-0 mt-2 w-64 rounded-xl shadow-2xl overflow-visible z-50 navbar-dropdown border border-[var(--navbar-border)]">
+    <div className="absolute top-full left-0 mt-2 w-64 rounded-xl shadow-2xl overflow-visible z-50 navbar-dropdown border border-(--navbar-border)">
       <div className="py-2">
         {findCareItems.map((item) => (
           <Link
@@ -105,7 +105,7 @@ function FindCareDropdown({ onClose }: { onClose: () => void }) {
               onMouseEnter={openSpecialties}
               onMouseLeave={scheduleClose}
             >
-              <div className="w-52 rounded-xl shadow-2xl z-50 navbar-dropdown border border-[var(--navbar-border)]">
+              <div className="w-52 rounded-xl shadow-2xl z-50 navbar-dropdown border border-(--navbar-border)">
                 <div className="py-2">
                   {specialties.map((s) => (
                     <Link
@@ -152,7 +152,6 @@ function SimpleDropdown({
     </div>
   );
 }
-
 
 // Desktop Nav Item with Dropdown
 type DropdownKey = "find-care" | "services" | "resources" | "providers" | null;
@@ -315,7 +314,7 @@ function MobileMenu({
             </button>
 
             <Collapse in={openSection === section.key} timeout={200}>
-              <div className="mt-1 ml-4 border-l-2 border-[var(--navbar-accent-soft)] pl-3 space-y-0.5">
+              <div className="mt-1 ml-4 border-l-2 border-(--navbar-accent-soft) pl-3 space-y-0.5">
                 {section.items.map((item) => (
                   <Link
                     key={item.href}
@@ -345,7 +344,7 @@ function MobileMenu({
                       />
                     </button>
                     <Collapse in={specialtiesOpen} timeout={200}>
-                      <div className="ml-3 border-l border-[var(--navbar-border)] pl-3 mt-0.5 space-y-0.5">
+                      <div className="ml-3 border-l border-(--navbar-border) pl-3 mt-0.5 space-y-0.5">
                         {specialties.map((s) => (
                           <Link
                             key={s.href}
