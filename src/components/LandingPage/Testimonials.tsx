@@ -101,7 +101,7 @@ export default function Testimonials() {
             type="button"
             aria-label="Previous testimonials"
             onClick={() => sliderRef.current?.slickPrev()}
-            className="absolute left-0 top-1/2 z-10 hidden sm:flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 shadow-md transition-colors hover:bg-emerald-600 hover:text-white"
+            className="absolute left-0 top-1/2 z-10 hidden sm:flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 shadow-md transition-colors hover:bg-emerald-600 hover:text-white cursor-pointer"
           >
             <FaChevronLeft size={13} />
           </button>
@@ -197,7 +197,7 @@ export default function Testimonials() {
             type="button"
             aria-label="Next testimonials"
             onClick={() => sliderRef.current?.slickNext()}
-            className="absolute right-0 top-1/2 z-10 hidden sm:flex h-10 w-10 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 shadow-md transition-colors hover:bg-emerald-600 hover:text-white"
+            className="absolute right-0 top-1/2 z-10 hidden sm:flex h-10 w-10 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 shadow-md transition-colors hover:bg-emerald-600 hover:text-white cursor-pointer"
           >
             <FaChevronRight size={13} />
           </button>

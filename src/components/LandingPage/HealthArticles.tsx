@@ -72,11 +72,11 @@ export default function HealthArticles() {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     speed: 600,
-    autoplaySpeed: 3500,
+    autoplaySpeed: 5000,
     pauseOnHover: true,
     arrows: false,
     appendDots: (dots: React.ReactNode) => (

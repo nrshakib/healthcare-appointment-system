@@ -7,6 +7,7 @@ import TrustedDoctors from "@/components/LandingPage/TrustedDoctors";
 import HowItWorks from "@/components/LandingPage/HowItWorks";
 import Testimonials from "@/components/LandingPage/Testimonials";
 import HealthArticles from "@/components/LandingPage/HealthArticles";
+import GetStarted from "@/components/LandingPage/GetStarted";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <HowItWorks />
       <Testimonials />
       <HealthArticles />
+      <GetStarted />
       <Footer />
     </>
   );
