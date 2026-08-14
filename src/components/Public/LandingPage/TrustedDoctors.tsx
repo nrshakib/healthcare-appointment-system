@@ -64,7 +64,7 @@ export default function TrustedDoctors() {
             Meet Our Trusted Doctors
           </p>
           <Link
-            href="/"
+            href="/find-care/doctors"
             className="flex items-center gap-2 text-sm sm:text-base text-primary font-medium hover:underline"
           >
             <p>View All Doctors</p>
