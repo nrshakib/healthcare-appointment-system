@@ -13,6 +13,9 @@ import doctors from "@/utils/doctors";
 const fees = doctors.map((d) => d.consultationFee);
 const MIN_FEE = Math.min(...fees, 0);
 const MAX_FEE = Math.max(...fees, 100);
+const specialityOptions = Array.from(
+  new Set(doctors.map((doctor) => doctor.speciality)),
+).sort();
 
 const defaultFilters: Filters = {
   specialities: [],
@@ -272,6 +275,7 @@ export default function Doctors() {
             onClearAll={handleClearAll}
             minFee={MIN_FEE}
             maxFee={MAX_FEE}
+            specialityOptions={specialityOptions}
           />
         </div>
 
@@ -298,6 +302,7 @@ export default function Doctors() {
                 onClearAll={handleClearAll}
                 minFee={MIN_FEE}
                 maxFee={MAX_FEE}
+                specialityOptions={specialityOptions}
               />
               <Button
                 fullWidth

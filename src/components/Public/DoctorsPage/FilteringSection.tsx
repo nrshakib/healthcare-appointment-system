@@ -1,6 +1,5 @@
 "use client";
 
-import specialities from "@/utils/specialities";
 import {
   Button,
   Checkbox,
@@ -27,6 +26,7 @@ interface FilteringSectionProps {
   onClearAll: () => void;
   minFee: number;
   maxFee: number;
+  specialityOptions: string[];
 }
 
 const filterOptionLabelSx = {
@@ -55,6 +55,7 @@ export default function FilteringSection({
   onClearAll,
   minFee,
   maxFee,
+  specialityOptions,
 }: FilteringSectionProps) {
   const [showMore, setShowMore] = useState(false);
 
@@ -83,19 +84,21 @@ export default function FilteringSection({
       <div>
         <p className="text-lg font-semibold mb-2">
           Specialities{" "}
-          <span className="text-sm text-gray-500">({specialities.length})</span>
+          <span className="text-sm text-gray-500">
+            ({specialityOptions.length})
+          </span>
         </p>
         <FormGroup sx={{ gap: 0 }}>
-          {specialities
-            .slice(0, showMore ? specialities.length : 6)
+          {specialityOptions
+            .slice(0, showMore ? specialityOptions.length : 6)
             .map((speciality) => (
               <FormControlLabel
-                key={speciality.name}
+                key={speciality}
                 control={
                   <Checkbox
                     size="small"
-                    checked={filters.specialities.includes(speciality.name)}
-                    onChange={() => handleSpecialityToggle(speciality.name)}
+                    checked={filters.specialities.includes(speciality)}
+                    onChange={() => handleSpecialityToggle(speciality)}
                     sx={{
                       padding: 0,
                       marginRight: "8px",
@@ -105,12 +108,12 @@ export default function FilteringSection({
                     }}
                   />
                 }
-                label={speciality.name}
+                label={speciality}
                 sx={filterOptionLabelSx}
               />
             ))}
         </FormGroup>
-        {specialities.length > 6 && (
+        {specialityOptions.length > 6 && (
           <Button
             onClick={() => setShowMore((prev) => !prev)}
             sx={{
