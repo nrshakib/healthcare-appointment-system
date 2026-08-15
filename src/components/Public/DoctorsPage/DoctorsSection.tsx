@@ -9,6 +9,7 @@ import { FiUserCheck } from "react-icons/fi";
 import { FaBookMedical } from "react-icons/fa6";
 import Link from "next/link";
 import Image from "next/image";
+import { slugify } from "@/utils/slugify";
 
 interface Doctor {
   id: string | number;
@@ -201,8 +202,8 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
                     </p>
                   </div>
                   <Link
-                    href={`/doctors/${doctor.id}`}
-                    className="bg-[#10B981] hover:bg-[#059669] text-white text-sm font-medium px-5 py-2 rounded-full sm:mt-2 transition-colors whitespace-nowrap"
+                    href={`/find-care/doctors/${slugify(doctor.name)}`}
+                    className="bg-[#10B981] hover:bg-[#059669] text-white text-sm font-medium px-5 py-2 rounded-xl sm:mt-2 transition-colors whitespace-nowrap"
                   >
                     View Profile
                   </Link>
