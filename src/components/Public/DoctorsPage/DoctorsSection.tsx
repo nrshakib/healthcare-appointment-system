@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Card, CardContent, Pagination } from "@mui/material";
+import { Badge, Card, CardContent, Pagination } from "@mui/material";
 import { AiFillStar } from "react-icons/ai";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { HiOutlineVideoCamera } from "react-icons/hi2";
@@ -175,18 +175,18 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
                     {doctor.consultationType
                       ?.toLowerCase()
                       .includes("online") && (
-                      <div className="flex items-center gap-2">
-                        <HiOutlineVideoCamera className="text-primary font-semibold text-lg" />
+                      <Badge className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-medium text-sky-700 sm:text-sm">
+                        <HiOutlineVideoCamera />
                         Video Consultation
-                      </div>
+                      </Badge>
                     )}
                     {doctor.consultationType
                       ?.toLowerCase()
                       .includes("person") && (
-                      <div className="flex items-center gap-2">
-                        <FiUserCheck className="text-primary font-semibold text-lg" />
+                      <Badge className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700 sm:text-sm">
+                        <FiUserCheck />
                         In-person
-                      </div>
+                      </Badge>
                     )}
                   </div>
                 </div>

@@ -1,15 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Badge, Breadcrumbs, Button } from "@mui/material";
+import { Badge, Breadcrumbs, Button, Divider } from "@mui/material";
 import { AiFillStar } from "react-icons/ai";
-import { FaCalendarAlt, FaMapMarkerAlt, FaRegClock } from "react-icons/fa";
 import {
   FaCalendarCheck,
-  FaCommentMedical,
   FaRegBookmark,
   FaArrowLeft,
+  FaMapMarkerAlt,
+  FaRegClock,
 } from "react-icons/fa";
+
+import { FaRegMessage } from "react-icons/fa6";
 
 import { FaBookMedical } from "react-icons/fa6";
 import { FiUserCheck } from "react-icons/fi";
@@ -70,9 +72,9 @@ export default async function DoctorDetails({ params }: PageProps) {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[95%] gap-6 py-8 xl:max-w-[80%]">
+      <div className="mx-auto max-w-[95%] gap-6 py-8 xl:max-w-[80%] space-y-10">
         {/* info section */}
-        <div className="grid grid-cols-1 gap-5 rounded-xl border border-gray-200 shadow-lg lg:grid-cols-4">
+        <section className="grid grid-cols-1 gap-5 rounded-xl border border-gray-200 shadow-lg lg:grid-cols-4">
           <div className="col-span-1 flex flex-col gap-2 sm:gap-6 rounded-xl border-gray-100 p-2 sm:p-5 sm:flex-row  lg:col-span-3 lg:border-r">
             <div className="mx-auto h-60 sm:h-72 md:h-80 w-full max-w-55 sm:w-auto sm:max-w-none shrink-0 overflow-hidden rounded-xl sm:mx-0 ">
               <Image
@@ -188,14 +190,14 @@ export default async function DoctorDetails({ params }: PageProps) {
               </Button>
 
               <Button
-                startIcon={<FaCommentMedical size={16} />}
+                startIcon={<FaRegMessage size={16} />}
                 variant="outlined"
                 sx={{
                   width: { xs: "70%", sm: "50%", md: "100%" },
                   mx: { xs: "auto", md: 0 },
                   textTransform: "none",
                   borderRadius: "20px",
-                  borderWidth: "2px",
+                  borderWidth: "1px",
                   borderColor: "#10B981",
                   color: "#10B981",
                   fontSize: { xs: "12px", sm: "14px" },
@@ -225,7 +227,7 @@ export default async function DoctorDetails({ params }: PageProps) {
                   mx: { xs: "auto", md: 0 },
                   textTransform: "none",
                   borderRadius: "20px",
-                  borderWidth: "2px",
+                  borderWidth: "1px",
                   borderColor: "#4B5563",
                   color: "#4B5563",
                   fontSize: { xs: "12px", sm: "14px" },
@@ -254,29 +256,103 @@ export default async function DoctorDetails({ params }: PageProps) {
               </Link>
             </div>
           </div>
-        </div>
+        </section>
         {/* details section */}
-        <section className="lg:col-span-2">
-          <div className="mt-6 space-y-6">
+        <section className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          {/* left section */}
+          <div className="col-span-2 space-y-6 bg-white p-5 rounded-xl shadow-lg border border-gray-100">
             <div>
-              <p className="text-xl font-semibold text-gray-900">About</p>
-              <p className="mt-2 leading-7 text-gray-600">{doctor.about}</p>
+              <p className="text-lg sm:text-xl font-semibold text-gray-900">
+                About
+              </p>
+              <p className="mt-2 text-gray-600 lg:w-[90%] text-sm sm:text-base">
+                {doctor.about}
+              </p>
             </div>
+            <Divider
+              sx={{
+                my: "20px",
+              }}
+            />
 
             <div>
-              <p className="text-xl font-semibold text-gray-900">Education</p>
-              <p className="mt-2 leading-7 text-gray-600">{doctor.education}</p>
+              <p className="text-lg sm:text-xl font-semibold text-gray-900">
+                Education
+              </p>
+              <div className="mt-4">
+                {doctor.education.map((edu, index) => (
+                  <div key={index} className="flex gap-3">
+                    <div className="flex flex-col items-center">
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#06836b] shrink-0 mt-1.5"></div>
+                      {index < doctor.education.length - 1 && (
+                        <div className="w-px h-8 bg-gray-200 mt-1"></div>
+                      )}
+                    </div>
+                    <div
+                      className={`text-sm sm:text-base text-gray-700 ${
+                        index < doctor.education.length - 1 ? "pb-4" : ""
+                      }`}
+                    >
+                      <span className="font-semibold">{edu.degree}</span> –{" "}
+                      <span className="italic font-medium">
+                        {edu.institution}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div>
               <p className="text-xl font-semibold text-gray-900">Services</p>
-              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div className="mt-3 flex flex-wrap gap-3">
                 {doctor.services.map((service) => (
                   <div
                     key={service}
-                    className="rounded-lg border border-gray-100 bg-gray-50 px-4 py-3 text-sm font-medium text-gray-700"
+                    className="rounded-lg border border-gray-100 bg-primary/80 px-4 py-1 sm:py-3 text-sm font-medium text-white"
                   >
                     {service}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          {/* right section */}
+          <div className="col-span-1 space-y-5 rounded-xl border border-gray-100 bg-white p-4 shadow-lg sm:space-y-6 sm:p-5">
+            <div>
+              <p className="mb-2 text-base font-semibold text-gray-900 sm:mb-3 sm:text-lg">
+                Available Days
+              </p>
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                {doctor.availableDays.map((day) => (
+                  <span
+                    key={day}
+                    className="rounded-lg border border-primary/20 bg-[#e9fcf9] px-2.5 py-1 text-xs font-medium text-primary sm:px-3 sm:py-1.5 sm:text-sm"
+                  >
+                    {day}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <Divider
+              sx={{
+                my: { xs: "16px", sm: "20px" },
+              }}
+            />
+
+            <div>
+              <p className="mb-2 text-base font-semibold text-gray-900 sm:mb-3 sm:text-lg">
+                Available Slots
+              </p>
+              <div className="grid grid-cols-2 gap-2 xs:grid-cols-2 sm:flex sm:flex-col sm:gap-2">
+                {doctor.timeslots.map((slot) => (
+                  <div
+                    key={slot}
+                    className="flex items-center justify-center gap-2 rounded-lg border border-gray-100 bg-[#d1f0eb] px-2.5 py-2 text-xs font-medium text-gray-700 sm:w-fit sm:justify-start sm:px-3 sm:text-sm"
+                  >
+                    <FaRegClock className="shrink-0 text-xs text-primary sm:text-sm" />
+                    <span>{slot}</span>
                   </div>
                 ))}
               </div>

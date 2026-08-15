@@ -14,8 +14,11 @@ const doctors = [
     location: "Apollo Hospital, Dhaka",
     about:
       "Dr. Sarah Ahmed is a board-certified cardiologist with over 12 years of experience in diagnosing and treating cardiovascular diseases. She specializes in interventional cardiology and heart failure management.",
-    education:
-      "MBBS from Dhaka Medical College; MD (Cardiology) from BSMMU; Fellowship from American College of Cardiology",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "MD (Cardiology)", institution: "BSMMU" },
+      { degree: "Fellowship", institution: "American College of Cardiology" },
+    ],
     services: [
       "ECG & Echocardiogram",
       "Angiography",
@@ -23,6 +26,14 @@ const doctors = [
       "Cardiac Risk Assessment",
     ],
     availableDays: ["Monday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 2,
@@ -39,8 +50,11 @@ const doctors = [
     location: "Square Hospital, Dhaka",
     about:
       "Dr. Michael Rahman is an experienced neurologist specializing in stroke management, epilepsy, and neurodegenerative disorders. He is committed to providing comprehensive neurological care.",
-    education:
-      "MBBS from Chittagong Medical College; MD (Neurology) from BSMMU; FRCP from Royal College of Physicians",
+    education: [
+      { degree: "MBBS", institution: "Chittagong Medical College" },
+      { degree: "MD (Neurology)", institution: "BSMMU" },
+      { degree: "FRCP", institution: "Royal College of Physicians" },
+    ],
     services: [
       "Stroke Treatment",
       "EEG & EMG",
@@ -48,6 +62,14 @@ const doctors = [
       "Headache & Migraine Clinic",
     ],
     availableDays: ["Tuesday", "Thursday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 3,
@@ -64,8 +86,11 @@ const doctors = [
     location: "United Hospital, Dhaka",
     about:
       "Dr. Emily Wilson is a skilled dermatologist with expertise in treating skin, hair, and nail disorders. She offers both medical and cosmetic dermatology services.",
-    education:
-      "MBBS from Mymensingh Medical College; DDVL from IPGMER; MD (Dermatology) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Mymensingh Medical College" },
+      { degree: "DDVL", institution: "IPGMER" },
+      { degree: "MD (Dermatology)", institution: "BSMMU" },
+    ],
     services: [
       "Acne & Scar Treatment",
       "Laser Therapy",
@@ -73,6 +98,14 @@ const doctors = [
       "Cosmetic Dermatology",
     ],
     availableDays: ["Sunday", "Tuesday", "Thursday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 4,
@@ -86,12 +119,14 @@ const doctors = [
     experience: 15,
     consultationFee: 1500,
     consultationType: "In-person",
-    location:
-      "Bangabandhu Sheikh Mujib Medical University Hospital, Dhaka",
+    location: "Bangabandhu Sheikh Mujib Medical University Hospital, Dhaka",
     about:
       "Dr. James Anderson is a renowned orthopedic surgeon with extensive experience in joint replacement, spine surgery, and sports injury management.",
-    education:
-      "MBBS from Dhaka Medical College; MS (Orthopedics) from BSMMU; FACS from American College of Surgeons",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "MS (Orthopedics)", institution: "BSMMU" },
+      { degree: "FACS", institution: "American College of Surgeons" },
+    ],
     services: [
       "Knee Replacement",
       "Hip Replacement",
@@ -99,6 +134,14 @@ const doctors = [
       "Sports Injury Management",
     ],
     availableDays: ["Monday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 5,
@@ -115,8 +158,11 @@ const doctors = [
     location: "Kidney Foundation Hospital, Dhaka",
     about:
       "Dr. Olivia Martin is a caring pediatrician dedicated to the health and well-being of children from newborns to adolescents. She specializes in growth monitoring and childhood vaccinations.",
-    education:
-      "MBBS from Rajshahi Medical College; DCH from IPGMER; FCPS (Pediatrics) from BCPS",
+    education: [
+      { degree: "MBBS", institution: "Rajshahi Medical College" },
+      { degree: "DCH", institution: "IPGMER" },
+      { degree: "FCPS (Pediatrics)", institution: "BCPS" },
+    ],
     services: [
       "Vaccination",
       "Growth Monitoring",
@@ -124,6 +170,14 @@ const doctors = [
       "Nutritional Counseling",
     ],
     availableDays: ["Sunday", "Tuesday", "Thursday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 6,
@@ -140,8 +194,10 @@ const doctors = [
     location: "Popular Diagnostic Center, Dhaka",
     about:
       "Dr. Daniel Karim is a dedicated general physician providing comprehensive primary care. He focuses on preventive medicine and chronic disease management.",
-    education:
-      "MBBS from Sylhet MAG Osmani Medical College; MD (Internal Medicine) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Sylhet MAG Osmani Medical College" },
+      { degree: "MD (Internal Medicine)", institution: "BSMMU" },
+    ],
     services: [
       "General Checkup",
       "Diabetes Management",
@@ -149,6 +205,14 @@ const doctors = [
       "Health Screening",
     ],
     availableDays: ["Monday", "Wednesday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 7,
@@ -165,8 +229,10 @@ const doctors = [
     location: "LABAID Hospital, Dhaka",
     about:
       "Dr. Sophia Williams is a highly experienced gynecologist specializing in high-risk pregnancies, infertility treatment, and minimally invasive gynecological surgery.",
-    education:
-      "MBBS from Dhaka Medical College; FCPS (Gynecology & Obstetrics) from BCPS",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "FCPS (Gynecology & Obstetrics)", institution: "BCPS" },
+    ],
     services: [
       "Prenatal Care",
       "Infertility Treatment",
@@ -174,6 +240,14 @@ const doctors = [
       "Menstrual Disorder Management",
     ],
     availableDays: ["Tuesday", "Thursday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 8,
@@ -190,8 +264,11 @@ const doctors = [
     location: "Ispahani Eye Hospital, Dhaka",
     about:
       "Dr. Robert Hasan is a skilled ophthalmologist specializing in cataract surgery, glaucoma, and retinal diseases. He has performed over 5,000 successful eye surgeries.",
-    education:
-      "MBBS from Sir Salimullah Medical College; FCPS (Ophthalmology) from BCPS; FRCS from Royal College of Surgeons",
+    education: [
+      { degree: "MBBS", institution: "Sir Salimullah Medical College" },
+      { degree: "FCPS (Ophthalmology)", institution: "BCPS" },
+      { degree: "FRCS", institution: "Royal College of Surgeons" },
+    ],
     services: [
       "Cataract Surgery",
       "LASIK",
@@ -199,6 +276,14 @@ const doctors = [
       "Retinal Disorder Management",
     ],
     availableDays: ["Sunday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 9,
@@ -215,8 +300,11 @@ const doctors = [
     location: "National Institute of Mental Health, Dhaka",
     about:
       "Dr. Isabella Khan is a compassionate psychiatrist with expertise in treating anxiety, depression, and mood disorders. She provides both medication management and psychotherapy.",
-    education:
-      "MBBS from Dhaka Medical College; MD (Psychiatry) from BSMMU; MRCPsych from Royal College of Psychiatrists",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "MD (Psychiatry)", institution: "BSMMU" },
+      { degree: "MRCPsych", institution: "Royal College of Psychiatrists" },
+    ],
     services: [
       "Depression Treatment",
       "Anxiety Management",
@@ -224,6 +312,14 @@ const doctors = [
       "Stress Counseling",
     ],
     availableDays: ["Monday", "Thursday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 10,
@@ -240,8 +336,11 @@ const doctors = [
     location: "ENT Care Center, Dhaka",
     about:
       "Dr. William Chowdhury is an ENT specialist with a focus on sinus disorders, hearing loss, and throat conditions. He uses the latest endoscopic techniques.",
-    education:
-      "MBBS from Chittagong Medical College; FCPS (ENT) from BCPS; DOHNS from Royal College of Surgeons",
+    education: [
+      { degree: "MBBS", institution: "Chittagong Medical College" },
+      { degree: "FCPS (ENT)", institution: "BCPS" },
+      { degree: "DOHNS", institution: "Royal College of Surgeons" },
+    ],
     services: [
       "Sinus Surgery",
       "Hearing Assessment",
@@ -249,6 +348,14 @@ const doctors = [
       "Voice Disorder Treatment",
     ],
     availableDays: ["Tuesday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 11,
@@ -265,8 +372,10 @@ const doctors = [
     location: "BIRDEM Hospital, Dhaka",
     about:
       "Dr. Emma Hossain is a leading endocrinologist specializing in diabetes, thyroid disorders, and hormonal imbalances. She has published numerous research papers in her field.",
-    education:
-      "MBBS from Dhaka Medical College; MD (Endocrinology & Metabolism) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "MD (Endocrinology & Metabolism)", institution: "BSMMU" },
+    ],
     services: [
       "Diabetes Management",
       "Thyroid Disorder Treatment",
@@ -274,6 +383,14 @@ const doctors = [
       "Metabolic Disorder Care",
     ],
     availableDays: ["Sunday", "Tuesday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 12,
@@ -290,8 +407,11 @@ const doctors = [
     location: "Digestive Disease Hospital, Dhaka",
     about:
       "Dr. Alexander Islam is an accomplished gastroenterologist with expertise in liver diseases, inflammatory bowel disease, and advanced endoscopic procedures.",
-    education:
-      "MBBS from Rajshahi Medical College; MD (Gastroenterology) from BSMMU; FACG from American College of Gastroenterology",
+    education: [
+      { degree: "MBBS", institution: "Rajshahi Medical College" },
+      { degree: "MD (Gastroenterology)", institution: "BSMMU" },
+      { degree: "FACG", institution: "American College of Gastroenterology" },
+    ],
     services: [
       "Upper GI Endoscopy",
       "Colonoscopy",
@@ -299,6 +419,14 @@ const doctors = [
       "IBD Treatment",
     ],
     availableDays: ["Monday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 13,
@@ -315,7 +443,10 @@ const doctors = [
     location: "Care Hospital, Dhaka",
     about:
       "Dr. Fatima Rahman specializes in preventive cardiology and cardiac rehabilitation. She is dedicated to helping patients manage their heart health through lifestyle modifications.",
-    education: "MBBS from Dhaka Medical College; MD (Cardiology) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "MD (Cardiology)", institution: "BSMMU" },
+    ],
     services: [
       "Cardiac Rehabilitation",
       "Preventive Cardiology",
@@ -323,6 +454,14 @@ const doctors = [
       "Stress Test",
     ],
     availableDays: ["Sunday", "Tuesday", "Thursday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 14,
@@ -339,8 +478,10 @@ const doctors = [
     location: "Neurology Clinic, Panchagarh",
     about:
       "Dr. Arif Hossain is a neurologist with a focus on movement disorders and neurodegenerative diseases. He provides comprehensive care for patients with Parkinson's and Alzheimer's.",
-    education:
-      "MBBS from Mymensingh Medical College; MD (Neurology) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Mymensingh Medical College" },
+      { degree: "MD (Neurology)", institution: "BSMMU" },
+    ],
     services: [
       "Parkinson's Disease Management",
       "Alzheimer's Care",
@@ -348,6 +489,14 @@ const doctors = [
       "Movement Disorder Clinic",
     ],
     availableDays: ["Monday", "Wednesday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 15,
@@ -364,8 +513,10 @@ const doctors = [
     location: "Skin & Hair Clinic, Dhaka",
     about:
       "Dr. Nusrat Jahan is a renowned dermatologist known for her expertise in treating chronic skin conditions and hair loss. She combines medical and aesthetic approaches.",
-    education:
-      "MBBS from Chittagong Medical College; MD (Dermatology) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Chittagong Medical College" },
+      { degree: "MD (Dermatology)", institution: "BSMMU" },
+    ],
     services: [
       "Hair Transplant Consultation",
       "Acne Treatment",
@@ -373,6 +524,14 @@ const doctors = [
       "Anti-Aging Treatment",
     ],
     availableDays: ["Tuesday", "Thursday", "Sunday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 16,
@@ -389,8 +548,10 @@ const doctors = [
     location: "Ortho Care Center, Dhaka",
     about:
       "Dr. Kamal Uddin is an orthopedic surgeon specializing in joint replacement and trauma surgery. He uses minimally invasive techniques for faster recovery.",
-    education:
-      "MBBS from Rajshahi Medical College; MS (Orthopedics) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Rajshahi Medical College" },
+      { degree: "MS (Orthopedics)", institution: "BSMMU" },
+    ],
     services: [
       "Arthroscopic Surgery",
       "Joint Replacement",
@@ -398,6 +559,14 @@ const doctors = [
       "Sports Injury Surgery",
     ],
     availableDays: ["Monday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 17,
@@ -414,8 +583,11 @@ const doctors = [
     location: "Children's Hospital, Dhaka",
     about:
       "Dr. Rina Akter is a highly respected pediatrician with a special interest in neonatal care and childhood immunization. She is known for her gentle approach with young patients.",
-    education:
-      "MBBS from Dhaka Medical College; DCH from IPGMER; FCPS (Pediatrics) from BCPS",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "DCH", institution: "IPGMER" },
+      { degree: "FCPS (Pediatrics)", institution: "BCPS" },
+    ],
     services: [
       "Neonatal Care",
       "Child Vaccination",
@@ -423,6 +595,14 @@ const doctors = [
       "Pediatric Emergency",
     ],
     availableDays: ["Sunday", "Tuesday", "Thursday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 18,
@@ -439,8 +619,10 @@ const doctors = [
     location: "Community Health Center, Dhaka",
     about:
       "Dr. Imran Khan is a general physician focused on providing accessible and comprehensive primary healthcare services to patients of all ages.",
-    education:
-      "MBBS from Sylhet MAG Osmani Medical College; MD (Internal Medicine) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Sylhet MAG Osmani Medical College" },
+      { degree: "MD (Internal Medicine)", institution: "BSMMU" },
+    ],
     services: [
       "General Health Checkup",
       "Fever & Infection Treatment",
@@ -448,6 +630,14 @@ const doctors = [
       "Health Counseling",
     ],
     availableDays: ["Monday", "Wednesday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 19,
@@ -464,8 +654,10 @@ const doctors = [
     location: "Women's Care Hospital, Dhaka",
     about:
       "Dr. Ayesha Siddiqua is an expert in high-risk obstetrics and minimally invasive gynecological surgery. She is dedicated to women's health and wellness.",
-    education:
-      "MBBS from Chittagong Medical College; FCPS (Gynecology & Obstetrics) from BCPS",
+    education: [
+      { degree: "MBBS", institution: "Chittagong Medical College" },
+      { degree: "FCPS (Gynecology & Obstetrics)", institution: "BCPS" },
+    ],
     services: [
       "High-Risk Pregnancy Care",
       "Laparoscopic Hysterectomy",
@@ -473,6 +665,14 @@ const doctors = [
       "Family Planning",
     ],
     availableDays: ["Monday", "Wednesday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 20,
@@ -489,8 +689,10 @@ const doctors = [
     location: "Vision Care Center, Dhaka",
     about:
       "Dr. Mahbubur Rahman is an ophthalmologist specializing in corneal diseases and refractive surgery. He is committed to restoring and preserving vision.",
-    education:
-      "MBBS from Rajshahi Medical College; FCPS (Ophthalmology) from BCPS",
+    education: [
+      { degree: "MBBS", institution: "Rajshahi Medical College" },
+      { degree: "FCPS (Ophthalmology)", institution: "BCPS" },
+    ],
     services: [
       "Corneal Transplant",
       "Refractive Surgery",
@@ -498,6 +700,14 @@ const doctors = [
       "Cataract Surgery",
     ],
     availableDays: ["Sunday", "Tuesday", "Thursday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 21,
@@ -514,7 +724,10 @@ const doctors = [
     location: "MindCare Clinic, Dhaka",
     about:
       "Dr. Tanzila Noor is a psychiatrist specializing in adolescent mental health and mood disorders. She provides evidence-based treatments including CBT and medication management.",
-    education: "MBBS from Dhaka Medical College; MD (Psychiatry) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "MD (Psychiatry)", institution: "BSMMU" },
+    ],
     services: [
       "Depression & Anxiety Treatment",
       "Adolescent Counseling",
@@ -522,6 +735,14 @@ const doctors = [
       "Psychotherapy",
     ],
     availableDays: ["Tuesday", "Thursday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 22,
@@ -538,8 +759,11 @@ const doctors = [
     location: "ENT & Head Neck Surgery Center, Dhaka",
     about:
       "Dr. Shafiul Alam is an ENT specialist with expertise in sinus surgery, head and neck oncology, and cochlear implants.",
-    education:
-      "MBBS from Mymensingh Medical College; FCPS (ENT) from BCPS; MS (ENT) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Mymensingh Medical College" },
+      { degree: "FCPS (ENT)", institution: "BCPS" },
+      { degree: "MS (ENT)", institution: "BSMMU" },
+    ],
     services: [
       "Functional Endoscopic Sinus Surgery",
       "Cochlear Implant Evaluation",
@@ -547,6 +771,14 @@ const doctors = [
       "Head and Neck Cancer Screening",
     ],
     availableDays: ["Monday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 23,
@@ -563,8 +795,10 @@ const doctors = [
     location: "Endocrine Clinic, Dhaka",
     about:
       "Dr. Priya Das is an endocrinologist specializing in diabetes, thyroid, and adrenal disorders. She takes a holistic approach to hormonal health.",
-    education:
-      "MBBS from Chittagong Medical College; MD (Endocrinology) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Chittagong Medical College" },
+      { degree: "MD (Endocrinology)", institution: "BSMMU" },
+    ],
     services: [
       "Diabetes Care",
       "Thyroid Management",
@@ -572,6 +806,14 @@ const doctors = [
       "Osteoporosis Screening",
     ],
     availableDays: ["Sunday", "Tuesday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 24,
@@ -588,8 +830,10 @@ const doctors = [
     location: "Gastro & Liver Clinic, Dhaka",
     about:
       "Dr. Sajjad Hossain is a gastroenterologist with extensive experience in managing liver diseases, peptic ulcers, and IBS. He performs advanced endoscopic procedures.",
-    education:
-      "MBBS from Rajshahi Medical College; MD (Gastroenterology) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Rajshahi Medical College" },
+      { degree: "MD (Gastroenterology)", institution: "BSMMU" },
+    ],
     services: [
       "ERCP",
       "Liver Biopsy",
@@ -597,6 +841,14 @@ const doctors = [
       "Peptic Ulcer Management",
     ],
     availableDays: ["Monday", "Thursday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 25,
@@ -613,8 +865,11 @@ const doctors = [
     location: "Lung Care Center, Dhaka",
     about:
       "Dr. Nahid Akter is a pulmonologist specializing in asthma, COPD, and sleep disorders. She is dedicated to improving respiratory health.",
-    education:
-      "MBBS from Dhaka Medical College; MD (Pulmonology) from BSMMU; FCCP from American College of Chest Physicians",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "MD (Pulmonology)", institution: "BSMMU" },
+      { degree: "FCCP", institution: "American College of Chest Physicians" },
+    ],
     services: [
       "Asthma Management",
       "Sleep Study (Polysomnography)",
@@ -622,6 +877,14 @@ const doctors = [
       "Bronchoscopy",
     ],
     availableDays: ["Sunday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 26,
@@ -638,8 +901,11 @@ const doctors = [
     location: "Kidney Hospital, Dhaka",
     about:
       "Dr. Rezaul Karim is a nephrologist with expertise in kidney transplantation, dialysis, and chronic kidney disease management.",
-    education:
-      "MBBS from Chittagong Medical College; MD (Nephrology) from BSMMU; FRCP from Royal College of Physicians",
+    education: [
+      { degree: "MBBS", institution: "Chittagong Medical College" },
+      { degree: "MD (Nephrology)", institution: "BSMMU" },
+      { degree: "FRCP", institution: "Royal College of Physicians" },
+    ],
     services: [
       "Hemodialysis",
       "Kidney Transplantation",
@@ -647,6 +913,14 @@ const doctors = [
       "Renal Biopsy",
     ],
     availableDays: ["Monday", "Thursday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 27,
@@ -663,8 +937,11 @@ const doctors = [
     location: "Urology & Nephrology Center, Dhaka",
     about:
       "Dr. Munira Begum is a urologist specializing in kidney stones, urinary tract infections, and female urology.",
-    education:
-      "MBBS from Rajshahi Medical College; FCPS (Urology) from BCPS; FEBU from European Board of Urology",
+    education: [
+      { degree: "MBBS", institution: "Rajshahi Medical College" },
+      { degree: "FCPS (Urology)", institution: "BCPS" },
+      { degree: "FEBU", institution: "European Board of Urology" },
+    ],
     services: [
       "PCNL & ESWL",
       "TURP",
@@ -672,6 +949,14 @@ const doctors = [
       "Male Infertility Treatment",
     ],
     availableDays: ["Tuesday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 28,
@@ -688,8 +973,11 @@ const doctors = [
     location: "National Cancer Institute, Dhaka",
     about:
       "Dr. Farhana Islam is a clinical oncologist specializing in breast cancer, chemotherapy, and radiation therapy. She is dedicated to compassionate cancer care.",
-    education:
-      "MBBS from Dhaka Medical College; MD (Clinical Oncology) from BSMMU; FRCR from Royal College of Radiologists",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "MD (Clinical Oncology)", institution: "BSMMU" },
+      { degree: "FRCR", institution: "Royal College of Radiologists" },
+    ],
     services: [
       "Chemotherapy",
       "Radiation Therapy",
@@ -697,6 +985,14 @@ const doctors = [
       "Palliative Care",
     ],
     availableDays: ["Sunday", "Tuesday", "Thursday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 29,
@@ -713,8 +1009,11 @@ const doctors = [
     location: "Hematology Center, Dhaka",
     about:
       "Dr. Ashraful Haque is a hematologist specializing in blood disorders, anemia, and clotting disorders. He provides expert diagnosis and treatment.",
-    education:
-      "MBBS from Mymensingh Medical College; MD (Hematology) from BSMMU; FRCPath from Royal College of Pathologists",
+    education: [
+      { degree: "MBBS", institution: "Mymensingh Medical College" },
+      { degree: "MD (Hematology)", institution: "BSMMU" },
+      { degree: "FRCPath", institution: "Royal College of Pathologists" },
+    ],
     services: [
       "Bone Marrow Biopsy",
       "Anemia Treatment",
@@ -722,6 +1021,14 @@ const doctors = [
       "Hemophilia Care",
     ],
     availableDays: ["Monday", "Wednesday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 30,
@@ -738,8 +1045,11 @@ const doctors = [
     location: "Neonatal Unit, Dhaka Medical College Hospital",
     about:
       "Dr. Shirin Sultana is a neonatologist dedicated to the care of premature and critically ill newborns. She has extensive experience in NICU management.",
-    education:
-      "MBBS from Dhaka Medical College; FCPS (Pediatrics) from BCPS; MD (Neonatology) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "FCPS (Pediatrics)", institution: "BCPS" },
+      { degree: "MD (Neonatology)", institution: "BSMMU" },
+    ],
     services: [
       "NICU Care",
       "Premature Baby Management",
@@ -747,6 +1057,14 @@ const doctors = [
       "Newborn Resuscitation",
     ],
     availableDays: ["Sunday", "Tuesday", "Thursday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 31,
@@ -763,7 +1081,10 @@ const doctors = [
     location: "Geriatric Care Clinic, Dhaka",
     about:
       "Dr. Masud Rana specializes in the healthcare needs of older adults, focusing on chronic disease management, mobility, and cognitive health.",
-    education: "MBBS from Rajshahi Medical College; MD (Geriatrics) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Rajshahi Medical College" },
+      { degree: "MD (Geriatrics)", institution: "BSMMU" },
+    ],
     services: [
       "Comprehensive Geriatric Assessment",
       "Fall Prevention Program",
@@ -771,6 +1092,14 @@ const doctors = [
       "Polypharmacy Review",
     ],
     availableDays: ["Monday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 32,
@@ -787,8 +1116,11 @@ const doctors = [
     location: "Surgery & Trauma Center, Dhaka",
     about:
       "Dr. Tareq Mahmud is a general surgeon with extensive experience in abdominal surgery, trauma care, and minimally invasive procedures.",
-    education:
-      "MBBS from Dhaka Medical College; FCPS (Surgery) from BCPS; MS (Surgery) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "FCPS (Surgery)", institution: "BCPS" },
+      { degree: "MS (Surgery)", institution: "BSMMU" },
+    ],
     services: [
       "Laparoscopic Cholecystectomy",
       "Appendectomy",
@@ -796,6 +1128,14 @@ const doctors = [
       "Trauma Surgery",
     ],
     availableDays: ["Tuesday", "Thursday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 33,
@@ -812,8 +1152,11 @@ const doctors = [
     location: "Aesthetic Surgery Clinic, Dhaka",
     about:
       "Dr. Liza Akter is a plastic surgeon specializing in reconstructive surgery and cosmetic procedures. She is known for her artistic approach and patient-centered care.",
-    education:
-      "MBBS from Chittagong Medical College; FCPS (Plastic Surgery) from BCPS; FRCS from Royal College of Surgeons",
+    education: [
+      { degree: "MBBS", institution: "Chittagong Medical College" },
+      { degree: "FCPS (Plastic Surgery)", institution: "BCPS" },
+      { degree: "FRCS", institution: "Royal College of Surgeons" },
+    ],
     services: [
       "Rhinoplasty",
       "Breast Augmentation",
@@ -821,6 +1164,14 @@ const doctors = [
       "Body Contouring",
     ],
     availableDays: ["Sunday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 34,
@@ -836,7 +1187,10 @@ const doctors = [
     location: "ENT Clinic, Dhaka",
     about:
       "Dr. Saiful Islam is a young and dynamic ENT specialist focusing on sinus disorders, hearing impairments, and throat infections.",
-    education: "MBBS from Mymensingh Medical College; FCPS (ENT) from BCPS",
+    education: [
+      { degree: "MBBS", institution: "Mymensingh Medical College" },
+      { degree: "FCPS (ENT)", institution: "BCPS" },
+    ],
     services: [
       "Sinus Treatment",
       "Hearing Aid Fitting",
@@ -844,6 +1198,14 @@ const doctors = [
       "Allergy Testing",
     ],
     availableDays: ["Monday", "Thursday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 35,
@@ -860,8 +1222,10 @@ const doctors = [
     location: "Smile Dental Clinic, Dhaka",
     about:
       "Dr. Rahim Uddin is a dentist specializing in oral surgery and implantology. He provides comprehensive dental care from routine checkups to complex surgeries.",
-    education:
-      "BDS from Dhaka Dental College; MDS (Oral & Maxillofacial Surgery) from BSMMU",
+    education: [
+      { degree: "BDS", institution: "Dhaka Dental College" },
+      { degree: "MDS (Oral & Maxillofacial Surgery)", institution: "BSMMU" },
+    ],
     services: [
       "Dental Implants",
       "Root Canal Treatment",
@@ -869,6 +1233,14 @@ const doctors = [
       "Teeth Whitening",
     ],
     availableDays: ["Sunday", "Tuesday", "Thursday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 36,
@@ -885,8 +1257,11 @@ const doctors = [
     location: "Anesthesia & Pain Management Clinic, Dhaka",
     about:
       "Dr. Shahnaz Parvin is an anesthesiologist specializing in pain management and perioperative anesthesia. She ensures patient safety during surgical procedures.",
-    education:
-      "MBBS from Rajshahi Medical College; DA from IPGMER; FCPS (Anesthesiology) from BCPS",
+    education: [
+      { degree: "MBBS", institution: "Rajshahi Medical College" },
+      { degree: "DA", institution: "IPGMER" },
+      { degree: "FCPS (Anesthesiology)", institution: "BCPS" },
+    ],
     services: [
       "General Anesthesia",
       "Epidural & Spinal Anesthesia",
@@ -894,6 +1269,14 @@ const doctors = [
       "Pre-Anesthetic Checkup",
     ],
     availableDays: ["Monday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 37,
@@ -910,8 +1293,10 @@ const doctors = [
     location: "Allergy & Asthma Clinic, Dhaka",
     about:
       "Dr. Kamrul Hasan is an allergist and immunologist specializing in allergy testing, asthma management, and immune disorders.",
-    education:
-      "MBBS from Chittagong Medical College; MD (Allergy & Immunology) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Chittagong Medical College" },
+      { degree: "MD (Allergy & Immunology)", institution: "BSMMU" },
+    ],
     services: [
       "Allergy Testing",
       "Asthma Management",
@@ -919,6 +1304,14 @@ const doctors = [
       "Food Allergy Diagnosis",
     ],
     availableDays: ["Tuesday", "Thursday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 38,
@@ -935,10 +1328,21 @@ const doctors = [
     location: "Diagnostic Imaging Center, Dhaka",
     about:
       "Dr. Sanjida Akter is a radiologist specializing in MRI, CT, and ultrasound diagnostics. She provides accurate and timely radiological interpretations.",
-    education:
-      "MBBS from Dhaka Medical College; MD (Radiology) from BSMMU; FRCR from Royal College of Radiologists",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "MD (Radiology)", institution: "BSMMU" },
+      { degree: "FRCR", institution: "Royal College of Radiologists" },
+    ],
     services: ["MRI Scan", "CT Scan", "Ultrasound", "Mammography"],
     availableDays: ["Sunday", "Tuesday", "Thursday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 39,
@@ -955,8 +1359,10 @@ const doctors = [
     location: "PhysioCare Center, Dhaka",
     about:
       "Dr. Mehedi Hasan is a physiotherapist specializing in orthopedic and neurological rehabilitation. He helps patients recover from injuries and surgeries.",
-    education:
-      "BPT from Bangladesh Institute of Health Sciences; MPT (Orthopedic) from University of Dhaka",
+    education: [
+      { degree: "BPT", institution: "Bangladesh Institute of Health Sciences" },
+      { degree: "MPT (Orthopedic)", institution: "University of Dhaka" },
+    ],
     services: [
       "Manual Therapy",
       "Therapeutic Exercises",
@@ -964,6 +1370,14 @@ const doctors = [
       "Post-Surgery Rehabilitation",
     ],
     availableDays: ["Monday", "Wednesday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 40,
@@ -980,8 +1394,13 @@ const doctors = [
     location: "Nutrition & Wellness Clinic, Dhaka",
     about:
       "Dr. Nasreen Sultana is a clinical nutritionist helping patients achieve their health goals through personalized diet plans and nutritional counseling.",
-    education:
-      "BSc from University of Dhaka; MSc (Clinical Nutrition) from University of Aberdeen",
+    education: [
+      { degree: "BSc", institution: "University of Dhaka" },
+      {
+        degree: "MSc (Clinical Nutrition)",
+        institution: "University of Aberdeen",
+      },
+    ],
     services: [
       "Weight Management",
       "Diabetes Diet Planning",
@@ -989,6 +1408,14 @@ const doctors = [
       "Prenatal Nutrition",
     ],
     availableDays: ["Sunday", "Tuesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 41,
@@ -1005,7 +1432,10 @@ const doctors = [
     location: "City Hospital, Dhaka",
     about:
       "Dr. Anisur Rahman is a general surgeon with expertise in laparoscopic procedures and emergency surgery. He has performed over 3,000 successful surgeries.",
-    education: "MBBS from Chittagong Medical College; FCPS (Surgery) from BCPS",
+    education: [
+      { degree: "MBBS", institution: "Chittagong Medical College" },
+      { degree: "FCPS (Surgery)", institution: "BCPS" },
+    ],
     services: [
       "Laparoscopic Surgery",
       "Emergency Surgery",
@@ -1013,6 +1443,14 @@ const doctors = [
       "Varicose Vein Surgery",
     ],
     availableDays: ["Monday", "Wednesday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 42,
@@ -1029,8 +1467,10 @@ const doctors = [
     location: "Mother & Child Hospital, Dhaka",
     about:
       "Dr. Farzana Akter is an obstetrician and gynecologist with extensive experience in high-risk pregnancies and gynecological oncology.",
-    education:
-      "MBBS from Dhaka Medical College; FCPS (Obstetrics & Gynecology) from BCPS",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "FCPS (Obstetrics & Gynecology)", institution: "BCPS" },
+    ],
     services: [
       "High-Risk Obstetrics",
       "Cesarean Section",
@@ -1038,6 +1478,14 @@ const doctors = [
       "Fertility Treatment",
     ],
     availableDays: ["Tuesday", "Thursday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 43,
@@ -1054,8 +1502,11 @@ const doctors = [
     location: "Heart Foundation Hospital, Dhaka",
     about:
       "Dr. Shahidul Islam is a cardiologist specializing in interventional cardiology and electrophysiology. He has performed over 2,000 cardiac catheterizations.",
-    education:
-      "MBBS from Rajshahi Medical College; MD (Cardiology) from BSMMU; FESC from European Society of Cardiology",
+    education: [
+      { degree: "MBBS", institution: "Rajshahi Medical College" },
+      { degree: "MD (Cardiology)", institution: "BSMMU" },
+      { degree: "FESC", institution: "European Society of Cardiology" },
+    ],
     services: [
       "Cardiac Catheterization",
       "Pacemaker Implantation",
@@ -1063,6 +1514,14 @@ const doctors = [
       "Coronary Angioplasty",
     ],
     availableDays: ["Sunday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 44,
@@ -1079,8 +1538,10 @@ const doctors = [
     location: "Telemedicine Platform, Dhaka",
     about:
       "Dr. Nazrul Islam provides online general medical consultations, focusing on preventive care and chronic disease management. He offers convenient telemedicine services.",
-    education:
-      "MBBS from Sylhet MAG Osmani Medical College; MD (Internal Medicine) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Sylhet MAG Osmani Medical College" },
+      { degree: "MD (Internal Medicine)", institution: "BSMMU" },
+    ],
     services: [
       "Online Consultation",
       "Prescription Refill",
@@ -1088,6 +1549,14 @@ const doctors = [
       "Lab Test Interpretation",
     ],
     availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 45,
@@ -1104,7 +1573,10 @@ const doctors = [
     location: "Derma Skin Clinic, Dhaka",
     about:
       "Dr. Jannatul Ferdous is a dermatologist specializing in cosmetic dermatology and skin rejuvenation. She offers advanced laser and injectable treatments.",
-    education: "MBBS from Dhaka Medical College; DDVL from IPGMER",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "DDVL", institution: "IPGMER" },
+    ],
     services: [
       "Botox & Fillers",
       "Chemical Peels",
@@ -1112,6 +1584,14 @@ const doctors = [
       "Acne Scar Treatment",
     ],
     availableDays: ["Tuesday", "Thursday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 46,
@@ -1128,8 +1608,11 @@ const doctors = [
     location: "Ortho & Spine Hospital, Dhaka",
     about:
       "Dr. Mizanur Rahman is an orthopedic surgeon specializing in spine surgery and complex trauma. He uses advanced navigation techniques for precision.",
-    education:
-      "MBBS from Chittagong Medical College; MS (Orthopedics) from BSMMU; FAB from Bangladesh Orthopaedic Association",
+    education: [
+      { degree: "MBBS", institution: "Chittagong Medical College" },
+      { degree: "MS (Orthopedics)", institution: "BSMMU" },
+      { degree: "FAB", institution: "Bangladesh Orthopaedic Association" },
+    ],
     services: [
       "Spine Surgery",
       "Microdiscectomy",
@@ -1137,6 +1620,14 @@ const doctors = [
       "Spine Deformity Correction",
     ],
     availableDays: ["Monday", "Wednesday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 47,
@@ -1153,8 +1644,10 @@ const doctors = [
     location: "Happy Kids Clinic, Dhaka",
     about:
       "Dr. Sharmin Akter is a pediatrician specializing in childhood allergies and asthma. She provides comprehensive care for children with chronic conditions.",
-    education:
-      "MBBS from Rajshahi Medical College; FCPS (Pediatrics) from BCPS",
+    education: [
+      { degree: "MBBS", institution: "Rajshahi Medical College" },
+      { degree: "FCPS (Pediatrics)", institution: "BCPS" },
+    ],
     services: [
       "Childhood Asthma Management",
       "Allergy Testing",
@@ -1162,6 +1655,14 @@ const doctors = [
       "Nutritional Guidance",
     ],
     availableDays: ["Sunday", "Tuesday", "Thursday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 48,
@@ -1178,8 +1679,10 @@ const doctors = [
     location: "Digestive Health Clinic, Dhaka",
     about:
       "Dr. Zakir Hossain is a gastroenterologist with a focus on liver diseases and endoscopy. He is committed to providing quality digestive health care.",
-    education:
-      "MBBS from Mymensingh Medical College; MD (Gastroenterology) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Mymensingh Medical College" },
+      { degree: "MD (Gastroenterology)", institution: "BSMMU" },
+    ],
     services: [
       "Liver Function Management",
       "Endoscopy",
@@ -1187,6 +1690,14 @@ const doctors = [
       "Pancreatic Disorder Treatment",
     ],
     availableDays: ["Monday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 49,
@@ -1203,8 +1714,10 @@ const doctors = [
     location: "Women's Wellness Clinic, Dhaka",
     about:
       "Dr. Afsana Begum is a gynecologist specializing in adolescent gynecology and reproductive health. She provides compassionate care for women of all ages.",
-    education:
-      "MBBS from Dhaka Medical College; FCPS (Gynecology & Obstetrics) from BCPS",
+    education: [
+      { degree: "MBBS", institution: "Dhaka Medical College" },
+      { degree: "FCPS (Gynecology & Obstetrics)", institution: "BCPS" },
+    ],
     services: [
       "Adolescent Gynecology",
       "Reproductive Health",
@@ -1212,6 +1725,14 @@ const doctors = [
       "Contraception Counseling",
     ],
     availableDays: ["Tuesday", "Thursday", "Saturday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
   {
     id: 50,
@@ -1228,8 +1749,10 @@ const doctors = [
     location: "Neuro Care Center, Dhaka",
     about:
       "Dr. Mostafa Kamal is a neurologist specializing in epilepsy surgery and neurocritical care. He is at the forefront of neurological treatments in Bangladesh.",
-    education:
-      "MBBS from Chittagong Medical College; MD (Neurology) from BSMMU",
+    education: [
+      { degree: "MBBS", institution: "Chittagong Medical College" },
+      { degree: "MD (Neurology)", institution: "BSMMU" },
+    ],
     services: [
       "Epilepsy Surgery Consultation",
       "Neurocritical Care",
@@ -1237,6 +1760,14 @@ const doctors = [
       "Neuroimaging Interpretation",
     ],
     availableDays: ["Sunday", "Wednesday", "Friday"],
+    timeslots: [
+      "09:00 AM - 10:00 AM",
+      "10:00 AM - 11:00 AM",
+      "11:00 AM - 12:00 PM",
+      "02:00 PM - 03:00 PM",
+      "03:00 PM - 04:00 PM",
+      "04:00 PM - 05:00 PM",
+    ],
   },
 ];
 
