@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 import Slider from "react-slick";
@@ -14,11 +14,31 @@ import { MdOutlineHealthAndSafety } from "react-icons/md";
 
 export default function TrustedDoctors() {
   const sliderRef = useRef<Slider>(null);
+  const [slidesToShow, setSlidesToShow] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      const width = window.innerWidth;
+      if (width >= 1280) setSlidesToShow(4);
+      else if (width >= 1024) setSlidesToShow(3);
+      else if (width >= 400) setSlidesToShow(2);
+      else setSlidesToShow(1);
+    };
+
+    updateSlidesToShow();
+    window.addEventListener("resize", updateSlidesToShow);
+    const timer = setTimeout(() => setLoading(false), 400);
+    return () => {
+      window.removeEventListener("resize", updateSlidesToShow);
+      clearTimeout(timer);
+    };
+  }, []);
 
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow,
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
@@ -26,23 +46,7 @@ export default function TrustedDoctors() {
     autoplaySpeed: 3500,
     pauseOnHover: true,
     arrows: false,
-    responsive: [
-      {
-        breakpoint: 1280,
-        settings: { slidesToShow: 4, slidesToScroll: 1, infinite: true },
-      },
-      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 1 } },
-      { breakpoint: 640, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      {
-        breakpoint: 420,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: "32px",
-        },
-      },
-    ],
+    centerMode: false,
   };
 
   const stats = [
@@ -56,9 +60,28 @@ export default function TrustedDoctors() {
     },
   ];
 
+  const SkeletonDoctor = () => (
+    <div className="h-full w-full px-1.5 py-2 sm:px-2">
+      <div className="flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+        <div className="h-60 sm:h-72 lg:h-64 2xl:h-96 w-full bg-slate-100 animate-pulse" />
+        <div className="flex flex-col gap-3 p-3 sm:p-4">
+          <div className="flex flex-col gap-1.5">
+            <div className="h-4 w-3/4 rounded bg-slate-100 animate-pulse" />
+            <div className="h-3 w-1/2 rounded bg-slate-100 animate-pulse" />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <div className="h-3 w-full rounded bg-slate-100 animate-pulse" />
+            <div className="h-3 w-2/3 rounded bg-slate-100 animate-pulse" />
+          </div>
+          <div className="h-4 w-24 rounded bg-slate-100 animate-pulse mt-auto" />
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="py-8 sm:py-12 lg:py-16  bg-slate-50">
-      <div className="xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[80%]">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-5 sm:mb-6">
           <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-900">
             Meet Our Trusted Doctors
@@ -73,52 +96,61 @@ export default function TrustedDoctors() {
         </div>
 
         <div className="relative mb-4 sm:mb-6 lg:mb-5">
-          <Slider ref={sliderRef} {...settings}>
-            {doctors.map((doctor, index) => (
-              <div key={index} className="px-1.5 sm:px-2 py-2">
-                <div className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
-                  <div className="relative h-44 sm:h-48 lg:h-56 xl:h-64 w-full bg-slate-100">
-                    <Image
-                      src={doctor.image}
-                      alt={doctor.name}
-                      fill
-                      className="object-fit"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2 sm:gap-3 p-3 sm:p-4">
-                    <div>
-                      <p className="text-sm sm:text-base font-semibold text-slate-900 truncate">
-                        {doctor.name}
-                      </p>
-                      <p className="text-xs sm:text-sm font-medium text-primary/70 truncate">
-                        {doctor.speciality}
-                      </p>
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-1 text-xs sm:text-sm">
-                        <FaStar className="text-yellow-500" />
-                        <span className="font-semibold text-yellow-600">
-                          {doctor.rating}
-                        </span>
-                        <span className="text-slate-400">
-                          ({doctor.reviewCount})
-                        </span>
+          <Slider
+            key={slidesToShow}
+            ref={sliderRef}
+            {...settings}
+            className="trusted-doctors-slider"
+          >
+            {loading
+              ? Array.from({ length: slidesToShow }).map((_, i) => (
+                  <SkeletonDoctor key={i} />
+                ))
+              : doctors.map((doctor, index) => (
+                  <div key={index} className="h-full px-1.5 py-2 sm:px-2">
+                    <div className="group flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
+                      <div className="relative h-60 sm:h-72 lg:h-64 2xl:h-96 w-full bg-slate-100">
+                        <Image
+                          src={doctor.image}
+                          alt={doctor.name}
+                          fill
+                          className="object-fill"
+                        />
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-500">
-                        {doctor.experience}+ Years Exp.
-                      </p>
+                      <div className="flex flex-col gap-2 sm:gap-3 p-3 sm:p-4">
+                        <div>
+                          <p className="text-sm sm:text-base font-semibold text-slate-900 truncate">
+                            {doctor.name}
+                          </p>
+                          <p className="text-xs sm:text-sm font-medium text-primary/70 truncate">
+                            {doctor.speciality}
+                          </p>
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-1 text-xs sm:text-sm">
+                            <FaStar className="text-yellow-500" />
+                            <span className="font-semibold text-yellow-600">
+                              {doctor.rating}
+                            </span>
+                            <span className="text-slate-400">
+                              ({doctor.reviewCount})
+                            </span>
+                          </div>
+                          <p className="text-xs sm:text-sm text-slate-500">
+                            {doctor.experience}+ Years Exp.
+                          </p>
+                        </div>
+                        <p className="text-xs sm:text-sm font-semibold text-primary">
+                          ${doctor.consultationFee} / Consultation
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-xs sm:text-sm font-semibold text-primary">
-                      ${doctor.consultationFee} / Consultation
-                    </p>
                   </div>
-                </div>
-              </div>
-            ))}
+                ))}
           </Slider>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-4 sm:gap-6 bg-linear-to-r from-[#0b7761] to-[#19ac67] rounded-lg px-5 sm:px-8 lg:px-10 py-6 sm:py-5 text-white">
+        <div className="grid grid-cols-2 gap-y-5 gap-x-4 rounded-lg bg-linear-to-r from-[#0b7761] to-[#19ac67] px-5 py-6 text-white sm:gap-6 sm:px-8 sm:py-5 lg:grid-cols-4 lg:px-10">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -140,6 +172,23 @@ export default function TrustedDoctors() {
           })}
         </div>
       </div>
+      <style jsx global>{`
+        .trusted-doctors-slider .slick-list {
+          overflow: hidden;
+        }
+        .trusted-doctors-slider .slick-track {
+          display: flex !important;
+        }
+        .trusted-doctors-slider .slick-slide {
+          height: auto !important;
+          display: flex !important;
+        }
+        .trusted-doctors-slider .slick-slide > div {
+          display: flex;
+          width: 100%;
+          min-width: 0;
+        }
+      `}</style>
     </div>
   );
 }

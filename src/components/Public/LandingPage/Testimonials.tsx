@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import { Card, CardContent, Avatar, Typography, Box } from "@mui/material";
@@ -57,11 +57,30 @@ const testimonials = [
 
 export default function Testimonials() {
   const sliderRef = useRef<Slider>(null);
+  const [slidesToShow, setSlidesToShow] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) setSlidesToShow(3);
+      else if (width >= 640) setSlidesToShow(2);
+      else setSlidesToShow(1);
+    };
+
+    updateSlidesToShow();
+    window.addEventListener("resize", updateSlidesToShow);
+    const timer = setTimeout(() => setLoading(false), 400);
+    return () => {
+      window.removeEventListener("resize", updateSlidesToShow);
+      clearTimeout(timer);
+    };
+  }, []);
 
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow,
     slidesToScroll: 1,
     autoplay: true,
     speed: 600,
@@ -78,15 +97,41 @@ export default function Testimonials() {
     customPaging: () => (
       <button aria-label="Go to slide" className="testimonial-dot" />
     ),
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 640, settings: { slidesToShow: 1, slidesToScroll: 1 } },
-    ],
+    centerMode: false,
   };
+
+  const SkeletonTestimonial = () => (
+    <div className="h-full w-full px-2 sm:px-3 py-2">
+      <div className="h-full w-full rounded-lg border border-slate-100 bg-white shadow-sm">
+        <div className="flex h-full flex-col justify-between p-3">
+          <div className="flex flex-col gap-3">
+            <div className="h-8 w-8 rounded bg-slate-100 animate-pulse" />
+            <div className="flex flex-col gap-2">
+              <div className="h-3 w-full rounded bg-slate-100 animate-pulse" />
+              <div className="h-3 w-full rounded bg-slate-100 animate-pulse" />
+              <div className="h-3 w-2/3 rounded bg-slate-100 animate-pulse" />
+            </div>
+            <div className="flex items-center gap-1">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div key={i} className="h-3 w-3 rounded-sm bg-slate-100 animate-pulse" />
+              ))}
+            </div>
+          </div>
+          <div className="flex items-center gap-3 mt-4">
+            <div className="h-11 w-11 rounded-full bg-slate-100 animate-pulse" />
+            <div className="flex flex-col gap-1.5">
+              <div className="h-3.5 w-24 rounded bg-slate-100 animate-pulse" />
+              <div className="h-3 w-20 rounded bg-slate-100 animate-pulse" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="py-12 sm:py-16 lg:py-20 bg-slate-50">
-      <div className="xl:max-w-[75%] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[75%]">
         <div className="text-center mb-4 sm:mb-6 lg:mb-12">
           <p className="text-xs sm:text-sm font-bold tracking-[0.15em] text-emerald-600 uppercase mb-2">
             Patients Love Us
@@ -96,7 +141,7 @@ export default function Testimonials() {
           </h2>
         </div>
 
-        <div className="relative">
+        <div className="relative min-w-0">
           <button
             type="button"
             aria-label="Previous testimonials"
@@ -106,9 +151,16 @@ export default function Testimonials() {
             <FaChevronLeft size={13} />
           </button>
 
-          <Slider ref={sliderRef} {...settings} className="testimonial-slider">
-            {testimonials.map((t, index) => (
-              <Box key={index} className="h-full px-2 sm:px-3 py-2">
+          <Slider
+            key={slidesToShow}
+            ref={sliderRef}
+            {...settings}
+            className="testimonial-slider"
+          >
+            {loading
+              ? Array.from({ length: slidesToShow }).map((_, i) => <SkeletonTestimonial key={i} />)
+              : testimonials.map((t, index) => (
+                  <Box key={index} className="h-full px-2 sm:px-3 py-2">
                 <Card
                   elevation={0}
                   sx={{
@@ -215,6 +267,7 @@ export default function Testimonials() {
         .testimonial-slider .slick-slide > div {
           display: flex;
           width: 100%;
+          min-width: 0;
         }
 
         .testimonial-dots li button:before {

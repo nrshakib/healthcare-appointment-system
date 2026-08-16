@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import * as LuIcons from "react-icons/lu";
 import specialities from "@/utils/specialities";
@@ -12,10 +13,32 @@ import Link from "next/link";
 const icons = LuIcons as unknown as Record<string, IconType>;
 
 export default function Specialities() {
+  const [slidesToShow, setSlidesToShow] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      const width = window.innerWidth;
+      if (width >= 1280) setSlidesToShow(6);
+      else if (width >= 1024) setSlidesToShow(4);
+      else if (width >= 770) setSlidesToShow(3);
+      else if (width >= 520) setSlidesToShow(2);
+      else setSlidesToShow(1);
+    };
+
+    updateSlidesToShow();
+    window.addEventListener("resize", updateSlidesToShow);
+    const timer = setTimeout(() => setLoading(false), 400);
+    return () => {
+      window.removeEventListener("resize", updateSlidesToShow);
+      clearTimeout(timer);
+    };
+  }, []);
+
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 6,
+    slidesToShow,
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
@@ -23,32 +46,7 @@ export default function Specialities() {
     autoplaySpeed: 2400,
     pauseOnHover: true,
     arrows: false,
-    responsive: [
-      {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 770,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 520,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: "24px",
-        },
-      },
-    ],
+    centerMode: false,
   };
 
   const colorMap: Record<string, { bg: string; text: string }> = {
@@ -75,9 +73,24 @@ export default function Specialities() {
     );
   };
 
+  const SkeletonSpeciality = () => (
+    <div className="h-full w-full px-2 py-4 sm:px-3 sm:py-5">
+      <div className="flex h-full min-h-56 flex-col items-center justify-between rounded-lg border border-emerald-100/70 bg-white p-5 shadow-sm sm:min-h-64 sm:p-6 lg:min-h-72">
+        <div className="flex flex-col items-center gap-4">
+          <div className="size-10 sm:size-12 lg:size-16 rounded-full bg-slate-100 animate-pulse" />
+          <div className="flex flex-col items-center gap-2">
+            <div className="h-5 w-32 rounded bg-slate-100 animate-pulse" />
+            <div className="h-4 w-48 rounded bg-slate-100 animate-pulse" />
+          </div>
+        </div>
+        <div className="h-9 w-28 rounded-full bg-slate-100 animate-pulse" />
+      </div>
+    </div>
+  );
+
   return (
     <section className="w-full bg-white-50 py-10 sm:py-14 lg:py-16 overflow-hidden">
-      <div className="mx-auto flex w-full xl:max-w-[85%] flex-col items-center px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center px-4 sm:px-6 lg:px-8 xl:max-w-[85%]">
         {/* top texts */}
         <div className="flex flex-col items-center justify-center gap-3 text-center">
           <p className="text-primary uppercase text-sm sm:text-base font-semibold tracking-wide">
@@ -90,34 +103,42 @@ export default function Specialities() {
         </div>
 
         {/* slider */}
-        <div className="slider-container mt-6 sm:mt-8 w-full">
-          <Slider {...settings}>
-            {specialities.map((speciality, index) => (
-              <div key={index} className="px-2 py-4 sm:px-3 sm:py-5">
-                <div className="group flex min-h-56 sm:min-h-64 lg:min-h-70 flex-col items-center justify-between rounded-2xl border border-emerald-100/70 bg-white p-5 text-center shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl sm:p-6">
-                  <div className="flex flex-col items-center">
-                    <p
-                      className={`mb-4 flex size-10 sm:size-12 lg:size-16 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105 sm:h-20 sm:w-20 ${getColorClasses(speciality.color).bg}`}
-                    >
-                      {getIcon(speciality.icon, speciality.color)}
-                    </p>
-                    <h3 className="lg:mb-2 text-lg sm:text-xl font-semibold text-slate-900">
-                      {speciality.name}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-slate-500">
-                      {speciality.details}
-                    </p>
+        <div className="specialities-slider-container mt-6 sm:mt-8 w-full min-w-0">
+          <Slider
+            key={slidesToShow}
+            {...settings}
+            className="specialities-slider"
+          >
+            {loading
+              ? Array.from({ length: slidesToShow }).map((_, i) => (
+                  <SkeletonSpeciality key={i} />
+                ))
+              : specialities.map((speciality, index) => (
+                  <div key={index} className="h-full px-2 py-4 sm:px-3 sm:py-5">
+                    <div className="group flex h-full min-h-56 flex-col items-center justify-between rounded-lg border border-emerald-100/70 bg-white p-5 text-center shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl sm:min-h-64 sm:p-6 lg:min-h-72">
+                      <div className="flex flex-col items-center">
+                        <p
+                          className={`mb-4 flex size-10 sm:size-12 lg:size-16 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105 sm:h-20 sm:w-20 ${getColorClasses(speciality.color).bg}`}
+                        >
+                          {getIcon(speciality.icon, speciality.color)}
+                        </p>
+                        <h3 className="lg:mb-2 text-lg sm:text-xl font-semibold text-slate-900">
+                          {speciality.name}
+                        </h3>
+                        <p className="text-sm leading-relaxed text-slate-500">
+                          {speciality.details}
+                        </p>
+                      </div>
+                      <Link
+                        href="/"
+                        className="group flex items-center gap-2 text-primary font-semibold px-3 py-1.5 rounded-full hover:bg-primary/10 transition-colors duration-300"
+                      >
+                        <p>Find Doctors</p>
+                        <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                      </Link>
+                    </div>
                   </div>
-                  <Link
-                    href="/"
-                    className="group flex items-center gap-2 text-primary font-semibold px-3 py-1.5 rounded-full hover:bg-primary/10 transition-colors duration-300"
-                  >
-                    <p>Find Doctors</p>
-                    <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
-            ))}
+                ))}
           </Slider>
         </div>
 
@@ -130,6 +151,23 @@ export default function Specialities() {
           <IoIosArrowForward />
         </Link>
       </div>
+      <style jsx global>{`
+        .specialities-slider .slick-list {
+          overflow: hidden;
+        }
+        .specialities-slider .slick-track {
+          display: flex !important;
+        }
+        .specialities-slider .slick-slide {
+          height: auto !important;
+          display: flex !important;
+        }
+        .specialities-slider .slick-slide > div {
+          display: flex;
+          width: 100%;
+          min-width: 0;
+        }
+      `}</style>
     </section>
   );
 }

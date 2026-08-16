@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Slider from "react-slick";
 import Image from "next/image";
@@ -68,11 +68,31 @@ const articles = [
 
 export default function HealthArticles() {
   const sliderRef = useRef<Slider>(null);
+  const [slidesToShow, setSlidesToShow] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      const width = window.innerWidth;
+      if (width >= 1536) setSlidesToShow(4);
+      else if (width >= 1280) setSlidesToShow(3);
+      else if (width >= 768) setSlidesToShow(2);
+      else setSlidesToShow(1);
+    };
+
+    updateSlidesToShow();
+    window.addEventListener("resize", updateSlidesToShow);
+    const timer = setTimeout(() => setLoading(false), 400);
+    return () => {
+      window.removeEventListener("resize", updateSlidesToShow);
+      clearTimeout(timer);
+    };
+  }, []);
 
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow,
     slidesToScroll: 1,
     autoplay: true,
     speed: 600,
@@ -89,29 +109,31 @@ export default function HealthArticles() {
     customPaging: () => (
       <button aria-label="Go to slide" className="article-dot" />
     ),
-    responsive: [
-      { breakpoint: 1536, settings: { slidesToShow: 4, slidesToScroll: 1 } },
-      { breakpoint: 1280, settings: { slidesToShow: 3, slidesToScroll: 1 } },
-      { breakpoint: 900, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: false,
-          centerPadding: "18px",
-        },
-      },
-      {
-        breakpoint: 380,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: false,
-        },
-      },
-    ],
+    centerMode: false,
   };
+
+  const SkeletonArticle = () => (
+    <div className="h-full w-full px-1 py-2 min-[380px]:px-2 sm:px-3">
+      <div className="h-full w-full rounded-lg border border-slate-100 bg-white shadow-sm overflow-hidden">
+        <div
+          className="w-full animate-pulse bg-slate-100"
+          style={{ aspectRatio: "16 / 11", minHeight: 190, maxHeight: 250 }}
+        />
+        <div className="flex flex-col gap-2 p-3 sm:p-4">
+          <div className="h-6 w-20 rounded-full bg-slate-100 animate-pulse" />
+          <div className="flex flex-col gap-2">
+            <div className="h-4 w-full rounded bg-slate-100 animate-pulse" />
+            <div className="h-4 w-3/4 rounded bg-slate-100 animate-pulse" />
+          </div>
+          <div className="mt-auto flex items-center gap-2 pt-2">
+            <div className="h-3 w-16 rounded bg-slate-100 animate-pulse" />
+            <div className="h-1 w-1 rounded-full bg-slate-200" />
+            <div className="h-3 w-14 rounded bg-slate-100 animate-pulse" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="py-10 sm:py-14 lg:py-20">
@@ -134,7 +156,7 @@ export default function HealthArticles() {
           </Link>
         </div>
 
-        <div className="relative -mx-4 sm:mx-0 sm:px-8 lg:px-10">
+        <div className="relative min-w-0 sm:px-8 lg:px-10">
           <button
             type="button"
             aria-label="Previous articles"
@@ -144,115 +166,127 @@ export default function HealthArticles() {
             <FaChevronLeft size={13} />
           </button>
 
-          <Slider ref={sliderRef} {...settings} className="article-slider">
-            {articles.map((article, index) => (
-              <Box key={index} className="h-full px-2 py-2 sm:px-3">
-                <Link href="/" className="group flex h-full">
-                  <Card
-                    elevation={0}
-                    sx={{
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "100%",
-                      borderRadius: "8px",
-                      border: "1px solid",
-                      borderColor: "grey.100",
-                      boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-                      overflow: "hidden",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        transform: "translateY(-4px)",
-                        boxShadow: "0 12px 24px rgba(0,0,0,0.08)",
-                      },
-                    }}
+          <Slider
+            key={slidesToShow}
+            ref={sliderRef}
+            {...settings}
+            className="article-slider"
+          >
+            {loading
+              ? Array.from({ length: slidesToShow }).map((_, i) => (
+                  <SkeletonArticle key={i} />
+                ))
+              : articles.map((article, index) => (
+                  <Box
+                    key={index}
+                    className="h-full px-1 py-2 min-[380px]:px-2 sm:px-3"
                   >
-                    <Box
-                      sx={{
-                        position: "relative",
-                        aspectRatio: {
-                          xs: "16 / 10",
-                          sm: "4 / 3",
-                          lg: "16 / 11",
-                        },
-                        minHeight: { xs: 170, sm: 190 },
-                        maxHeight: { xs: 220, lg: 250 },
-                        width: "100%",
-                        overflow: "hidden",
-                      }}
-                    >
-                      <Image
-                        src={article.image}
-                        alt={article.title}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                      />
-                    </Box>
-
-                    <CardContent
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        flex: 1,
-                        px: { xs: 2, sm: 2.5 },
-                        pt: { xs: 2, sm: 2.25 },
-                        pb: { xs: 2.25, sm: 2.5 },
-                        "&:last-child": { pb: { xs: 2.25, sm: 2.5 } },
-                      }}
-                    >
-                      <Chip
-                        label={article.category}
-                        size="small"
+                    <Link href="/" className="group block h-full">
+                      <Card
+                        elevation={0}
                         sx={{
-                          alignSelf: "flex-start",
-                          mb: 1,
-                          px: 1,
-                          bgcolor: "#ecfdf5",
-                          color: "#047857",
-                          fontWeight: 600,
-                          fontSize: "0.75rem",
-                        }}
-                      />
-
-                      <Typography
-                        variant="subtitle1"
-                        sx={{
-                          fontWeight: 700,
-                          color: "text.primary",
-                          lineHeight: 1.4,
-                          fontSize: { xs: "0.9375rem", sm: "1rem" },
-                          display: "-webkit-box",
-                          WebkitLineClamp: 3,
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
-                        }}
-                      >
-                        {article.title}
-                      </Typography>
-
-                      <Box
-                        sx={{
-                          mt: "auto",
-                          pt: 2,
+                          height: "100%",
                           display: "flex",
-                          alignItems: "center",
-                          gap: 0.75,
-                          color: "text.secondary",
-                          fontSize: { xs: "0.75rem", sm: "0.8rem" },
-                          flexWrap: "wrap",
-                          lineHeight: 1.4,
+                          flexDirection: "column",
+                          width: "100%",
+                          borderRadius: "8px",
+                          border: "1px solid",
+                          borderColor: "grey.100",
+                          boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+                          overflow: "hidden",
+                          transition: "all 0.3s ease",
+                          "&:hover": {
+                            transform: "translateY(-4px)",
+                            boxShadow: "0 12px 24px rgba(0,0,0,0.08)",
+                          },
                         }}
                       >
-                        <span>{article.date}</span>
-                        <span className="h-1 w-1 rounded-full bg-slate-300 shrink-0" />
-                        <span>{article.readTime}</span>
-                      </Box>
-                    </CardContent>
-                  </Card>
-                </Link>
-              </Box>
-            ))}
+                        <Box
+                          sx={{
+                            position: "relative",
+                            aspectRatio: {
+                              xs: "16 / 10",
+                              sm: "4 / 3",
+                              lg: "16 / 11",
+                            },
+                            minHeight: { xs: 170, sm: 190 },
+                            maxHeight: { xs: 220, lg: 250 },
+                            width: "100%",
+                            overflow: "hidden",
+                          }}
+                        >
+                          <Image
+                            src={article.image}
+                            alt={article.title}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                          />
+                        </Box>
+
+                        <CardContent
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            flex: 1,
+                            px: { xs: 2, sm: 2.5 },
+                            pt: { xs: 2, sm: 2.25 },
+                            pb: { xs: 2.25, sm: 2.5 },
+                            "&:last-child": { pb: { xs: 2.25, sm: 2.5 } },
+                          }}
+                        >
+                          <Chip
+                            label={article.category}
+                            size="small"
+                            sx={{
+                              alignSelf: "flex-start",
+                              mb: 1,
+                              px: 1,
+                              bgcolor: "#ecfdf5",
+                              color: "#047857",
+                              fontWeight: 600,
+                              fontSize: "0.75rem",
+                            }}
+                          />
+
+                          <Typography
+                            variant="subtitle1"
+                            sx={{
+                              fontWeight: 700,
+                              color: "text.primary",
+                              lineHeight: 1.4,
+                              fontSize: { xs: "0.9375rem", sm: "1rem" },
+                              display: "-webkit-box",
+                              WebkitLineClamp: 3,
+                              WebkitBoxOrient: "vertical",
+                              overflow: "hidden",
+                            }}
+                          >
+                            {article.title}
+                          </Typography>
+
+                          <Box
+                            sx={{
+                              mt: "auto",
+                              pt: 2,
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 0.75,
+                              color: "text.secondary",
+                              fontSize: { xs: "0.75rem", sm: "0.8rem" },
+                              flexWrap: "wrap",
+                              lineHeight: 1.4,
+                            }}
+                          >
+                            <span>{article.date}</span>
+                            <span className="h-1 w-1 rounded-full bg-slate-300 shrink-0" />
+                            <span>{article.readTime}</span>
+                          </Box>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </Box>
+                ))}
           </Slider>
 
           <button
@@ -280,6 +314,7 @@ export default function HealthArticles() {
         .article-slider .slick-slide > div {
           display: flex;
           width: 100%;
+          min-width: 0;
         }
         .article-slider .slick-slide > div > div {
           width: 100%;
