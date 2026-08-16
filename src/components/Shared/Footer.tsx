@@ -44,16 +44,19 @@ export default function Footer() {
           <Link href="/find-care/doctors" className="hover:text-primary">
             Find a Doctor
           </Link>
-          <Link href="/" className="hover:text-primary">
+          {/* <Link href="/" className="hover:text-primary">
             Find a Clinic
           </Link>
           <Link href="/" className="hover:text-primary">
             Find a Hospital
-          </Link>
-          <Link href="/" className="hover:text-primary">
+          </Link> */}
+          <Link href="/find-care/specialities" className="hover:text-primary">
             Specialities
           </Link>
-          <Link href="/" className="hover:text-primary">
+          <Link
+            href="/find-care/available-today"
+            className="hover:text-primary"
+          >
             Available Today
           </Link>
         </div>

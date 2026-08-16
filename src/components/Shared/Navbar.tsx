@@ -25,8 +25,6 @@ interface SubItem {
 
 const findCareItems: SubItem[] = [
   { label: "Find a Doctor", href: "/find-care/doctors" },
-  { label: "Find a Clinic", href: "/find-care/clinic" },
-  { label: "Find a Hospital", href: "/find-care/hospital" },
   { label: "Available Today", href: "/find-care/available-today" },
 ];
 
@@ -51,13 +49,6 @@ const resourcesItems: SubItem[] = [
   { label: "Health Guides", href: "/resources/guides" },
   { label: "FAQs", href: "/resources/faqs" },
   { label: "Help Center", href: "/resources/help" },
-];
-
-const providersItems: SubItem[] = [
-  { label: "For Doctors", href: "/providers/doctors" },
-  { label: "Join MediCare", href: "/providers/join" },
-  { label: "Provider Dashboard", href: "/providers/dashboard" },
-  { label: "Provider Resources", href: "/providers/resources" },
 ];
 
 function FindCareDropdown({ onClose }: { onClose: () => void }) {
@@ -93,10 +84,13 @@ function FindCareDropdown({ onClose }: { onClose: () => void }) {
           onMouseEnter={openSpecialties}
           onMouseLeave={scheduleClose}
         >
-          <button className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item">
+          <Link
+            href="/find-care/specialities"
+            className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
+          >
             Browse Specialties
             <HiChevronRight size={14} />
-          </button>
+          </Link>
 
           {specialtiesOpen && (
             /* pl-1 replaces the old ml-1 so the hover area is continuous — no physical gap */
@@ -154,7 +148,7 @@ function SimpleDropdown({
 }
 
 // Desktop Nav Item with Dropdown
-type DropdownKey = "find-care" | "services" | "resources" | "providers" | null;
+type DropdownKey = "find-care" | "services" | "resources" | null;
 
 function NavDropdownItem({
   id,
@@ -244,12 +238,6 @@ function MobileMenu({
       key: "resources",
       label: "Resources",
       items: resourcesItems,
-      hasSub: false,
-    },
-    {
-      key: "providers",
-      label: "For Providers",
-      items: providersItems,
       hasSub: false,
     },
   ];
@@ -482,17 +470,6 @@ export default function Navbar() {
               >
                 <SimpleDropdown
                   items={resourcesItems}
-                  onClose={closeDropdown}
-                />
-              </NavDropdownItem>
-
-              <NavDropdownItem
-                id="providers"
-                label="For Providers"
-                {...dropdownProps}
-              >
-                <SimpleDropdown
-                  items={providersItems}
                   onClose={closeDropdown}
                 />
               </NavDropdownItem>
