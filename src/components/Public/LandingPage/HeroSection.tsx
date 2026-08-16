@@ -83,7 +83,7 @@ export default function HeroSection() {
     if (doctor) params.set("doctor", doctor);
     if (location) params.set("location", location);
     if (date) params.set("date", date.format("DD/MM/YYYY"));
-    router.push(`/doctors?${params.toString()}`);
+    router.push('/search-doctors');
   };
 
   return (
