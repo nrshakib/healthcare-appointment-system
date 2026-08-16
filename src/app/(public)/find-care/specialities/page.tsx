@@ -1,5 +1,10 @@
-import React from "react";
+import SpecialitiesHero from "@/components/Public/SpecialitiesPage/SpecialitiesHero";
+
 
 export default function Specialities() {
-  return <div>Specialities</div>;
+  return <div>
+    <div>
+      <SpecialitiesHero/>
+    </div>
+  </div>;
 }
