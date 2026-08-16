@@ -80,8 +80,8 @@ export default function TrustedDoctors() {
   );
 
   return (
-    <div className="py-8 sm:py-12 lg:py-16  bg-slate-50">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[80%]">
+    <div className="py-8 sm:py-12 lg:py-16 bg-slate-50">
+      <div className="mx-auto w-full max-w-7xl px-4 min-[370px]:px-10 min-[420px]:px-2 sm:px-6 lg:px-8 xl:max-w-[80%]">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-5 sm:mb-6">
           <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-900">
             Meet Our Trusted Doctors
