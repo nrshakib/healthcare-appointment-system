@@ -84,13 +84,12 @@ function FindCareDropdown({ onClose }: { onClose: () => void }) {
           onMouseEnter={openSpecialties}
           onMouseLeave={scheduleClose}
         >
-          <Link
-            href="/find-care/specialities"
+          <p
             className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
           >
             Browse Specialties
             <HiChevronRight size={14} />
-          </Link>
+          </p>
 
           {specialtiesOpen && (
             /* pl-1 replaces the old ml-1 so the hover area is continuous — no physical gap */
