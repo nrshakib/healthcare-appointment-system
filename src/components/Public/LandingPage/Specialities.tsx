@@ -110,7 +110,7 @@ export default function Specialities() {
                           </p>
                         </div>
                         <Link
-                          href="/"
+                          href={`/find-care/specialities/${speciality.slug}`}
                           className="group flex items-center gap-2 text-primary font-semibold px-3 py-1.5 rounded-full hover:bg-primary/10 transition-colors duration-300"
                         >
                           <p>Find Doctors</p>

@@ -123,10 +123,10 @@ export default function Specialities() {
                   </div>
 
                   <Link
-                    href={`/find-care/doctors?speciality=${encodeURIComponent(speciality.name)}`}
+                    href={`/find-care/specialities/${speciality.slug}`}
                     className={`mt-1 inline-flex min-h-10 w-full max-w-40 items-center justify-center rounded-xl border px-3 py-2 text-center text-xs font-semibold transition-colors sm:mt-2 sm:w-auto sm:px-4 sm:text-sm ${color.borderClass} ${color.textClass} ${color.hoverBgClass}`}
                   >
-                    Find Doctors
+                    View Details
                   </Link>
                 </CardContent>
               </Card>
@@ -195,9 +195,7 @@ export default function Specialities() {
                 <p className="font-semibold text-sm sm:text-base">
                   {service.title}
                 </p>
-                <p className="text-xs text-gray-500">
-                  {service.subtitle}
-                </p>
+                <p className="text-xs text-gray-500">{service.subtitle}</p>
               </div>
             </div>
           );
