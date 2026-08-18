@@ -196,6 +196,28 @@ const specialities = [
           "Depending on your symptoms, your doctor may recommend tests such as an ECG, echocardiogram, stress test, or blood tests.",
       },
     ],
+    treatments: [
+      {
+        icon: LuHeartPulse,
+        title: "Comprehensive Care",
+        subtitle: "From prevention to advanced treatments",
+      },
+      {
+        icon: LuActivity,
+        title: "Expert Specialists",
+        subtitle: "Highly experienced cardiologists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Technology",
+        subtitle: "State-of-the-art diagnostic tools",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Treatment",
+        subtitle: "Tailored care for your needs",
+      },
+    ],
   },
 
   {
@@ -231,6 +253,28 @@ const specialities = [
         question: "Can orthopedic conditions be treated without surgery?",
         answer:
           "Many orthopedic conditions can be managed with medication, physiotherapy, exercise, lifestyle changes, or other non-surgical treatments.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuBone,
+        title: "Bone Care",
+        subtitle: "Complete orthopedic solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Surgeons",
+        subtitle: "Highly trained specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Imaging",
+        subtitle: "Modern diagnostic technology",
+      },
+      {
+        icon: LuActivity,
+        title: "Personalized Recovery",
+        subtitle: "Custom rehabilitation plans",
       },
     ],
   },
@@ -270,6 +314,28 @@ const specialities = [
           "Neurologists generally provide non-surgical treatment. Conditions requiring neurological surgery are typically managed by neurosurgeons.",
       },
     ],
+    treatments: [
+      {
+        icon: LuBrain,
+        title: "Brain Care",
+        subtitle: "Complete neurological support",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Neurologists",
+        subtitle: "Highly trained specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Neuroimaging",
+        subtitle: "State-of-the-art diagnostics",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Treatment",
+        subtitle: "Tailored care approaches",
+      },
+    ],
   },
 
   {
@@ -305,6 +371,28 @@ const specialities = [
         question: "Do pediatricians provide vaccinations?",
         answer:
           "Yes. Pediatricians commonly provide routine childhood vaccinations and monitor immunization schedules.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuBaby,
+        title: "Child Healthcare",
+        subtitle: "Complete pediatric services",
+      },
+      {
+        icon: LuSmile,
+        title: "Expert Pediatricians",
+        subtitle: "Experienced child specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Diagnostics",
+        subtitle: "Modern child diagnostics",
+      },
+      {
+        icon: LuHeart,
+        title: "Personalized Care",
+        subtitle: "Tailored young patient care",
       },
     ],
   },
@@ -344,6 +432,28 @@ const specialities = [
           "The appropriate frequency depends on your age, health, vision, and risk factors. Your eye specialist can recommend a suitable schedule.",
       },
     ],
+    treatments: [
+      {
+        icon: LuEye,
+        title: "Eye Care",
+        subtitle: "Complete vision solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Specialists",
+        subtitle: "Highly skilled ophthalmologists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Imaging",
+        subtitle: "State-of-the-art diagnostics",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Vision",
+        subtitle: "Tailored treatment plans",
+      },
+    ],
   },
 
   {
@@ -379,6 +489,28 @@ const specialities = [
         question: "Can a general physician manage chronic conditions?",
         answer:
           "Yes. General physicians commonly help manage chronic conditions such as hypertension, diabetes, and high cholesterol.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuStethoscope,
+        title: "Primary Care",
+        subtitle: "Complete general healthcare",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Physicians",
+        subtitle: "Highly trained doctors",
+      },
+      {
+        icon: LuScan,
+        title: "Modern Diagnostics",
+        subtitle: "Advanced medical technology",
+      },
+      {
+        icon: LuHeart,
+        title: "Personalized Health",
+        subtitle: "Tailored care strategies",
       },
     ],
   },
@@ -418,6 +550,28 @@ const specialities = [
           "CT uses X-rays to create detailed cross-sectional images, while MRI uses magnetic fields and radio waves to produce detailed images of soft tissues.",
       },
     ],
+    treatments: [
+      {
+        icon: LuScan,
+        title: "Medical Imaging",
+        subtitle: "Accurate diagnostic scans",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Radiologists",
+        subtitle: "Skilled imaging specialists",
+      },
+      {
+        icon: LuActivity,
+        title: "Advanced Technology",
+        subtitle: "State-of-the-art equipment",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Analysis",
+        subtitle: "Tailored diagnostic insights",
+      },
+    ],
   },
 
   {
@@ -453,6 +607,28 @@ const specialities = [
         question: "Can dermatologists treat hair loss?",
         answer:
           "Yes. Dermatologists can evaluate different causes of hair loss and recommend appropriate treatment options.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuPill,
+        title: "Skin Care",
+        subtitle: "Complete dermatology services",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Specialists",
+        subtitle: "Highly trained dermatologists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Tools",
+        subtitle: "Modern skin diagnostics",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Plans",
+        subtitle: "Tailored skin treatments",
       },
     ],
   },
@@ -492,6 +668,28 @@ const specialities = [
           "In most healthcare systems psychologists do not prescribe medication. Medication, when appropriate, is typically managed by a medical doctor or psychiatrist.",
       },
     ],
+    treatments: [
+      {
+        icon: LuSparkles,
+        title: "Mental Health",
+        subtitle: "Complete psychological support",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Psychologists",
+        subtitle: "Highly trained therapists",
+      },
+      {
+        icon: LuActivity,
+        title: "Modern Therapy",
+        subtitle: "Advanced mental health tech",
+      },
+      {
+        icon: LuHeart,
+        title: "Personalized Counseling",
+        subtitle: "Tailored therapy approaches",
+      },
+    ],
   },
 
   {
@@ -527,6 +725,28 @@ const specialities = [
         question: "What is an endoscopy?",
         answer:
           "An endoscopy is a procedure that allows a doctor to examine parts of the digestive tract using a specialized flexible camera.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuActivity,
+        title: "Digestive Care",
+        subtitle: "Complete GI solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Specialists",
+        subtitle: "Skilled GI doctors",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Endoscopy",
+        subtitle: "Modern diagnostic technology",
+      },
+      {
+        icon: LuApple,
+        title: "Personalized Nutrition",
+        subtitle: "Tailored dietary guidance",
       },
     ],
   },
@@ -566,6 +786,28 @@ const specialities = [
           "Yes. Pulmonologists can diagnose asthma and develop treatment plans to help control respiratory symptoms.",
       },
     ],
+    treatments: [
+      {
+        icon: FaLungs,
+        title: "Respiratory Care",
+        subtitle: "Complete lung solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Pulmonologists",
+        subtitle: "Skilled lung specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Imaging",
+        subtitle: "Modern pulmonary diagnostics",
+      },
+      {
+        icon: LuActivity,
+        title: "Personalized Breathing",
+        subtitle: "Tailored respiratory care",
+      },
+    ],
   },
 
   {
@@ -601,6 +843,28 @@ const specialities = [
         question: "Do nephrologists manage dialysis?",
         answer:
           "Yes. Nephrologists commonly oversee dialysis treatment for patients with advanced kidney disease.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuDroplets,
+        title: "Kidney Care",
+        subtitle: "Complete kidney solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Nephrologists",
+        subtitle: "Skilled kidney specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Testing",
+        subtitle: "Modern kidney diagnostics",
+      },
+      {
+        icon: LuHeart,
+        title: "Personalized Plans",
+        subtitle: "Tailored kidney care",
       },
     ],
   },
@@ -644,6 +908,28 @@ const specialities = [
           "Yes. Urologists treat urinary conditions in both men and women.",
       },
     ],
+    treatments: [
+      {
+        icon: LuCircleDot,
+        title: "Urinary Care",
+        subtitle: "Complete urology solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Urologists",
+        subtitle: "Skilled urinary specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Imaging",
+        subtitle: "Modern urology diagnostics",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Treatment",
+        subtitle: "Tailored urological care",
+      },
+    ],
   },
 
   {
@@ -683,6 +969,28 @@ const specialities = [
         question: "Do endocrinologists treat diabetes?",
         answer:
           "Yes. Endocrinologists specialize in complex diabetes and other hormone-related conditions.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuActivity,
+        title: "Hormone Care",
+        subtitle: "Complete endocrine solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Specialists",
+        subtitle: "Skilled hormone doctors",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Testing",
+        subtitle: "Modern hormone diagnostics",
+      },
+      {
+        icon: LuApple,
+        title: "Personalized Plans",
+        subtitle: "Tailored hormone care",
       },
     ],
   },
@@ -726,6 +1034,28 @@ const specialities = [
           "Depending on the cancer type and stage, treatment may include medication, chemotherapy, immunotherapy, radiation therapy, surgery, or a combination of approaches.",
       },
     ],
+    treatments: [
+      {
+        icon: LuRibbon,
+        title: "Cancer Care",
+        subtitle: "Complete oncology solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Oncologists",
+        subtitle: "Skilled cancer specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Imaging",
+        subtitle: "State-of-the-art diagnostics",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Treatment",
+        subtitle: "Tailored cancer approaches",
+      },
+    ],
   },
 
   {
@@ -767,6 +1097,28 @@ const specialities = [
           "Blood counts, blood smears, clotting tests, and other laboratory investigations may be used depending on the condition.",
       },
     ],
+    treatments: [
+      {
+        icon: LuDroplet,
+        title: "Blood Care",
+        subtitle: "Complete hematology solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Hematologists",
+        subtitle: "Skilled blood specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Testing",
+        subtitle: "Modern blood diagnostics",
+      },
+      {
+        icon: LuHeart,
+        title: "Personalized Plans",
+        subtitle: "Tailored blood care",
+      },
+    ],
   },
 
   {
@@ -802,6 +1154,28 @@ const specialities = [
         question: "Where do neonatologists usually work?",
         answer:
           "Neonatologists commonly work in neonatal intensive care units and specialized newborn care settings.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuBaby,
+        title: "Newborn Care",
+        subtitle: "Specialized neonatal services",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Neonatologists",
+        subtitle: "Skilled newborn specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Tools",
+        subtitle: "Modern infant diagnostics",
+      },
+      {
+        icon: LuHeart,
+        title: "Personalized Care",
+        subtitle: "Tailored infant treatment",
       },
     ],
   },
@@ -841,6 +1215,28 @@ const specialities = [
           "Yes. Geriatricians often coordinate care across multiple medical conditions and healthcare specialists.",
       },
     ],
+    treatments: [
+      {
+        icon: LuAccessibility,
+        title: "Senior Care",
+        subtitle: "Complete elderly solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Geriatricians",
+        subtitle: "Skilled senior specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Assessment",
+        subtitle: "Modern senior diagnostics",
+      },
+      {
+        icon: LuHeart,
+        title: "Personalized Care",
+        subtitle: "Tailored aging care",
+      },
+    ],
   },
 
   {
@@ -876,6 +1272,28 @@ const specialities = [
         question: "Can I consult a surgeon before deciding on surgery?",
         answer:
           "Yes. A surgical consultation helps you understand your diagnosis, treatment options, risks, and expected recovery.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuScissors,
+        title: "Surgical Solutions",
+        subtitle: "Complete operative care",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Surgeons",
+        subtitle: "Highly trained specialists",
+      },
+      {
+        icon: LuActivity,
+        title: "Advanced Tools",
+        subtitle: "Modern surgical technology",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Surgery",
+        subtitle: "Tailored operative approaches",
       },
     ],
   },
@@ -915,6 +1333,28 @@ const specialities = [
           "A consultation with a qualified specialist can help determine whether a reconstructive or cosmetic procedure is appropriate for your goals and condition.",
       },
     ],
+    treatments: [
+      {
+        icon: LuSparkles,
+        title: "Reconstructive Care",
+        subtitle: "Complete surgical solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Surgeons",
+        subtitle: "Skilled plastic specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Technology",
+        subtitle: "Modern plastic surgery tech",
+      },
+      {
+        icon: LuHeart,
+        title: "Personalized Plans",
+        subtitle: "Tailored aesthetic care",
+      },
+    ],
   },
 
   {
@@ -950,6 +1390,28 @@ const specialities = [
         question: "Can ENT specialists treat hearing problems?",
         answer:
           "Yes. ENT specialists can evaluate many causes of hearing problems and recommend appropriate treatment or further testing.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuEar,
+        title: "ENT Care",
+        subtitle: "Complete ear nose solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Specialists",
+        subtitle: "Skilled ENT professionals",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Imaging",
+        subtitle: "Modern ENT diagnostics",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Plans",
+        subtitle: "Tailored ENT treatment",
       },
     ],
   },
@@ -989,6 +1451,28 @@ const specialities = [
           "Yes. Dentists can diagnose gum disease and provide or recommend appropriate treatment.",
       },
     ],
+    treatments: [
+      {
+        icon: LuSmile,
+        title: "Dental Care",
+        subtitle: "Complete oral solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Dentists",
+        subtitle: "Highly trained specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Tools",
+        subtitle: "Modern dentistry technology",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Plans",
+        subtitle: "Tailored oral care",
+      },
+    ],
   },
 
   {
@@ -1024,6 +1508,28 @@ const specialities = [
         question: "Is wisdom tooth removal oral surgery?",
         answer:
           "Yes. Complex or impacted wisdom tooth removal is commonly performed by oral and maxillofacial surgeons.",
+      },
+    ],
+    treatments: [
+      {
+        icon: FaTooth,
+        title: "Oral Surgery",
+        subtitle: "Complete dental solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Surgeons",
+        subtitle: "Skilled oral specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Imaging",
+        subtitle: "Modern oral diagnostics",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Surgery",
+        subtitle: "Tailored operative approaches",
       },
     ],
   },
@@ -1063,6 +1569,28 @@ const specialities = [
           "Yes. Many anesthesiologists also specialize in acute and chronic pain management.",
       },
     ],
+    treatments: [
+      {
+        icon: LuSyringe,
+        title: "Anesthesia Care",
+        subtitle: "Complete pain management",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Anesthesiologists",
+        subtitle: "Highly trained specialists",
+      },
+      {
+        icon: LuActivity,
+        title: "Advanced Monitoring",
+        subtitle: "Modern anesthesia technology",
+      },
+      {
+        icon: LuHeart,
+        title: "Personalized Pain",
+        subtitle: "Tailored comfort approaches",
+      },
+    ],
   },
 
   {
@@ -1098,6 +1626,28 @@ const specialities = [
         question: "Can allergies be tested?",
         answer:
           "Yes. Depending on the symptoms, a specialist may recommend skin testing, blood tests, or other diagnostic approaches.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuWind,
+        title: "Allergy Care",
+        subtitle: "Complete immune solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Specialists",
+        subtitle: "Highly trained immunologists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Testing",
+        subtitle: "Modern allergy diagnostics",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Plans",
+        subtitle: "Tailored immune approaches",
       },
     ],
   },
@@ -1137,6 +1687,28 @@ const specialities = [
           "Physiotherapy is commonly part of rehabilitation, but care may also involve occupational therapy, medication, exercise, and other treatments.",
       },
     ],
+    treatments: [
+      {
+        icon: LuPersonStanding,
+        title: "Rehabilitation Care",
+        subtitle: "Complete physical solutions",
+      },
+      {
+        icon: LuActivity,
+        title: "Expert Physiatrists",
+        subtitle: "Highly trained specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Therapy",
+        subtitle: "Modern rehabilitation technology",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Recovery",
+        subtitle: "Tailored therapy approaches",
+      },
+    ],
   },
 
   {
@@ -1172,6 +1744,28 @@ const specialities = [
         question: "Can nutrition help manage diabetes?",
         answer:
           "Appropriate nutrition can be an important part of diabetes management and should be personalized to the individual's health needs.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuApple,
+        title: "Nutrition Care",
+        subtitle: "Complete dietary solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Dietitians",
+        subtitle: "Highly trained specialists",
+      },
+      {
+        icon: LuActivity,
+        title: "Advanced Nutrition",
+        subtitle: "Modern dietary technology",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Plans",
+        subtitle: "Tailored nutrition approaches",
       },
     ],
   },
@@ -1211,6 +1805,28 @@ const specialities = [
           "The duration depends on the condition, severity, treatment goals, and individual response to therapy.",
       },
     ],
+    treatments: [
+      {
+        icon: LuActivity,
+        title: "Physical Therapy",
+        subtitle: "Complete movement solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Therapists",
+        subtitle: "Highly trained specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Therapy",
+        subtitle: "Modern physical therapy tech",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Rehab",
+        subtitle: "Tailored recovery approaches",
+      },
+    ],
   },
 
   {
@@ -1246,6 +1862,28 @@ const specialities = [
         question: "Can an OB-GYN provide pregnancy care?",
         answer:
           "Yes. Obstetricians provide care during pregnancy, childbirth, and the postpartum period.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuHeart,
+        title: "Women's Care",
+        subtitle: "Complete reproductive solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert OB-GYNs",
+        subtitle: "Highly trained specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Imaging",
+        subtitle: "Modern women's diagnostics",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Care",
+        subtitle: "Tailored health approaches",
       },
     ],
   },
@@ -1285,6 +1923,28 @@ const specialities = [
           "A child may be referred to a pediatric specialist when a condition requires expertise beyond routine pediatric care.",
       },
     ],
+    treatments: [
+      {
+        icon: LuBaby,
+        title: "Specialized Care",
+        subtitle: "Complete child solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Specialists",
+        subtitle: "Highly trained pediatricians",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Diagnostics",
+        subtitle: "Modern child diagnostics",
+      },
+      {
+        icon: LuHeart,
+        title: "Personalized Plans",
+        subtitle: "Tailored young patient care",
+      },
+    ],
   },
 
   {
@@ -1320,6 +1980,28 @@ const specialities = [
         question: "Can pediatric dentists treat cavities?",
         answer:
           "Yes. Pediatric dentists diagnose and treat cavities and other dental conditions in children.",
+      },
+    ],
+    treatments: [
+      {
+        icon: LuSmile,
+        title: "Child Dental",
+        subtitle: "Complete young patient solutions",
+      },
+      {
+        icon: LuPersonStanding,
+        title: "Expert Dentists",
+        subtitle: "Highly trained specialists",
+      },
+      {
+        icon: LuScan,
+        title: "Advanced Tools",
+        subtitle: "Modern pediatric dentistry",
+      },
+      {
+        icon: LuSparkles,
+        title: "Personalized Plans",
+        subtitle: "Tailored oral approaches",
       },
     ],
   },

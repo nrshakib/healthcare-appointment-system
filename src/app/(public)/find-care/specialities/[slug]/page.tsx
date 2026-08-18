@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Breadcrumbs } from "@mui/material";
+import { Breadcrumbs, Divider } from "@mui/material";
 import { FaArrowLeft, FaUserDoctor } from "react-icons/fa6";
 import { LuCalendarHeart, LuShieldCheck } from "react-icons/lu";
 
@@ -60,7 +60,7 @@ export default async function SpecialityDetails({
               aria-label="breadcrumb"
               sx={{
                 fontSize: { xs: "10px", sm: "12px", md: "14px" },
-                mb: { xs: 1.5, sm: 2, md: 3 },
+                mb: { xs: 1.5, sm: 2, lg: 3 },
                 flexWrap: "wrap",
               }}
             >
@@ -91,8 +91,8 @@ export default async function SpecialityDetails({
                   {speciality.name}
                 </h1>
                 <p className="mt-1 max-w-xl text-sm leading-4 sm:leading-6 text-slate-600 lg:mt-3 lg:text-base">
-                  {speciality.details}. Find verified doctors, compare
-                  appointment options, and book care with confidence.
+                  {speciality.details}. Find verified doctors, and book care
+                  with confidence.
                 </p>
               </div>
             </div>
@@ -112,37 +112,109 @@ export default async function SpecialityDetails({
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-8 sm:grid-cols-3 sm:px-6 sm:py-12 lg:px-8">
-        {[
-          {
-            icon: <FaUserDoctor />,
-            title: "Specialist Care",
-            text: "Browse doctors focused on this speciality.",
-          },
-          {
-            icon: <LuCalendarHeart />,
-            title: "Easy Appointments",
-            text: "Choose an appointment time that fits your day.",
-          },
-          {
-            icon: <LuShieldCheck />,
-            title: "Verified Providers",
-            text: "Book with trusted healthcare professionals.",
-          },
-        ].map((item) => (
-          <div
-            key={item.title}
-            className="rounded-lg border border-slate-100 bg-white p-5 shadow-sm"
-          >
-            <p className="mb-3 inline-flex rounded-full bg-emerald-50 p-3 text-xl text-primary">
-              {item.icon}
+      <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 xl:max-w-[80%] mx-auto px-2 sm:px-4 lg:px-8 py-4 sm:py-8">
+        {/* left */}
+        <div className="col-span-2 border border-gray-200 rounded-lg p-3 sm:p-5">
+          <div className="space-y-2">
+            <p className="text-lg sm:text-xl lg:text-2xl font-bold">
+              About <span className="text-primary">{speciality.name}</span>
             </p>
-            <h2 className="text-base font-semibold text-slate-950">
-              {item.title}
-            </h2>
-            <p className="mt-1 text-sm leading-6 text-slate-500">{item.text}</p>
+            <p className="text-sm lg:text-base lg:w-[90%] leading-5 text-stone-500">
+              {speciality.description}
+            </p>
           </div>
-        ))}
+
+          {/* treatments */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 xl:gap-4 mt-6">
+            {speciality.treatments.map((treatment, index) => {
+              const TreatmentIcon = treatment.icon;
+              return (
+                <div
+                  key={index}
+                  className="flex items-center sm:items-start gap-2 xl:gap-3 rounded-lg border border-gray-50 p-1 sm:p-2 lg:p-3"
+                >
+                  <div
+                    className={`flex size-10 shrink-0 items-center justify-center rounded-xl ${speciality.color.bgClass} ${speciality.color.textClass}`}
+                  >
+                    <TreatmentIcon className="size-5" />
+                  </div>
+                  <div>
+                    <p className="text-sm lg:text-base font-semibold text-slate-900">
+                      {treatment.title}
+                    </p>
+                    <p className="text-xs xl:text-sm text-slate-500">
+                      {treatment.subtitle}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <Divider
+            sx={{
+              my: "20px",
+            }}
+          />
+          {/* common conditions */}
+          <div className="mt-6">
+            <p className="text-base sm:text-lg font-bold text-slate-900 mb-3">
+              Common Conditions We Treat
+            </p>
+            <div className="grid grid-cols-2 gap-1 sm:gap-3">
+              {speciality.commonConditions.map((condition, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="flex items-center gap-1 sm:gap-2 rounded-lg border border-gray-100 bg-gray-50 px-1 sm:px-3 py-2"
+                  >
+                    <span className="size-1 sm:size-1.5 shrink-0 rounded-full bg-primary" />
+                    <span className="text-[11px] sm:text-sm text-slate-700 font-medium">
+                      {condition}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* book appointment */}
+          <div className="mt-6 overflow-hidden rounded-xl bg-linear-to-r from-[#e8f9f0] to-[#f0fdf4] px-3 sm:px-4 py-5 sm:py-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="space-y-3 sm:space-y-4">
+                <p className="text-base lg:text-xl font-bold text-primary">
+                  Need help with your {speciality.name}?
+                </p>
+                <p className="text-xs lg:text-sm text-slate-600">
+                  Consult with our {speciality.name} expert today.
+                </p>
+                <Link
+                  href={`/find-care/doctors?speciality=${encodeURIComponent(
+                    speciality.name,
+                  )}`}
+                  className="inline-flex items-center gap-2 bg-linear-to-r from-[#085d4c] to-[#12a762] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:from-[#065f46] hover:to-[#059669] rounded-lg"
+                >
+                  Book an Appointment
+                </Link>
+              </div>
+              <div className="shrink-0">
+                <Image
+                  src="/images/medicare-logo2.png"
+                  alt="Medicare Logo"
+                  width={180}
+                  height={180}
+                  className="h-auto w-28 sm:w-36 lg:w-44 opacity-90"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* right */}
+        <div className="col-span-1 space-y-3">
+          <div className="border border-gray-200 rounded-lg">Top Right</div>
+          <div className="border border-gray-200 rounded-lg">Middle Right</div>
+          <div className="border border-gray-200 rounded-lg">Bottom Right </div>
+        </div>
       </section>
     </main>
   );
