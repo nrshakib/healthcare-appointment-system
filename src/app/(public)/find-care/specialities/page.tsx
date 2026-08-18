@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, Typography, Pagination } from "@mui/material";
 import { FaHandHoldingHeart } from "react-icons/fa";
@@ -37,9 +37,30 @@ const services = [
 
 export default function Specialities() {
   const [page, setPage] = useState(1);
-  const totalPages = Math.ceil(specialities.length / ITEMS_PER_PAGE) || 1;
+  const [searchSpecialities, setSearchSpecialities] = useState("");
+
+  const normalizedSearchTerm = searchSpecialities.trim().toLowerCase();
+
+  const filteredSpecialities = useMemo(() => {
+    if (!normalizedSearchTerm) {
+      return specialities;
+    }
+
+    return specialities.filter((speciality) => {
+      const name = speciality.name.toLowerCase();
+      const details = speciality.details.toLowerCase();
+
+      return (
+        name.includes(normalizedSearchTerm) ||
+        details.includes(normalizedSearchTerm)
+      );
+    });
+  }, [normalizedSearchTerm]);
+
+  const totalPages =
+    Math.ceil(filteredSpecialities.length / ITEMS_PER_PAGE) || 1;
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
-  const paginatedSpecialities = specialities.slice(
+  const paginatedSpecialities = filteredSpecialities.slice(
     startIndex,
     startIndex + ITEMS_PER_PAGE,
   );
@@ -52,89 +73,117 @@ export default function Specialities() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleSearchSpecialitiesChange = (value: string) => {
+    setSearchSpecialities(value);
+    setPage(1);
+  };
+
   return (
     <div className="mb-10">
-      <SpecialitiesHero />
+      <SpecialitiesHero
+        searchSpecialities={searchSpecialities}
+        onSearchSpecialitiesChange={handleSearchSpecialitiesChange}
+      />
       {/* specialities card */}
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-        <div className="grid grid-cols-1 gap-4 min-[520px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-5">
-          {paginatedSpecialities.map((speciality, index) => {
-            const Icon = speciality.Icon;
-            const color = speciality.color;
-
-            return (
-              <Card
-                key={startIndex + index}
-                sx={{
-                  height: "100%",
-                  borderRadius: 3,
-                  border: "1px solid",
-                  borderColor: "grey.100",
-                  boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-                  transition: "all 0.3s ease",
-                  "&:hover": {
-                    transform: "translateY(-4px)",
-                    boxShadow: "0 12px 24px rgba(0,0,0,0.08)",
-                    borderColor: color.border,
-                  },
-                }}
-              >
-                <CardContent
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    textAlign: "center",
-                    gap: { xs: 1.25, sm: 1.5 },
-                    py: { xs: 2.5, sm: 3 },
-                    px: { xs: 2, sm: 2.5 },
-                    "&:last-child": { pb: { xs: 2.5, sm: 3 } },
-                  }}
-                >
-                  <div
-                    className={`flex size-12 items-center justify-center rounded-full transition-transform duration-300 ease-in-out hover:scale-110 sm:size-14 ${color.bgClass} ${color.textClass}`}
-                  >
-                    <Icon className="size-6 sm:size-7" />
-                  </div>
-
-                  <div>
-                    <Typography
-                      variant="subtitle1"
-                      sx={{
-                        fontWeight: 700,
-                        color: "text.primary",
-                        fontSize: { xs: "0.95rem", sm: "1rem" },
-                        lineHeight: 1.4,
-                        mb: 0.5,
-                      }}
-                    >
-                      {speciality.name}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "text.secondary",
-                        fontSize: { xs: "0.8125rem", sm: "0.875rem" },
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {speciality.details}
-                    </Typography>
-                  </div>
-
-                  <Link
-                    href={`/find-care/specialities/${speciality.slug}`}
-                    className={`mt-1 inline-flex min-h-10 w-full max-w-40 items-center justify-center rounded-xl border px-3 py-2 text-center text-xs font-semibold transition-colors sm:mt-2 sm:w-auto sm:px-4 sm:text-sm ${color.borderClass} ${color.textClass} ${color.hoverBgClass}`}
-                  >
-                    View Details
-                  </Link>
-                </CardContent>
-              </Card>
-            );
-          })}
+      <div
+        id="specialities-results"
+        className="scroll-mt-6 mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16"
+      >
+        <div className="mb-5 flex items-center justify-between gap-3">
+          <p className="text-sm font-medium text-slate-600">
+            {filteredSpecialities.length} specialities found
+          </p>
         </div>
 
-        {totalPages > 1 && (
+        {paginatedSpecialities.length > 0 ? (
+          <div className="grid grid-cols-1 gap-4 min-[520px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-5">
+            {paginatedSpecialities.map((speciality, index) => {
+              const Icon = speciality.Icon;
+              const color = speciality.color;
+
+              return (
+                <Card
+                  key={startIndex + index}
+                  sx={{
+                    height: "100%",
+                    borderRadius: 3,
+                    border: "1px solid",
+                    borderColor: "grey.100",
+                    boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      transform: "translateY(-4px)",
+                      boxShadow: "0 12px 24px rgba(0,0,0,0.08)",
+                      borderColor: color.border,
+                    },
+                  }}
+                >
+                  <CardContent
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      textAlign: "center",
+                      gap: { xs: 1.25, sm: 1.5 },
+                      py: { xs: 2.5, sm: 3 },
+                      px: { xs: 2, sm: 2.5 },
+                      "&:last-child": { pb: { xs: 2.5, sm: 3 } },
+                    }}
+                  >
+                    <div
+                      className={`flex size-12 items-center justify-center rounded-full transition-transform duration-300 ease-in-out hover:scale-110 sm:size-14 ${color.bgClass} ${color.textClass}`}
+                    >
+                      <Icon className="size-6 sm:size-7" />
+                    </div>
+
+                    <div>
+                      <Typography
+                        variant="subtitle1"
+                        sx={{
+                          fontWeight: 700,
+                          color: "text.primary",
+                          fontSize: { xs: "0.95rem", sm: "1rem" },
+                          lineHeight: 1.4,
+                          mb: 0.5,
+                        }}
+                      >
+                        {speciality.name}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "text.secondary",
+                          fontSize: { xs: "0.8125rem", sm: "0.875rem" },
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        {speciality.details}
+                      </Typography>
+                    </div>
+
+                    <Link
+                      href={`/find-care/specialities/${speciality.slug}`}
+                      className={`mt-1 inline-flex min-h-10 w-full max-w-40 items-center justify-center rounded-xl border px-3 py-2 text-center text-xs font-semibold transition-colors sm:mt-2 sm:w-auto sm:px-4 sm:text-sm ${color.borderClass} ${color.textClass} ${color.hoverBgClass}`}
+                    >
+                      View Details
+                    </Link>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="rounded-lg border border-dashed border-slate-200 bg-slate-50 px-4 py-12 text-center">
+            <p className="text-base font-semibold text-slate-900">
+              No specialities found
+            </p>
+            <p className="mt-1 text-sm text-slate-500">
+              Try searching with another speciality name or care detail.
+            </p>
+          </div>
+        )}
+
+        {filteredSpecialities.length > ITEMS_PER_PAGE && (
           <div className="mt-8 flex justify-center sm:mt-10">
             <Pagination
               count={totalPages}

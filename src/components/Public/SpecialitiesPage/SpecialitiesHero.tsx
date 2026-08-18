@@ -1,14 +1,23 @@
 "use client";
 
 import { FaSearch } from "react-icons/fa";
-import { useState } from "react";
 import { Breadcrumbs, Button, TextField } from "@mui/material";
 import Image from "next/image";
 
-export default function SpecialitiesHero() {
-  const [searchSpecialities, setSearchSpecialities] = useState("");
+type SpecialitiesHeroProps = {
+  searchSpecialities: string;
+  onSearchSpecialitiesChange: (value: string) => void;
+};
 
-  const handleSearch = () => {};
+export default function SpecialitiesHero({
+  searchSpecialities,
+  onSearchSpecialitiesChange,
+}: SpecialitiesHeroProps) {
+  const handleSearch = () => {
+    document
+      .getElementById("specialities-results")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <div className="bg-[#e8f9f0]">
@@ -54,7 +63,7 @@ export default function SpecialitiesHero() {
                   placeholder="Enter the specialty to search"
                   variant="standard"
                   value={searchSpecialities}
-                  onChange={(e) => setSearchSpecialities(e.target.value)}
+                  onChange={(e) => onSearchSpecialitiesChange(e.target.value)}
                   slotProps={{
                     input: {
                       disableUnderline: true,
