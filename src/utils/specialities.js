@@ -23,8 +23,14 @@ import {
   LuSyringe,
   LuWind,
 } from "react-icons/lu";
-
 import { FaLungs, FaTooth } from "react-icons/fa";
+
+export const createSpecialitySlug = (name) =>
+  name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 
 const specialityColors = {
   red: {
@@ -36,7 +42,6 @@ const specialityColors = {
     borderClass: "border-red-200",
     hoverBgClass: "hover:bg-red-100",
   },
-
   blue: {
     bg: "#DBEAFE",
     text: "#3B82F6",
@@ -46,7 +51,6 @@ const specialityColors = {
     borderClass: "border-blue-200",
     hoverBgClass: "hover:bg-blue-100",
   },
-
   purple: {
     bg: "#EDE9FE",
     text: "#8B5CF6",
@@ -56,7 +60,6 @@ const specialityColors = {
     borderClass: "border-purple-200",
     hoverBgClass: "hover:bg-purple-100",
   },
-
   pink: {
     bg: "#FCE7F3",
     text: "#EC4899",
@@ -66,7 +69,6 @@ const specialityColors = {
     borderClass: "border-pink-200",
     hoverBgClass: "hover:bg-pink-100",
   },
-
   teal: {
     bg: "#CCFBF1",
     text: "#14B8A6",
@@ -76,7 +78,6 @@ const specialityColors = {
     borderClass: "border-teal-200",
     hoverBgClass: "hover:bg-teal-100",
   },
-
   green: {
     bg: "#DCFCE7",
     text: "#22C55E",
@@ -86,7 +87,6 @@ const specialityColors = {
     borderClass: "border-green-200",
     hoverBgClass: "hover:bg-green-100",
   },
-
   indigo: {
     bg: "#E0E7FF",
     text: "#6366F1",
@@ -96,7 +96,6 @@ const specialityColors = {
     borderClass: "border-indigo-200",
     hoverBgClass: "hover:bg-indigo-100",
   },
-
   orange: {
     bg: "#FFEDD5",
     text: "#F97316",
@@ -106,7 +105,6 @@ const specialityColors = {
     borderClass: "border-orange-200",
     hoverBgClass: "hover:bg-orange-100",
   },
-
   rose: {
     bg: "#FFE4E6",
     text: "#F43F5E",
@@ -116,7 +114,6 @@ const specialityColors = {
     borderClass: "border-rose-200",
     hoverBgClass: "hover:bg-rose-100",
   },
-
   amber: {
     bg: "#FEF3C7",
     text: "#F59E0B",
@@ -126,7 +123,6 @@ const specialityColors = {
     borderClass: "border-amber-200",
     hoverBgClass: "hover:bg-amber-100",
   },
-
   cyan: {
     bg: "#CFFAFE",
     text: "#06B6D4",
@@ -136,7 +132,6 @@ const specialityColors = {
     borderClass: "border-cyan-200",
     hoverBgClass: "hover:bg-cyan-100",
   },
-
   sky: {
     bg: "#E0F2FE",
     text: "#0EA5E9",
@@ -146,7 +141,6 @@ const specialityColors = {
     borderClass: "border-sky-200",
     hoverBgClass: "hover:bg-sky-100",
   },
-
   slate: {
     bg: "#F1F5F9",
     text: "#64748B",
@@ -156,7 +150,6 @@ const specialityColors = {
     borderClass: "border-slate-200",
     hoverBgClass: "hover:bg-slate-100",
   },
-
   fuchsia: {
     bg: "#FAE8FF",
     text: "#D946EF",
@@ -167,13 +160,6 @@ const specialityColors = {
     hoverBgClass: "hover:bg-fuchsia-100",
   },
 };
-
-export const createSpecialitySlug = (name) =>
-  name
-    .toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
 
 const specialities = [
   {
