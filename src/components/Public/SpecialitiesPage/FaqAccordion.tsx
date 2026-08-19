@@ -45,7 +45,7 @@ export default function FaqAccordion({ faqs }: FaqAccordionProps) {
             "&:before": { display: "none" },
             "&.MuiAccordion-root": { margin: 0, borderRadius: 0 },
             "& .MuiAccordionSummary-root": {
-              px: { xs: 2, sm: 3 },
+              px: { xs: 2, sm: 2 },
               py: { xs: 1.5, sm: 2 },
               minHeight: "auto",
             },
@@ -61,7 +61,7 @@ export default function FaqAccordion({ faqs }: FaqAccordionProps) {
             <Typography
               sx={{
                 fontWeight: 500,
-                fontSize: { xs: "13px", sm: "14px", md: "16px" },
+                fontSize: { xs: "12px", sm: "13px", lg: "14px" },
               }}
             >
               {faq.question}

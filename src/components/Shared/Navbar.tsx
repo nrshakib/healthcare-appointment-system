@@ -18,6 +18,8 @@ import {
 } from "react-icons/hi2";
 import { MdOutlineWbSunny, MdNightlight } from "react-icons/md";
 
+import specialities from "@/utils/specialities";
+
 interface SubItem {
   label: string;
   href: string;
@@ -28,13 +30,10 @@ const findCareItems: SubItem[] = [
   { label: "Available Today", href: "/find-care/available-today" },
 ];
 
-const specialties: SubItem[] = [
-  { label: "Cardiology", href: "/specialties/cardiology" },
-  { label: "Dermatology", href: "/specialties/dermatology" },
-  { label: "Neurology", href: "/specialties/neurology" },
-  { label: "Dentistry", href: "/specialties/dentistry" },
-  { label: "Orthopedics", href: "/specialties/orthopedics" },
-];
+const specialityItems: SubItem[] = specialities.map((speciality) => ({
+  label: speciality.name,
+  href: `/find-care/specialities/${speciality.slug}`,
+}));
 
 const servicesItems: SubItem[] = [
   { label: "Book an Appointment", href: "/services/book" },
@@ -65,7 +64,7 @@ function FindCareDropdown({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className="absolute top-full left-0 mt-2 w-64 rounded-xl shadow-2xl overflow-visible z-50 navbar-dropdown border border-(--navbar-border)">
+    <div className="absolute top-full left-0 mt-2 w-72 rounded-xl shadow-2xl overflow-visible z-50 navbar-dropdown border border-(--navbar-border)">
       <div className="py-2">
         {findCareItems.map((item) => (
           <Link
@@ -94,13 +93,21 @@ function FindCareDropdown({ onClose }: { onClose: () => void }) {
           {specialtiesOpen && (
             /* pl-1 replaces the old ml-1 so the hover area is continuous — no physical gap */
             <div
-              className="absolute top-0 left-full pl-1 w-56"
+              className="absolute top-0 left-full pl-1 w-72"
               onMouseEnter={openSpecialties}
               onMouseLeave={scheduleClose}
             >
-              <div className="w-52 rounded-xl shadow-2xl z-50 navbar-dropdown border border-(--navbar-border)">
+              <div className="w-72 max-h-[calc(100vh-20rem)] overflow-y-auto rounded-xl shadow-2xl z-50 navbar-dropdown border border-(--navbar-border)">
                 <div className="py-2">
-                  {specialties.map((s) => (
+                  <Link
+                    href="/find-care/specialities"
+                    onClick={onClose}
+                    className="flex items-center px-4 py-2.5 text-sm font-semibold transition-colors duration-150 navbar-dropdown-item"
+                  >
+                    All Specialities
+                  </Link>
+                  <div className="my-1 border-t border-(--navbar-border)" />
+                  {specialityItems.map((s) => (
                     <Link
                       key={s.href}
                       href={s.href}
@@ -332,7 +339,14 @@ function MobileMenu({
                     </button>
                     <Collapse in={specialtiesOpen} timeout={200}>
                       <div className="ml-3 border-l border-(--navbar-border) pl-3 mt-0.5 space-y-0.5">
-                        {specialties.map((s) => (
+                        <Link
+                          href="/find-care/specialities"
+                          onClick={onClose}
+                          className="flex items-center px-3 py-2 rounded-lg text-sm font-semibold transition-colors duration-150 navbar-dropdown-item"
+                        >
+                          All Specialities
+                        </Link>
+                        {specialityItems.map((s) => (
                           <Link
                             key={s.href}
                             href={s.href}
