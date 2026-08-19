@@ -9,6 +9,8 @@ import FilteringSection, {
 } from "@/components/Public/DoctorsPage/FilteringSection";
 import DoctorsSection from "@/components/Public/DoctorsPage/DoctorsSection";
 import doctors from "@/utils/doctors";
+import Link from "next/link";
+import { TbHome2Filled } from "react-icons/tb";
 
 const fees = doctors.map((d) => d.consultationFee);
 const MIN_FEE = Math.min(...fees, 0);
@@ -136,8 +138,6 @@ export default function Doctors() {
       {/* top section */}
       <div className="bg-[#eaf6f4] py-6">
         <div className="mx-auto max-w-[95%] px-4 xl:max-w-[80%] xl:px-0">
-          <p className="text-2xl sm:text-3xl font-semibold">Find Doctors</p>
-
           <Breadcrumbs
             separator=">"
             aria-label="breadcrumb"
@@ -152,10 +152,16 @@ export default function Doctors() {
               },
             }}
           >
-            <p>Home</p>
+            <Link
+              href="/"
+              className="text-primary hover:text-emerald-600 transition-colors"
+            >
+              <TbHome2Filled className="text-lg" />
+            </Link>
             <p>Find Care</p>
             <p className="text-primary font-medium">Doctors</p>
           </Breadcrumbs>
+          <p className="text-2xl sm:text-3xl font-semibold">Find Doctors</p>
 
           {/* Search Box */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-white rounded-2xl shadow-sm p-4 mt-4 w-full">

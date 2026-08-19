@@ -18,6 +18,7 @@ import { FiUserCheck } from "react-icons/fi";
 import { HiOutlineVideoCamera } from "react-icons/hi2";
 import doctors from "@/utils/doctors";
 import { slugify } from "@/utils/slugify";
+import { TbHome2Filled } from "react-icons/tb";
 
 type PageProps = {
   params: Promise<{
@@ -64,7 +65,12 @@ export default async function DoctorDetails({ params }: PageProps) {
               },
             }}
           >
-            <p>Home</p>
+           <Link
+              href="/"
+              className="text-primary hover:text-emerald-600 transition-colors"
+            >
+              <TbHome2Filled className="text-lg" />
+            </Link>
             <p>Find Care</p>
             <p>Doctors</p>
             <p className="text-primary font-medium">{doctor.name}</p>

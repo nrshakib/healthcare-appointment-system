@@ -30,7 +30,7 @@ import Link from "next/link";
 import FilteringSection, {
   Filters,
 } from "@/components/Public/DoctorsPage/FilteringSection";
-import DoctorSearchResults from "@/components/DoctorSearchResults";
+import DoctorSearchResults from "@/components/Public/DoctorSearchResults";
 import doctors from "@/utils/doctors";
 
 dayjs.extend(customParseFormat);

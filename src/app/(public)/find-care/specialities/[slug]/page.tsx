@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import {
-  Breadcrumbs,
-  Divider,
-} from "@mui/material";
+import { Breadcrumbs, Divider } from "@mui/material";
 import { FaStar } from "react-icons/fa";
-import { GoDotFill} from "react-icons/go";
+import { GoDotFill } from "react-icons/go";
 
 import specialities from "@/utils/specialities";
 import doctors from "@/utils/doctors";
 import { slugify } from "@/utils/slugify";
 import FaqAccordion from "@/components/Public/SpecialitiesPage/FaqAccordion";
+import { TbHome2Filled } from "react-icons/tb";
 
 const SPECIALITY_DOCTOR_MAP: Record<string, string[]> = {
   Cardiology: ["Cardiologist"],
@@ -117,7 +115,12 @@ export default async function SpecialityDetails({
                 display: "flex",
               }}
             >
-              <Link href="/">Home</Link>
+              <Link
+                href="/"
+                className="text-primary hover:text-emerald-600 transition-colors"
+              >
+                <TbHome2Filled className="text-lg" />
+              </Link>
               <p>Find Care</p>
               <Link href="/find-care/specialities" className="font-medium">
                 Specialities

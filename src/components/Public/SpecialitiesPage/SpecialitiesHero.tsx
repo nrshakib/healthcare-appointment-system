@@ -3,6 +3,8 @@
 import { FaSearch } from "react-icons/fa";
 import { Breadcrumbs, Button, TextField } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
+import { TbHome2Filled } from "react-icons/tb";
 
 type SpecialitiesHeroProps = {
   searchSpecialities: string;
@@ -39,7 +41,12 @@ export default function SpecialitiesHero({
                 },
               }}
             >
-              <p>Home</p>
+              <Link
+                href="/"
+                className="text-primary hover:text-emerald-600 transition-colors"
+              >
+                <TbHome2Filled className="text-lg" />
+              </Link>
               <p>Find Care</p>
               <p className="text-primary font-medium">Specialities</p>
             </Breadcrumbs>
