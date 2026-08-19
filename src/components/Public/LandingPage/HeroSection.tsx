@@ -80,10 +80,11 @@ export default function HeroSection() {
 
   const handleSearch = () => {
     const params = new URLSearchParams();
-    if (doctor) params.set("doctor", doctor);
-    if (location) params.set("location", location);
-    if (date) params.set("date", date.format("DD/MM/YYYY"));
-    router.push('/search-doctors');
+    if (doctor.trim()) params.set("doctor", doctor.trim());
+    if (location.trim()) params.set("location", location.trim());
+    if (date && date.isValid()) params.set("date", date.format("YYYY-MM-DD"));
+    const queryString = params.toString();
+    router.push(`/search-doctors${queryString ? `?${queryString}` : ""}`);
   };
 
   return (
@@ -137,6 +138,9 @@ export default function HeroSection() {
                     variant="standard"
                     value={doctor}
                     onChange={(e) => setDoctor(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") handleSearch();
+                    }}
                     slotProps={{
                       input: {
                         disableUnderline: true,
@@ -158,6 +162,9 @@ export default function HeroSection() {
                     variant="standard"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") handleSearch();
+                    }}
                     slotProps={{
                       input: {
                         disableUnderline: true,
