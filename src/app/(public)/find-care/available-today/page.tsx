@@ -148,14 +148,14 @@ export default function AvailableTodayPage() {
       {/* Hero Section */}
       <AvailableTodayHero />
 
-      {/* Main Results Container */}
+      {/* Main Container */}
       <main
         id="doctor-results-top"
-        className="mx-auto w-full sm:max-w-[95%] xl:max-w-[85%] 2xl:max-w-7xl px-3 lg:px-8 py-6 sm:py-8 lg:py-10"
+        className="mx-auto w-full sm:max-w-[95%] lg:max-w-full xl:max-w-[90%] px-3 xl:px-8 py-6 sm:py-8 lg:py-10"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-12 gap-6 xl:gap-8 items-start">
           {/* Left Column: Filters Sidebar (Desktop) */}
-          <aside className="hidden lg:block lg:col-span-4 xl:col-span-3 sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto bg-white p-5 rounded-2xl border border-slate-100/90 shadow-[0_2px_16px_rgba(0,0,0,0.03)]">
+          <aside className="hidden lg:block lg:col-span-1 xl:col-span-3 sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto bg-white p-5 rounded-2xl border border-slate-100/90 shadow-lg">
             <AvailableTodayFilters
               filters={filters}
               onChange={(f) => {
@@ -170,7 +170,7 @@ export default function AvailableTodayPage() {
           </aside>
 
           {/* Right Column: Results Header + Doctors List */}
-          <section className="lg:col-span-8 xl:col-span-9 space-y-4 sm:space-y-5">
+          <section className="lg:col-span-3 xl:col-span-9 space-y-4 sm:space-y-5">
             {/* Header: Count & Sort Dropdown */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-1">
               <div className="flex items-center justify-between gap-2.5">

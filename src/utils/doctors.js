@@ -119,7 +119,7 @@ const doctors = [
     experience: 15,
     consultationFee: 1500,
     consultationType: "In-person",
-    location: "Bangabandhu Sheikh Mujib Medical University Hospital, Dhaka",
+    location: "PG Medical University & Hospital, Dhaka",
     about:
       "Dr. James Anderson is a renowned orthopedic surgeon with extensive experience in joint replacement, spine surgery, and sports injury management.",
     education: [
