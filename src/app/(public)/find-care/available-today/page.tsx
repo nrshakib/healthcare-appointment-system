@@ -2,7 +2,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Pagination } from "@mui/material";
+import { FormControl, MenuItem, Pagination, Select } from "@mui/material";
 import { FaFilter, FaTimes } from "react-icons/fa";
 import { LuChevronDown } from "react-icons/lu";
 
@@ -17,24 +17,17 @@ import AvailableTodayDoctorCard, {
 import AvailableTodayFeatures from "@/components/Public/AvailableToday/AvailableTodayFeatures";
 import AppointmentModal from "@/components/Public/AvailableToday/AppointmentModal";
 
-const fees = doctors.map((d) => d.consultationFee);
-const MIN_FEE = Math.min(...fees, 0);
-const MAX_FEE = Math.max(...fees, 100);
-const specialityOptions = Array.from(
-  new Set(doctors.map((doctor) => doctor.speciality)),
-).sort();
-
-const defaultFilters: Filters = {
-  specialities: [],
-  experience: "",
-  gender: "",
-  consultationType: "",
-  availability: "Available Today",
-  priceRange: [MIN_FEE, MAX_FEE],
-};
+const dayNames = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
 export default function AvailableTodayPage() {
-  const [filters, setFilters] = useState<Filters>(defaultFilters);
   const [sortBy, setSortBy] = useState<string>("recommended");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -50,9 +43,42 @@ export default function AvailableTodayPage() {
   const itemsPerPage = 6;
 
   const today = new Date();
+  const todayName = dayNames[today.getDay()];
+
+  // Doctors available today
+  const availableTodayDoctors = useMemo(() => {
+    return doctors.filter(
+      (doctor) =>
+        Array.isArray(doctor.availableDays) &&
+        doctor.availableDays.includes(todayName),
+    );
+  }, [todayName]);
+
+  const specialityOptions = useMemo(() => {
+    return Array.from(
+      new Set(doctors.map((doctor) => doctor.speciality)),
+    ).sort();
+  }, []);
+
+  const { minFee, maxFee } = useMemo(() => {
+    const fees = availableTodayDoctors.map((d) => d.consultationFee);
+    return {
+      minFee: fees.length ? Math.min(...fees, 0) : 0,
+      maxFee: fees.length ? Math.max(...fees, 100) : 100,
+    };
+  }, [availableTodayDoctors]);
+
+  const [filters, setFilters] = useState<Filters>({
+    specialities: [],
+    experience: "",
+    gender: "",
+    consultationType: "",
+    availability: "Available Today",
+    priceRange: [0, 5000],
+  });
 
   const filteredDoctors = useMemo(() => {
-    return doctors
+    return availableTodayDoctors
       .filter((doctor) => {
         // Specialities (multi-select)
         if (
@@ -106,7 +132,7 @@ export default function AvailableTodayPage() {
         if (sortBy === "experience") return b.experience - a.experience;
         return 0;
       });
-  }, [filters, sortBy]);
+  }, [availableTodayDoctors, filters, sortBy]);
 
   const totalPages = Math.ceil(filteredDoctors.length / itemsPerPage) || 1;
   const paginatedDoctors = useMemo(() => {
@@ -119,10 +145,10 @@ export default function AvailableTodayPage() {
     if (filters.gender && filters.gender !== "All") count += 1;
     if (filters.consultationType && filters.consultationType !== "All")
       count += 1;
-    if (filters.priceRange[0] > MIN_FEE || filters.priceRange[1] < MAX_FEE)
+    if (filters.priceRange[0] > minFee || filters.priceRange[1] < maxFee)
       count += 1;
     return count;
-  }, [filters]);
+  }, [filters, minFee, maxFee]);
 
   const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
@@ -133,7 +159,14 @@ export default function AvailableTodayPage() {
   };
 
   const handleClearAll = () => {
-    setFilters(defaultFilters);
+    setFilters({
+      specialities: [],
+      experience: "",
+      gender: "",
+      consultationType: "",
+      availability: "Available Today",
+      priceRange: [minFee, maxFee],
+    });
     setPage(1);
   };
 
@@ -163,8 +196,8 @@ export default function AvailableTodayPage() {
                 setPage(1);
               }}
               onClearAll={handleClearAll}
-              minFee={MIN_FEE}
-              maxFee={MAX_FEE}
+              minFee={minFee}
+              maxFee={maxFee}
               specialityOptions={specialityOptions}
             />
           </aside>
@@ -174,7 +207,7 @@ export default function AvailableTodayPage() {
             {/* Header: Count & Sort Dropdown */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-1">
               <div className="flex items-center justify-between gap-2.5">
-                <h2 className="text-sm min-[400px]:text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 leading-tight">
+                <h2 className="text-base min-[400px]:text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 leading-tight">
                   <span className="text-[#06836b]">
                     {filteredDoctors.length}
                   </span>{" "}
@@ -198,24 +231,33 @@ export default function AvailableTodayPage() {
               </div>
 
               {/* Sort By Dropdown */}
-              <div className="flex items-center justify-between sm:justify-start gap-2 self-stretch sm:self-auto">
-                <span className="text-xs sm:text-sm text-slate-500 font-medium whitespace-nowrap">
-                  Sort by:
-                </span>
-                <div className="relative flex-1 sm:flex-none">
-                  <select
+              <div className="flex items-center justify-between gap-2 mb-4 sm:mb-0 bg-white sm:bg-transparent p-3 sm:p-0 rounded-xl border border-gray-200/80 sm:border-none shadow-sm sm:shadow-none">
+                <p className="text-sm font-semibold text-gray-700">Sort by:</p>
+                <FormControl size="small" sx={{ minWidth: 160 }}>
+                  <Select
                     value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                    className="w-full sm:w-auto appearance-none bg-white border border-slate-200 rounded-xl px-3 sm:px-3.5 py-1.5 pr-8 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#06836b] shadow-xs cursor-pointer"
+                    onChange={(e) => setSortBy(e.target.value as any)}
+                    sx={{
+                      fontSize: "0.85rem",
+                      borderRadius: "10px",
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#e2e8f0",
+                      },
+                      "&:hover .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#10B981",
+                      },
+                      "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#10B981",
+                      },
+                    }}
                   >
-                    <option value="recommended">Recommended</option>
-                    <option value="rating">Rating: High to Low</option>
-                    <option value="fee-low">Fee: Low to High</option>
-                    <option value="fee-high">Fee: High to Low</option>
-                    <option value="experience">Experience: Most</option>
-                  </select>
-                  <LuChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none" />
-                </div>
+                    <MenuItem value="recommended">Recommended</MenuItem>
+                    <MenuItem value="rating">Highest Rated</MenuItem>
+                    <MenuItem value="fee-low">Fee: Low to High</MenuItem>
+                    <MenuItem value="fee-high">Fee: High to Low</MenuItem>
+                    <MenuItem value="experience">Most Experienced</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
             </div>
 
@@ -323,8 +365,8 @@ export default function AvailableTodayPage() {
                   setPage(1);
                 }}
                 onClearAll={handleClearAll}
-                minFee={MIN_FEE}
-                maxFee={MAX_FEE}
+                minFee={minFee}
+                maxFee={maxFee}
                 specialityOptions={specialityOptions}
               />
             </div>

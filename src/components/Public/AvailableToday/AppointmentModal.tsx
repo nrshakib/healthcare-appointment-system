@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { HiXMark } from "react-icons/hi2";
 import { IoCheckmarkCircle, IoCheckmarkDoneCircle } from "react-icons/io5";
-import { FaCalendarAlt, FaClock, FaUserMd } from "react-icons/fa";
+import { FaCalendarAlt } from "react-icons/fa";
 import { DoctorCardItem } from "./AvailableTodayDoctorCard";
 
 interface AppointmentModalProps {
@@ -26,12 +26,19 @@ export default function AppointmentModal({
   const [patientPhone, setPatientPhone] = useState("");
   const [patientEmail, setPatientEmail] = useState("");
   const [consultationType, setConsultationType] = useState<"Online" | "In-Person">("Online");
-  const [activeSlot, setActiveSlot] = useState<string>(selectedSlot || "10:00 AM");
+  const [selectedCustomSlot, setSelectedCustomSlot] = useState<string | null>(null);
   const [symptoms, setSymptoms] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   if (!isOpen || !doctor) return null;
+
+  const defaultSlot =
+    selectedSlot ||
+    (doctor.timeslots && doctor.timeslots.length > 0
+      ? doctor.timeslots[0].split(" - ")[0]
+      : "10:00 AM");
+  const activeSlot = selectedCustomSlot || defaultSlot;
 
   const displayFee =
     doctor.consultationFee > 150
@@ -53,6 +60,7 @@ export default function AppointmentModal({
     setPatientPhone("");
     setPatientEmail("");
     setSymptoms("");
+    setSelectedCustomSlot(null);
     onClose();
   };
 
@@ -193,11 +201,14 @@ export default function AppointmentModal({
                   Select Time Slot Today
                 </label>
                 <div className="flex flex-wrap gap-1.5">
-                  {["10:00 AM", "10:30 AM", "11:00 AM", "02:00 PM", "02:30 PM", "04:00 PM"].map((slot) => (
+                  {(doctor.timeslots && doctor.timeslots.length > 0
+                    ? doctor.timeslots.map((slot) => slot.split(" - ")[0] || slot)
+                    : ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM"]
+                  ).map((slot) => (
                     <button
                       key={slot}
                       type="button"
-                      onClick={() => setActiveSlot(slot)}
+                      onClick={() => setSelectedCustomSlot(slot)}
                       className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
                         activeSlot === slot
                           ? "bg-[#06836b] text-white border-[#06836b]"

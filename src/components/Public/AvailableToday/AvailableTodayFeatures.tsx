@@ -28,20 +28,23 @@ export default function AvailableTodayFeatures() {
 
   return (
     <section className="mt-8 sm:mt-12 lg:mt-16 mb-8 sm:mb-12">
-      <div className="bg-[#eef9f6] border border-emerald-100/90 rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-9 shadow-xs">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
+      <div className="bg-linear-to-br from-[#cee2db] via-[#d2e8e0] to-[#bee3d8] border border-emerald-100/90 rounded-2xl sm:rounded-3xl p-3 sm:p-5 lg:p-7 shadow-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-5 ">
           {features.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div key={index} className="flex items-start gap-3.5 sm:gap-4">
-                <div className="size-10 sm:size-11 lg:size-12 rounded-xl sm:rounded-2xl bg-[#06836b]/10 text-[#06836b] flex items-center justify-center shrink-0">
+              <div
+                key={index}
+                className="flex items-center gap-2 sm:gap-3 bg-white rounded-lg p-2"
+              >
+                <div className="size-10 rounded-xl sm:rounded-2xl bg-[#06836b]/10 text-[#06836b] flex items-center justify-center shrink-0">
                   <Icon className="text-lg sm:text-xl lg:text-2xl" />
                 </div>
                 <div className="space-y-0.5 sm:space-y-1 min-w-0">
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
+                  <h3 className="text-sm xl:text-base font-bold text-slate-900 leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <p className="text-xs xl:text-xs text-slate-600 leading-relaxed">
                     {item.description}
                   </p>
                 </div>

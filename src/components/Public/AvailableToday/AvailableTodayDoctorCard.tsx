@@ -12,9 +12,8 @@ import {
 } from "react-icons/fa";
 import { HiOutlineVideoCamera } from "react-icons/hi2";
 import { FiUserCheck } from "react-icons/fi";
-import { IoCheckmarkCircle } from "react-icons/io5";
 import { slugify } from "@/utils/slugify";
-import { Badge } from "@mui/material";
+import { Badge, Button } from "@mui/material";
 
 export interface DoctorCardItem {
   id: string | number;
@@ -47,17 +46,6 @@ export default function AvailableTodayDoctorCard({
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [showAllSlots, setShowAllSlots] = useState(false);
 
-  // Generate slots for today
-  const defaultSlots = [
-    "10:00 AM",
-    "10:30 AM",
-    "11:00 AM",
-    "11:30 AM",
-    "02:00 PM",
-    "02:30 PM",
-    "03:00 PM",
-  ];
-
   // Derive slots from doctor.timeslots or default fallback slots
   const allSlots =
     doctor.timeslots && doctor.timeslots.length > 0
@@ -65,7 +53,7 @@ export default function AvailableTodayDoctorCard({
           // Format "09:00 AM - 10:00 AM" to "09:00 AM" if needed
           return slot.split(" - ")[0] || slot;
         })
-      : defaultSlots;
+      : [];
 
   const initialSlotsCount = 3;
   const visibleSlots = showAllSlots
@@ -78,11 +66,6 @@ export default function AvailableTodayDoctorCard({
     doctor.consultationFee > 150
       ? Math.round(doctor.consultationFee / 25)
       : doctor.consultationFee;
-
-  const hasOnline = doctor.consultationType?.toLowerCase().includes("online");
-  const hasInPerson =
-    doctor.consultationType?.toLowerCase().includes("person") ||
-    !doctor.consultationType;
 
   const locationText = doctor.location || "City Medical Center, Dhaka";
 
@@ -240,22 +223,43 @@ export default function AvailableTodayDoctorCard({
 
             {/* Buttons Row */}
             <div className="grid grid-cols-1 min-[350px]:grid-cols-2 gap-2 w-full">
-              <button
-                type="button"
+              <Button
+                variant="contained"
+                disableElevation
                 onClick={() =>
                   onBookAppointment(doctor, selectedSlot || visibleSlots[0])
                 }
-                className="w-full py-2.5 px-3 rounded-xl bg-[#06836b] hover:bg-[#056f5a] text-white font-semibold text-xs xl:text-sm text-center shadow-xs hover:shadow-md transition-all active:scale-[0.98] cursor-pointer"
+                sx={{
+                  backgroundColor: "#06836b",
+                  color: "#ffffff",
+                  textTransform: "none",
+                  fontWeight: 600,
+                  fontSize: { xs: "12px", xl: "14px" },
+                  py: "8px",
+                  px: "12px",
+                  borderRadius: "12px",
+                  boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+                  transition: "all 0.2s ease-in-out",
+                  cursor: "pointer",
+                  "&:hover": {
+                    backgroundColor: "#056f5a",
+                    boxShadow:
+                      "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
+                  },
+                  "&:active": {
+                    transform: "scale(0.98)",
+                  },
+                }}
               >
                 Book Appointment
-              </button>
+              </Button>
 
               <Link
                 href={`/find-care/doctors/${slugify(doctor.name)}`}
-                className="w-full py-2.5 px-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-medium text-xs sm:text-sm text-center flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full py-2 px-3 rounded-xl bg-white hover:bg-primary hover:text-white border border-primary text-primary font-medium text-xs sm:text-sm text-center flex items-center justify-center gap-1.5 transition-all shadow-xs hover:shadow-md active:scale-[0.98]"
               >
                 <span>View Profile</span>
-                <FaArrowRight className="text-xs text-slate-400 group-hover:translate-x-0.5 transition-transform" />
+                <FaArrowRight className="text-xs transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
           </div>
