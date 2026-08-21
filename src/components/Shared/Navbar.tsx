@@ -36,10 +36,10 @@ const specialityItems: SubItem[] = specialities.map((speciality) => ({
 }));
 
 const servicesItems: SubItem[] = [
-  { label: "Book an Appointment", href: "/services/book" },
-  { label: "Video Consultation", href: "/services/video" },
-  { label: "In-Person Consultation", href: "/services/in-person" },
-  { label: "Medical Records", href: "/services/records" },
+  { label: "Appointment", href: "/services/appointment" },
+  { label: "Video Consultation", href: "/services/video-consultation" },
+  { label: "In-Person Consultation", href: "/services/in-person-consultation" },
+  { label: "Medical Records", href: "/services/medical-records" },
   { label: "Prescriptions", href: "/services/prescriptions" },
 ];
 

@@ -4,7 +4,6 @@
 import { useMemo, useState } from "react";
 import { FormControl, MenuItem, Pagination, Select } from "@mui/material";
 import { FaFilter, FaTimes } from "react-icons/fa";
-import { LuChevronDown } from "react-icons/lu";
 
 import doctors from "@/utils/doctors";
 import AvailableTodayHero from "@/components/Public/AvailableToday/AvailableTodayHero";

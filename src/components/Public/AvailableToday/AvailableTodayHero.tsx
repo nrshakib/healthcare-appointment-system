@@ -125,7 +125,7 @@ export default function AvailableTodayHero() {
 
           {/* Clock badge */}
           <motion.div
-            className="absolute bottom-3 sm:bottom-4 right-0 sm:right-1 z-10 flex items-center justify-center rounded-xl border border-emerald-100 bg-white/95 p-2 sm:p-2.5 shadow-[0_6px_16px_rgba(6,131,107,0.12)]"
+            className="absolute bottom-3 sm:bottom-4 right-0 sm:right-1 z-10 flex items-center justify-center rounded-xl border border-emerald-100 bg-white/95 p-2 sm:p-2.5 shadow-lg"
             initial={{ opacity: 0, y: 10 }}
             animate={{
               opacity: 1,
