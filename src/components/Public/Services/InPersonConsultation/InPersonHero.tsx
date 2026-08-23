@@ -23,7 +23,7 @@ const fadeUp: Variants = {
   },
 };
 
-export default function VideoHero() {
+export default function InPersonHero() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -58,7 +58,7 @@ export default function VideoHero() {
 
             <span className="text-slate-600 font-normal">Services</span>
             <span className="text-[#06836b] font-medium">
-              Video Consultation
+              In-Person Consultation
             </span>
           </Breadcrumbs>
         </motion.nav>
@@ -77,9 +77,9 @@ export default function VideoHero() {
               variants={fadeUp}
               className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1] sm:leading-[1.12]"
             >
-              Consult a Doctor
+              In-Person
               <br className="hidden sm:inline" />
-              From <span className="text-primary">Anywhere</span>
+              <span className="text-primary">Consultation</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -87,9 +87,11 @@ export default function VideoHero() {
               variants={fadeUp}
               className="mx-auto md:mx-0 mt-4 lg:mt-5 max-w-md text-xs sm:text-sm text-slate-600 leading-relaxed"
             >
-              Get expert medical advice from the comfort of your home through
-              secure video calls.
+              Visit for personalized care and face-to-face consultations with
+              experienced doctors.
             </motion.p>
+
+            <div></div>
 
             {/* Action Buttons */}
             <motion.div
@@ -118,10 +120,10 @@ export default function VideoHero() {
             transition={{ duration: 0.55, delay: 0.15, ease: "easeOut" }}
             className="order-1 md:order-2 md:col-span-7 lg:col-span-6 flex items-center justify-center md:pl-2 lg:pl-0 w-full"
           >
-            <div className="relative w-52 min-[400px]:w-56 md:w-68 lg:w-72 xl:w-96 h-40 min-[400px]:h-48 md:h-52 lg:h-60 xl:h-72">
+            <div className="relative w-52 min-[400px]:w-56 md:w-72 lg:w-80 xl:w-96 h-40 min-[400px]:h-48 md:h-48 lg:h-52 xl:h-60">
               <Image
-                src="/images/services/video-consultation-hero.png"
-                alt="Video Consultation with a Doctor"
+                src="/images/services/in-person-hero.png"
+                alt="In-person Consultation with a Doctor"
                 fill
                 priority
                 sizes="(min-width: 1280px) 288px, (min-width: 1024px) 256px, (min-width: 768px) 208px, (min-width: 400px) 208px, 176px"

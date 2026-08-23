@@ -105,19 +105,6 @@ export default function AppointmentHero() {
                   Find a Doctor
                 </Link>
               </motion.div>
-
-              <motion.div
-                whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
-                whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
-                className="w-full min-[480px]:w-auto"
-              >
-                <Link
-                  href="/resources/how-it-works"
-                  className="block w-full min-w-32.5 lg:min-w-35 rounded-lg border border-[#06836b] bg-white px-5 lg:px-6 py-2.5 sm:py-3 text-center text-sm font-semibold text-[#06836b] transition-all hover:bg-[#e6f7f2]"
-                >
-                  How It Works
-                </Link>
-              </motion.div>
             </motion.div>
           </motion.div>
 
@@ -128,7 +115,7 @@ export default function AppointmentHero() {
             transition={{ duration: 0.55, delay: 0.15, ease: "easeOut" }}
             className="order-1 md:order-2 md:col-span-7 lg:col-span-6 flex items-center justify-center md:pl-2 lg:pl-0 w-full"
           >
-            <div className="relative w-48 min-[400px]:w-52 md:w-60 lg:w-64 xl:w-80 h-48 min-[400px]:h-52 md:h-56 lg:h-64 xl:h-72">
+            <div className="relative w-48 min-[400px]:w-52 md:w-60 lg:w-64 xl:w-96 h-48 min-[400px]:h-52 md:h-56 lg:h-64 xl:h-72">
               <Image
                 src="/images/services/appointments-hero.png"
                 alt="Doctor booking appointments"
