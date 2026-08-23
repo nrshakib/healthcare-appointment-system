@@ -27,8 +27,8 @@ export default function InPersonHero() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="overflow-hidden bg-linear-to-br from-[#ebfaf5] via-[#f2fdf9] to-[#e6f7f2] pt-4 pb-10 sm:pt-6 sm:pb-12 lg:py-8">
-      <div className="mx-auto w-full max-w-7xl lg:max-w-[95%] px-4 sm:px-6 lg:px-8">
+    <section className="overflow-hidden bg-linear-to-br from-[#baf5e2] via-[#eafff7] to-[#b8d9cf] pt-4 pb-10 sm:pt-6 sm:pb-12 lg:py-8">
+      <div className="mx-auto w-full max-w-7xl lg:max-w-[90%] px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <motion.nav
           initial={{ opacity: 0, y: -6 }}
@@ -57,7 +57,7 @@ export default function InPersonHero() {
             </Link>
 
             <span className="text-slate-600 font-normal">Services</span>
-            <span className="text-[#06836b] font-medium">
+            <span className="text-[#06836b] font-semibold">
               In-Person Consultation
             </span>
           </Breadcrumbs>
@@ -118,7 +118,7 @@ export default function InPersonHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.15, ease: "easeOut" }}
-            className="order-1 md:order-2 md:col-span-7 lg:col-span-6 flex items-center justify-center md:pl-2 lg:pl-0 w-full"
+            className="order-1 md:order-2 md:col-span-7 lg:col-span-6 flex items-center justify-end md:pl-2 lg:pl-0 w-full"
           >
             <div className="relative w-52 min-[400px]:w-56 md:w-72 lg:w-80 xl:w-96 h-40 min-[400px]:h-48 md:h-48 lg:h-52 xl:h-60">
               <Image
