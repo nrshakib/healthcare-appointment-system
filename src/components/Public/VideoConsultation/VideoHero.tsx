@@ -23,7 +23,7 @@ const fadeUp: Variants = {
   },
 };
 
-export default function AppointmentHero() {
+export default function VideoHero() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -57,7 +57,9 @@ export default function AppointmentHero() {
             </Link>
 
             <span className="text-slate-600 font-normal">Services</span>
-            <span className="text-[#06836b] font-medium">Appointments</span>
+            <span className="text-[#06836b] font-medium">
+              Video Consultation
+            </span>
           </Breadcrumbs>
         </motion.nav>
 
@@ -75,8 +77,9 @@ export default function AppointmentHero() {
               variants={fadeUp}
               className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1] sm:leading-[1.12]"
             >
-              Appointments Made <br className="hidden sm:inline" />
-              <span className="text-primary">Simple</span>
+              Consult a Doctor
+              <br className="hidden sm:inline" />
+              From <span className="text-primary">Anywhere</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -84,8 +87,8 @@ export default function AppointmentHero() {
               variants={fadeUp}
               className="mx-auto md:mx-0 mt-4 lg:mt-5 max-w-md text-xs sm:text-sm text-slate-600 leading-relaxed"
             >
-              Book, manage, and reschedule appointments with top doctors in just
-              a few clicks.
+              Get expert medical advice from the comfort of your home through
+              secure video calls.
             </motion.p>
 
             {/* Action Buttons */}
@@ -128,10 +131,10 @@ export default function AppointmentHero() {
             transition={{ duration: 0.55, delay: 0.15, ease: "easeOut" }}
             className="order-1 md:order-2 md:col-span-7 lg:col-span-6 flex items-center justify-center md:pl-2 lg:pl-0 w-full"
           >
-            <div className="relative w-48 min-[400px]:w-52 md:w-60 lg:w-64 xl:w-80 h-48 min-[400px]:h-52 md:h-56 lg:h-64 xl:h-72">
+            <div className="relative w-52 min-[400px]:w-56 md:w-68 lg:w-72 xl:w-88 h-40 min-[400px]:h-48 md:h-52 lg:h-60 xl:h-72">
               <Image
-                src="/images/services/appointments-hero.png"
-                alt="Doctor booking appointments"
+                src="/images/services/video-consultation-now.png"
+                alt="Video Consultation with a Doctor"
                 fill
                 priority
                 sizes="(min-width: 1280px) 288px, (min-width: 1024px) 256px, (min-width: 768px) 208px, (min-width: 400px) 208px, 176px"
