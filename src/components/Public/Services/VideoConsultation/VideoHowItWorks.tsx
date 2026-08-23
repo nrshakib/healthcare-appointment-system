@@ -133,7 +133,7 @@ export default function VideoHowItWorks() {
             </p>
             <Link
               href="/"
-              className="mt-4 inline-flex items-center justify-center rounded-xl bg-[#05c127] px-2.5 sm:px-5 py-1.5 sm:py-3 text-xs lg:text-sm font-semibold text-white shadow-xs transition-colors hover:bg-[#00543f]"
+              className="mt-4 inline-flex items-center justify-center rounded-xl bg-white px-2.5 sm:px-5 py-1.5 sm:py-3 text-xs lg:text-sm font-semibold text-[#05c127] shadow-xs transition-colors hover:bg-[#32df7a] hover:text-white"
             >
               Consult Now
             </Link>
