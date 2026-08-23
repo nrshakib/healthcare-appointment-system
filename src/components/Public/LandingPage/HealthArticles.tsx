@@ -6,65 +6,7 @@ import Slider from "react-slick";
 import Image from "next/image";
 import { Card, CardContent, Box, Typography, Chip } from "@mui/material";
 import { FaArrowRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
-const articles = [
-  {
-    category: "Nutrition",
-    title: "10 Superfoods That Boost Your Immune System",
-    date: "May 12, 2026",
-    readTime: "5 min read",
-    image: "/images/articles/superfoods.png",
-  },
-  {
-    category: "Wellness",
-    title: "Simple Ways to Reduce Stress and Improve Mental Health",
-    date: "May 10, 2026",
-    readTime: "4 min read",
-    image: "/images/articles/meditation.png",
-  },
-  {
-    category: "Health Tips",
-    title: "When Should You See a Doctor? 7 Warning Signs",
-    date: "May 8, 2026",
-    readTime: "6 min read",
-    image: "/images/articles/doctor-visit.png",
-  },
-  {
-    category: "Fitness",
-    title: "A Beginner's Guide to Building a Sustainable Workout Routine",
-    date: "May 6, 2026",
-    readTime: "7 min read",
-    image: "/images/articles/workout.png",
-  },
-  {
-    category: "Sleep",
-    title: "Why Quality Sleep Matters More Than You Think",
-    date: "May 4, 2026",
-    readTime: "5 min read",
-    image: "/images/articles/sleep.png",
-  },
-  {
-    category: "Nutrition",
-    title: "Hydration 101: How Much Water Do You Really Need?",
-    date: "May 2, 2026",
-    readTime: "3 min read",
-    image: "/images/articles/hydration.png",
-  },
-  {
-    category: "Parenting",
-    title: "Keeping Kids Healthy During Flu Season",
-    date: "April 29, 2026",
-    readTime: "6 min read",
-    image: "/images/articles/kids-health.png",
-  },
-  {
-    category: "Wellness",
-    title: "The Link Between Gut Health and Mental Wellbeing",
-    date: "April 26, 2026",
-    readTime: "5 min read",
-    image: "/images/articles/gut-health.png",
-  },
-];
+import healthArticles from "@/utils/healthArticles";
 
 export default function HealthArticles() {
   const sliderRef = useRef<Slider>(null);
@@ -148,7 +90,7 @@ export default function HealthArticles() {
             </h2>
           </div>
           <Link
-            href="/"
+            href="/resources/health-articles"
             className="flex items-center gap-2 text-sm sm:text-base font-medium text-emerald-600 hover:underline shrink-0"
           >
             <span>View All Articles</span>
@@ -174,119 +116,122 @@ export default function HealthArticles() {
           >
             {loading
               ? Array.from({ length: slidesToShow }).map((_, i) => (
-                  <SkeletonArticle key={i} />
-                ))
-              : articles.map((article, index) => (
-                  <Box
-                    key={index}
-                    className="h-full px-1 py-2 min-[380px]:px-2 sm:px-3"
+                <SkeletonArticle key={i} />
+              ))
+              : healthArticles.map((article, index) => (
+                <Box
+                  key={index}
+                  className="h-full px-1 py-2 min-[380px]:px-2 sm:px-3"
+                >
+                  <Link
+                    href={`/resources/health-articles/${article.slug}`}
+                    className="group block h-full"
                   >
-                    <Link href="/" className="group block h-full">
-                      <Card
-                        elevation={0}
+                    <Card
+                      elevation={0}
+                      sx={{
+                        height: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "100%",
+                        borderRadius: "8px",
+                        border: "1px solid",
+                        borderColor: "grey.100",
+                        boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+                        overflow: "hidden",
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          transform: "translateY(-4px)",
+                          boxShadow: "0 12px 24px rgba(0,0,0,0.08)",
+                        },
+                      }}
+                    >
+                      <Box
                         sx={{
-                          height: "100%",
-                          display: "flex",
-                          flexDirection: "column",
-                          width: "100%",
-                          borderRadius: "8px",
-                          border: "1px solid",
-                          borderColor: "grey.100",
-                          boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-                          overflow: "hidden",
-                          transition: "all 0.3s ease",
-                          "&:hover": {
-                            transform: "translateY(-4px)",
-                            boxShadow: "0 12px 24px rgba(0,0,0,0.08)",
+                          position: "relative",
+                          aspectRatio: {
+                            xs: "16 / 10",
+                            sm: "4 / 3",
+                            lg: "16 / 11",
                           },
+                          minHeight: { xs: 170, sm: 190 },
+                          maxHeight: { xs: 220, lg: 250 },
+                          width: "100%",
+                          overflow: "hidden",
                         }}
                       >
-                        <Box
+                        <Image
+                          src={article.image}
+                          alt={article.title}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                        />
+                      </Box>
+
+                      <CardContent
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          flex: 1,
+                          px: { xs: 2, sm: 2.5 },
+                          pt: { xs: 2, sm: 2.25 },
+                          pb: { xs: 2.25, sm: 2.5 },
+                          "&:last-child": { pb: { xs: 2.25, sm: 2.5 } },
+                        }}
+                      >
+                        <Chip
+                          label={article.category}
+                          size="small"
                           sx={{
-                            position: "relative",
-                            aspectRatio: {
-                              xs: "16 / 10",
-                              sm: "4 / 3",
-                              lg: "16 / 11",
-                            },
-                            minHeight: { xs: 170, sm: 190 },
-                            maxHeight: { xs: 220, lg: 250 },
-                            width: "100%",
+                            alignSelf: "flex-start",
+                            mb: 1,
+                            px: 1,
+                            bgcolor: "#ecfdf5",
+                            color: "#047857",
+                            fontWeight: 600,
+                            fontSize: "0.75rem",
+                          }}
+                        />
+
+                        <Typography
+                          variant="subtitle1"
+                          sx={{
+                            fontWeight: 700,
+                            color: "text.primary",
+                            lineHeight: 1.4,
+                            fontSize: { xs: "0.9375rem", sm: "1rem" },
+                            display: "-webkit-box",
+                            WebkitLineClamp: 3,
+                            WebkitBoxOrient: "vertical",
                             overflow: "hidden",
                           }}
                         >
-                          <Image
-                            src={article.image}
-                            alt={article.title}
-                            fill
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                          />
-                        </Box>
+                          {article.title}
+                        </Typography>
 
-                        <CardContent
+                        <Box
                           sx={{
+                            mt: "auto",
+                            pt: 2,
                             display: "flex",
-                            flexDirection: "column",
-                            flex: 1,
-                            px: { xs: 2, sm: 2.5 },
-                            pt: { xs: 2, sm: 2.25 },
-                            pb: { xs: 2.25, sm: 2.5 },
-                            "&:last-child": { pb: { xs: 2.25, sm: 2.5 } },
+                            alignItems: "center",
+                            gap: 0.75,
+                            color: "text.secondary",
+                            fontSize: { xs: "0.75rem", sm: "0.8rem" },
+                            flexWrap: "wrap",
+                            lineHeight: 1.4,
                           }}
                         >
-                          <Chip
-                            label={article.category}
-                            size="small"
-                            sx={{
-                              alignSelf: "flex-start",
-                              mb: 1,
-                              px: 1,
-                              bgcolor: "#ecfdf5",
-                              color: "#047857",
-                              fontWeight: 600,
-                              fontSize: "0.75rem",
-                            }}
-                          />
-
-                          <Typography
-                            variant="subtitle1"
-                            sx={{
-                              fontWeight: 700,
-                              color: "text.primary",
-                              lineHeight: 1.4,
-                              fontSize: { xs: "0.9375rem", sm: "1rem" },
-                              display: "-webkit-box",
-                              WebkitLineClamp: 3,
-                              WebkitBoxOrient: "vertical",
-                              overflow: "hidden",
-                            }}
-                          >
-                            {article.title}
-                          </Typography>
-
-                          <Box
-                            sx={{
-                              mt: "auto",
-                              pt: 2,
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 0.75,
-                              color: "text.secondary",
-                              fontSize: { xs: "0.75rem", sm: "0.8rem" },
-                              flexWrap: "wrap",
-                              lineHeight: 1.4,
-                            }}
-                          >
-                            <span>{article.date}</span>
-                            <span className="h-1 w-1 rounded-full bg-slate-300 shrink-0" />
-                            <span>{article.readTime}</span>
-                          </Box>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  </Box>
-                ))}
+                          <span>{article.date}</span>
+                          <span className="h-1 w-1 rounded-full bg-slate-300 shrink-0" />
+                          <span>{article.readTime}</span>
+                        </Box>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </Box>
+              ))}
           </Slider>
 
           <button
