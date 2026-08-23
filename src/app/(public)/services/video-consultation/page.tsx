@@ -1,6 +1,6 @@
-import VideoHero from "@/components/Public/VideoConsultation/VideoHero";
-import VideoHowItWorks from "@/components/Public/VideoConsultation/VideoHowItWorks";
-import VideoFeatures from "@/components/Public/VideoConsultation/VideotFeatures";
+import VideoHero from "@/components/Public/Services/VideoConsultation/VideoHero";
+import VideoHowItWorks from "@/components/Public/Services/VideoConsultation/VideoHowItWorks";
+import VideoFeatures from "@/components/Public/Services/VideoConsultation/VideotFeatures";
 
 export default function VideoConsultation() {
   return (

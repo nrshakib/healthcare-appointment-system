@@ -1,6 +1,6 @@
-import AppointmentHero from "@/components/Public/Appointment/AppointmentHero";
-import AppointmentFeatures from "@/components/Public/Appointment/AppointmentFeatures";
-import AppointmentHowItWorks from "@/components/Public/Appointment/AppointmentHowItWorks";
+import AppointmentHero from "@/components/Public/Services/Appointment/AppointmentHero";
+import AppointmentFeatures from "@/components/Public/Services/Appointment/AppointmentFeatures";
+import AppointmentHowItWorks from "@/components/Public/Services/Appointment/AppointmentHowItWorks";
 
 export default function Appointment() {
   return (
