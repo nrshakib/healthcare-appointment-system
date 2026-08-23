@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { LuChevronRight } from "react-icons/lu";
 import { Breadcrumbs } from "@mui/material";
 import { TbHome2Filled } from "react-icons/tb";
@@ -24,7 +24,6 @@ const fadeUp: Variants = {
 };
 
 export default function RecordsHero() {
-  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section className="overflow-hidden bg-linear-to-br from-[#baf5e2] via-[#eafff7] to-[#b8d9cf] pt-4 pb-10 sm:pt-6 sm:pb-12 lg:py-8">

@@ -40,14 +40,12 @@ const servicesItems: SubItem[] = [
   { label: "Video Consultation", href: "/services/video-consultation" },
   { label: "In-Person Consultation", href: "/services/in-person-consultation" },
   { label: "Medical Records", href: "/services/medical-records" },
-  { label: "Prescriptions", href: "/services/prescriptions" },
 ];
 
 const resourcesItems: SubItem[] = [
-  { label: "Health Articles", href: "/resources/articles" },
-  { label: "Health Guides", href: "/resources/guides" },
-  { label: "FAQs", href: "/resources/faqs" },
-  { label: "Help Center", href: "/resources/help" },
+  { label: "Health Articles", href: "/resources/health-articles" },
+  { label: "FAQs", href: "/resources/frequently-asked-questions" },
+  { label: "Help Center", href: "/resources/help-center" },
 ];
 
 function FindCareDropdown({ onClose }: { onClose: () => void }) {
@@ -83,9 +81,7 @@ function FindCareDropdown({ onClose }: { onClose: () => void }) {
           onMouseEnter={openSpecialties}
           onMouseLeave={scheduleClose}
         >
-          <p
-            className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
-          >
+          <p className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item">
             Browse Specialties
             <HiChevronRight size={14} />
           </p>

@@ -4,114 +4,139 @@ import Link from "next/link";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-export default function Footer() {
+const findCareLinks = [
+  { href: "/find-care/doctors", label: "Find a Doctor" },
+  { href: "/find-care/specialities", label: "Specialities" },
+  { href: "/find-care/available-today", label: "Available Today" },
+];
+
+const serviceLinks = [
+  { href: "/services/appointment", label: "Book Appointment" },
+  { href: "/services/video-consultation", label: "Video Consultation" },
+  { href: "/services/in-person-consultation", label: "In Person Consultation" },
+  { href: "/services/medical-records", label: "Medical Records" },
+];
+
+const resourceLinks = [
+  { href: "/resources/health-articles", label: "Health Articles" },
+  { href: "/resources/frequently-asked-questions", label: "FAQs" },
+  { href: "/resources/help-center", label: "Help Center" },
+];
+
+const socialLinks = [
+  { href: "https://facebook.com", icon: FaFacebook, label: "Facebook" },
+  { href: "https://x.com", icon: FaXTwitter, label: "X (Twitter)" },
+  { href: "https://instagram.com", icon: FaInstagram, label: "Instagram" },
+];
+
+function FooterColumn({
+  title,
+  links,
+  color,
+}: {
+  title: string;
+  links: { href: string; label: string }[];
+  color: string;
+}) {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 px-2 sm:px-8 lg:px-20 py-16 bg-gray-100">
-      <div className="space-y-5">
-        <Link
-          href="/"
-          className="flex items-center h-5 sm:h-10 w-28 sm:w-40"
-          aria-label="MediCare Home"
-        >
-          <Image
-            src="/images/medicare-logo2.png"
-            alt="MediCare Logo"
-            width={180}
-            height={40}
-            loading="eager"
-            priority
-          />
-        </Link>
-        <p className="text-gray-400 text-xs sm:text-sm lg:w-[80%]">
-          Your health, our priority. We Connect you with trusted doctors and
-          quality care.
-        </p>
-        <div className="flex items-center gap-2">
-          <Link href="facebook.com" className="bg-primary/20 p-2 rounded-full">
-            <FaFacebook />
-          </Link>
-          <Link href="x.com" className="bg-primary/20 p-2 rounded-full">
-            <FaXTwitter />
-          </Link>
-          <Link href="instagram.com" className="bg-primary/20 p-2 rounded-full">
-            <FaInstagram />
-          </Link>
-        </div>
-      </div>
-      <div>
-        <p className="text-lg font-semibold text-primary mb-2">Find Care</p>
-        <div className="flex flex-col gap-.5 text-orange-400  text-sm sm:text-base">
-          <Link href="/find-care/doctors" className="hover:text-primary">
-            Find a Doctor
-          </Link>
-          {/* <Link href="/" className="hover:text-primary">
-            Find a Clinic
-          </Link>
-          <Link href="/" className="hover:text-primary">
-            Find a Hospital
-          </Link> */}
-          <Link href="/find-care/specialities" className="hover:text-primary">
-            Specialities
-          </Link>
+    <div>
+      <p className="text-base sm:text-lg font-semibold text-primary mb-4">
+        {title}
+      </p>
+      <div className="flex flex-col gap-2.5 text-sm sm:text-base font-medium">
+        {links.map(({ href, label }, idx) => (
           <Link
-            href="/find-care/available-today"
-            className="hover:text-primary"
+            key={idx}
+            href={href}
+            className={`${color} transition-colors w-fit`}
           >
-            Available Today
+            {label}
           </Link>
-        </div>
-      </div>
-      <div>
-        <p className="text-lg font-semibold text-primary mb-2">Services</p>
-        <div className="flex flex-col gap-.5 text-gray-500 text-sm sm:text-base">
-          <Link href="/" className="hover:text-primary">
-            Book Appointment
-          </Link>
-          <Link href="/" className="hover:text-primary">
-            Video Consultation
-          </Link>
-          <Link href="/" className="hover:text-primary">
-            Modical Reports
-          </Link>
-          <Link href="/" className="hover:text-primary">
-            Prescriptions
-          </Link>
-          <Link href="/" className="hover:text-primary">
-            Lab Tests
-          </Link>
-        </div>
-      </div>
-      <div>
-        <p className="text-lg font-semibold text-primary mb-2">Resources</p>
-        <div className="flex flex-col gap-0.5 text-stone-600 text-sm sm:text-base">
-          <Link href="/" className="hover:text-primary">
-            Health Articles
-          </Link>
-          <Link href="/" className="hover:text-primary">
-            Health Guides
-          </Link>
-          <Link href="/" className="hover:text-primary">
-            FAQs
-          </Link>
-          <Link href="/" className="hover:text-primary">
-            Help Center
-          </Link>
-        </div>
-      </div>
-      <div>
-        <p className="text-lg font-semibold text-primary mb-2">Dashboards</p>
-        <div className="flex flex-col gap-0.5 text-[#17223e] text-sm sm:text-base">
-          <Link href="/" className="hover:text-primary">
-            Doctor Dashboard
-          </Link>
-          <Link href="/" className="hover:text-primary">
-            Patient Dashboard
-          </Link>
-          <Link href="/" className="hover:text-primary">
-            Provider Dashboard
-          </Link>
-        </div>
+        ))}
       </div>
     </div>
+  );
+}
+
+export default function Footer() {
+  return (
+    <footer className="bg-gray-100">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 sm:gap-10 px-6 sm:px-8 lg:px-20 py-16">
+        {/* Brand */}
+        <div className="col-span-2 lg:col-span-1 space-y-5">
+          <Link
+            href="/"
+            className="flex items-center h-8 sm:h-10 w-28 sm:w-40"
+            aria-label="MediCare Home"
+          >
+            <Image
+              src="/images/medicare-logo2.png"
+              alt="MediCare Logo"
+              width={180}
+              height={40}
+              loading="eager"
+              priority
+            />
+          </Link>
+          <p className="text-gray-500 text-xs sm:text-sm lg:w-[85%] leading-relaxed">
+            Your health, our priority. We connect you with trusted doctors and
+            quality care.
+          </p>
+          <div className="flex items-center gap-3">
+            {socialLinks.map(({ href, icon: Icon, label }, idx) => (
+              <Link
+                key={idx}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-9 h-9 bg-primary/10 text-primary rounded-full hover:bg-primary hover:text-white transition-colors"
+              >
+                <Icon size={16} />
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <FooterColumn
+          title="Find Care"
+          links={findCareLinks}
+          color="text-olive-600 hover:text-slate-700"
+        />
+        <FooterColumn
+          title="Services"
+          links={serviceLinks}
+          color="text-slate-600 hover:text-amber-800"
+        />
+        <FooterColumn
+          title="Resources"
+          links={resourceLinks}
+          color="text-amber-700 hover:text-olive-700"
+        />
+      </div>
+
+      {/* Bottom bar */}
+      <div className="border-t border-gray-200 px-6 sm:px-8 lg:px-20 py-5">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm text-gray-500">
+          <p>
+            &copy; {new Date().getFullYear()} MediCare. All rights reserved.
+          </p>
+          <div className="flex items-center gap-5">
+            <Link
+              href="/privacy-policy"
+              className="font-medium hover:text-primary transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms-of-service"
+              className="font-medium hover:text-primary transition-colors"
+            >
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }
