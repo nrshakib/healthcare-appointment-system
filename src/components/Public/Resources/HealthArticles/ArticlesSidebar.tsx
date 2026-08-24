@@ -18,7 +18,6 @@ export default function ArticlesSidebar({
   const [showAllCategories, setShowAllCategories] = useState(false);
   const [categorySearch, setCategorySearch] = useState("");
 
-  // Compute category list and their counts dynamically
   const { categories, categoryCounts } = useMemo(() => {
     const counts: Record<string, number> = {};
     healthArticles.forEach((article) => {
@@ -32,7 +31,7 @@ export default function ArticlesSidebar({
     };
   }, []);
 
-  // Filter categories by category search input
+  // Filter categories by category search
   const filteredCategories = useMemo(() => {
     const query = categorySearch.trim().toLowerCase();
     if (!query) return categories;
@@ -42,8 +41,8 @@ export default function ArticlesSidebar({
   const visibleCategories = categorySearch
     ? filteredCategories
     : showAllCategories
-    ? filteredCategories
-    : filteredCategories.slice(0, 6);
+      ? filteredCategories
+      : filteredCategories.slice(0, 6);
 
   const handleCategoryClick = (category: string) => {
     if (onSelectCategory) {
@@ -61,7 +60,7 @@ export default function ArticlesSidebar({
 
   return (
     <aside className="w-full space-y-6 lg:pr-4">
-      {/* Intro Header Section */}
+      {/* Top Section */}
       <div className="rounded-2xl border border-slate-200/90 bg-white p-5 sm:p-6 shadow-xs">
         <div className="flex items-center gap-2 text-emerald-600 font-bold text-xs uppercase tracking-wider mb-2">
           <LuBookOpen className="text-base" />
@@ -71,11 +70,12 @@ export default function ArticlesSidebar({
           Health Articles
         </h2>
         <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-          Expert health tips, wellness guides, and medical insights from our expert doctors &amp; specialists to help you live a healthier life.
+          Expert health tips, wellness guides, and medical insights from our
+          expert doctors &amp; specialists to help you live a healthier life.
         </p>
       </div>
 
-      {/* Category Search and Filter Section */}
+      {/* Category Search and Filter */}
       <div className="rounded-2xl border border-slate-200/90 bg-white p-5 sm:p-6 shadow-xs space-y-5">
         {/* Search Categories Box */}
         <div>
@@ -138,7 +138,13 @@ export default function ArticlesSidebar({
                 }`}
               >
                 <div className="flex items-center gap-2">
-                  <LuSparkles className={selectedCategory === "" ? "text-white" : "text-emerald-600"} />
+                  <LuSparkles
+                    className={
+                      selectedCategory === ""
+                        ? "text-white"
+                        : "text-emerald-600"
+                    }
+                  />
                   <span>All Categories</span>
                 </div>
                 <span
@@ -212,8 +218,8 @@ export default function ArticlesSidebar({
         </div>
       </div>
 
-      {/* Doctor Consultation CTA Card */}
-      <div className="rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 p-5 text-white shadow-md">
+      {/* CTA Card */}
+      <div className="rounded-2xl bg-linear-to-br from-emerald-600 to-teal-700 p-5 text-white shadow-md">
         <div className="flex size-10 items-center justify-center rounded-xl bg-white/20 backdrop-blur-xs mb-3">
           <LuStethoscope className="text-xl text-white" />
         </div>
@@ -221,7 +227,8 @@ export default function ArticlesSidebar({
           Need personalized advice?
         </h4>
         <p className="mt-1.5 text-xs text-emerald-100 leading-relaxed">
-          Book an in-person or video consultation with our certified doctors today.
+          Book an in-person or video consultation with our certified doctors
+          today.
         </p>
         <Link
           href="/find-care/doctors"

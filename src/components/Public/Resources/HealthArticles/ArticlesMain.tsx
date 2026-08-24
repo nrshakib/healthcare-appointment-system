@@ -66,7 +66,8 @@ export default function ArticlesMain({
                 {selectedCategory}
               </span>
               <span className="text-xs text-slate-500 font-medium">
-                ({displayArticles.length} {displayArticles.length === 1 ? "article" : "articles"} found)
+                ({displayArticles.length}{" "}
+                {displayArticles.length === 1 ? "article" : "articles"} found)
               </span>
             </div>
 
@@ -84,7 +85,7 @@ export default function ArticlesMain({
 
           {/* Filtered Grid or Empty State */}
           {displayArticles.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               {displayArticles.map((article) => (
                 <Link
                   key={article.id}
@@ -92,7 +93,7 @@ export default function ArticlesMain({
                   className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-xs transition-all duration-300 hover:shadow-lg hover:border-emerald-200"
                 >
                   {/* Article Image */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                  <div className="relative aspect-16/10 w-full overflow-hidden bg-slate-100">
                     <Image
                       src={article.image}
                       alt={article.title}
@@ -170,7 +171,8 @@ export default function ArticlesMain({
                 No articles in this category
               </h4>
               <p className="mt-1 text-xs sm:text-sm text-slate-500 max-w-sm mx-auto">
-                No articles are currently listed under &quot;{selectedCategory}&quot;. Please check back soon or browse other categories.
+                No articles are currently listed under &quot;{selectedCategory}
+                &quot;. Please check back soon or browse other categories.
               </p>
               {onClearFilters && (
                 <button

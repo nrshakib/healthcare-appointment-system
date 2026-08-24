@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Chip } from "@mui/material";
+import { Chip, Divider } from "@mui/material";
 import { FaArrowRight, FaCalendarAlt } from "react-icons/fa";
 import { LuClock, LuFlame } from "react-icons/lu";
 import healthArticles from "@/utils/healthArticles";
@@ -38,7 +38,7 @@ export default function FeaturedArticle({ article }: FeaturedArticleProps) {
   return (
     <div className="mb-10">
       <div className="flex items-center gap-2 mb-4">
-        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-amber-800 text-xs font-bold tracking-wide uppercase">
+        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/90 text-amber-800 text-xs font-bold tracking-wide uppercase">
           <LuFlame className="text-amber-500 text-sm" />
           <span>Featured Article</span>
         </div>
@@ -47,7 +47,7 @@ export default function FeaturedArticle({ article }: FeaturedArticleProps) {
       <div className="group overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:border-emerald-200">
         <div className="grid grid-cols-1 md:grid-cols-12 items-center">
           {/* Image container */}
-          <div className="relative md:col-span-6 h-64 sm:h-72 md:h-full min-h-[260px] w-full overflow-hidden bg-slate-100">
+          <div className="relative md:col-span-6 h-64 sm:h-72 md:h-full min-h-65 w-full overflow-hidden bg-slate-100">
             <Image
               src={featured.image}
               alt={featured.title}
@@ -104,9 +104,14 @@ export default function FeaturedArticle({ article }: FeaturedArticleProps) {
                 {featured.summary}
               </p>
             </div>
+            <Divider
+              sx={{
+                my: "20px",
+              }}
+            />
 
             {/* Author info & Read more action */}
-            <div className="mt-6 pt-5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-4">
               <Link
                 href={`/find-care/doctors/${featured.author.slug}`}
                 className="group/author flex items-center gap-3 hover:opacity-90 transition-opacity"

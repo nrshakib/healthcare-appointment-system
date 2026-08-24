@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -8,6 +8,7 @@ import { Chip } from "@mui/material";
 import { FaCalendarAlt, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { LuClock } from "react-icons/lu";
 import healthArticles from "@/utils/healthArticles";
+import SkeletonArticle from "@/components/Shared/SkeletonArticle";
 
 interface ArticleItem {
   id: number;
@@ -37,33 +38,37 @@ export default function LatestArticles({
   subtitle = "Stay updated with our newest clinical insights, healthy habits, and wellness guides",
 }: LatestArticlesProps) {
   const sliderRef = useRef<Slider>(null);
+  const [slidesToShow, setSlidesToShow] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      const width = window.innerWidth;
+      if (width >= 1536) setSlidesToShow(4);
+      else if (width >= 1280) setSlidesToShow(3);
+      else if (width >= 768) setSlidesToShow(2);
+      else setSlidesToShow(1);
+    };
+
+    updateSlidesToShow();
+    window.addEventListener("resize", updateSlidesToShow);
+    const timer = setTimeout(() => setLoading(false), 400);
+    return () => {
+      window.removeEventListener("resize", updateSlidesToShow);
+      clearTimeout(timer);
+    };
+  }, []);
 
   const settings = {
     dots: true,
-    infinite: articles.length > 2,
-    slidesToShow: 2,
+    infinite: true,
+    slidesToShow,
     slidesToScroll: 1,
     autoplay: true,
     speed: 500,
     autoplaySpeed: 4500,
     pauseOnHover: true,
     arrows: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
     appendDots: (dots: React.ReactNode) => (
       <div className="mt-6">
         <ul className="article-dots flex items-center justify-center gap-1.5">
@@ -79,7 +84,9 @@ export default function LatestArticles({
   if (!articles || articles.length === 0) {
     return (
       <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50 p-8 text-center">
-        <p className="text-sm font-semibold text-slate-700">No articles found</p>
+        <p className="text-sm font-semibold text-slate-700">
+          No articles found
+        </p>
         <p className="mt-1 text-xs text-slate-500">
           Try clearing your filters or searching with different keywords.
         </p>
@@ -96,9 +103,7 @@ export default function LatestArticles({
             {title}
           </h2>
           {subtitle && (
-            <p className="mt-1 text-xs sm:text-sm text-slate-500">
-              {subtitle}
-            </p>
+            <p className="mt-1 text-xs sm:text-sm text-slate-500">{subtitle}</p>
           )}
         </div>
 
@@ -127,78 +132,87 @@ export default function LatestArticles({
 
       {/* Slider */}
       <div className="relative">
-        <Slider ref={sliderRef} {...settings} className="latest-articles-slider">
-          {articles.map((article) => (
-            <div key={article.id} className="h-full px-2 py-1">
-              <Link
-                href={`/resources/health-articles/${article.slug}`}
-                className="group flex flex-col h-full overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-xs transition-all duration-300 hover:shadow-lg hover:border-emerald-200"
-              >
-                {/* Image */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
-                  <Image
-                    src={article.image}
-                    alt={article.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <Chip
-                      label={article.category}
-                      size="small"
-                      sx={{
-                        bgcolor: "#ffffff",
-                        color: "#047857",
-                        fontWeight: 700,
-                        fontSize: "0.7rem",
-                        boxShadow: "0 2px 4px rgba(0,0,0,0.06)",
-                        borderRadius: "4px",
-                        height: "22px",
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="flex flex-col flex-1 p-4 sm:p-5">
-                  {/* Meta */}
-                  <div className="flex items-center gap-2 text-[11px] font-medium text-slate-500 mb-2">
-                    <span className="flex items-center gap-1">
-                      <FaCalendarAlt className="text-slate-400 text-[10px]" />
-                      {article.date}
-                    </span>
-                    <span className="size-1 rounded-full bg-slate-300" />
-                    <span className="flex items-center gap-1">
-                      <LuClock className="text-slate-400 text-[10px]" />
-                      {article.readTime}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug transition-colors duration-200 group-hover:text-emerald-600 line-clamp-2 mb-3">
-                    {article.title}
-                  </h3>
-
-                  {/* Author footer */}
-                  <div className="mt-auto pt-3 border-t border-slate-100 flex items-center gap-2.5">
-                    <div className="relative size-7 rounded-full overflow-hidden border border-slate-200 shrink-0">
+        <Slider
+          key={slidesToShow}
+          ref={sliderRef}
+          {...settings}
+          className="latest-articles-slider"
+        >
+          {loading
+            ? Array.from({ length: slidesToShow }).map((_, i) => (
+                <SkeletonArticle key={i} />
+              ))
+            : articles.map((article) => (
+                <div key={article.id} className="h-full px-2 py-1">
+                  <Link
+                    href={`/resources/health-articles/${article.slug}`}
+                    className="group flex flex-col h-full overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-xs transition-all duration-300 hover:shadow-lg hover:border-emerald-200"
+                  >
+                    {/* Image */}
+                    <div className="relative aspect-16/10 w-full overflow-hidden bg-slate-100">
                       <Image
-                        src={article.author.avatar}
-                        alt={article.author.name}
+                        src={article.image}
+                        alt={article.title}
                         fill
-                        sizes="28px"
-                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                       />
+                      <div className="absolute top-3 left-3">
+                        <Chip
+                          label={article.category}
+                          size="small"
+                          sx={{
+                            bgcolor: "#ffffff",
+                            color: "#047857",
+                            fontWeight: 700,
+                            fontSize: "0.7rem",
+                            boxShadow: "0 2px 4px rgba(0,0,0,0.06)",
+                            borderRadius: "4px",
+                            height: "22px",
+                          }}
+                        />
+                      </div>
                     </div>
-                    <span className="text-xs font-semibold text-slate-700 truncate">
-                      {article.author.name}
-                    </span>
-                  </div>
+
+                    {/* Content */}
+                    <div className="flex flex-col flex-1 p-4 sm:p-5">
+                      {/* Meta */}
+                      <div className="flex items-center gap-2 text-[11px] font-medium text-slate-500 mb-2">
+                        <span className="flex items-center gap-1">
+                          <FaCalendarAlt className="text-slate-400 text-[10px]" />
+                          {article.date}
+                        </span>
+                        <span className="size-1 rounded-full bg-slate-300" />
+                        <span className="flex items-center gap-1">
+                          <LuClock className="text-slate-400 text-[10px]" />
+                          {article.readTime}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug transition-colors duration-200 group-hover:text-emerald-600 line-clamp-2 mb-3">
+                        {article.title}
+                      </h3>
+
+                      {/* Author footer */}
+                      <div className="mt-auto pt-3 border-t border-slate-100 flex items-center gap-2.5">
+                        <div className="relative size-7 rounded-full overflow-hidden border border-slate-200 shrink-0">
+                          <Image
+                            src={article.author.avatar}
+                            alt={article.author.name}
+                            fill
+                            sizes="28px"
+                            className="object-cover"
+                          />
+                        </div>
+                        <span className="text-xs font-semibold text-slate-700 truncate">
+                          {article.author.name}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
-              </Link>
-            </div>
-          ))}
+              ))}
         </Slider>
       </div>
 

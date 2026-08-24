@@ -12,7 +12,7 @@ export default function HealthArticlesContent() {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-7 gap-8 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-7 gap-2 items-start px-4 sm:px-6 lg:px-8">
       {/* Sidebar - 2 columns on lg+ */}
       <div className="lg:col-span-2">
         <ArticlesSidebar

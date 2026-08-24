@@ -14,11 +14,16 @@ import {
   FaStar,
   FaUserMd,
 } from "react-icons/fa";
-import { LuChevronRight, LuClock, LuShieldCheck, LuSparkles } from "react-icons/lu";
+import {
+  LuChevronRight,
+  LuClock,
+  LuShieldCheck,
+  LuSparkles,
+} from "react-icons/lu";
 import healthArticles from "@/utils/healthArticles";
 import doctors from "@/utils/doctors";
 import { slugify } from "@/utils/slugify";
-import ArticleShareButtons from "@/components/Public/Resources/HealthArticles/ArticleShareButtons";
+// import ArticleShareButtons from "@/components/Public/Resources/HealthArticles/ArticleShareButtons";
 
 interface ArticlePageProps {
   params: Promise<{
@@ -74,17 +79,17 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
   const doctor = doctors.find(
     (doc) =>
       slugify(doc.name) === article.author.slug ||
-      doc.name === article.author.name
+      doc.name === article.author.name,
   );
 
   // Related articles
   const relatedArticles = healthArticles
     .filter((item) => item.slug !== article.slug)
-    .slice(0, 3);
+    .slice(0, 4);
 
   return (
-    <article className="min-h-screen bg-slate-50/60 pb-16 pt-6 sm:pt-8 sm:pb-20">
-      <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+    <article className="min-h-screen bg-slate-100 pb-16 pt-6 sm:pt-8 sm:pb-20">
+      <div className="mx-auto w-full xl:max-w-[90%] px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <div className="mb-6">
           <Breadcrumbs
@@ -108,7 +113,7 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
             >
               Health Articles
             </Link>
-            <span className="text-emerald-700 font-semibold max-w-[200px] sm:max-w-xs truncate">
+            <span className="text-emerald-700 font-semibold max-w-50 sm:max-w-xs truncate">
               {article.category}
             </span>
           </Breadcrumbs>
@@ -125,101 +130,113 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
           </Link>
         </div>
 
-        {/* Article Header Card */}
+        {/* Article Header Card with Integrated Image Hero */}
         <header className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 lg:p-10 shadow-xs mb-8">
-          {/* Category & Badge Row */}
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-            <Chip
-              label={article.category}
-              sx={{
-                bgcolor: "#ecfdf5",
-                color: "#047857",
-                fontWeight: 700,
-                fontSize: "0.8rem",
-                borderRadius: "8px",
-                border: "1px solid #a7f3d0",
-                height: "28px",
-              }}
-            />
-
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">
-              <LuShieldCheck className="text-emerald-600 text-sm" />
-              <span>Medically Reviewed</span>
-            </div>
-          </div>
-
-          {/* Main Title */}
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight tracking-tight mb-4">
-            {article.title}
-          </h1>
-
-          {/* Summary / Subtitle */}
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl mb-6">
-            {article.summary}
-          </p>
-
-          <Divider sx={{ my: 2.5 }} />
-
-          {/* Author and Share Row */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
-            {/* Author Info with link to doctor details */}
-            <div className="flex items-center gap-3">
-              <Link
-                href={`/find-care/doctors/${article.author.slug}`}
-                className="relative size-12 rounded-full overflow-hidden border-2 border-emerald-500/20 bg-slate-100 shrink-0 hover:opacity-90 transition-opacity"
-              >
-                <Image
-                  src={article.author.avatar}
-                  alt={article.author.name}
-                  fill
-                  sizes="48px"
-                  className="object-cover"
-                />
-              </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+            {/* Left Content Column */}
+            <div className="order-2 lg:order-1 lg:col-span-8 xl:col-span-9 space-y-4 sm:space-y-5">
               <div>
-                <Link
-                  href={`/find-care/doctors/${article.author.slug}`}
-                  className="text-sm font-bold text-slate-900 hover:text-emerald-700 transition-colors inline-block"
-                >
-                  {article.author.name}
-                </Link>
-                <p className="text-xs text-slate-500">{article.author.role}</p>
-                <div className="flex items-center gap-2 text-[11px] text-slate-400 mt-0.5">
-                  <span className="flex items-center gap-1">
-                    <FaCalendarAlt className="text-[10px]" />
-                    {article.date}
-                  </span>
-                  <span>•</span>
-                  <span className="flex items-center gap-1">
-                    <LuClock className="text-[10px]" />
-                    {article.readTime}
-                  </span>
+                {/* Category & Badge Row */}
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                  <Chip
+                    label={article.category}
+                    sx={{
+                      bgcolor: "#ecfdf5",
+                      color: "#047857",
+                      fontWeight: 700,
+                      fontSize: "0.8rem",
+                      borderRadius: "8px",
+                      border: "1px solid #a7f3d0",
+                      height: "28px",
+                    }}
+                  />
+
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">
+                    <LuShieldCheck className="text-emerald-600 text-sm" />
+                    <span>Medically Reviewed</span>
+                  </div>
+                </div>
+
+                {/* Main Title */}
+                <h1 className="text-xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight tracking-tight mb-3">
+                  {article.title}
+                </h1>
+
+                {/* Summary / Subtitle */}
+                <p className="text-xs sm:text-base text-slate-600 leading-relaxed max-w-3xl">
+                  {article.summary}
+                </p>
+              </div>
+
+              <div>
+                <Divider sx={{ my: 2 }} />
+
+                {/* Author and Share Row */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
+                  <div className="flex items-center gap-3">
+                    <Link
+                      href={`/find-care/doctors/${article.author.slug}`}
+                      className="relative size-11 rounded-full overflow-hidden border-2 border-emerald-500/20 bg-slate-100 shrink-0 hover:opacity-90 transition-opacity"
+                    >
+                      <Image
+                        src={article.author.avatar}
+                        alt={article.author.name}
+                        fill
+                        sizes="44px"
+                        className="object-cover"
+                      />
+                    </Link>
+                    <div>
+                      <Link
+                        href={`/find-care/doctors/${article.author.slug}`}
+                        className="text-sm font-bold text-slate-900 hover:text-emerald-700 transition-colors inline-block"
+                      >
+                        {article.author.name}
+                      </Link>
+                      <p className="text-xs text-slate-500">
+                        {article.author.role}
+                      </p>
+                      <div className="flex items-center gap-2 text-[11px] text-slate-400 mt-0.5">
+                        <span className="flex items-center gap-1">
+                          <FaCalendarAlt className="text-[10px]" />
+                          {article.date}
+                        </span>
+                        <span>•</span>
+                        <span className="flex items-center gap-1">
+                          <LuClock className="text-[10px]" />
+                          {article.readTime}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Share Buttons */}
+                  {/* <ArticleShareButtons title={article.title} /> */}
                 </div>
               </div>
             </div>
 
-            {/* Share Buttons */}
-            <ArticleShareButtons title={article.title} />
+            {/* Right Image Column */}
+            <div className="order-1 lg:order-2 lg:col-span-4 xl:col-span-3 flex justify-start lg:justify-end w-full">
+              <div className="relative w-full max-w-48 sm:max-w-56 lg:max-w-56 xl:max-w-60 aspect-4/5 overflow-hidden rounded-2xl border border-slate-200/90 shadow-xs group bg-slate-50/50">
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 192px, (max-width: 1024px) 224px, 240px"
+                  className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </div>
           </div>
         </header>
 
-        {/* Featured Image */}
-        <div className="relative w-full aspect-[16/9] max-h-[480px] overflow-hidden rounded-3xl border border-slate-200/80 shadow-sm mb-10 bg-slate-100">
-          <Image
-            src={article.image}
-            alt={article.title}
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 1000px"
-            className="object-cover"
-          />
-        </div>
-
         {/* Main Article Body */}
-        <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-10 lg:p-12 shadow-xs mb-10">
+        <div className="rounded-3xl border border-slate-200/90 bg-white p-3 sm:p-10 lg:p-12 shadow-xs mb-10">
           {/* Lead Introduction */}
           <div className="mb-8 rounded-2xl bg-emerald-50/60 p-5 sm:p-6 border border-emerald-100">
-            <p className="text-base sm:text-lg font-medium text-emerald-950 leading-relaxed">
+            <p className="text-sm sm:text-lg font-medium text-emerald-950 leading-relaxed">
               {article.content.introduction}
             </p>
           </div>
@@ -228,11 +245,11 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
           <div className="space-y-8">
             {article.content.sections.map((section, idx) => (
               <section key={idx} className="space-y-4">
-                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
                   {section.heading}
                 </h2>
 
-                <div className="space-y-3 text-sm sm:text-base text-slate-700 leading-relaxed">
+                <div className="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed">
                   {section.paragraphs.map((paragraph, pIdx) => (
                     <p key={pIdx}>{paragraph}</p>
                   ))}
@@ -259,12 +276,12 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
           {/* Key Takeaways Box */}
           {article.content.keyTakeaways &&
             article.content.keyTakeaways.length > 0 && (
-              <div className="my-10 rounded-2xl border-2 border-emerald-500/30 bg-gradient-to-br from-emerald-50 via-white to-teal-50/40 p-6 sm:p-8">
+              <div className="my-10 rounded-2xl border-2 border-emerald-500/30 bg-linear-to-br from-emerald-50 via-white to-teal-50/40 p-6 sm:p-8">
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="flex size-8 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs">
-                    <LuSparkles className="text-lg" />
+                  <div className="flex size-6 sm:size-8 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs">
+                    <LuSparkles className="text-sm sm:text-lg" />
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900">
+                  <h3 className="text-sm sm:text-base font-bold text-slate-900">
                     Key Clinical Takeaways
                   </h3>
                 </div>
@@ -289,7 +306,7 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
           {/* Expert Quote Box */}
           {article.content.expertQuote && (
             <blockquote className="relative my-8 rounded-2xl border-l-4 border-emerald-600 bg-slate-50/80 p-6 sm:p-8 shadow-2xs">
-              <FaQuoteLeft className="text-2xl text-emerald-600/30 mb-2" />
+              <FaQuoteLeft className="sm:text-2xl text-emerald-600/30 mb-2" />
               <p className="text-base sm:text-lg italic font-serif text-slate-800 leading-relaxed mb-3">
                 &ldquo;{article.content.expertQuote.quote}&rdquo;
               </p>
@@ -358,7 +375,9 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
 
               {doctor && (
                 <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs text-slate-500 mb-3">
-                  <span className="font-medium text-slate-700">{doctor.degree}</span>
+                  <span className="font-medium text-slate-700">
+                    {doctor.degree}
+                  </span>
                   <span>•</span>
                   <span className="flex items-center gap-1 text-amber-600 font-semibold">
                     <FaStar className="text-[11px]" />
@@ -415,14 +434,14 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-5">
               {relatedArticles.map((rel) => (
                 <Link
                   key={rel.id}
                   href={`/resources/health-articles/${rel.slug}`}
                   className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-xs transition-all duration-300 hover:shadow-lg hover:border-emerald-200"
                 >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                  <div className="relative aspect-16/10 w-full overflow-hidden bg-slate-100">
                     <Image
                       src={rel.image}
                       alt={rel.title}
