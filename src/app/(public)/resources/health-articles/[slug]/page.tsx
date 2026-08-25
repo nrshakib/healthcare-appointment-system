@@ -163,7 +163,7 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
                 </h1>
 
                 {/* Summary / Subtitle */}
-                <p className="text-xs sm:text-base text-slate-600 leading-relaxed max-w-3xl">
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
                   {article.summary}
                 </p>
               </div>
@@ -196,7 +196,7 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
                       <p className="text-xs text-slate-500">
                         {article.author.role}
                       </p>
-                      <div className="flex items-center gap-2 text-[11px] text-slate-400 mt-0.5">
+                      <div className="flex items-center gap-2 text-[11px] text-gray-500 mt-0.5">
                         <span className="flex items-center gap-1">
                           <FaCalendarAlt className="text-[10px]" />
                           {article.date}
@@ -249,7 +249,7 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
                   {section.heading}
                 </h2>
 
-                <div className="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <div className="space-y-3 text-[13px] sm:text-sm text-slate-700 leading-relaxed">
                   {section.paragraphs.map((paragraph, pIdx) => (
                     <p key={pIdx}>{paragraph}</p>
                   ))}
@@ -261,7 +261,7 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
                     {section.points.map((point, ptIdx) => (
                       <li
                         key={ptIdx}
-                        className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-800"
+                        className="flex items-start gap-2.5 text-[13px] sm:text-sm text-slate-800"
                       >
                         <FaCheckCircle className="text-emerald-600 text-sm mt-0.5 shrink-0" />
                         <span>{point}</span>
@@ -294,7 +294,7 @@ export default async function ArticleDetailsPage({ params }: ArticlePageProps) {
                       <span className="text-xs font-extrabold text-emerald-600 mb-1">
                         0{tIdx + 1}.
                       </span>
-                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+                      <p className="text-[13px] sm:text-sm text-slate-700 leading-relaxed font-medium">
                         {takeaway}
                       </p>
                     </div>

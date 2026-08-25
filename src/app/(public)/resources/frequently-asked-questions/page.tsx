@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import FaqPageClient from "@/components/Public/Resources/FAQs/FaqPageClient";
-import { faqsData } from "@/utils/faqsData";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions (FAQs) | Medicare",

@@ -77,9 +77,8 @@ export default function VideoHero() {
               variants={fadeUp}
               className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1] sm:leading-[1.12]"
             >
-              Consult a Doctor
-              <br className="hidden sm:inline" />
-              From <span className="text-primary">Anywhere</span>
+              Consult a Doctor <br className="hidden sm:inline" /> From{" "}
+              <span className="text-primary"> Anywhere</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -116,9 +115,9 @@ export default function VideoHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.15, ease: "easeOut" }}
-            className="order-1 md:order-2 md:col-span-7 lg:col-span-6 flex items-center justify-end md:pl-2 lg:pl-0 w-full"
+            className="order-1 md:order-2 md:col-span-7 lg:col-span-6 flex items-center justify-center sm:justify-end md:pl-2 lg:pl-0 w-full"
           >
-            <div className="relative w-52 min-[400px]:w-56 md:w-68 lg:w-72 xl:w-96 h-40 min-[400px]:h-48 md:h-52 lg:h-60 xl:h-72">
+            <div className="relative w-56 min-[400px]:w-64 md:w-68 lg:w-72 xl:w-96 h-44 min-[400px]:h-52 md:h-52 lg:h-60 xl:h-72">
               <Image
                 src="/images/services/video-consultation-hero.png"
                 alt="Video Consultation with a Doctor"

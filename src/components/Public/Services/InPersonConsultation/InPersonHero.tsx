@@ -79,7 +79,7 @@ export default function InPersonHero() {
             >
               In-Person
               <br className="hidden sm:inline" />
-              <span className="text-primary">Consultation</span>
+              <span className="text-primary"> Consultation</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -118,7 +118,7 @@ export default function InPersonHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.15, ease: "easeOut" }}
-            className="order-1 md:order-2 md:col-span-7 lg:col-span-6 flex items-center justify-end md:pl-2 lg:pl-0 w-full"
+            className="order-1 md:order-2 md:col-span-7 lg:col-span-6 flex items-center justify-center sm:justify-end md:pl-2 lg:pl-0 w-full"
           >
             <div className="relative w-52 min-[400px]:w-56 md:w-72 lg:w-80 xl:w-96 h-40 min-[400px]:h-48 md:h-48 lg:h-52 xl:h-60">
               <Image

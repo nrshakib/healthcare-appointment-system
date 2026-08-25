@@ -69,7 +69,7 @@ export default function ArticlesSidebar({
         <h2 className="text-xl font-bold text-slate-900 leading-tight">
           Health Articles
         </h2>
-        <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+        <p className="mt-2 text-[13px] sm:text-sm text-slate-600 leading-relaxed">
           Expert health tips, wellness guides, and medical insights from our
           expert doctors &amp; specialists to help you live a healthier life.
         </p>

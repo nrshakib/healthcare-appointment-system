@@ -275,7 +275,7 @@ export default function FaqContent({
                       </div>
 
                       <h3
-                        className={`text-xs sm:text-base font-semibold leading-snug transition-colors ${
+                        className={`text-sm sm:text-base font-semibold leading-snug transition-colors ${
                           isOpen ? "text-emerald-950" : "text-slate-900"
                         }`}
                       >
@@ -298,7 +298,7 @@ export default function FaqContent({
                 {/* Accordion Body / Answer */}
                 {isOpen && (
                   <div className="border-t border-slate-100 bg-slate-50/50 p-4 sm:p-6 space-y-4">
-                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                    <p className="text-[13px] sm:text-sm text-slate-700 leading-relaxed font-normal">
                       {faq.answer}
                     </p>
 
@@ -314,11 +314,11 @@ export default function FaqContent({
                             label={`#${tag}`}
                             size="small"
                             sx={{
-                              fontSize: "0.65rem",
+                              fontSize: "0.75rem",
                               height: "20px",
                               bgcolor: "#ffffff",
                               color: "#475569",
-                              border: "1px solid #e2e8f0",
+                              border: "1px solid #d0fae5",
                             }}
                           />
                         ))}

@@ -34,7 +34,7 @@ export default function FaqHero({
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl">
+          <p className="mt-2.5 text-[13px] sm:text-sm text-slate-600 leading-relaxed max-w-xl">
             Find immediate answers about doctor consultations, online
             telemedicine, insurance coverage, e-prescriptions, and account
             security.

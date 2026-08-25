@@ -82,7 +82,7 @@ export default function AppointmentHero() {
             {/* Subtitle */}
             <motion.p
               variants={fadeUp}
-              className="mx-auto md:mx-0 mt-4 lg:mt-5 max-w-md text-xs sm:text-sm text-slate-600 leading-relaxed"
+              className="mx-auto md:mx-0 mt-4 lg:mt-5 max-w-md text-sm sm:text-sm text-slate-600 leading-relaxed"
             >
               Book, manage, and reschedule appointments with top doctors in just
               a few clicks.
@@ -113,7 +113,7 @@ export default function AppointmentHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.15, ease: "easeOut" }}
-            className="order-1 md:order-2 md:col-span-7 lg:col-span-6 flex items-center justify-end md:pl-2 lg:pl-0 w-full"
+            className="order-1 md:order-2 md:col-span-7 lg:col-span-6 flex items-center justify-center sm:justify-end md:pl-2 lg:pl-0 w-full"
           >
             <div className="relative w-48 min-[400px]:w-52 md:w-60 lg:w-64 xl:w-96 h-48 min-[400px]:h-52 md:h-56 lg:h-64 xl:h-72">
               <Image

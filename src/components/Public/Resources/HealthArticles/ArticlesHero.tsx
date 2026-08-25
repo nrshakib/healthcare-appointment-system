@@ -43,7 +43,7 @@ export default function ArticlesHero() {
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-lg">
+          <p className="mt-2.5 text-[13px] sm:text-sm text-slate-600 leading-relaxed max-w-lg">
             Explore clinically vetted articles, dietary breakdowns, and wellness
             strategies written by certified doctors to help you take charge of
             your wellbeing.
