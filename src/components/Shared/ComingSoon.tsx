@@ -12,13 +12,14 @@ interface ComingSoonProps {
   description?: string;
   /** Whether to show the "Go Home" back button */
   showHome?: boolean;
+  progress?: number;
 }
 
 export default function ComingSoon({
-  feature = "This Feature is",
+  feature = "This Feature",
   description = "I'm working hard to build something amazing. Stay tuned for updates!",
-
   showHome = true,
+  progress = 50,
 }: ComingSoonProps) {
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center bg-linear-to-br from-slate-50 via-white to-emerald-50 px-4 py-20 relative overflow-hidden">
@@ -54,7 +55,8 @@ export default function ComingSoon({
         </span>
 
         <h1 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight mb-3">
-          {feature}{" "}
+          {feature} <span className="text-gray-600">page is</span>
+          <br />
           <span
             style={{
               background: "linear-gradient(135deg, #06836b 0%, #48ac98 100%)",
@@ -75,15 +77,12 @@ export default function ComingSoon({
         <div className="w-full max-w-xs mb-10">
           <div className="flex justify-between text-xs text-slate-400 mb-1.5 font-medium">
             <span>In Development</span>
-            <span>70%</span>
+            <span>{progress}%</span>
           </div>
           <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden">
             <div
-              className="h-full rounded-full"
-              style={{
-                width: "70%",
-                background: "linear-gradient(90deg, #06836b 0%, #48ac98 100%)",
-              }}
+              className="h-full rounded-full bg-linear-to-r from-[#06836b] to-[#48ac98]"
+              style={{ width: `${progress}%` }}
             />
           </div>
         </div>
