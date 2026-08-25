@@ -31,7 +31,11 @@ const roleConfig: Record<
     eyebrow: "Clinical workspace",
     navItems: [
       { label: "Overview", href: "/doctor", icon: HiHome },
-      { label: "Appointments", href: "/doctor/appointments", icon: HiCalendarDays },
+      {
+        label: "Appointments",
+        href: "/doctor/appointments",
+        icon: HiCalendarDays,
+      },
       { label: "Patients", href: "/doctor/patients", icon: HiUsers },
       { label: "Reports", href: "/doctor/reports", icon: HiChartBar },
     ],
@@ -40,10 +44,22 @@ const roleConfig: Record<
     title: "Patient Portal",
     eyebrow: "Personal care hub",
     navItems: [
-      { label: "Overview", href: "/patient", icon: HiHome },
-      { label: "Appointments", href: "/patient/appointments", icon: HiCalendarDays },
-      { label: "Records", href: "/patient/records", icon: HiClipboardDocumentList },
-      { label: "Profile", href: "/patient/profile", icon: HiUserCircle },
+      { label: "Overview", href: "/patient-dashboard", icon: HiHome },
+      {
+        label: "Appointments",
+        href: "/patient-dashboard/appointments",
+        icon: HiCalendarDays,
+      },
+      {
+        label: "Records",
+        href: "/patient-dashboard/records",
+        icon: HiClipboardDocumentList,
+      },
+      {
+        label: "Profile",
+        href: "/patient-dashboard/profile",
+        icon: HiUserCircle,
+      },
     ],
   },
 };
@@ -60,7 +76,11 @@ export default function DashboardLayout({
   return (
     <div className="min-h-screen bg-slate-50 text-slate-950">
       <aside className="fixed inset-y-0 left-0 hidden w-72 border-r border-slate-200 bg-white px-5 py-6 lg:flex lg:flex-col">
-        <Link href="/" className="mb-8 flex items-center" aria-label="MediCare Home">
+        <Link
+          href="/"
+          className="mb-8 flex items-center justify-center h-10 w-24 mx-auto"
+          aria-label="MediCare Home"
+        >
           <Image
             src="/images/medicare-logo2.png"
             alt="MediCare Logo"
@@ -75,10 +95,15 @@ export default function DashboardLayout({
           <p className="text-xs font-semibold uppercase text-emerald-700">
             {config.eyebrow}
           </p>
-          <h1 className="mt-1 text-lg font-bold text-slate-950">{config.title}</h1>
+          <h1 className="mt-1 text-lg font-bold text-slate-950">
+            {config.title}
+          </h1>
         </div>
 
-        <nav className="flex flex-1 flex-col gap-1" aria-label={`${config.title} navigation`}>
+        <nav
+          className="flex flex-1 flex-col gap-1"
+          aria-label={`${config.title} navigation`}
+        >
           {config.navItems.map((item) => {
             const Icon = item.icon;
 
@@ -110,7 +135,9 @@ export default function DashboardLayout({
               <p className="text-xs font-semibold uppercase text-emerald-700 lg:hidden">
                 {config.eyebrow}
               </p>
-              <h2 className="text-lg font-bold text-slate-950">{config.title}</h2>
+              <h2 className="text-lg font-bold text-slate-950">
+                {config.title}
+              </h2>
             </div>
             <Link
               href="/"

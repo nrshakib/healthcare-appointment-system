@@ -1,6 +1,6 @@
 "use client";
 
-import  { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useForm, Controller } from "react-hook-form";
@@ -15,6 +15,8 @@ import IconButton from "@mui/material/IconButton";
 import Divider from "@mui/material/Divider";
 import Alert from "@mui/material/Alert";
 import CircularProgress from "@mui/material/CircularProgress";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 // React Icons
 import {
@@ -22,14 +24,48 @@ import {
   HiLockClosed,
   HiEye,
   HiEyeSlash,
+  HiUser,
+  HiUserGroup,
 } from "react-icons/hi2";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
+
+type UserRole = "patient" | "doctor";
 
 interface SignInFormInputs {
   email: string;
   password: string;
   rememberMe: boolean;
+  role: UserRole;
+}
+
+// Where each role should land after a successful sign-in
+const ROLE_REDIRECTS: Record<UserRole, string> = {
+  patient: "/patient-dashboard",
+  doctor: "/doctor-dashboard",
+};
+
+/**
+ * Persists the signed-in role (and email) client-side since there's no
+ * backend/auth API wired up yet. We store it in both localStorage (easy
+ * client reads) and a cookie (so middleware / server components can read
+ * it too, e.g. for route protection later).
+ */
+function persistSession(role: UserRole, email: string, rememberMe: boolean) {
+  if (typeof window === "undefined") return;
+
+  try {
+    localStorage.setItem("userRole", role);
+    localStorage.setItem("userEmail", email);
+  } catch {
+    // localStorage can throw in some environments (e.g. private mode) - ignore
+  }
+
+  // 7 days if "remember me" is checked, otherwise a session-length cookie
+  const maxAge = rememberMe ? 60 * 60 * 24 * 7 : undefined;
+  document.cookie = `userRole=${role}; path=/;${
+    maxAge ? ` max-age=${maxAge};` : ""
+  } SameSite=Lax`;
 }
 
 export default function SignInPage() {
@@ -49,6 +85,7 @@ export default function SignInPage() {
       email: "",
       password: "",
       rememberMe: false,
+      role: "patient",
     },
   });
 
@@ -61,9 +98,14 @@ export default function SignInPage() {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1200));
       console.log("Sign-In submitted:", data);
+
+      // No backend yet — persist role/email locally so the rest of the app
+      // can gate routes/UI by role until real auth is integrated.
+      persistSession(data.role, data.email, data.rememberMe);
+
       setAuthSuccess("Sign in successful! Redirecting...");
-      router.push("/");
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      router.push(ROLE_REDIRECTS[data.role]);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setAuthError(
         "Failed to sign in. Please check your credentials and try again.",
@@ -149,6 +191,74 @@ export default function SignInPage() {
               className="space-y-5"
               noValidate
             >
+              {/* Role Selector */}
+              <div>
+                <p className="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                  Sign in as
+                </p>
+                <Controller
+                  name="role"
+                  control={control}
+                  rules={{ required: "Please select a role" }}
+                  render={({ field }) => (
+                    <ToggleButtonGroup
+                      value={field.value}
+                      exclusive
+                      fullWidth
+                      onChange={(_, value: UserRole | null) => {
+                        if (value) field.onChange(value);
+                      }}
+                      aria-label="Sign in as"
+                    >
+                      <ToggleButton
+                        id="signin-role-patient"
+                        value="patient"
+                        sx={{
+                          textTransform: "none",
+                          fontWeight: 600,
+                          borderRadius: "0.75rem 0 0 0.75rem",
+                          borderColor: "rgba(6, 131, 107, 0.4)",
+                          gap: 1,
+                          "&.Mui-selected": {
+                            backgroundColor: "rgba(6, 131, 107, 0.12)",
+                            color: "#06836B",
+                            borderColor: "#06836B",
+                          },
+                          "&.Mui-selected:hover": {
+                            backgroundColor: "rgba(6, 131, 107, 0.2)",
+                          },
+                        }}
+                      >
+                        <HiUser size={18} />
+                        Patient
+                      </ToggleButton>
+                      <ToggleButton
+                        id="signin-role-doctor"
+                        value="doctor"
+                        sx={{
+                          textTransform: "none",
+                          fontWeight: 600,
+                          borderRadius: "0 0.75rem 0.75rem 0",
+                          borderColor: "rgba(6, 131, 107, 0.4)",
+                          gap: 1,
+                          "&.Mui-selected": {
+                            backgroundColor: "rgba(6, 131, 107, 0.12)",
+                            color: "#06836B",
+                            borderColor: "#06836B",
+                          },
+                          "&.Mui-selected:hover": {
+                            backgroundColor: "rgba(6, 131, 107, 0.2)",
+                          },
+                        }}
+                      >
+                        <HiUserGroup size={18} />
+                        Doctor
+                      </ToggleButton>
+                    </ToggleButtonGroup>
+                  )}
+                />
+              </div>
+
               {/* Email Field */}
               <div>
                 <Controller
