@@ -20,8 +20,9 @@ export default function TrustedDoctors() {
   useEffect(() => {
     const updateSlidesToShow = () => {
       const width = window.innerWidth;
-      if (width >= 1280) setSlidesToShow(4);
-      else if (width >= 1024) setSlidesToShow(3);
+      if (width >= 2000) setSlidesToShow(5);
+      else if (width >= 1280) setSlidesToShow(4);
+      else if (width >= 700) setSlidesToShow(3);
       else if (width >= 400) setSlidesToShow(2);
       else setSlidesToShow(1);
     };
@@ -63,7 +64,7 @@ export default function TrustedDoctors() {
   const SkeletonDoctor = () => (
     <div className="h-full w-full px-1.5 py-2 sm:px-2">
       <div className="flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-        <div className="h-60 sm:h-72 lg:h-64 2xl:h-96 w-full bg-slate-100 animate-pulse" />
+        <div className="h-48 sm:h-56 lg:h-64 w-full bg-slate-100 animate-pulse" />
         <div className="flex flex-col gap-3 p-3 sm:p-4">
           <div className="flex flex-col gap-1.5">
             <div className="h-4 w-3/4 rounded bg-slate-100 animate-pulse" />
@@ -107,14 +108,14 @@ export default function TrustedDoctors() {
                   <SkeletonDoctor key={i} />
                 ))
               : doctors.map((doctor, index) => (
-                  <div key={index} className="h-full px-1.5 py-2 sm:px-2">
+                  <div key={index} className="h-full px-1.5 py-2 sm:px-3">
                     <div className="group flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
-                      <div className="relative h-60 sm:h-72 lg:h-64 2xl:h-96 w-full bg-slate-100">
+                      <div className="relative h-64 min-[400]:h-52 sm:h-56 lg:h-72 xl:h-80 w-full bg-slate-100">
                         <Image
                           src={doctor.image}
                           alt={doctor.name}
                           fill
-                          className="object-fill"
+                          className="object-cover xl:object-fill"
                         />
                       </div>
                       <div className="flex flex-col gap-2 sm:gap-3 p-3 sm:p-4">

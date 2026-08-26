@@ -43,8 +43,8 @@ export default function HealthArticles() {
     pauseOnHover: true,
     arrows: false,
     appendDots: (dots: React.ReactNode) => (
-      <div className="mt-8">
-        <ul className="article-dots flex items-center justify-center gap-2">
+      <div className="mt-8 px-2 ">
+        <ul className="article-dots hidden sm:flex flex-wrap items-center justify-center gap-2">
           {dots}
         </ul>
       </div>
