@@ -3,26 +3,36 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import Drawer from "@mui/material/Drawer";
-import Collapse from "@mui/material/Collapse";
-import Divider from "@mui/material/Divider";
 
 import {
   HiChevronDown,
-  HiChevronRight,
-  HiXMark,
   HiBars3,
+  HiSquares2X2,
+  HiCalendarDays,
+  HiClipboardDocumentList,
+  HiUserCircle,
+  HiArrowRightOnRectangle,
 } from "react-icons/hi2";
 import { MdOutlineWbSunny, MdNightlight } from "react-icons/md";
 
 import specialities from "@/utils/specialities";
+import { MobileMenu } from "./MobileMenu";
+import { NavDropdownItem } from "./NavbarDropdowns/NavDropdownItem";
+import { FindCareDropdown } from "./NavbarDropdowns/FindCareDropdown";
+import { SimpleDropdown } from "./NavbarDropdowns/SimpleDropdown";
 
 interface SubItem {
   label: string;
   href: string;
+}
+
+interface AuthUser {
+  role: string;
+  email: string;
 }
 
 const findCareItems: SubItem[] = [
@@ -48,360 +58,79 @@ const resourcesItems: SubItem[] = [
   { label: "Help Center", href: "/resources/help-center" },
 ];
 
-function FindCareDropdown({ onClose }: { onClose: () => void }) {
-  const [specialtiesOpen, setSpecialtiesOpen] = useState(false);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const openSpecialties = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setSpecialtiesOpen(true);
-  };
-
-  const scheduleClose = () => {
-    closeTimer.current = setTimeout(() => setSpecialtiesOpen(false), 150);
-  };
-
-  return (
-    <div className="absolute top-full left-0 mt-2 w-72 rounded-xl shadow-2xl overflow-visible z-50 navbar-dropdown border border-(--navbar-border)">
-      <div className="py-2">
-        {findCareItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            onClick={onClose}
-            className="flex items-center px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
-          >
-            {item.label}
-          </Link>
-        ))}
-
-        {/* Browse Specialties — flyout with close-delay to bridge mouse travel gap */}
-        <div
-          className="relative"
-          onMouseEnter={openSpecialties}
-          onMouseLeave={scheduleClose}
-        >
-          <p className="flex items-center justify-between w-full px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item">
-            Browse Specialties
-            <HiChevronRight size={14} />
-          </p>
-
-          {specialtiesOpen && (
-            /* pl-1 replaces the old ml-1 so the hover area is continuous — no physical gap */
-            <div
-              className="absolute top-0 left-full pl-1 w-72"
-              onMouseEnter={openSpecialties}
-              onMouseLeave={scheduleClose}
-            >
-              <div className="w-72 max-h-[calc(100vh-20rem)] overflow-y-auto rounded-xl shadow-2xl z-50 navbar-dropdown border border-(--navbar-border)">
-                <div className="py-2">
-                  <Link
-                    href="/find-care/specialities"
-                    onClick={onClose}
-                    className="flex items-center px-4 py-2.5 text-sm font-semibold transition-colors duration-150 navbar-dropdown-item"
-                  >
-                    All Specialities
-                  </Link>
-                  <div className="my-1 border-t border-(--navbar-border)" />
-                  {specialityItems.map((s) => (
-                    <Link
-                      key={s.href}
-                      href={s.href}
-                      onClick={onClose}
-                      className="flex items-center px-4 py-2.5 text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
-                    >
-                      {s.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// Generic Simple Dropdown
-function SimpleDropdown({
-  items,
-  onClose,
-}: {
-  items: SubItem[];
-  onClose: () => void;
-}) {
-  return (
-    <div className="absolute top-full left-0 mt-2 w-60 rounded-xl shadow-2xl z-50 navbar-dropdown border border-(--navbar-border)">
-      <div className="py-2">
-        {items.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            onClick={onClose}
-            className="flex items-center px-4 py-2.5 text-xs xl:text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
-          >
-            {item.label}
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 // Desktop Nav Item with Dropdown
 type DropdownKey = "find-care" | "services" | "resources" | null;
 
-function NavDropdownItem({
-  id,
-  label,
-  activeDropdown,
-  onMouseEnter,
-  onMouseLeave,
-  children,
-}: {
-  id: Exclude<DropdownKey, null>;
-  label: string;
-  activeDropdown: DropdownKey;
-  onMouseEnter: (id: DropdownKey) => void;
-  onMouseLeave: () => void;
-  children: React.ReactNode;
-}) {
-  const isOpen = activeDropdown === id;
-
-  return (
-    <div
-      className="relative"
-      onMouseEnter={() => onMouseEnter(id)}
-      onMouseLeave={onMouseLeave}
-    >
-      <Button
-        id={`nav-${id}-trigger`}
-        aria-haspopup="true"
-        aria-expanded={isOpen}
-        endIcon={
-          <HiChevronDown
-            size={14}
-            style={{
-              transition: "transform 0.2s",
-              transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-            }}
-          />
-        }
-        className={`navbar-nav-item${isOpen ? " navbar-nav-item-active" : ""}`}
-        sx={{
-          fontSize: "0.875rem",
-          fontWeight: 600,
-          textTransform: "none",
-          borderRadius: "0.5rem",
-          px: 1.5,
-          py: 1,
-          minWidth: "unset",
-          gap: 0.1,
-          color: "var(--navbar-text)",
-          "&:hover": {
-            background: "var(--navbar-item-hover-bg)",
-            color: "#06836B",
-          },
-        }}
-      >
-        {label}
-      </Button>
-      {isOpen && children}
-    </div>
-  );
-}
-
-// Mobile Menu (MUI Drawer)
-function MobileMenu({
-  isDark,
-  onClose,
-  onToggleTheme,
-}: {
-  isDark: boolean;
-  onClose: () => void;
-  onToggleTheme: () => void;
-}) {
-  const [openSection, setOpenSection] = useState<string | null>(null);
-  const [specialtiesOpen, setSpecialtiesOpen] = useState(false);
-
-  const toggle = (key: string) =>
-    setOpenSection((prev) => (prev === key ? null : key));
-
-  const sections = [
-    {
-      key: "find-care",
-      label: "Find Care",
-      items: findCareItems,
-      hasSub: true,
-    },
-    { key: "services", label: "Services", items: servicesItems, hasSub: false },
-    {
-      key: "resources",
-      label: "Resources",
-      items: resourcesItems,
-      hasSub: false,
-    },
-  ];
-
-  return (
-    <Drawer
-      anchor="right"
-      open
-      onClose={onClose}
-      slotProps={{
-        paper: {
-          className: "navbar-mobile-panel",
-          sx: {
-            width: 320,
-            maxWidth: "100vw",
-            background: "var(--navbar-mobile-panel-bg)",
-            color: "var(--navbar-text)",
-            boxShadow: "none",
-          },
-        },
-        backdrop: {
-          style: { backdropFilter: "blur(4px)", background: "rgba(0,0,0,0.4)" },
-        },
-      }}
-    >
-      {/* Header */}
-      <div className="flex items-center justify-between px-5 py-4">
-        <span className="text-base font-bold tracking-tight navbar-brand">
-          Navigation
-        </span>
-        <IconButton
-          onClick={onClose}
-          id="mobile-menu-close"
-          className="navbar-icon-btn"
-          aria-label="Close menu"
-        >
-          <HiXMark size={22} />
-        </IconButton>
-      </div>
-      <Divider sx={{ borderColor: "var(--navbar-border)" }} />
-
-      {/* Scrollable Body */}
-      <div className="flex-1 overflow-y-auto py-3 px-3">
-        {sections.map((section) => (
-          <div key={section.key} className="mb-1">
-            <button
-              id={`mobile-nav-${section.key}`}
-              onClick={() => toggle(section.key)}
-              className={`flex items-center justify-between w-full px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 navbar-mobile-item${openSection === section.key ? " navbar-mobile-item-active" : ""}`}
-            >
-              {section.label}
-              <HiChevronDown
-                size={14}
-                style={{
-                  transition: "transform 0.2s",
-                  transform:
-                    openSection === section.key
-                      ? "rotate(180deg)"
-                      : "rotate(0deg)",
-                }}
-              />
-            </button>
-
-            <Collapse in={openSection === section.key} timeout={200}>
-              <div className="mt-1 ml-4 border-l-2 border-(--navbar-accent-soft) pl-3 space-y-0.5">
-                {section.items.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={onClose}
-                    className="flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-
-                {section.hasSub && (
-                  <div>
-                    <button
-                      onClick={() => setSpecialtiesOpen((p) => !p)}
-                      className="flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150 navbar-dropdown-item"
-                    >
-                      Browse Specialties
-                      <HiChevronDown
-                        size={14}
-                        style={{
-                          transition: "transform 0.2s",
-                          transform: specialtiesOpen
-                            ? "rotate(180deg)"
-                            : "rotate(0deg)",
-                        }}
-                      />
-                    </button>
-                    <Collapse in={specialtiesOpen} timeout={200}>
-                      <div className="ml-3 border-l border-(--navbar-border) pl-3 mt-0.5 space-y-0.5">
-                        <Link
-                          href="/find-care/specialities"
-                          onClick={onClose}
-                          className="flex items-center px-3 py-2 rounded-lg text-sm font-semibold transition-colors duration-150 navbar-dropdown-item"
-                        >
-                          All Specialities
-                        </Link>
-                        {specialityItems.map((s) => (
-                          <Link
-                            key={s.href}
-                            href={s.href}
-                            onClick={onClose}
-                            className="flex items-center px-3 py-2 rounded-lg text-sm transition-colors duration-150 navbar-dropdown-item"
-                          >
-                            {s.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </Collapse>
-                  </div>
-                )}
-              </div>
-            </Collapse>
-          </div>
-        ))}
-      </div>
-
-      {/* Footer */}
-      <Divider sx={{ borderColor: "var(--navbar-border)" }} />
-      <div className="px-4 py-4 space-y-2">
-        <button
-          id="mobile-theme-toggle"
-          onClick={onToggleTheme}
-          className="flex items-center justify-center gap-2 w-full px-4 py-1 rounded-xl text-sm font-semibold transition-all duration-200 navbar-mobile-item"
-        >
-          {isDark ? <MdOutlineWbSunny size={18} /> : <MdNightlight size={18} />}
-          {isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-        </button>
-        <Divider sx={{ borderColor: "var(--navbar-border)" }} />
-        <Link
-          href="/sign-in"
-          onClick={onClose}
-          className="flex items-center justify-center w-full px-4 py-1 rounded-xl text-sm font-semibold transition-all duration-200 navbar-mobile-item"
-        >
-          Sign In
-        </Link>{" "}
-        <Divider sx={{ borderColor: "var(--navbar-border)" }} />
-        <Link
-          href="/register"
-          onClick={onClose}
-          className="flex items-center justify-center w-full px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 navbar-cta-btn"
-        >
-          Get Started
-        </Link>
-      </div>
-    </Drawer>
-  );
-}
-
 // Main Component
-
 export default function Navbar() {
+  const router = useRouter();
   const [activeDropdown, setActiveDropdown] = useState<DropdownKey>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const userMenuRef = useRef<HTMLDivElement | null>(null);
+
+  // Sync user authentication state from localStorage
+  const syncUser = useCallback(() => {
+    try {
+      const role = localStorage.getItem("userRole");
+      const email = localStorage.getItem("userEmail");
+      if (
+        role?.toLowerCase() === "patient" &&
+        email &&
+        email.trim().length > 0
+      ) {
+        setUser({ role, email: email.trim() });
+      } else {
+        setUser(null);
+      }
+    } catch {
+      setUser(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    syncUser();
+
+    // Listen to localStorage changes across tabs/windows or local dispatch
+    window.addEventListener("storage", syncUser);
+    window.addEventListener("focus", syncUser);
+
+    return () => {
+      window.removeEventListener("storage", syncUser);
+      window.removeEventListener("focus", syncUser);
+    };
+  }, [syncUser]);
+
+  // Click outside and escape key to close user dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        userMenuRef.current &&
+        !userMenuRef.current.contains(event.target as Node)
+      ) {
+        setUserMenuOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setUserMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -423,6 +152,21 @@ export default function Navbar() {
   }, []);
 
   const closeDropdown = useCallback(() => setActiveDropdown(null), []);
+
+  const handleLogout = useCallback(() => {
+    try {
+      localStorage.removeItem("userRole");
+      localStorage.removeItem("userEmail");
+      document.cookie =
+        "userRole=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax";
+      window.dispatchEvent(new Event("storage"));
+    } catch {
+      // ignore
+    }
+    setUser(null);
+    setUserMenuOpen(false);
+    router.push("/sign-in");
+  }, [router]);
 
   const dropdownProps = {
     activeDropdown,
@@ -461,7 +205,11 @@ export default function Navbar() {
                 label="Find Care"
                 {...dropdownProps}
               >
-                <FindCareDropdown onClose={closeDropdown} />
+                <FindCareDropdown
+                  findCareItems={findCareItems}
+                  specialityItems={specialityItems}
+                  onClose={closeDropdown}
+                />
               </NavDropdownItem>
 
               <NavDropdownItem
@@ -485,7 +233,7 @@ export default function Navbar() {
             </div>
 
             {/* Right Actions — Desktop */}
-            <div className="hidden lg:flex items-center gap-2">
+            <div className="hidden lg:flex items-center gap-3">
               <IconButton
                 id="navbar-theme-toggle"
                 onClick={() => setIsDark((d) => !d)}
@@ -500,32 +248,161 @@ export default function Navbar() {
                 )}
               </IconButton>
 
-              <Button
-                component={Link}
-                href="/sign-in"
-                id="navbar-sign-in-btn"
-                variant="outlined"
-                className="navbar-sign-in-btn"
-                sx={{
-                  borderRadius: "0.625rem",
-                  border: "1px solid #06836B",
-                  textTransform: "none",
-                  fontWeight: 600,
-                  color: "#06836B",
-                }}
-              >
-                Sign In
-              </Button>
+              {user ? (
+                /* Authenticated Patient User Avatar & Dropdown */
+                <div className="relative" ref={userMenuRef}>
+                  <button
+                    id="navbar-user-avatar-btn"
+                    onClick={() => setUserMenuOpen((prev) => !prev)}
+                    className="flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-full border border-(--navbar-border) hover:border-[#06836B] transition-all duration-200 bg-(--navbar-dropdown-bg) focus:outline-none focus:ring-2 focus:ring-[#06836B]/30 cursor-pointer shadow-xs hover:shadow-md"
+                    aria-label="User account menu"
+                    aria-expanded={userMenuOpen}
+                  >
+                    <div className="relative w-8 h-8 rounded-full overflow-hidden ring-2 ring-[#06836B]/40">
+                      <Image
+                        src="/images/users/user-avatar-1.png"
+                        alt="User Profile"
+                        fill
+                        sizes="32px"
+                        className="object-cover"
+                      />
+                    </div>
+                    {/* <span className="max-w-[130px] truncate text-xs font-semibold text-(--navbar-text)">
+                      {user.email.split("@")[0]}
+                    </span> */}
+                    <HiChevronDown
+                      size={14}
+                      className={`text-(--navbar-text-muted) transition-transform duration-200 ${
+                        userMenuOpen ? "rotate-180 text-[#06836B]" : ""
+                      }`}
+                    />
+                  </button>
 
-              <Button
-                component={Link}
-                href="/register"
-                id="navbar-get-started-btn"
-                className="navbar-cta-btn"
-                sx={{ borderRadius: "0.625rem", textTransform: "none" }}
-              >
-                Get Started
-              </Button>
+                  {userMenuOpen && (
+                    <div className="absolute top-full right-0 mt-2 w-64 rounded-2xl shadow-2xl overflow-hidden z-50 navbar-dropdown border border-(--navbar-border)">
+                      {/* User Info Header */}
+                      <div className="p-4 bg-emerald-500/5 border-b border-(--navbar-border)">
+                        <div className="flex items-center gap-3">
+                          <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-[#06836B] shrink-0">
+                            <Image
+                              src="/images/users/user-avatar-1.png"
+                              alt="User Profile"
+                              fill
+                              sizes="40px"
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-1.5">
+                              <span className="inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300">
+                                {user.role}
+                              </span>
+                            </div>
+                            <p
+                              className="text-xs font-medium text-(--navbar-text) truncate mt-1"
+                              title={user.email}
+                            >
+                              {user.email}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Dropdown Menu Items */}
+                      <div className="p-1.5 space-y-0.5">
+                        <Link
+                          href="/patient-dashboard"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-xl transition-colors duration-150 navbar-dropdown-item hover:bg-(--navbar-item-hover-bg)"
+                        >
+                          <HiSquares2X2
+                            className="text-[#06836B] shrink-0"
+                            size={18}
+                          />
+                          <span>Dashboard</span>
+                        </Link>
+                        <Link
+                          href="/patient-dashboard/appointments"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-xl transition-colors duration-150 navbar-dropdown-item hover:bg-(--navbar-item-hover-bg)"
+                        >
+                          <HiCalendarDays
+                            className="text-[#06836B] shrink-0"
+                            size={18}
+                          />
+                          <span>Appointments</span>
+                        </Link>
+                        <Link
+                          href="/patient-dashboard/records"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-xl transition-colors duration-150 navbar-dropdown-item hover:bg-(--navbar-item-hover-bg)"
+                        >
+                          <HiClipboardDocumentList
+                            className="text-[#06836B] shrink-0"
+                            size={18}
+                          />
+                          <span>Medical Records</span>
+                        </Link>
+                        <Link
+                          href="/patient-dashboard/profile"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-xl transition-colors duration-150 navbar-dropdown-item hover:bg-(--navbar-item-hover-bg)"
+                        >
+                          <HiUserCircle
+                            className="text-[#06836B] shrink-0"
+                            size={18}
+                          />
+                          <span>Profile Settings</span>
+                        </Link>
+                      </div>
+
+                      {/* Log Out Action */}
+                      <div className="border-t border-(--navbar-border) p-1.5">
+                        <button
+                          onClick={handleLogout}
+                          className="flex items-center gap-3 w-full px-3 py-2 text-sm font-semibold rounded-xl text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors duration-150 cursor-pointer text-left"
+                        >
+                          <HiArrowRightOnRectangle
+                            size={18}
+                            className="shrink-0"
+                          />
+                          <span>Log Out</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                /* Unauthenticated Sign In & Get Started Buttons */
+                <>
+                  <Button
+                    component={Link}
+                    href="/sign-in"
+                    id="navbar-sign-in-btn"
+                    variant="outlined"
+                    className="navbar-sign-in-btn"
+                    sx={{
+                      borderRadius: "0.625rem",
+                      border: "1px solid #06836B",
+                      textTransform: "none",
+                      fontWeight: 600,
+                      color: "#06836B",
+                    }}
+                  >
+                    Sign In
+                  </Button>
+
+                  <Button
+                    component={Link}
+                    href="/register"
+                    id="navbar-get-started-btn"
+                    className="navbar-cta-btn"
+                    sx={{ borderRadius: "0.625rem", textTransform: "none" }}
+                  >
+                    Get Started
+                  </Button>
+                </>
+              )}
             </div>
 
             {/* Mobile Right Actions */}
@@ -560,9 +437,15 @@ export default function Navbar() {
 
       {mobileOpen && (
         <MobileMenu
+          findCareItems={findCareItems}
+          servicesItems={servicesItems}
+          resourcesItems={resourcesItems}
+          specialityItems={specialityItems}
+          user={user}
           isDark={isDark}
           onClose={() => setMobileOpen(false)}
           onToggleTheme={() => setIsDark((d) => !d)}
+          onLogout={handleLogout}
         />
       )}
     </>
