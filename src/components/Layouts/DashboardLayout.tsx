@@ -59,6 +59,11 @@ const roleConfig: Record<
         icon: HiChatBubbleLeftRight,
       },
       {
+        label: "Payments",
+        href: "/patient-dashboard/payments",
+        icon: HiChatBubbleLeftRight,
+      },
+      {
         label: "Profile",
         href: "/patient-dashboard/profile",
         icon: HiUserCircle,
@@ -82,7 +87,7 @@ export default function DashboardLayout({
   const config = roleConfig[role];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-950">
+    <div className="min-h-screen bg-gray-50 text-slate-950">
       <aside className="fixed inset-y-0 left-0 hidden w-72 border-r border-slate-200 bg-white px-5 py-6 lg:flex lg:flex-col">
         <Link
           href="/"
