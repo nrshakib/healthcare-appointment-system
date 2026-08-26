@@ -30,15 +30,23 @@ import {
 } from "@/components/types/PatientDashboardTypes/OverviewPageTypes";
 
 export default function PatientDashboardPage() {
-  const hour = new Date().getHours();
-  const greetings =
-    hour < 12
-      ? "Morning"
-      : hour < 17
-        ? "Afternoon"
-        : hour < 21
-          ? "Evening"
-          : "Night";
+  const hour: number = new Date().getHours();
+  const greetings: "Midnight" | "Morning" | "Afternoon" | "Evening" | "Night" =
+    hour === 0
+      ? "Midnight"
+      : hour < 5
+        ? "Night"
+        : hour < 12
+          ? "Morning"
+          : hour < 17
+            ? "Afternoon"
+            : hour < 21
+              ? "Evening"
+              : "Night";
+
+  const greetingPrefix: "Happy" | "Good" =
+    greetings === "Midnight" ? "Happy" : "Good";
+
   const user = "John Doe";
 
   const totalAppointments = (upcomingAppointments as Appointment[]).filter(
@@ -64,15 +72,44 @@ export default function PatientDashboardPage() {
   const recentUpcomingAppointments: Appointment[] =
     sortedUpcomingAppointments.slice(0, 2);
 
+  const stats = [
+    {
+      title: "Upcoming Appointments",
+      value: totalAppointments,
+      subtitle: null,
+      icon: <HiCalendarDays />,
+      href: "/patient-dashboard/appointments",
+      linkText: "View all",
+    },
+    {
+      title: "Active Prescriptions",
+      value: totalPrescriptions,
+      subtitle: null,
+      icon: <HiClipboardDocumentList />,
+      href: "/patient-dashboard/prescriptions",
+      linkText: "View all",
+    },
+    {
+      title: "Due Payments",
+      value: totalDue,
+      subtitle: `( ৳${totalDueAmount.toLocaleString()} total )`,
+      icon: <HiCurrencyDollar />,
+      href: "/patient-dashboard/payments",
+      linkText: "Pay now",
+    },
+  ];
+
   return (
     <section className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <p className="text-xl font-medium text-black">
-            Good {greetings},{" "}
-            <span className="text-2xl text-primary font-semibold">{user}</span>
+          <p className="text-lg sm:text-xl font-medium text-black">
+            {greetingPrefix} {greetings},{" "}
+            <span className="text-xl sm:text-2xl text-primary font-semibold">
+              {user}
+            </span>
           </p>
-          <h1 className="font-medium text-slate-600">
+          <h1 className="text-sm sm:text-base font-medium text-slate-600">
             Your health management portal is here.
           </h1>
         </div>
@@ -84,6 +121,8 @@ export default function PatientDashboardPage() {
             py: 1,
             borderRadius: 3,
             fontWeight: 600,
+            fontSize: "0.875rem",
+            width: { xs: "fit-content", sm: "auto" },
           }}
         >
           <CurrentDateTime />
@@ -91,202 +130,120 @@ export default function PatientDashboardPage() {
       </div>
 
       {/* Stat cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card
-          variant="outlined"
-          sx={{
-            borderRadius: 4,
-            bgcolor: "#fcfcfc",
-            borderColor: "#f1f5f9",
-            transition: "box-shadow .2s",
-            "&:hover": { boxShadow: 5 },
-            boxShadow: 1,
-          }}
-        >
-          <CardContent>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-slate-500">
-                  Upcoming Appointments
-                </p>
-                <p className="text-3xl font-bold text-slate-900">
-                  {totalAppointments}
-                </p>
-              </div>
-              <Avatar
-                variant="rounded"
-                sx={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 3,
-                  bgcolor: "#ecfdf5",
-                  color: "#06836b",
-                }}
-              >
-                <HiCalendarDays className="size-6" />
-              </Avatar>
-            </div>
-            <div className="flex justify-end mt-2">
-              <Link
-                href="/patient-dashboard/appointments"
-                className="flex items-center gap-2 text-sm font-medium text-primary hover:bg-[#f2fdf9] hover:scale-105 px-2 py-1 rounded-sm transition-all"
-              >
-                <span>View all</span>
-                <FaArrowRight className="size-4" />
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card
-          variant="outlined"
-          sx={{
-            borderRadius: 4,
-            borderColor: "#f1f5f9",
-            transition: "box-shadow .2s",
-            "&:hover": { boxShadow: 5 },
-            boxShadow: 1,
-          }}
-        >
-          <CardContent>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-slate-500">
-                  Active Prescriptions
-                </p>
-                <p className="text-3xl font-bold text-slate-900">
-                  {totalPrescriptions}
-                </p>
-              </div>
-              <Avatar
-                variant="rounded"
-                sx={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 3,
-                  bgcolor: "#ecfdf5",
-                  color: "#06836b",
-                }}
-              >
-                <HiClipboardDocumentList className="size-6" />
-              </Avatar>
-            </div>
-            <div className="flex justify-end mt-2">
-              <Link
-                href="/patient-dashboard/prescriptions"
-                className="flex items-center gap-2 text-sm font-medium text-primary hover:bg-[#eaf7f1] hover:scale-105 px-2 py-1 rounded-sm transition-all"
-              >
-                <span>View all</span>
-                <FaArrowRight className="size-4" />
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card
-          variant="outlined"
-          sx={{
-            borderRadius: 4,
-            borderColor: "#f1f5f9",
-            transition: "box-shadow .2s",
-            "&:hover": { boxShadow: 5 },
-            boxShadow: 1,
-          }}
-        >
-          <CardContent>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-slate-500">
-                  Due Payments
-                </p>
-                <div className="flex items-center gap-2">
-                  <p className="text-3xl font-bold text-slate-900">
-                    {totalDue}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {stats.map((stat) => (
+          <Card
+            key={stat.title}
+            variant="outlined"
+            sx={{
+              borderRadius: 4,
+              bgcolor: "#fcfcfc",
+              borderColor: "#f1f5f9",
+              transition: "box-shadow .2s",
+              "&:hover": { boxShadow: 5 },
+              boxShadow: 1,
+            }}
+          >
+            <div className="p-3">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-[13px] sm:text-sm font-medium text-slate-500">
+                    {stat.title}
                   </p>
-                  <p className="text-slate-600">
-                    ( ৳{totalDueAmount.toLocaleString()} total )
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-2xl sm:text-3xl font-bold text-slate-900">
+                      {stat.value}
+                    </p>
+                    {stat.subtitle && (
+                      <p className="text-slate-600">{stat.subtitle}</p>
+                    )}
+                  </div>
                 </div>
+                <Avatar
+                  variant="rounded"
+                  sx={{
+                    width: { xs: 32, md: 40, xl: 48 },
+                    height: { xs: 32, md: 40, xl: 48 },
+                    borderRadius: 3,
+                    bgcolor: "#ecfdf5",
+                    color: "#06836b",
+                  }}
+                >
+                  {stat.icon}
+                </Avatar>
               </div>
-              <Avatar
-                variant="rounded"
-                sx={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 3,
-                  bgcolor: "#ecfdf5",
-                  color: "#06836b",
-                }}
-              >
-                <HiCurrencyDollar className="size-6" />
-              </Avatar>
+              <div className="flex justify-end mt-2">
+                <Link
+                  href={stat.href}
+                  className="flex items-center gap-2 text-sm font-medium text-primary hover:bg-[#eaf7f1] hover:scale-105 px-2 py-1 rounded-sm transition-all"
+                >
+                  <span>{stat.linkText}</span>
+                  <FaArrowRight className="size-4" />
+                </Link>
+              </div>
             </div>
-            <div className="flex justify-end mt-2">
-              <Link
-                href="/patient-dashboard/payments"
-                className="flex items-center gap-2 text-sm font-medium text-primary hover:bg-[#eaf7f1] hover:scale-105 px-2 py-1 rounded-sm transition-all"
-              >
-                <span>Pay now</span>
-                <FaArrowRight className="size-4" />
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+          </Card>
+        ))}
       </div>
 
       {/* Upcoming appointments */}
       <Card variant="outlined" sx={{ borderRadius: 4, borderColor: "#f1f5f9" }}>
-        <div className="flex items-center justify-between p-5">
-          <h2 className="text-lg font-bold text-slate-900">
+        <div className="flex items-center justify-between px-3 sm:px-5 py-3 sm:py-5">
+          <h2 className="sm:text-lg font-bold text-slate-900">
             Upcoming Appointments
           </h2>
           <Link
             href="/patient-dashboard/appointments"
-            className="text-sm font-medium text-primary hover:underline"
+            className="text-[13px] sm:text-sm font-medium text-primary hover:underline"
           >
             View all
           </Link>
         </div>
         <Divider />
-        <div className="p-5 space-y-4">
+        <div className="p-4 sm:p-5 space-y-4">
           {recentUpcomingAppointments.map((apt) => (
             <div
               key={apt.id}
-              className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors"
+              className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors"
             >
-              <Avatar
-                variant="rounded"
-                sx={{
-                  width: 56,
-                  height: 56,
-                  borderRadius: 3,
-                  bgcolor: "#f1f5f9",
-                }}
-              >
-                <Image
-                  src={apt.image}
-                  alt={apt.doctorName}
-                  fill
-                  className="object-cover"
-                />
-              </Avatar>
-              <div className="flex-1 min-w-0">
-                <p className="font-semibold text-slate-900 truncate">
-                  {apt.doctorName}
-                </p>
-                <p className="text-sm text-slate-500">{apt.speciality}</p>
-                <div className="flex items-center gap-3 mt-1 text-xs text-slate-500">
-                  <span className="flex items-center gap-1">
-                    <HiCalendarDays className="size-3.5" />
-                    {apt.date}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <HiClock className="size-3.5" />
-                    {apt.time}
-                  </span>
+              <div className="flex items-center gap-3.5 min-w-0">
+                <Avatar
+                  variant="rounded"
+                  sx={{
+                    width: 52,
+                    height: 52,
+                    borderRadius: 3,
+                    bgcolor: "#f1f5f9",
+                    flexShrink: 0,
+                  }}
+                >
+                  <Image
+                    src={apt.image}
+                    alt={apt.doctorName}
+                    fill
+                    className="object-cover"
+                  />
+                </Avatar>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-slate-900 truncate">
+                    {apt.doctorName}
+                  </p>
+                  <p className="text-sm text-slate-500 truncate">
+                    {apt.speciality}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-3 mt-1 text-xs text-slate-500">
+                    <span className="flex items-center gap-1">
+                      <HiCalendarDays className="size-3.5" />
+                      {apt.date}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <HiClock className="size-3.5" />
+                      {apt.time}
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="hidden sm:flex flex-col items-end gap-2">
+              <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1.5 pl-[64px] sm:pl-0">
                 <Chip
                   size="small"
                   icon={
@@ -317,13 +274,13 @@ export default function PatientDashboardPage() {
           variant="outlined"
           sx={{ borderRadius: 4, borderColor: "#f1f5f9" }}
         >
-          <div className="flex items-center justify-between p-5">
-            <h2 className="text-lg font-bold text-slate-900">
+          <div className="flex items-center justify-between px-3 sm:px-5 py-3 sm:py-5">
+            <h2 className="sm:text-lg font-bold text-slate-900">
               Active Prescriptions
             </h2>
             <Link
               href="/patient-dashboard/prescriptions"
-              className="text-sm font-medium text-primary hover:underline"
+              className="text-[13px] sm:text-sm font-medium text-primary hover:underline"
             >
               View all
             </Link>
@@ -376,13 +333,13 @@ export default function PatientDashboardPage() {
           variant="outlined"
           sx={{ borderRadius: 4, borderColor: "#f1f5f9" }}
         >
-          <div className="flex items-center justify-between p-5">
-            <h2 className="text-lg font-bold text-slate-900">
+          <div className="flex items-center justify-between px-3 sm:px-5 py-3 sm:py-5">
+            <h2 className="sm:text-lg font-bold text-slate-900">
               Medical Records
             </h2>
             <Link
               href="/patient-dashboard/medical-records"
-              className="text-sm font-medium text-primary hover:underline"
+              className="text-[13px] sm:text-sm font-medium text-primary hover:underline"
             >
               View all
             </Link>
@@ -449,11 +406,11 @@ export default function PatientDashboardPage() {
           variant="outlined"
           sx={{ borderRadius: 4, borderColor: "#f1f5f9" }}
         >
-          <div className="flex items-center justify-between p-5">
-            <h2 className="text-lg font-bold text-slate-900">Messages</h2>
+          <div className="flex items-center justify-between px-3 sm:px-5 py-3 sm:py-5">
+            <h2 className="sm:text-lg font-bold text-slate-900">Messages</h2>
             <Link
               href="/patient-dashboard/messages"
-              className="text-sm font-medium text-primary hover:underline"
+              className="text-[13px] sm:text-sm font-medium text-primary hover:underline"
             >
               View all
             </Link>
