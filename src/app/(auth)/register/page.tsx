@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,16 +13,16 @@ import Divider from "@mui/material/Divider";
 import { FcGoogle } from "react-icons/fc";
 
 // Register components
-import RoleToggle from "@/components/Auth/Register/RoleToggle";
+// import RoleToggle from "@/components/Auth/Register/RoleToggle";
 import PatientRegisterForm from "@/components/Auth/Register/PatientRegisterForm";
-import DoctorRegisterForm from "@/components/Auth/Register/DoctorRegisterForm";
+// import DoctorRegisterForm from "@/components/Auth/Register/DoctorRegisterForm";
 
 export default function RegisterPage() {
-  const [role, setRole] = useState<"patient" | "doctor">("patient");
+  // const [role, setRole] = useState<"patient" | "doctor">("patient");
 
-  const handleRoleChange = (newRole: "patient" | "doctor") => {
-    setRole(newRole);
-  };
+  // const handleRoleChange = (newRole: "patient" | "doctor") => {
+  //   setRole(newRole);
+  // };
 
   return (
     <div className="min-h-screen flex flex-col justify-center py-10 px-4 sm:px-6 lg:px-8 transition-colors">
@@ -82,12 +82,12 @@ export default function RegisterPage() {
             </div>
 
             {/* Role Toggle */}
-            <div className="mb-5">
+            {/* <div className="mb-5">
               <RoleToggle role={role} onChange={handleRoleChange} />
-            </div>
+            </div> */}
 
             {/* Role-based subtitle */}
-            <div className="mb-4">
+            {/* <div className="mb-4">
               {role === "patient" ? (
                 <p className="text-xs text-gray-400 bg-emerald-50 border border-emerald-100 rounded-xl px-3 py-2">
                   🏥 Registering as a{" "}
@@ -101,14 +101,16 @@ export default function RegisterPage() {
                   complete the 3 steps to set up your account.
                 </p>
               )}
-            </div>
+            </div> */}
 
             {/* Forms — conditionally rendered by role */}
-            {role === "patient" ? (
+            {/* {role === "patient" ? (
               <PatientRegisterForm />
             ) : (
               <DoctorRegisterForm />
-            )}
+            )} */}
+
+            <PatientRegisterForm />
 
             {/* Social Login Divider */}
             <div className="my-5">

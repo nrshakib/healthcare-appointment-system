@@ -567,7 +567,7 @@ export default function PatientRegisterForm() {
               Creating Account...
             </span>
           ) : (
-            "Create Patient Account"
+            "Create Account"
           )}
         </Button>
       </form>
