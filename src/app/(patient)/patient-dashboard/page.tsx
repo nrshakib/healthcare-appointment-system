@@ -22,7 +22,7 @@ import {
   medicalRecords,
   recentMessages,
   duePayments,
-} from "@/utils/patientDashboardData";
+} from "@/utils/PatientDashboardData/patientDashboardData";
 import {
   Appointment,
   Payment,

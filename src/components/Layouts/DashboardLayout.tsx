@@ -98,6 +98,7 @@ export default function DashboardLayout({
 
   // Close sidebar automatically on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSidebarOpen(false);
   }, [pathname]);
 
