@@ -15,7 +15,6 @@ import {
   Box,
   IconButton,
   Button,
-  Badge,
 } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -375,7 +374,7 @@ export default function PatientAppointments() {
               )}
             </div>
             <Divider />
-            <div className="p-2 sm:p-3">
+            <div className="px-1 sm:px-0 py-2 sm:py-3">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <StaticDatePicker
                   orientation="portrait"

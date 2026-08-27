@@ -1,4 +1,10 @@
-import { Payment } from "@/components/types/PatientDashboardTypes/OverviewPageTypes";
+interface Payment {
+  id: string;
+  title: string;
+  amount: number;
+  dueDate: string;
+  status: "pending" | "paid" | "overdue";
+}
 
 export const duePayments: Payment[] = [
   {
