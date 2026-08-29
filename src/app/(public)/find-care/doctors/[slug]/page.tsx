@@ -65,7 +65,7 @@ export default async function DoctorDetails({ params }: PageProps) {
               },
             }}
           >
-           <Link
+            <Link
               href="/"
               className="text-primary hover:text-emerald-600 transition-colors"
             >
@@ -228,6 +228,7 @@ export default async function DoctorDetails({ params }: PageProps) {
               <Button
                 startIcon={<FaRegBookmark size={16} />}
                 variant="outlined"
+                disabled
                 sx={{
                   width: { xs: "70%", sm: "50%", md: "100%" },
                   mx: { xs: "auto", md: 0 },

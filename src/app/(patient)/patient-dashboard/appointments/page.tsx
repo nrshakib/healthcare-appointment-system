@@ -15,7 +15,9 @@ import {
   Box,
   IconButton,
   Button,
+  useMediaQuery,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
@@ -62,6 +64,9 @@ function a11yProps(index: number) {
 export default function PatientAppointments() {
   const [tabValue, setTabValue] = useState(0);
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
+
+  const theme = useTheme();
+  const isXs = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
@@ -150,17 +155,24 @@ export default function PatientAppointments() {
           "&:hover": { borderColor: "#a7f3d0", bgcolor: "#f8fafc" },
         }}
       >
-        <CardContent sx={{ p: 2, "&:last-child": { pb: 2 } }}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-            <div className="flex items-center gap-3.5 min-w-0">
+        <CardContent
+          sx={{
+            p: { xs: 1.5, sm: 2 },
+            "&:last-child": { pb: { xs: 1.5, sm: 2 } },
+          }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 md:items-center">
+            {/* Doctor info */}
+            <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
               <Avatar
                 variant="rounded"
                 sx={{
-                  width: 52,
-                  height: 52,
+                  width: { xs: 44, sm: 52 },
+                  height: { xs: 44, sm: 52 },
                   borderRadius: 3,
                   bgcolor: "#f1f5f9",
                   flexShrink: 0,
+                  position: "relative",
                 }}
               >
                 <Image
@@ -171,27 +183,28 @@ export default function PatientAppointments() {
                 />
               </Avatar>
               <div className="flex-1 min-w-0">
-                <p className="font-semibold text-slate-900 truncate">
+                <p className="font-semibold text-slate-900 truncate text-sm sm:text-base">
                   {apt.doctorName}
                 </p>
-                <p className="text-sm text-slate-500 truncate">
+                <p className="text-xs sm:text-sm text-slate-500 truncate">
                   {apt.speciality}
                 </p>
               </div>
             </div>
 
-            <div className="flex flex-col gap-1.5 text-sm text-slate-600">
-              <div className="flex items-center gap-2">
+            {/* Date / type / location */}
+            <div className="flex flex-col gap-1.5 text-xs sm:text-sm text-slate-600 min-w-0">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                 <div className="flex items-center gap-1.5">
-                  <HiCalendarDays className="size-3.5 text-emerald-600" />
-                  <span>{apt.date}</span>
+                  <HiCalendarDays className="size-3.5 text-emerald-600 shrink-0" />
+                  <span className="whitespace-nowrap">{apt.date}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <HiClock className="size-3.5 text-emerald-600" />
-                  <span>{apt.time}</span>
+                  <HiClock className="size-3.5 text-emerald-600 shrink-0" />
+                  <span className="whitespace-nowrap">{apt.time}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2 min-w-0">
                 <Chip
                   variant="outlined"
                   size="small"
@@ -205,6 +218,7 @@ export default function PatientAppointments() {
                   label={apt.type}
                   sx={{
                     px: 1,
+                    flexShrink: 0,
                     borderColor:
                       apt.type === "Online" ? "secondary.main" : "primary.main",
                     color:
@@ -217,19 +231,20 @@ export default function PatientAppointments() {
                     },
                   }}
                 />
-                <div className="flex items-center gap-1.5">
-                  <FaLocationDot className="size-3.5 text-green-700" />
-                  <span>{apt.location}</span>
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <FaLocationDot className="size-3.5 text-green-700 shrink-0" />
+                  <span className="truncate">{apt.location}</span>
                 </div>
               </div>
             </div>
 
+            {/* Status + actions */}
             <div className="flex flex-col items-start md:items-end gap-2">
               {getStatusChip(apt.status)}
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2 w-full md:w-auto justify-start md:justify-end">
                 <Link
                   href={`/patient-dashboard/appointments/${apt.id}`}
-                  className="text-xs font-medium text-primary border border-primary/30 px-3 py-1.5 rounded hover:bg-emerald-50 transition-colors"
+                  className="text-xs font-medium text-primary border border-primary/30 px-3 py-1.5 rounded hover:bg-emerald-50 transition-colors whitespace-nowrap"
                 >
                   View Details
                 </Link>
@@ -237,6 +252,7 @@ export default function PatientAppointments() {
                   size="small"
                   sx={{
                     textTransform: "none",
+                    whiteSpace: "nowrap",
                   }}
                   variant="outlined"
                   color="error"
@@ -253,7 +269,7 @@ export default function PatientAppointments() {
   };
 
   return (
-    <section className="space-y-6">
+    <section className="space-y-4 sm:space-y-6 w-full max-w-full overflow-x-hidden">
       <div>
         <p className="text-lg sm:text-xl font-medium text-black">
           Appointments
@@ -263,9 +279,9 @@ export default function PatientAppointments() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-3">
         {/* Left */}
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-3 min-w-0">
           <Card
             variant="outlined"
             sx={{ borderRadius: 4, borderColor: "#f1f5f9" }}
@@ -275,13 +291,17 @@ export default function PatientAppointments() {
                 value={tabValue}
                 onChange={handleTabChange}
                 aria-label="appointments filter tabs"
-                variant="fullWidth"
+                variant={isXs ? "scrollable" : "fullWidth"}
+                scrollButtons={isXs ? "auto" : false}
+                allowScrollButtonsMobile
                 sx={{
                   "& .MuiTab-root": {
                     textTransform: "none",
                     fontWeight: 700,
-                    fontSize: "0.875rem",
+                    fontSize: { xs: "0.8rem", sm: "0.875rem" },
                     color: "#64748b",
+                    minWidth: { xs: "auto", sm: 90 },
+                    px: { xs: 1.5, sm: 2 },
                     "&.Mui-selected": {
                       color: "#06836b",
                     },
@@ -300,7 +320,7 @@ export default function PatientAppointments() {
 
             <Divider />
             <TabPanel value={tabValue} index={0}>
-              <div className="p-4 sm:p-5 space-y-2">
+              <div className="p-3 sm:p-4 md:p-5 space-y-2">
                 {filteredAppointments().length > 0 ? (
                   filteredAppointments().map(appointmentCard)
                 ) : (
@@ -313,7 +333,7 @@ export default function PatientAppointments() {
 
             <TabPanel value={tabValue} index={1}>
               <Divider />
-              <div className="p-4 sm:p-5 space-y-2">
+              <div className="p-3 sm:p-4 md:p-5 space-y-2">
                 {filteredAppointments().length > 0 ? (
                   filteredAppointments().map(appointmentCard)
                 ) : (
@@ -326,7 +346,7 @@ export default function PatientAppointments() {
 
             <TabPanel value={tabValue} index={2}>
               <Divider />
-              <div className="p-4 sm:p-5 space-y-2">
+              <div className="p-3 sm:p-4 md:p-5 space-y-2">
                 {filteredAppointments().length > 0 ? (
                   filteredAppointments().map(appointmentCard)
                 ) : (
@@ -339,7 +359,7 @@ export default function PatientAppointments() {
 
             <TabPanel value={tabValue} index={3}>
               <Divider />
-              <div className="p-4 sm:p-5 space-y-2">
+              <div className="p-3 sm:p-4 md:p-5 space-y-2">
                 {filteredAppointments().length > 0 ? (
                   filteredAppointments().map(appointmentCard)
                 ) : (
@@ -353,7 +373,7 @@ export default function PatientAppointments() {
         </div>
 
         {/* Right */}
-        <div className="lg:col-span-1 space-y-6">
+        <div className="lg:col-span-1 space-y-4 sm:space-y-6 min-w-0">
           <Card
             variant="outlined"
             sx={{ borderRadius: 4, borderColor: "#f1f5f9" }}
@@ -374,7 +394,7 @@ export default function PatientAppointments() {
               )}
             </div>
             <Divider />
-            <div className="px-1 sm:px-0 py-2 sm:py-3">
+            <div className="px-1 sm:px-0 py-2 sm:py-3 overflow-x-auto">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <StaticDatePicker
                   orientation="portrait"
@@ -390,8 +410,42 @@ export default function PatientAppointments() {
                   }}
                   sx={{
                     width: "100%",
+                    minWidth: 0,
+                    maxWidth: "100%",
+                    "& .MuiPickersLayout-contentWrapper": {
+                      width: "100%",
+                      minWidth: 0,
+                    },
+                    "& .MuiDateCalendar-root": {
+                      width: "100%",
+                      minWidth: 0,
+                      maxHeight: "none",
+                    },
                     "& .MuiPickersDay-root": {
-                      fontSize: "0.875rem",
+                      fontSize: { xs: "0.75rem", sm: "0.875rem", lg: "0.6rem" },
+                      width: { lg: 32 },
+                      height: { lg: 32 },
+                      margin: { lg: "0 2px" },
+                    },
+                    "& .MuiDayCalendar-weekContainer": {
+                      margin: { lg: "0" },
+                      justifyContent: { lg: "space-between" },
+                    },
+                    "& .MuiDayCalendar-header": {
+                      justifyContent: { lg: "space-between" },
+                    },
+                    "& .MuiDayCalendar-weekDayLabel": {
+                      fontSize: { lg: "0.7rem" },
+                      width: { lg: 32 },
+                      margin: { lg: "0 2px" },
+                    },
+                    "& .MuiPickersCalendarHeader-label": {
+                      fontSize: { lg: "0.85rem" },
+                    },
+                    "& .MuiPickersArrowSwitcher-button": {
+                      "& svg": {
+                        fontSize: { lg: "1.1rem" },
+                      },
                     },
                     "& .MuiPickersDay-today": {
                       borderColor: "#06836b",
@@ -425,12 +479,12 @@ export default function PatientAppointments() {
               </h2>
             </div>
             <Divider />
-            <div className="p-4 sm:p-5 space-y-3">
+            <div className="p-3 sm:p-4 md:p-5 space-y-3">
               {todayAppointments.length > 0 ? (
                 todayAppointments.map((apt) => (
                   <div
                     key={apt.id}
-                    className="flex items-center gap-3 p-2 rounded-lg bg-slate-50"
+                    className="flex items-center gap-3 p-2 rounded-lg bg-slate-50 min-w-0"
                   >
                     <Avatar
                       variant="rounded"
@@ -439,6 +493,8 @@ export default function PatientAppointments() {
                         height: 40,
                         borderRadius: 2,
                         bgcolor: "#f1f5f9",
+                        position: "relative",
+                        flexShrink: 0,
                       }}
                     >
                       <Image
@@ -473,7 +529,7 @@ export default function PatientAppointments() {
               borderColor: "#f1f5f9",
               backgroundColor: "#F0F5FE",
               paddingX: {
-                xs: 3,
+                xs: 2.5,
                 sm: 3,
               },
               paddingY: {

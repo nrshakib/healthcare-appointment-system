@@ -323,7 +323,7 @@ export default function DashboardLayout({
         </header>
 
         {/* Dashboard Page Viewport */}
-        <main className="flex-1 px-3.5 py-4 sm:px-4 sm:py-6 xl:px-8 lg:py-8 w-full">
+        <main className="flex-1 px-3.5 py-4 sm:px-4 sm:py-6 xl:px-5 lg:py-8 w-full">
           {children}
         </main>
       </div>

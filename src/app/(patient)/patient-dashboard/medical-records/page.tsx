@@ -1,5 +1,9 @@
-import React from "react";
+import ComingSoon from "@/components/Shared/ComingSoon";
 
 export default function PatientRecords() {
-  return <div>PatientRecords</div>;
+  return (
+    <div>
+      <ComingSoon feature="Medical Records" progress={5} />
+    </div>
+  );
 }
