@@ -13,7 +13,7 @@ import {
 import { HiOutlineVideoCamera } from "react-icons/hi2";
 import { FiUserCheck } from "react-icons/fi";
 import { slugify } from "@/utils/slugify";
-import { Badge, Button } from "@mui/material";
+import { Badge} from "@mui/material";
 
 export interface DoctorCardItem {
   id: string | number;
@@ -223,36 +223,13 @@ export default function AvailableTodayDoctorCard({
 
             {/* Buttons Row */}
             <div className="grid grid-cols-1 min-[350px]:grid-cols-2 gap-2 w-full">
-              <Button
-                variant="contained"
-                disableElevation
-                onClick={() =>
-                  onBookAppointment(doctor, selectedSlot || visibleSlots[0])
-                }
-                sx={{
-                  backgroundColor: "#06836b",
-                  color: "#ffffff",
-                  textTransform: "none",
-                  fontWeight: 600,
-                  fontSize: { xs: "12px", xl: "14px" },
-                  py: "8px",
-                  px: "12px",
-                  borderRadius: "12px",
-                  boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-                  transition: "all 0.2s ease-in-out",
-                  cursor: "pointer",
-                  "&:hover": {
-                    backgroundColor: "#056f5a",
-                    boxShadow:
-                      "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
-                  },
-                  "&:active": {
-                    transform: "scale(0.98)",
-                  },
-                }}
+              <Link
+                href="/find-care/book-appointment"
+                className="inline-flex items-center justify-center bg-[#06836b] text-white font-semibold text-xs xl:text-sm py-2 px-3 rounded-xl
+                shadow-lg transition-all duration-200 ease-in-out cursor-pointer hover:bg-[#056f5a] hover:shadow-xl active:scale-[0.98]"
               >
                 Book Appointment
-              </Button>
+              </Link>
 
               <Link
                 href={`/find-care/doctors/${slugify(doctor.name)}`}

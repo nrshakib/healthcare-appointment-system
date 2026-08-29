@@ -162,38 +162,16 @@ export default async function DoctorDetails({ params }: PageProps) {
             </div>
 
             <div className="flex flex-col items-center gap-3 py-2 xl:py-4 sm:items-stretch sm:gap-3">
-              <Button
-                startIcon={<FaCalendarCheck size={16} />}
-                sx={{
-                  width: { xs: "70%", sm: "50%", md: "100%" },
-                  mx: { xs: "auto", md: 0 },
-                  textTransform: "none",
-                  borderRadius: "20px",
-                  background:
-                    "linear-gradient(135deg, #047857 0%, #10B981 100%)",
-                  color: "#fff",
-                  fontSize: { xs: "12px", sm: "14px" },
-                  fontWeight: 600,
-                  px: 2.5,
-                  py: 1.5,
-                  boxShadow: 1,
-                  transition: "all 0.2s ease",
-                  "& .MuiButton-startIcon": {
-                    mr: 1,
-                  },
-                  "&:hover": {
-                    background:
-                      "linear-gradient(135deg, #059669 0%, #047857 100%)",
-                    boxShadow: 3,
-                  },
-                  "&:active": {
-                    background:
-                      "linear-gradient(135deg, #047857 0%, #065f46 100%)",
-                  },
-                }}
+              <Link
+                href="/find-care/book-appointment"
+                className="flex items-center justify-center gap-2 w-[70%] sm:w-1/2 md:w-full mx-auto md:mx-0 
+                rounded-xl text-white font-semibold text-xs sm:text-sm px-5 py-3 shadow-sm transition-all
+                duration-200 ease-in-out bg-linear-to-br from-[#047857] to-[#10B981] hover:from-[#059669]
+                 hover:to-[#047857] hover:shadow-lg active:from-[#047857] active:to-[#065f46]"
               >
+                <FaCalendarCheck size={16} />
                 Book Appointment
-              </Button>
+              </Link>
 
               <Button
                 startIcon={<FaRegMessage size={16} />}
