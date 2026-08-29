@@ -13,7 +13,7 @@ import {
 import { HiOutlineVideoCamera } from "react-icons/hi2";
 import { FiUserCheck } from "react-icons/fi";
 import { slugify } from "@/utils/slugify";
-import { Badge} from "@mui/material";
+import { Badge, Chip } from "@mui/material";
 
 export interface DoctorCardItem {
   id: string | number;
@@ -33,17 +33,14 @@ export interface DoctorCardItem {
 
 interface AvailableTodayDoctorCardProps {
   doctor: DoctorCardItem;
-  onBookAppointment: (doctor: DoctorCardItem, slot?: string) => void;
   currencySymbol?: string;
 }
 
 export default function AvailableTodayDoctorCard({
   doctor,
-  onBookAppointment,
   currencySymbol = "$",
 }: AvailableTodayDoctorCardProps) {
   const [isFavorite, setIsFavorite] = useState(false);
-  const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [showAllSlots, setShowAllSlots] = useState(false);
 
   // Derive slots from doctor.timeslots or default fallback slots
@@ -172,35 +169,28 @@ export default function AvailableTodayDoctorCard({
               Next available slots
             </p>
             <div className="flex flex-wrap items-center gap-1.5">
-              {visibleSlots.map((slot) => {
-                const isSelected = selectedSlot === slot;
-                return (
-                  <button
-                    key={slot}
-                    type="button"
-                    onClick={() => {
-                      const next = isSelected ? null : slot;
-                      setSelectedSlot(next);
-                      if (next) {
-                        onBookAppointment(doctor, next);
-                      }
-                    }}
-                    className={`px-2.5 py-1 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
-                      isSelected
-                        ? "bg-[#06836b] text-white border-[#06836b] shadow-xs"
-                        : "bg-emerald-50/50 hover:bg-emerald-50 text-[#06836b] border-emerald-100/80"
-                    }`}
-                  >
-                    {slot}
-                  </button>
-                );
-              })}
+              {visibleSlots.map((slot) => (
+                <Chip
+                  key={slot}
+                  label={slot}
+                  size="small"
+                  sx={{
+                    backgroundColor: "rgba(6, 131, 107, 0.08)",
+                    color: "#06836b",
+                    fontWeight: 600,
+                    fontSize: "0.75rem",
+                    borderRadius: "8px",
+                    border: "1px solid rgba(6, 131, 107, 0.2)",
+                    height: "26px",
+                  }}
+                />
+              ))}
 
               {!showAllSlots && remainingCount > 0 && (
                 <button
                   type="button"
                   onClick={() => setShowAllSlots(true)}
-                  className="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-50 hover:bg-slate-100 text-slate-600 border border-slate-200 transition-colors cursor-pointer"
+                  className="px-2.5 py-0.5 rounded-lg text-xs font-medium bg-slate-50 hover:bg-slate-100 text-slate-600 border border-slate-200 transition-colors cursor-pointer"
                 >
                   +{remainingCount} More
                 </button>
@@ -221,10 +211,10 @@ export default function AvailableTodayDoctorCard({
               </span>
             </div>
 
-            {/* Buttons Row */}
+            {/* Links Row */}
             <div className="grid grid-cols-1 min-[350px]:grid-cols-2 gap-2 w-full">
               <Link
-                href="/find-care/book-appointment"
+                href={`/find-care/book-appointment?doctor=${slugify(doctor.name)}`}
                 className="inline-flex items-center justify-center bg-[#06836b] text-white font-semibold text-xs xl:text-sm py-2 px-3 rounded-xl
                 shadow-lg transition-all duration-200 ease-in-out cursor-pointer hover:bg-[#056f5a] hover:shadow-xl active:scale-[0.98]"
               >

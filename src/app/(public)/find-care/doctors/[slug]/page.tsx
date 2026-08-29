@@ -163,7 +163,7 @@ export default async function DoctorDetails({ params }: PageProps) {
 
             <div className="flex flex-col items-center gap-3 py-2 xl:py-4 sm:items-stretch sm:gap-3">
               <Link
-                href="/find-care/book-appointment"
+                href={`/find-care/book-appointment?doctor=${slugify(doctor.name)}`}
                 className="flex items-center justify-center gap-2 w-[70%] sm:w-1/2 md:w-full mx-auto md:mx-0 
                 rounded-xl text-white font-semibold text-xs sm:text-sm px-5 py-3 shadow-sm transition-all
                 duration-200 ease-in-out bg-linear-to-br from-[#047857] to-[#10B981] hover:from-[#059669]

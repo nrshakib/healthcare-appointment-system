@@ -11,10 +11,8 @@ import AvailableTodayFilters, {
   Filters,
 } from "@/components/Public/AvailableToday/AvailableTodayFilters";
 import AvailableTodayDoctorCard, {
-  DoctorCardItem,
 } from "@/components/Public/AvailableToday/AvailableTodayDoctorCard";
 import AvailableTodayFeatures from "@/components/Public/AvailableToday/AvailableTodayFeatures";
-import AppointmentModal from "@/components/Public/AvailableToday/AppointmentModal";
 
 const dayNames = [
   "Sunday",
@@ -29,13 +27,6 @@ const dayNames = [
 export default function AvailableTodayPage() {
   const [sortBy, setSortBy] = useState<string>("recommended");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-
-  // Quick Appointment Modal
-  const [bookingModalOpen, setBookingModalOpen] = useState(false);
-  const [selectedDoctor, setSelectedDoctor] = useState<DoctorCardItem | null>(
-    null,
-  );
-  const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
 
   // Pagination
   const [page, setPage] = useState(1);
@@ -169,12 +160,6 @@ export default function AvailableTodayPage() {
     setPage(1);
   };
 
-  const handleOpenBooking = (doctor: DoctorCardItem, slot?: string) => {
-    setSelectedDoctor(doctor);
-    setSelectedSlot(slot || null);
-    setBookingModalOpen(true);
-  };
-
   return (
     <div className="min-h-screen bg-[#fafbfc]">
       {/* Hero Section */}
@@ -267,7 +252,6 @@ export default function AvailableTodayPage() {
                   <AvailableTodayDoctorCard
                     key={doctor.id}
                     doctor={doctor}
-                    onBookAppointment={handleOpenBooking}
                     currencySymbol="৳"
                   />
                 ))}
@@ -382,15 +366,6 @@ export default function AvailableTodayPage() {
           </div>
         </div>
       )}
-
-      {/* Interactive Quick Appointment Booking Modal */}
-      <AppointmentModal
-        doctor={selectedDoctor}
-        selectedSlot={selectedSlot}
-        isOpen={bookingModalOpen}
-        onClose={() => setBookingModalOpen(false)}
-        currencySymbol="৳"
-      />
     </div>
   );
 }
