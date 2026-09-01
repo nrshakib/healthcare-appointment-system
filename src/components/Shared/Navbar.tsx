@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { useDarkMode } from "@/hooks/useDarkMode";
+import { useAuthUser } from "@/hooks/useAuthUser";
 
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
@@ -30,10 +32,7 @@ interface SubItem {
   href: string;
 }
 
-interface AuthUser {
-  role: string;
-  email: string;
-}
+import type { AuthUser } from "@/hooks/useAuthUser";
 
 const findCareItems: SubItem[] = [
   { label: "Find a Doctor", href: "/find-care/doctors" },
@@ -64,48 +63,16 @@ type DropdownKey = "find-care" | "services" | "resources" | null;
 // Main Component
 export default function Navbar() {
   const router = useRouter();
+  const { isDark, toggle: toggleDark } = useDarkMode();
+  const { user } = useAuthUser();
+
   const [activeDropdown, setActiveDropdown] = useState<DropdownKey>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [user, setUser] = useState<AuthUser | null>(null);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const userMenuRef = useRef<HTMLDivElement | null>(null);
-
-  // Sync user authentication state from localStorage
-  const syncUser = useCallback(() => {
-    try {
-      const role = localStorage.getItem("userRole");
-      const email = localStorage.getItem("userEmail");
-      if (
-        role?.toLowerCase() === "patient" &&
-        email &&
-        email.trim().length > 0
-      ) {
-        setUser({ role, email: email.trim() });
-      } else {
-        setUser(null);
-      }
-    } catch {
-      setUser(null);
-    }
-  }, []);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    syncUser();
-
-    // Listen to localStorage changes across tabs/windows or local dispatch
-    window.addEventListener("storage", syncUser);
-    window.addEventListener("focus", syncUser);
-
-    return () => {
-      window.removeEventListener("storage", syncUser);
-      window.removeEventListener("focus", syncUser);
-    };
-  }, [syncUser]);
 
   // Click outside and escape key to close user dropdown
   useEffect(() => {
@@ -138,10 +105,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
-  }, [isDark]);
-
   const handleMouseEnter = useCallback((id: DropdownKey) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setActiveDropdown(id);
@@ -163,7 +126,6 @@ export default function Navbar() {
     } catch {
       // ignore
     }
-    setUser(null);
     setUserMenuOpen(false);
     router.push("/sign-in");
   }, [router]);
@@ -236,7 +198,7 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-3">
               <IconButton
                 id="navbar-theme-toggle"
-                onClick={() => setIsDark((d) => !d)}
+                onClick={toggleDark}
                 className="navbar-icon-btn"
                 aria-label="Toggle theme"
                 size="small"
@@ -409,7 +371,7 @@ export default function Navbar() {
             <div className="flex lg:hidden items-center gap-1.5">
               <IconButton
                 id="mobile-theme-btn"
-                onClick={() => setIsDark((d) => !d)}
+                onClick={toggleDark}
                 className="navbar-icon-btn"
                 aria-label="Toggle theme"
                 size="small"
@@ -444,7 +406,7 @@ export default function Navbar() {
           user={user}
           isDark={isDark}
           onClose={() => setMobileOpen(false)}
-          onToggleTheme={() => setIsDark((d) => !d)}
+          onToggleTheme={toggleDark}
           onLogout={handleLogout}
         />
       )}

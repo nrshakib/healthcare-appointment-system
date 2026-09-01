@@ -49,7 +49,7 @@ function FloatingCard({
   return (
     <div
       className={
-        "absolute flex items-center gap-2 xl:gap-3 rounded-2xl bg-white/90 backdrop-blur-md px-3 py-1 sm:px-2 sm:py-2 lg:px-3 shadow-lg border border-white/50 " +
+        "absolute flex items-center gap-2 xl:gap-3 rounded-2xl hero-floating-card backdrop-blur-md px-3 py-1 sm:px-2 sm:py-2 lg:px-3 shadow-lg " +
         className
       }
     >
@@ -71,7 +71,7 @@ export default function HeroSection() {
 
     const timeout = window.setTimeout(() => {
       setTypewriterLength((currentLength) =>
-        currentLength === TYPEWRITER_TEXT.length ? 0 : currentLength + 1
+        currentLength === TYPEWRITER_TEXT.length ? 0 : currentLength + 1,
       );
     }, typingDelay);
 
@@ -88,23 +88,23 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="bg-gray-50">
+    <div className="hero-section">
       <div className="px-4 sm:px-6 md:px-10 lg:px-1 pt-8 lg:py-2 sm:pt-8 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 overflow-hidden">
         {/* left section */}
         <div className="w-full lg:w-3/5 lg:pl-5 xl:pl-20 flex flex-col items-center text-center lg:items-start lg:text-left">
           <div className="flex flex-col gap-3 sm:gap-4 items-center lg:items-start">
             <motion.p
-              className="text-primary bg-primary/10 backdrop-blur-md border border-primary/20 shadow-sm w-fit px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium"
+              className="hero-badge backdrop-blur-md shadow-sm w-fit px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium"
               aria-label={TYPEWRITER_TEXT}
             >
               <span aria-hidden="true">
                 {TYPEWRITER_TEXT.slice(0, typewriterLength).replace(
                   / /g,
-                  "\u00A0"
+                  "\u00A0",
                 )}
               </span>
               <motion.span
-                className="ml-0.5 inline-block h-3 w-px translate-y-0.5 bg-primary sm:h-4"
+                className="ml-0.5 inline-block h-3 w-px translate-y-0.5 hero-cursor sm:h-4"
                 animate={{ opacity: [0, 1, 1, 0] }}
                 transition={{
                   duration: 1,
@@ -116,9 +116,9 @@ export default function HeroSection() {
             </motion.p>
             <p className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold w-full lg:w-[90%] xl:w-[85%] leading-[1.15] sm:leading-[1.1]">
               Quality care for a{" "}
-              <span className="text-primary">healthier you</span>
+              <span className="hero-heading-accent">healthier you</span>
             </p>
-            <p className="text-gray-500 text-sm sm:text-base lg:text-lg w-full lg:w-[90%] xl:w-[80%]">
+            <p className="hero-text-tertiary text-sm sm:text-base lg:text-lg w-full lg:w-[90%] xl:w-[80%]">
               Find trusted doctors, book appointments, and manage your health
               anytime, anywhere.
             </p>
@@ -126,11 +126,11 @@ export default function HeroSection() {
 
           {/* Search Box */}
           <div className="mb-6 w-full">
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-white rounded-2xl shadow-sm p-4 mt-8 w-full">
-              <div className="flex items-center gap-3 flex-1 border-b sm:border-b-0 sm:border-r border-gray-200 pb-3 sm:pb-0 sm:pr-4 min-w-0">
-                <FaSearch className="text-[#10B981] text-base lg:text-lg shrink-0" />
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 hero-search-box rounded-2xl shadow-sm p-4 mt-8 w-full">
+              <div className="flex items-center gap-3 flex-1 border-b sm:border-b-0 sm:border-r hero-search-divider pb-3 sm:pb-0 sm:pr-4 min-w-0">
+                <FaSearch className="hero-icon text-base lg:text-lg shrink-0" />
                 <div className="w-full min-w-0 text-left">
-                  <p className="text-gray-600 text-xs sm:text-sm font-semibold">
+                  <p className="hero-text-secondary text-xs sm:text-sm font-semibold">
                     Search Doctor
                   </p>
                   <TextField
@@ -151,10 +151,10 @@ export default function HeroSection() {
                   />
                 </div>
               </div>
-              <div className="flex items-center gap-3 flex-1 border-b sm:border-b-0 sm:border-r border-gray-200 pb-3 sm:pb-0 sm:pr-4 min-w-0">
-                <FaMapMarkerAlt className="text-[#10B981] text-base lg:text-lg shrink-0" />
+              <div className="flex items-center gap-3 flex-1 border-b sm:border-b-0 sm:border-r hero-search-divider pb-3 sm:pb-0 sm:pr-4 min-w-0">
+                <FaMapMarkerAlt className="hero-icon text-base lg:text-lg shrink-0" />
                 <div className="w-full min-w-0 text-left">
-                  <p className="text-gray-600 text-xs sm:text-sm font-semibold">
+                  <p className="hero-text-secondary text-xs sm:text-sm font-semibold">
                     Location
                   </p>
                   <TextField
@@ -177,12 +177,12 @@ export default function HeroSection() {
               </div>
               <div className="flex items-center gap-3 flex-1 cursor-pointer pb-1 sm:pb-0 min-w-0">
                 <FaCalendarAlt
-                  className="text-[#10B981] text-base lg:text-lg shrink-0"
+                  className="hero-icon text-base lg:text-lg shrink-0"
                   onClick={() => setOpenDatePicker(true)}
                 />
                 <div className="flex-1 w-full min-w-0 text-left">
                   <p
-                    className="text-gray-600 text-xs sm:text-sm font-semibold"
+                    className="hero-text-secondary text-xs sm:text-sm font-semibold"
                     onClick={() => setOpenDatePicker(true)}
                   >
                     Choose Date
@@ -226,8 +226,7 @@ export default function HeroSection() {
                           desktopPaper: {
                             sx: {
                               borderRadius: "16px",
-                              boxShadow:
-                                "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
+                              boxShadow: "var(--hero-datepicker-shadow)",
                             },
                           },
                           mobilePaper: {
@@ -272,18 +271,16 @@ export default function HeroSection() {
                 variant="contained"
                 onClick={handleSearch}
                 sx={{
-                  background:
-                    "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+                  background: "var(--hero-btn-gradient)",
                   borderRadius: "12px",
                   padding: "14px 20px",
                   minWidth: "64px",
-                  boxShadow: "0 4px 14px 0 rgba(16, 185, 129, 0.39)",
+                  boxShadow: "var(--hero-button-shadow)",
                   transition: "all 0.3s ease",
                   width: { xs: "100%", sm: "auto" },
                   "&:hover": {
-                    background:
-                      "linear-gradient(135deg, #059669 0%, #047857 100%)",
-                    boxShadow: "0 6px 20px 0 rgba(16, 185, 129, 0.5)",
+                    background: "var(--hero-btn-gradient-hover)",
+                    boxShadow: "var(--hero-button-shadow-hover)",
                     transform: "translateY(-1px)",
                   },
                 }}
@@ -296,32 +293,32 @@ export default function HeroSection() {
           {/*Specs Text */}
           <div className="grid grid-cols-2 sm:grid-cols-4 justify-items-center lg:justify-items-start gap-x-3 xs:gap-x-4 gap-y-2.5 xs:gap-y-3">
             <div className="flex items-center gap-2">
-              <p className="text-lg bg-gray-200 rounded-full p-1">
-                <LuHeartHandshake className="text-primary" />
+              <p className="text-lg hero-icon-bg rounded-full p-1">
+                <LuHeartHandshake className="hero-icon" />
               </p>
               <p className="text-xs sm:text-sm font-medium whitespace-nowrap">
                 Verified Doctors
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <p className="text-lg bg-gray-200 rounded-full p-1">
-                <LuCalendarHeart className="text-primary" />
+              <p className="text-lg hero-icon-bg rounded-full p-1">
+                <LuCalendarHeart className="hero-icon" />
               </p>
               <p className="text-xs sm:text-sm font-medium whitespace-nowrap">
                 Easy Booking
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <p className="text-lg bg-gray-200 rounded-full p-1">
-                <MdOutlineHealthAndSafety className="text-primary" />
+              <p className="text-lg hero-icon-bg rounded-full p-1">
+                <MdOutlineHealthAndSafety className="hero-icon" />
               </p>
               <p className="text-xs sm:text-sm font-medium whitespace-nowrap">
                 Secure & Private
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <p className="text-lg bg-gray-200 rounded-full p-1">
-                <FaHandHoldingHeart className="text-primary" />
+              <p className="text-lg hero-icon-bg rounded-full p-1">
+                <FaHandHoldingHeart className="hero-icon" />
               </p>
               <p className="text-xs sm:text-sm font-medium whitespace-nowrap">
                 24/7 Support
@@ -333,29 +330,11 @@ export default function HeroSection() {
         <div className="relative w-full lg:w-2/5 min-h-50 sm:min-h-96 lg:min-h-130 max-w-105 sm:max-w-130 xl:max-w-150 shrink-0 flex items-center justify-center mx-auto">
           {/* Background blob */}
           {/* right */}
-          <div
-            className="pointer-events-none absolute -right-24 sm:-right-32 md:-right-50 top-1/2 h-56 sm:h-96 md:h-100 xl:h-125 w-56 sm:w-96 md:w-100 xl:w-125 -translate-y-1/2 rounded-full opacity-90 blur-[2px]"
-            style={{
-              background:
-                "radial-gradient(circle at 40% 40%, rgba(16,185,129,0.18), rgba(16,185,129,0.05) 60%, transparent 85% )",
-            }}
-          />
+          <div className="pointer-events-none absolute -right-24 sm:-right-32 md:-right-50 top-1/2 h-56 sm:h-96 md:h-100 xl:h-125 w-56 sm:w-96 md:w-100 xl:w-125 -translate-y-1/2 rounded-full opacity-90 blur-[2px] hero-blob" />
           {/* top-left */}
-          <div
-            className="pointer-events-none absolute left-0 top-16 sm:top-24 lg:top-2 h-32 sm:h-52 lg:h-60 xl:h-75 w-32 sm:w-52 lg:w-60 xl:w-75 -translate-y-1/2 rounded-full opacity-90 blur-[2px]"
-            style={{
-              background:
-                "radial-gradient(circle at 40% 40%, rgba(16,185,129,0.18), rgba(16,185,129,0.05) 60%, transparent 85%)",
-            }}
-          />
+          <div className="pointer-events-none absolute left-0 top-16 sm:top-24 lg:top-2 h-32 sm:h-52 lg:h-60 xl:h-75 w-32 sm:w-52 lg:w-60 xl:w-75 -translate-y-1/2 rounded-full opacity-90 blur-[2px] hero-blob" />
           {/* bottom-center */}
-          <div
-            className="pointer-events-none absolute left-8 sm:left-16 xl:left-20 top-3/4 size-40 sm:size-60 md:size-80 xl:size-90 -translate-y-1/2 rounded-full blur-[2px]"
-            style={{
-              background:
-                "radial-gradient(circle at 40% 40%, rgba(16,185,129,0.18), rgba(16,185,129,0.05) 60%, transparent 85%)",
-            }}
-          />
+          <div className="pointer-events-none absolute left-8 sm:left-16 xl:left-20 top-3/4 size-40 sm:size-60 md:size-80 xl:size-90 -translate-y-1/2 rounded-full blur-[2px] hero-blob" />
           <div className="relative w-full h-64 sm:h-96 lg:h-130 xl:h-145">
             {/* Doctor image */}
             <div className="absolute bottom-0 left-1/2 h-64 sm:h-95 xl:h-115 w-50 sm:w-70 xl:w-90 -translate-x-1/2 overflow-hidden">
@@ -369,28 +348,28 @@ export default function HeroSection() {
             </div>
             {/* 24/7 Support — top left */}
             <FloatingCard className="left-[10%] sm:left-2 md:left-12 xl:left-24 top-8 sm:top-16 md:top-28">
-              <span className="flex size-5 sm:h-9 sm:w-9 xl:h-11 xl:w-11 items-center justify-center rounded-full bg-emerald-50">
-                <FaHeadphones className="h-3 w-3 sm:h-4 sm:w-4 xl:h-5 xl:w-5 text-emerald-600" />
+              <span className="flex size-5 sm:h-9 sm:w-9 xl:h-11 xl:w-11 items-center justify-center rounded-full hero-icon-bg-accent">
+                <FaHeadphones className="h-3 w-3 sm:h-4 sm:w-4 xl:h-5 xl:w-5 hero-icon" />
               </span>
               <span className="leading-tight">
-                <span className="block text-sm sm:text-base xl:text-lg font-bold text-slate-900">
+                <span className="block text-sm sm:text-base xl:text-lg font-bold hero-text-primary">
                   24/7
                 </span>
-                <span className="block text-[8px] sm:text-xs xl:text-sm text-slate-500">
+                <span className="block text-[8px] sm:text-xs xl:text-sm hero-text-tertiary">
                   Support
                 </span>
               </span>
             </FloatingCard>
             {/* Video Consultation — right middle */}
             <FloatingCard className="right-0 sm:right-2 md:right-6 xl:right-2 top-20 sm:top-36 lg:top-72 xl:top-44">
-              <span className="flex size-5 sm:h-9 sm:w-9 xl:h-11 xl:w-11 items-center justify-center rounded-full bg-emerald-50">
-                <FaVideo className="h-3 w-3 sm:h-4 sm:w-4 xl:h-5 xl:w-5 text-emerald-600" />
+              <span className="flex size-5 sm:h-9 sm:w-9 xl:h-11 xl:w-11 items-center justify-center rounded-full hero-icon-bg-accent">
+                <FaVideo className="h-3 w-3 sm:h-4 sm:w-4 xl:h-5 xl:w-5 hero-icon" />
               </span>
               <span className="leading-tight">
-                <span className="block text-xs sm:text-base xl:text-lg font-bold text-slate-900">
+                <span className="block text-xs sm:text-base xl:text-lg font-bold hero-text-primary">
                   Video
                 </span>
-                <span className="block text-[8px] sm:text-xs xl:text-sm text-slate-500">
+                <span className="block text-[8px] sm:text-xs xl:text-sm hero-text-tertiary">
                   Consultation
                 </span>
               </span>
@@ -406,15 +385,15 @@ export default function HeroSection() {
                       alt=""
                       width={30}
                       height={30}
-                      className="h-5 w-5 sm:h-6 sm:w-6 xl:h-8 xl:w-8 rounded-full border-2 border-white object-cover"
+                      className="h-5 w-5 sm:h-6 sm:w-6 xl:h-8 xl:w-8 rounded-full border-2 hero-avatar-border object-cover"
                     />
                   ))}
                 </div>
-                <span className="text-xs sm:text-base xl:text-lg font-semibold text-slate-900">
+                <span className="text-xs sm:text-base xl:text-lg font-semibold hero-text-primary">
                   50K+
                 </span>
               </div>
-              <span className="text-[8px] sm:text-xs xl:text-sm text-slate-500">
+              <span className="text-[8px] sm:text-xs xl:text-sm hero-text-tertiary">
                 Happy Patients
               </span>
             </FloatingCard>
