@@ -1,0 +1,72 @@
+/* ==============================
+   Hero Section
+   ============================== */
+
+.hero-section {
+  background: var(--hero-bg);
+}
+
+.hero-floating-card {
+  background: var(--hero-card-bg);
+  border: 1px solid var(--hero-card-border);
+}
+
+.hero-search-box {
+  background: var(--hero-card-bg);
+  border: 1px solid var(--hero-card-border);
+}
+
+.hero-search-divider {
+  border-color: var(--hero-search-border);
+}
+
+.hero-text-primary {
+  color: var(--hero-text-primary);
+}
+
+.hero-text-secondary {
+  color: var(--hero-text-secondary);
+}
+
+.hero-text-tertiary {
+  color: var(--hero-text-tertiary);
+}
+
+.hero-icon-bg {
+  background: var(--hero-icon-bg);
+}
+
+.hero-icon-bg-accent {
+  background: var(--hero-icon-bg-accent);
+}
+
+.hero-icon {
+  color: var(--hero-icon);
+}
+
+.hero-badge {
+  color: var(--hero-badge-text);
+  background: var(--hero-badge-bg);
+  border: 1px solid var(--hero-badge-border);
+}
+
+.hero-cursor {
+  background: var(--hero-cursor);
+}
+
+.hero-heading-accent {
+  color: var(--hero-heading-accent);
+}
+
+.hero-blob {
+  background: radial-gradient(
+    circle at 40% 40%,
+    var(--hero-blob-primary),
+    var(--hero-blob-fade) 60%,
+    transparent 85%
+  );
+}
+
+.hero-avatar-border {
+  border-color: var(--hero-avatar-border);
+}
