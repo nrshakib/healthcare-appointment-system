@@ -66,7 +66,6 @@ export default function HeroSection() {
             main: "#10B981",
             light: "#fff",
             dark: "#059669",
-            contrastText: "#ffffff",
           },
         },
       }),
@@ -157,13 +156,9 @@ export default function HeroSection() {
                     fullWidth
                     sx={{
                       "& .MuiInputBase-input": {
-                        color: (theme) =>
-                          theme.palette.mode === "dark" ? "#000" : "#fff",
+                        color: isDark ? "#fff" : "#000",
                         "&::placeholder": {
-                          color: (theme) =>
-                            theme.palette.mode === "dark"
-                              ? "#CBD5E1"
-                              : "#6B6B6B",
+                          color: isDark ? "#CBD5E1" : "#6B6B6B",
                           opacity: 1,
                         },
                       },
@@ -194,13 +189,9 @@ export default function HeroSection() {
                     fullWidth
                     sx={{
                       "& .MuiInputBase-input": {
-                        color: (theme) =>
-                          theme.palette.mode === "dark" ? "#000" : "#fff",
+                        color: isDark ? "#fff" : "#000",
                         "&::placeholder": {
-                          color: (theme) =>
-                            theme.palette.mode === "dark"
-                              ? "#CBD5E1"
-                              : "#6B6B6B",
+                          color: isDark ? "#CBD5E1" : "#6B6B6B",
                           opacity: 1,
                         },
                       },
@@ -294,8 +285,8 @@ export default function HeroSection() {
                                 color: (theme) =>
                                   date
                                     ? theme.palette.mode === "dark"
-                                      ? "#000"
-                                      : "#fff"
+                                      ? "#fff"
+                                      : "#000"
                                     : theme.palette.mode === "dark"
                                       ? "#CBD5E1"
                                       : "#6B6B6B",

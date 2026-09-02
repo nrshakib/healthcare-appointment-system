@@ -80,7 +80,7 @@
   --hero-icon-bg: var(--icon-bg);
   --hero-icon-bg-accent: var(--icon-accent);
   --hero-icon: var(--green-400);
-  --hero-badge-text: var(--green-400);
+  --hero-badge-text: var(--green-600);
   --hero-badge-bg: rgba(16, 185, 129, 0.1);
   --hero-badge-border: rgba(16, 185, 129, 0.2);
   --hero-cursor: var(--green-400);
