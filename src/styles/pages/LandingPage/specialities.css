@@ -1,5 +1,5 @@
 .spec-section {
-  background: var(--spec-bg);
+  background: var(--bg-section-alt);
 }
 
 .spec-card {
@@ -20,11 +20,11 @@
 }
 
 .spec-title {
-  color: var(--spec-title-text);
+  color: var(--text-heading);
 }
 
 .spec-detail {
-  color: var(--spec-detail-text);
+  color: var(--text-muted);
 }
 
 .spec-card-link {

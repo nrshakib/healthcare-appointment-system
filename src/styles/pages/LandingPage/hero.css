@@ -1,5 +1,5 @@
 .hero-section {
-  background: var(--hero-bg);
+  background: var(--bg-landing);
 }
 
 .hero-floating-card {
@@ -17,15 +17,15 @@
 }
 
 .hero-text-primary {
-  color: var(--hero-text-primary);
+  color: var(--text-heading);
 }
 
 .hero-text-secondary {
-  color: var(--hero-text-secondary);
+  color: var(--text-body);
 }
 
 .hero-text-tertiary {
-  color: var(--hero-text-tertiary);
+  color: var(--text-muted);
 }
 
 .hero-icon-bg {
