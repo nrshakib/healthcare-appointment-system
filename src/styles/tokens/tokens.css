@@ -1,88 +1,49 @@
-/* ── Theme mapping (Tailwind-compatible) ── */
-@theme {
+@import "./colors.css";
+
+@theme inline {
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
 }
 
-/* ── Shared semantic tokens (used across multiple sections) ── */
-
-/* Backgrounds */
 :root {
+  /* Raw palette values */
   --primary: #06836b;
   --secondary: #48ac98;
 
-  --bg-landing: var(--slate-50); /* hero + trusted doctors */
-  --bg-section-alt: var(--white-80); /* specialities + how it works */
-  --surface: var(--white);
-  --surface-card: var(--white-90);
-  --surface-raised: var(--white-fa);
-}
+  --bg-landing: #f9fafb;
+  --bg-section-alt: rgba(255, 255, 255, 0.8);
+  --surface: #ffffff;
+  --surface-card: rgba(255, 255, 255, 0.9);
+  --surface-raised: rgba(255, 255, 255, 0.98);
 
-/* Text */
-:root {
-  --text-heading: var(--slate-900);
-  --text-body: var(--slate-800);
-  --text-muted: var(--slate-500);
-  --text-subtle: var(--slate-400);
-}
+  --text-heading: #0f172a;
+  --text-body: #1e293b;
+  --text-muted: #6b7280;
+  --text-subtle: #94a3b8;
 
-/* Accent / Brand */
-:root {
-  --accent: var(--green-800);
-  --accent-soft: rgba(16, 185, 129, 0.15);
-  --accent-deep: var(--green-700);
-}
+  --accent: #047857;
+  --accent-soft: rgba(16, 185, 129, 0.14);
+  --accent-deep: #06836b;
 
-/* Borders & Dividers */
-:root {
-  --border-subtle: var(--white-50);
-  --border-default: var(--slate-200);
-}
+  --border-subtle: rgba(255, 255, 255, 0.5);
+  --border-default: #e2e8f0;
 
-/* Icon & Skeleton */
-:root {
-  --icon-bg: var(--slate-200);
-  --icon-accent: var(--green-50);
-  --skeleton: var(--slate-200);
-}
+  --icon-bg: #e2e8f0;
+  --icon-accent: #ecfdf5;
+  --skeleton: #e2e8f0;
 
-/* Shadows */
-:root {
-  --shadow-card: 0 1px 3px 0 var(--black-8);
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
   --shadow-card-hover:
     0 20px 40px -8px rgba(0, 0, 0, 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.06);
   --shadow-datepicker:
-    0 10px 25px -5px var(--black-20), 0 8px 10px -6px var(--black-20);
-  --shadow-button: 0 4px 14px 0 rgba(16, 185, 129, 0.39);
+    0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  --shadow-button: 0 4px 14px 0 rgba(16, 185, 129, 0.38);
   --shadow-button-hover: 0 6px 20px 0 rgba(16, 185, 129, 0.5);
-}
 
-/* ── Component aliases (section-specific names → shared tokens) ── */
-:root {
-  --hero-bg: var(--bg-landing);
-  --hero-text-primary: var(--text-heading);
-  --hero-btn-gradient: linear-gradient(
-    135deg,
-    var(--accent),
-    var(--accent-deep)
-  );
-  --hero-btn-gradient-hover: linear-gradient(
-    135deg,
-    var(--accent-deep),
-    var(--green-800)
-  );
-  --hero-datepicker-shadow: var(--shadow-datepicker);
-  --hero-button-shadow: var(--shadow-button);
-  --hero-button-shadow-hover: var(--shadow-button-hover);
-
-  --spec-bg: var(--bg-section-alt);
-}
-
-/* ── Navbar tokens (component-specific) ── */
-:root {
+  /* Navbar aliases */
   --navbar-bg: var(--surface);
   --navbar-bg-scrolled: var(--surface-raised);
-  --navbar-border: var(--black-14);
+  --navbar-border: rgba(0, 0, 0, 0.14);
   --navbar-text: var(--text-heading);
   --navbar-text-muted: var(--text-muted);
   --navbar-dropdown-bg: var(--surface);
@@ -95,6 +56,7 @@
   --navbar-mobile-panel-bg: var(--surface);
   --navbar-brand: var(--text-heading);
 
+  /* Hero aliases */
   --hero-bg: var(--bg-landing);
   --hero-text-primary: var(--text-heading);
   --hero-btn-gradient: linear-gradient(
@@ -110,12 +72,6 @@
   --hero-datepicker-shadow: var(--shadow-datepicker);
   --hero-button-shadow: var(--shadow-button);
   --hero-button-shadow-hover: var(--shadow-button-hover);
-
-  --spec-bg: var(--bg-section-alt);
-}
-
-/* ── Hero tokens (component-specific) ── */
-:root {
   --hero-card-bg: var(--surface-card);
   --hero-card-border: var(--border-subtle);
   --hero-search-border: var(--border-default);
@@ -131,13 +87,12 @@
   --hero-heading-accent: var(--accent-deep);
   --hero-blob-primary: rgba(16, 185, 129, 0.18);
   --hero-blob-fade: rgba(16, 185, 129, 0.05);
-  --hero-avatar-border: var(--white-50);
-}
+  --hero-avatar-border: rgba(255, 255, 255, 0.5);
 
-/* ── Specialities tokens (component-specific) ── */
-:root {
+  /* Specialities aliases */
+  --spec-bg: var(--bg-section-alt);
   --spec-card-bg: var(--surface);
-  --spec-card-border: rgba(16, 185, 129, 0.15);
+  --spec-card-border: rgba(16, 185, 129, 0.14);
   --spec-card-border-hover: rgba(6, 131, 107, 0.3);
   --spec-title-text: var(--text-heading);
   --spec-detail-text: var(--text-muted);
@@ -147,80 +102,93 @@
   --spec-view-all-bg: rgba(6, 131, 107, 0.06);
   --spec-view-all-bg-hover: rgba(6, 131, 107, 0.14);
   --spec-view-all-text: var(--accent-deep);
+
+  /* Doctors aliases */
+  --doctor-section-bg: var(--bg-landing);
+  --doctor-card-bg: var(--surface);
+  --doctor-card-border: var(--border-default);
+  --doctor-card-text: var(--text-heading);
+  --doctor-card-star: #d69e2e;
+  --doctor-card-star-text: #d69e2e;
+  --doctor-card-muted: var(--text-muted);
+  --doctor-card-subtle: var(--text-subtle);
+  --doctor-skeleton: var(--skeleton);
+  --doctor-green-text: var(--primary);
+  --doctors-summary-gradient-from: #0b7761;
+  --doctors-summary-gradient-to: #19ac67;
 }
 
 /* ── Dark mode ── */
 .dark {
-  --bg-landing: var(--slate-900);
-  --bg-section-alt: var(--slate-800);
-  --surface: var(--slate-800);
-  --surface-card: var(--slate-800);
-  --surface-raised: var(--slate-900);
+  --bg-landing: #0f172a;
+  --bg-section-alt: #1e293b;
+  --surface: #1e293b;
+  --surface-card: #1e293b;
+  --surface-raised: #0f172a;
 
-  --text-heading: var(--slate-50);
-  --text-body: var(--slate-300);
-  --text-muted: var(--slate-400);
-  --text-subtle: var(--slate-400);
+  --text-heading: #f9fafb;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-subtle: #94a3b8;
 
-  --accent: var(--green-400);
+  --accent: #34d399;
   --accent-soft: rgba(72, 172, 152, 0.3);
-  --accent-deep: var(--green-300);
+  --accent-deep: #6ee7b7;
 
-  --border-subtle: var(--black-12);
-  --border-default: var(--slate-700);
+  --border-subtle: rgba(0, 0, 0, 0.12);
+  --border-default: #334155;
 
-  --icon-bg: var(--slate-700);
+  --icon-bg: #334155;
   --icon-accent: rgba(52, 211, 153, 0.12);
-  --skeleton: var(--slate-700);
+  --skeleton: #334155;
 
-  --shadow-card: 0 1px 3px 0 var(--black-20);
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
   --shadow-card-hover:
     0 20px 40px -8px rgba(0, 0, 0, 0.4), 0 8px 16px -4px rgba(0, 0, 0, 0.2);
   --shadow-datepicker:
     0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-  --shadow-button: 0 4px 14px 0 rgba(144, 233, 197, 0.4);
-  --shadow-button-hover: 0 6px 20px 0 rgba(144, 233, 197, 0.55);
+  --shadow-button: 0 4px 14px 0 rgba(144, 233, 197, 0.33);
+  --shadow-button-hover: 0 6px 20px 0 rgba(144, 233, 197, 0.46);
 
-  --navbar-bg: var(--slate-900);
-  --navbar-bg-scrolled: var(--slate-900);
-  --navbar-border: var(--black-12);
-  --navbar-text: var(--slate-200);
-  --navbar-text-muted: var(--slate-400);
-  --navbar-dropdown-bg: var(--slate-800);
+  /* Navbar aliases */
+  --navbar-bg: #0f172a;
+  --navbar-bg-scrolled: #0f172a;
+  --navbar-border: #13d06832;
+  --navbar-text: #e2e8f0;
+  --navbar-text-muted: #94a3b8;
+  --navbar-dropdown-bg: #1e293b;
   --navbar-item-hover-bg: rgba(6, 131, 107, 0.1);
   --navbar-item-active-bg: rgba(6, 131, 107, 0.15);
   --navbar-item-active-text: var(--accent);
   --navbar-accent: var(--accent);
   --navbar-accent-soft: rgba(72, 172, 152, 0.3);
   --navbar-cta-text: var(--white);
-  --navbar-mobile-panel-bg: var(--slate-900);
-  --navbar-brand: var(--slate-200);
+  --navbar-mobile-panel-bg: #0f172a;
+  --navbar-brand: #e2e8f0;
 
+  /* Hero aliases */
   --hero-bg: var(--bg-landing);
   --hero-text-primary: var(--text-heading);
   --hero-btn-gradient: linear-gradient(
     135deg,
-    var(--accent),
-    var(--accent-deep)
+    var(--primary),
+    var(--green-800)
   );
   --hero-btn-gradient-hover: linear-gradient(
     135deg,
-    var(--accent-deep),
+    var(--accent-soft),
     var(--green-800)
   );
   --hero-datepicker-shadow: var(--shadow-datepicker);
   --hero-button-shadow: var(--shadow-button);
   --hero-button-shadow-hover: var(--shadow-button-hover);
-
-  --spec-bg: var(--bg-section-alt);
-
-  --hero-card-bg: var(--slate-800);
-  --hero-card-border: var(--black-12);
-  --hero-search-border: var(--slate-700);
-  --hero-text-secondary: var(--slate-300);
-  --hero-text-tertiary: var(--slate-400);
-  --hero-icon-bg: var(--slate-700);
-  --hero-icon-bg-accent: rgba(52, 211, 153, 0.12);
+  --hero-card-bg: #1e293b;
+  --hero-card-border: rgba(0, 0, 0, 0.12);
+  --hero-search-border: #334155;
+  --hero-text-secondary: #cbd5e1;
+  --hero-text-tertiary: #94a3b8;
+  --hero-icon-bg: #334155;
+  --hero-icon-bg-accent: rgba(147, 238, 205, 0.12);
   --hero-icon: var(--green-400);
   --hero-badge-text: var(--green-400);
   --hero-badge-bg: rgba(52, 211, 153, 0.15);
@@ -229,17 +197,33 @@
   --hero-heading-accent: var(--green-300);
   --hero-blob-primary: rgba(144, 233, 197, 0.3);
   --hero-blob-fade: rgba(144, 233, 197, 0.08);
-  --hero-avatar-border: var(--black-12);
+  --hero-avatar-border: rgba(0, 0, 0, 0.12);
 
-  --spec-card-bg: var(--slate-800);
+  /* Specialities aliases */
+  --spec-bg: #010f21;
+  --spec-card-bg: #1e293b;
   --spec-card-border: rgba(72, 172, 152, 0.15);
   --spec-card-border-hover: rgba(72, 172, 152, 0.35);
-  --spec-title-text: var(--slate-100);
-  --spec-detail-text: var(--slate-400);
-  --spec-skeleton-bg: var(--slate-700);
+  --spec-title-text: #f1f5f9;
+  --spec-detail-text: #94a3b8;
+  --spec-skeleton-bg: #334155;
   --spec-link-text: var(--green-400);
   --spec-link-hover-bg: rgba(72, 172, 152, 0.1);
   --spec-view-all-bg: rgba(44, 202, 171, 0.08);
   --spec-view-all-bg-hover: rgba(72, 172, 152, 0.16);
   --spec-view-all-text: var(--green-400);
+
+  /* Doctors aliases */
+  --doctor-section-bg: var(--bg-landing);
+  --doctor-card-bg: var(--surface);
+  --doctor-card-border: var(--border-default);
+  --doctor-card-text: var(--text-heading);
+  --doctor-card-star: #eaad34;
+  --doctor-card-star-text: #eda820;
+  --doctor-card-muted: var(--text-muted);
+  --doctor-card-subtle: var(--text-subtle);
+  --doctor-skeleton: var(--skeleton);
+  --doctor-green-text: var(--green-400);
+  --doctors-summary-gradient-from: #095a4a;
+  --doctors-summary-gradient-to: #114d2c;
 }

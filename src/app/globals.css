@@ -2,7 +2,7 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
-/* ── Design tokens (CSS variables) ── */
+
 @import "../styles/tokens/colors.css";
 @import "../styles/tokens/tokens.css";
 

@@ -63,18 +63,18 @@ export default function TrustedDoctors() {
 
   const SkeletonDoctor = () => (
     <div className="h-full w-full px-1.5 py-2 sm:px-2">
-      <div className="flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-        <div className="h-48 sm:h-56 lg:h-64 w-full bg-slate-100 animate-pulse" />
+      <div className="flex h-full flex-col overflow-hidden rounded-lg border border-doctor-card-border bg-doctor-card shadow-sm">
+        <div className="h-48 sm:h-56 lg:h-64 w-full bg-doctor-skeleton animate-pulse" />
         <div className="flex flex-col gap-3 p-3 sm:p-4">
           <div className="flex flex-col gap-1.5">
-            <div className="h-4 w-3/4 rounded bg-slate-100 animate-pulse" />
-            <div className="h-3 w-1/2 rounded bg-slate-100 animate-pulse" />
+            <div className="h-4 w-3/4 rounded bg-doctor-skeleton animate-pulse" />
+            <div className="h-3 w-1/2 rounded bg-doctor-skeleton animate-pulse" />
           </div>
           <div className="flex flex-col gap-1.5">
-            <div className="h-3 w-full rounded bg-slate-100 animate-pulse" />
-            <div className="h-3 w-2/3 rounded bg-slate-100 animate-pulse" />
+            <div className="h-3 w-full rounded bg-doctor-skeleton animate-pulse" />
+            <div className="h-3 w-2/3 rounded bg-doctor-skeleton animate-pulse" />
           </div>
-          <div className="h-4 w-24 rounded bg-slate-100 animate-pulse mt-auto" />
+          <div className="h-4 w-24 rounded bg-doctor-skeleton animate-pulse mt-auto" />
         </div>
       </div>
     </div>
@@ -84,12 +84,12 @@ export default function TrustedDoctors() {
     <div className="doctor-section py-8 sm:py-12 lg:py-16 overflow-hidden">
       <div className="mx-auto w-full max-w-7xl px-4 min-[370px]:px-10 min-[420px]:px-2 sm:px-6 lg:px-8 xl:max-w-[80%]">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-5 sm:mb-6">
-          <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-900">
+          <p className="text-lg sm:text-xl lg:text-2xl font-semibold doctor-card-text">
             Meet Our Trusted Doctors
           </p>
           <Link
             href="/find-care/doctors"
-            className="flex items-center gap-2 text-sm sm:text-base text-primary font-medium hover:underline"
+            className="doctors-green-text flex items-center gap-2 text-sm sm:text-base font-medium hover:underline"
           >
             <p>View All Doctors</p>
             <FaArrowRight />
@@ -109,8 +109,8 @@ export default function TrustedDoctors() {
                 ))
               : doctors.map((doctor, index) => (
                   <div key={index} className="h-full px-1.5 py-2 sm:px-3">
-                    <div className="group flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
-                      <div className="relative h-64 min-[400]:h-52 sm:h-56 lg:h-72 xl:h-80 w-full bg-slate-100">
+                    <div className="group doctor-card flex h-full flex-col overflow-hidden rounded-lg text-left transition-all duration-300 ease-out hover:-translate-y-1 hover:border-doctor-card-border hover:shadow-lg">
+                      <div className="relative h-64 min-[400]:h-52 sm:h-56 lg:h-72 xl:h-80 w-full bg-doctor-skeleton">
                         <Image
                           src={doctor.image}
                           alt={doctor.name}
@@ -120,28 +120,28 @@ export default function TrustedDoctors() {
                       </div>
                       <div className="flex flex-col gap-2 sm:gap-3 p-3 sm:p-4">
                         <div>
-                          <p className="text-sm sm:text-base font-semibold text-slate-900 truncate">
+                          <p className="text-sm sm:text-base font-semibold doctor-card-text truncate">
                             {doctor.name}
                           </p>
-                          <p className="text-xs sm:text-sm font-medium text-primary/70 truncate">
+                          <p className="doctors-green-text text-xs sm:text-sm font-medium truncate">
                             {doctor.speciality}
                           </p>
                         </div>
                         <div>
                           <div className="flex items-center gap-1 text-xs sm:text-sm">
-                            <FaStar className="text-yellow-500" />
-                            <span className="font-semibold text-yellow-600">
+                            <FaStar className="doctor-card-star" />
+                            <span className="font-semibold doctor-card-star-text">
                               {doctor.rating}
                             </span>
-                            <span className="text-slate-400">
+                            <span className="doctor-card-subtle">
                               ({doctor.reviewCount})
                             </span>
                           </div>
-                          <p className="text-xs sm:text-sm text-slate-500">
+                          <p className="text-xs sm:text-sm doctor-card-muted">
                             {doctor.experience}+ Years Exp.
                           </p>
                         </div>
-                        <p className="text-xs sm:text-sm font-semibold text-primary">
+                        <p className="text-xs sm:text-sm font-semibold doctors-green-text">
                           ${doctor.consultationFee} / Consultation
                         </p>
                       </div>
@@ -151,7 +151,8 @@ export default function TrustedDoctors() {
           </Slider>
         </div>
 
-        <div className="grid grid-cols-2 gap-y-5 gap-x-4 rounded-lg bg-linear-to-r from-[#0b7761] to-[#19ac67] px-5 py-6 text-white sm:gap-6 sm:px-8 sm:py-5 lg:grid-cols-4 lg:px-10">
+         {/* doctors summary */}
+         <div className="doctors-summary grid grid-cols-2 gap-y-5 gap-x-4 rounded-lg px-5 py-6 text-white sm:gap-6 sm:px-8 sm:py-5 lg:grid-cols-4 lg:px-10">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
