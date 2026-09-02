@@ -1,0 +1,46 @@
+.spec-section {
+  background: var(--spec-bg);
+}
+
+.spec-card {
+  background: var(--spec-card-bg);
+  border: 1px solid var(--spec-card-border);
+  box-shadow: var(--spec-card-shadow);
+  transition: transform 0.3s ease-out, border-color 0.3s ease-out,
+    box-shadow 0.3s ease-out;
+}
+
+.spec-card:hover {
+  border-color: var(--spec-card-border-hover);
+  box-shadow: var(--spec-card-shadow-hover);
+}
+
+.spec-skeleton {
+  background: var(--spec-skeleton-bg);
+}
+
+.spec-title {
+  color: var(--spec-title-text);
+}
+
+.spec-detail {
+  color: var(--spec-detail-text);
+}
+
+.spec-card-link {
+  color: var(--spec-link-text);
+}
+
+.spec-card-link:hover {
+  background: var(--spec-link-hover-bg);
+}
+
+.spec-view-all {
+  color: var(--spec-view-all-text);
+  background: var(--spec-view-all-bg);
+  transition: background 0.2s ease;
+}
+
+.spec-view-all:hover {
+  background: var(--spec-view-all-bg-hover);
+}

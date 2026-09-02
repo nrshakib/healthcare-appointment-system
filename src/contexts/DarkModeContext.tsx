@@ -18,7 +18,7 @@ function getInitialDark(): boolean {
   } catch {
     // localStorage not available (SSR guard)
   }
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return false;
 }
 
 type DarkModeContextValue = {
@@ -31,7 +31,7 @@ const DarkModeContext = createContext<DarkModeContextValue | null>(null);
 export function DarkModeProvider({ children }: { children: React.ReactNode }) {
   const [isDark, setIsDark] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
-    return document.documentElement.classList.contains(DARK_CLASS);
+    return getInitialDark();
   });
 
   useEffect(() => {
