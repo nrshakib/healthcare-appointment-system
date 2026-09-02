@@ -1,11 +1,16 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 const STORAGE_KEY = "theme";
 const DARK_CLASS = "dark";
 
-/** Returns the preferred theme, checking localStorage then OS preference. */
 function getInitialDark(): boolean {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -16,24 +21,39 @@ function getInitialDark(): boolean {
   return window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 
-export function useDarkMode() {
-  // Initialise from storage so the value is correct from the very first render
+type DarkModeContextValue = {
+  isDark: boolean;
+  toggle: () => void;
+};
+
+const DarkModeContext = createContext<DarkModeContextValue | null>(null);
+
+export function DarkModeProvider({ children }: { children: React.ReactNode }) {
   const [isDark, setIsDark] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
-    return getInitialDark();
+    return document.documentElement.classList.contains(DARK_CLASS);
   });
 
-  // Keep <html> class and localStorage in sync whenever isDark changes
   useEffect(() => {
     document.documentElement.classList.toggle(DARK_CLASS, isDark);
     try {
       localStorage.setItem(STORAGE_KEY, isDark ? "dark" : "light");
-    } catch {
-      // ignore
-    }
+    } catch {}
   }, [isDark]);
 
   const toggle = useCallback(() => setIsDark((d) => !d), []);
 
-  return { isDark, toggle };
+  return (
+    <DarkModeContext.Provider value={{ isDark, toggle }}>
+      {children}
+    </DarkModeContext.Provider>
+  );
+}
+
+export function useDarkMode() {
+  const ctx = useContext(DarkModeContext);
+  if (!ctx) {
+    throw new Error("useDarkMode must be used within a DarkModeProvider");
+  }
+  return ctx;
 }

@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { useDarkMode } from "@/hooks/useDarkMode";
 import { useAuthUser } from "@/hooks/useAuthUser";
 
 import IconButton from "@mui/material/IconButton";
@@ -33,6 +32,7 @@ interface SubItem {
 }
 
 import type { AuthUser } from "@/hooks/useAuthUser";
+import { useDarkMode } from "@/contexts/DarkModeContext";
 
 const findCareItems: SubItem[] = [
   { label: "Find a Doctor", href: "/find-care/doctors" },

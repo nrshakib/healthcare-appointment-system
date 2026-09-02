@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { DarkModeProvider } from "@/contexts/DarkModeContext";
 
 export const metadata: Metadata = {
   title: "Medicare - Healthcare Solutions",
@@ -20,7 +21,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <DarkModeProvider>{children}</DarkModeProvider>
+      </body>
     </html>
   );
 }

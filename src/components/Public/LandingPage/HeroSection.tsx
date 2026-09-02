@@ -9,7 +9,7 @@ import {
   FaCalendarAlt,
   FaHeadphones,
 } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button, TextField } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -19,17 +19,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Dayjs } from "dayjs";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
-const datePickerTheme = createTheme({
-  palette: {
-    primary: {
-      main: "#10B981",
-      light: "#34D399",
-      dark: "#059669",
-      contrastText: "#ffffff",
-    },
-  },
-});
+import { useDarkMode } from "@/contexts/DarkModeContext";
 
 const PATIENT_AVATARS = [
   "https://randomuser.me/api/portraits/men/32.jpg",
@@ -65,6 +55,23 @@ export default function HeroSection() {
   const [date, setDate] = useState<Dayjs | null>(null);
   const [openDatePicker, setOpenDatePicker] = useState(false);
   const [typewriterLength, setTypewriterLength] = useState(0);
+  const { isDark } = useDarkMode();
+
+  const datePickerTheme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: isDark ? "dark" : "light",
+          primary: {
+            main: "#10B981",
+            light: "#fff",
+            dark: "#059669",
+            contrastText: "#ffffff",
+          },
+        },
+      }),
+    [isDark],
+  );
 
   useEffect(() => {
     const typingDelay = typewriterLength === TYPEWRITER_TEXT.length ? 1400 : 70;
@@ -114,7 +121,7 @@ export default function HeroSection() {
                 aria-hidden="true"
               />
             </motion.p>
-            <p className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold w-full lg:w-[90%] xl:w-[85%] leading-[1.15] sm:leading-[1.1]">
+            <p className="hero-text-secondary text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold w-full lg:w-[90%] xl:w-[85%] leading-[1.15] sm:leading-[1.1]">
               Quality care for a{" "}
               <span className="hero-heading-accent">healthier you</span>
             </p>
@@ -148,6 +155,19 @@ export default function HeroSection() {
                       },
                     }}
                     fullWidth
+                    sx={{
+                      "& .MuiInputBase-input": {
+                        color: (theme) =>
+                          theme.palette.mode === "dark" ? "#000" : "#fff",
+                        "&::placeholder": {
+                          color: (theme) =>
+                            theme.palette.mode === "dark"
+                              ? "#CBD5E1"
+                              : "#6B6B6B",
+                          opacity: 1,
+                        },
+                      },
+                    }}
                   />
                 </div>
               </div>
@@ -172,6 +192,19 @@ export default function HeroSection() {
                       },
                     }}
                     fullWidth
+                    sx={{
+                      "& .MuiInputBase-input": {
+                        color: (theme) =>
+                          theme.palette.mode === "dark" ? "#000" : "#fff",
+                        "&::placeholder": {
+                          color: (theme) =>
+                            theme.palette.mode === "dark"
+                              ? "#CBD5E1"
+                              : "#6B6B6B",
+                          opacity: 1,
+                        },
+                      },
+                    }}
                   />
                 </div>
               </div>
@@ -258,6 +291,14 @@ export default function HeroSection() {
                               },
                               "& .MuiPickersSectionList-root": {
                                 fontSize: "0.8rem",
+                                color: (theme) =>
+                                  date
+                                    ? theme.palette.mode === "dark"
+                                      ? "#000"
+                                      : "#fff"
+                                    : theme.palette.mode === "dark"
+                                      ? "#CBD5E1"
+                                      : "#6B6B6B",
                               },
                             },
                           },
@@ -296,7 +337,7 @@ export default function HeroSection() {
               <p className="text-lg hero-icon-bg rounded-full p-1">
                 <LuHeartHandshake className="hero-icon" />
               </p>
-              <p className="text-xs sm:text-sm font-medium whitespace-nowrap">
+              <p className="hero-text-secondary text-xs sm:text-sm font-medium whitespace-nowrap">
                 Verified Doctors
               </p>
             </div>
@@ -304,7 +345,7 @@ export default function HeroSection() {
               <p className="text-lg hero-icon-bg rounded-full p-1">
                 <LuCalendarHeart className="hero-icon" />
               </p>
-              <p className="text-xs sm:text-sm font-medium whitespace-nowrap">
+              <p className="hero-text-secondary text-xs sm:text-sm font-medium whitespace-nowrap">
                 Easy Booking
               </p>
             </div>
@@ -312,7 +353,7 @@ export default function HeroSection() {
               <p className="text-lg hero-icon-bg rounded-full p-1">
                 <MdOutlineHealthAndSafety className="hero-icon" />
               </p>
-              <p className="text-xs sm:text-sm font-medium whitespace-nowrap">
+              <p className="hero-text-secondary text-xs sm:text-sm font-medium whitespace-nowrap">
                 Secure & Private
               </p>
             </div>
@@ -320,7 +361,7 @@ export default function HeroSection() {
               <p className="text-lg hero-icon-bg rounded-full p-1">
                 <FaHandHoldingHeart className="hero-icon" />
               </p>
-              <p className="text-xs sm:text-sm font-medium whitespace-nowrap">
+              <p className="hero-text-secondary text-xs sm:text-sm font-medium whitespace-nowrap">
                 24/7 Support
               </p>
             </div>
