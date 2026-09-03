@@ -1,0 +1,35 @@
+.howItWorkSection {
+  background: var(--spec-bg);
+}
+
+.how-badge {
+  color: var(--accent);
+}
+
+.how-heading {
+  color: var(--text-heading);
+}
+
+.how-heading-accent {
+  color: var(--accent);
+}
+
+.how-step-title {
+  color: var(--text-heading);
+}
+
+.how-step-desc {
+  color: var(--text-muted);
+}
+
+.how-connector {
+  border-color: var(--border-default);
+}
+
+.how-icon-bg {
+  background: var(--icon-accent);
+}
+
+.how-icon {
+  color: var(--accent);
+}

@@ -2,7 +2,6 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
-
 @import "../styles/tokens/colors.css";
 @import "../styles/tokens/tokens.css";
 
@@ -13,3 +12,4 @@
 @import "../styles/pages/LandingPage/hero.css";
 @import "../styles/pages/LandingPage/specialities.css";
 @import "../styles/pages/LandingPage/doctors.css";
+@import "../styles/pages/LandingPage/howItWorks.css";

@@ -89,7 +89,7 @@ export default function TrustedDoctors() {
           </p>
           <Link
             href="/find-care/doctors"
-            className="doctors-green-text flex items-center gap-2 text-sm sm:text-base font-medium hover:underline"
+            className="doctors-green-text flex items-center gap-2 text-xs lg:text-base font-medium hover:underline"
           >
             <p>View All Doctors</p>
             <FaArrowRight />
@@ -151,8 +151,8 @@ export default function TrustedDoctors() {
           </Slider>
         </div>
 
-         {/* doctors summary */}
-         <div className="doctors-summary grid grid-cols-2 gap-y-5 gap-x-4 rounded-lg px-5 py-6 text-white sm:gap-6 sm:px-8 sm:py-5 lg:grid-cols-4 lg:px-10">
+        {/* doctors summary */}
+        <div className="doctors-summary grid grid-cols-2 gap-y-5 gap-x-4 rounded-lg px-5 py-6 text-white sm:gap-6 sm:px-8 sm:py-5 lg:grid-cols-4 lg:px-10">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
