@@ -10,8 +10,4 @@
 @import "../styles/components/footer.css";
 
 /* ── Page sections ── */
-@import "../styles/pages/LandingPage/hero.css";
-@import "../styles/pages/LandingPage/specialities.css";
-@import "../styles/pages/LandingPage/doctors.css";
-@import "../styles/pages/LandingPage/howItWorks.css";
-@import "../styles/pages/LandingPage/testimonials.css";
+@import "../styles/pages/landingPage.css";
