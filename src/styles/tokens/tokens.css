@@ -136,6 +136,18 @@
   --testimonial-quote-text: var(--text-body);
   --testimonial-name-text: var(--text-heading);
   --testimonial-location-text: var(--text-muted);
+
+  /* Footer aliases */
+  --footer-bg: #f9fafb;
+  --footer-text: #6b7280;
+  --footer-heading-text: #0f172a;
+  --footer-border: #e2e8f0;
+  --footer-link-text: #065f46;
+  --footer-link-hover-text: #064e3b;
+  --footer-social-bg: rgba(6, 131, 107, 0.1);
+  --footer-social-text: #06836b;
+  --footer-social-hover-bg: #06836b;
+  --footer-social-hover-text: #ffffff;
 }
 
 /* ── Dark mode ── */
@@ -266,4 +278,16 @@
   --testimonial-quote-text: var(--text-body);
   --testimonial-name-text: var(--text-heading);
   --testimonial-location-text: var(--text-muted);
+
+  /* Footer aliases */
+  --footer-bg: #0f172a;
+  --footer-text: #94a3b8;
+  --footer-heading-text: #f9fafb;
+  --footer-border: #334155;
+  --footer-link-text: #34d399;
+  --footer-link-hover-text: #6ee7b7;
+  --footer-social-bg: rgba(52, 211, 153, 0.15);
+  --footer-social-text: #34d399;
+  --footer-social-hover-bg: #34d399;
+  --footer-social-hover-text: #0f172a;
 }

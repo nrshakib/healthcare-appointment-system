@@ -32,24 +32,18 @@ const socialLinks = [
 function FooterColumn({
   title,
   links,
-  color,
 }: {
   title: string;
   links: { href: string; label: string }[];
-  color: string;
 }) {
   return (
     <div>
-      <p className="text-base sm:text-lg font-semibold text-primary mb-4">
+      <p className="text-base sm:text-lg font-semibold footer-heading mb-4">
         {title}
       </p>
       <div className="flex flex-col gap-2.5 text-sm sm:text-base font-medium">
         {links.map(({ href, label }, idx) => (
-          <Link
-            key={idx}
-            href={href}
-            className={`${color} transition-colors w-fit`}
-          >
+          <Link key={idx} href={href} className="footer-link w-fit">
             {label}
           </Link>
         ))}
@@ -60,7 +54,7 @@ function FooterColumn({
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100">
+    <footer className="footer">
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 sm:gap-10 px-6 sm:px-8 lg:px-20 py-16">
         {/* Brand */}
         <div className="col-span-2 lg:col-span-1 space-y-5">
@@ -78,7 +72,7 @@ export default function Footer() {
               priority
             />
           </Link>
-          <p className="text-gray-500 text-xs sm:text-sm lg:w-[85%] leading-relaxed">
+          <p className="footer-text text-xs sm:text-sm lg:w-[85%] leading-relaxed">
             Your health, our priority. We connect you with trusted doctors and
             quality care.
           </p>
@@ -90,7 +84,7 @@ export default function Footer() {
                 aria-label={label}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-9 h-9 bg-primary/10 text-primary rounded-full hover:bg-primary hover:text-white transition-colors"
+                className="footer-social"
               >
                 <Icon size={16} />
               </Link>
@@ -101,36 +95,33 @@ export default function Footer() {
         <FooterColumn
           title="Find Care"
           links={findCareLinks}
-          color="text-olive-600 hover:text-slate-700"
         />
         <FooterColumn
           title="Services"
           links={serviceLinks}
-          color="text-slate-600 hover:text-amber-800"
         />
         <FooterColumn
           title="Resources"
           links={resourceLinks}
-          color="text-amber-700 hover:text-olive-700"
         />
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-gray-200 px-6 sm:px-8 lg:px-20 py-5">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm text-gray-500">
+      <div className="footer-border border-t px-6 sm:px-8 lg:px-20 py-5">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm footer-text">
           <p>
             &copy; {new Date().getFullYear()} MediCare. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link
               href="/privacy-policy"
-              className="font-medium hover:text-primary transition-colors"
+              className="footer-link font-medium"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms-of-service"
-              className="font-medium hover:text-primary transition-colors"
+              className="footer-link font-medium"
             >
               Terms of Service
             </Link>

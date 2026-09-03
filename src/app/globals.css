@@ -7,6 +7,7 @@
 
 /* ── Components ── */
 @import "../styles/components/navbar.css";
+@import "../styles/components/footer.css";
 
 /* ── Page sections ── */
 @import "../styles/pages/LandingPage/hero.css";
