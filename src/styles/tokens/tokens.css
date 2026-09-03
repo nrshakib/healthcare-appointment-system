@@ -97,7 +97,7 @@
   --spec-title-text: var(--text-heading);
   --spec-detail-text: var(--text-muted);
   --spec-skeleton-bg: var(--icon-bg);
-  --spec-link-text: var(--green-400);
+  --spec-link-text: var(--green-700);
   --spec-link-hover-bg: rgba(6, 131, 107, 0.08);
   --spec-view-all-bg: rgba(6, 131, 107, 0.06);
   --spec-view-all-bg-hover: rgba(6, 131, 107, 0.14);
@@ -116,6 +116,26 @@
   --doctor-green-text: var(--primary);
   --doctors-summary-gradient-from: #0b7761;
   --doctors-summary-gradient-to: #19ac67;
+
+  /* Testimonials aliases */
+  --testimonial-section-bg: var(--bg-landing);
+  --testimonial-card-bg: var(--surface);
+  --testimonial-card-border: var(--border-default);
+  --testimonial-card-shadow: var(--shadow-card);
+  --testimonial-card-shadow-hover: var(--shadow-card-hover);
+  --testimonial-heading-accent: var(--accent-deep);
+  --testimonial-quote-icon: var(--accent);
+  --testimonial-star: #d69e2e;
+  --testimonial-dot-idle: var(--slate-300);
+  --testimonial-dot-active: var(--green-600);
+  --testimonial-arrow-border: var(--border-default);
+  --testimonial-arrow-bg: var(--surface);
+  --testimonial-arrow-text: var(--text-muted);
+  --testimonial-arrow-hover-bg: var(--accent-deep);
+  --testimonial-arrow-hover-text: var(--white);
+  --testimonial-quote-text: var(--text-body);
+  --testimonial-name-text: var(--text-heading);
+  --testimonial-location-text: var(--text-muted);
 }
 
 /* ── Dark mode ── */
@@ -200,7 +220,7 @@
   --hero-avatar-border: rgba(0, 0, 0, 0.12);
 
   /* Specialities aliases */
-  --spec-bg: #010f21;
+  --spec-bg: #0d1425;
   --spec-card-bg: #1e293b;
   --spec-card-border: rgba(72, 172, 152, 0.15);
   --spec-card-border-hover: rgba(72, 172, 152, 0.35);
@@ -226,4 +246,24 @@
   --doctor-green-text: var(--green-400);
   --doctors-summary-gradient-from: #095a4a;
   --doctors-summary-gradient-to: #114d2c;
+
+  /* Testimonials aliases */
+  --testimonial-section-bg: var(--bg-landing);
+  --testimonial-card-bg: var(--surface);
+  --testimonial-card-border: var(--border-default);
+  --testimonial-card-shadow: var(--shadow-card);
+  --testimonial-card-shadow-hover: var(--shadow-card-hover);
+  --testimonial-heading-accent: var(--green-300);
+  --testimonial-quote-icon: var(--green-400);
+  --testimonial-star: #eaad34;
+  --testimonial-dot-idle: var(--slate-400);
+  --testimonial-dot-active: var(--green-400);
+  --testimonial-arrow-border: var(--border-default);
+  --testimonial-arrow-bg: var(--surface);
+  --testimonial-arrow-text: var(--text-muted);
+  --testimonial-arrow-hover-bg: var(--accent);
+  --testimonial-arrow-hover-text: var(--white);
+  --testimonial-quote-text: var(--text-body);
+  --testimonial-name-text: var(--text-heading);
+  --testimonial-location-text: var(--text-muted);
 }
