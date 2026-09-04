@@ -23,13 +23,13 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="howItWorkSection">
+    <section className="darker-bg">
       <div className=" py-12 sm:py-16 lg:py-20 max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-14">
           <p className="text-xs sm:text-sm font-bold tracking-[0.15em] how-badge uppercase mb-2">
             How It Works
           </p>
-          <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold how-heading">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-heading">
             Get your care in{" "}
             <span className="how-heading-accent">3 simple steps</span>
           </h2>
@@ -55,7 +55,7 @@ export default function HowItWorks() {
                   />
                 </div>
 
-                <p className="mt-2 lg:mt-5 text-base sm:text-lg font-bold how-step-title">
+                <p className="mt-2 lg:mt-5 text-base sm:text-lg font-bold text-heading">
                   {step.title}
                 </p>
                 <p className="lg:mt-2 max-w-55 text-sm how-step-desc lg:leading-relaxed">

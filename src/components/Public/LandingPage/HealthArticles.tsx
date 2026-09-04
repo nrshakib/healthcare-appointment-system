@@ -56,14 +56,14 @@ export default function HealthArticles() {
   };
 
   return (
-    <div className="articles-section py-10 sm:py-14 lg:py-20">
+    <div className="darker-bg py-10 sm:py-14 lg:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[80%]">
         <div className="flex flex-col items-center gap-3 mb-6 text-center sm:flex-row sm:items-end sm:justify-between sm:text-left sm:gap-4 sm:mb-8 lg:mb-12">
           <div className="flex min-w-0 flex-col items-center sm:items-start">
             <p className="articles-green-text text-xs sm:text-sm font-bold tracking-[0.15em] uppercase mb-1.5">
               Health Articles
             </p>
-            <h2 className="articles-heading text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">
+            <h2 className="text-heading text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">
               Latest{" "}
               <span className="articles-green-text">health insights</span>
             </h2>
@@ -111,12 +111,12 @@ export default function HealthArticles() {
                           sx={{
                             position: "relative",
                             aspectRatio: {
-                              xs: "16 / 10",
+                              xs: "16 / 12",
                               sm: "4 / 3",
                               lg: "16 / 11",
                             },
-                            minHeight: { xs: 170, sm: 190 },
-                            maxHeight: { xs: 220, lg: 250 },
+                            minHeight: { xs: 190, sm: 190 },
+                            maxHeight: { xs: 260, lg: 250 },
                             width: "100%",
                             overflow: "hidden",
                           }}
@@ -159,15 +159,14 @@ export default function HealthArticles() {
                             variant="subtitle1"
                             sx={{
                               fontWeight: 700,
-                              color: "text.primary",
                               lineHeight: 1.4,
-                              fontSize: { xs: "0.9375rem", sm: "1rem" },
+                              fontSize: { xs: "0.9375rem", sm: "14px" },
                               display: "-webkit-box",
                               WebkitLineClamp: 3,
                               WebkitBoxOrient: "vertical",
                               overflow: "hidden",
                             }}
-                            className="articles-heading"
+                            className="text-heading truncate"
                           >
                             {article.title}
                           </Typography>

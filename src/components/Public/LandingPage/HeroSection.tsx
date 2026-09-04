@@ -94,7 +94,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="hero-section">
+    <div className="dark-bg">
       <div className="px-4 sm:px-6 md:px-10 lg:px-1 pt-8 lg:py-2 sm:pt-8 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 overflow-hidden">
         {/* left section */}
         <div className="w-full lg:w-3/5 lg:pl-5 xl:pl-20 flex flex-col items-center text-center lg:items-start lg:text-left">
@@ -384,7 +384,7 @@ export default function HeroSection() {
                 <FaHeadphones className="h-3 w-3 sm:h-4 sm:w-4 xl:h-5 xl:w-5 hero-icon" />
               </span>
               <span className="leading-tight">
-                <span className="block text-sm sm:text-base xl:text-lg font-bold hero-text-primary">
+                <span className="text-heading block text-sm sm:text-base xl:text-lg font-bold">
                   24/7
                 </span>
                 <span className="block text-[8px] sm:text-xs xl:text-sm hero-text-tertiary">
@@ -398,7 +398,7 @@ export default function HeroSection() {
                 <FaVideo className="h-3 w-3 sm:h-4 sm:w-4 xl:h-5 xl:w-5 hero-icon" />
               </span>
               <span className="leading-tight">
-                <span className="block text-xs sm:text-base xl:text-lg font-bold hero-text-primary">
+                <span className="text-heading block text-xs sm:text-base xl:text-lg font-bold">
                   Video
                 </span>
                 <span className="block text-[8px] sm:text-xs xl:text-sm hero-text-tertiary">
@@ -421,7 +421,7 @@ export default function HeroSection() {
                     />
                   ))}
                 </div>
-                <span className="text-xs sm:text-base xl:text-lg font-semibold hero-text-primary">
+                <span className="text-heading text-xs sm:text-base xl:text-lg font-semibold">
                   50K+
                 </span>
               </div>

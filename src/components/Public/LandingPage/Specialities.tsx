@@ -15,7 +15,8 @@ export default function Specialities() {
   useEffect(() => {
     const updateSlidesToShow = () => {
       const width = window.innerWidth;
-      if (width >= 1280) setSlidesToShow(6);
+      if (width >= 1600) setSlidesToShow(6);
+      else if (width >= 1500) setSlidesToShow(5);
       else if (width >= 1024) setSlidesToShow(4);
       else if (width >= 770) setSlidesToShow(3);
       else if (width >= 520) setSlidesToShow(2);
@@ -61,14 +62,14 @@ export default function Specialities() {
   );
 
   return (
-    <section className="spec-section w-full py-10 sm:py-14 lg:py-16 overflow-hidden">
+    <section className="darker-bg w-full py-10 sm:py-14 lg:py-16 overflow-hidden">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center px-4 sm:px-6 lg:px-8 xl:max-w-[85%]">
         {/* top texts */}
         <div className="flex flex-col items-center justify-center gap-3 text-center">
           <p className="hero-heading-accent uppercase text-sm sm:text-base font-semibold tracking-wide">
             Specialities
           </p>
-          <p className="spec-title max-w-2xl text-xl sm:text-3xl lg:text-4xl font-bold leading-tight">
+          <p className="text-heading max-w-2xl text-xl sm:text-3xl lg:text-4xl font-bold leading-tight">
             Find care in our top{" "}
             <span className="hero-heading-accent">specialities</span>
           </p>
@@ -102,7 +103,7 @@ export default function Specialities() {
                               className={`text-xl sm:text-3xl lg:text-4xl ${speciality.color.textClass}`}
                             />
                           </p>
-                          <h3 className="spec-title lg:mb-2 text-lg sm:text-xl font-semibold">
+                          <h3 className="text-heading lg:mb-2 text-lg sm:text-xl font-semibold">
                             {speciality.name}
                           </h3>
                           <p className="spec-detail text-sm leading-relaxed">

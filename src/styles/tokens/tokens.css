@@ -11,10 +11,10 @@
   --secondary: #48ac98;
 
   --bg-landing: #f9fafb;
-  --bg-section-alt: rgba(255, 255, 255, 0.8);
+  --bg-section-alt: #ffffffcc;
   --surface: #ffffff;
-  --surface-card: rgba(255, 255, 255, 0.9);
-  --surface-raised: rgba(255, 255, 255, 0.98);
+  --surface-card: #ffffffe6;
+  --surface-raised: #fffffffa;
 
   --text-heading: #0f172a;
   --text-body: #1e293b;
@@ -22,10 +22,10 @@
   --text-subtle: #94a3b8;
 
   --accent: #047857;
-  --accent-soft: rgba(16, 185, 129, 0.14);
+  --accent-soft: #10b98124;
   --accent-deep: #06836b;
 
-  --border-subtle: rgba(255, 255, 255, 0.5);
+  --border-subtle: #ffffff80;
   --border-default: #e2e8f0;
 
   --icon-bg: #e2e8f0;
@@ -36,9 +36,9 @@
   --shadow-card-hover:
     0 20px 40px -8px #0000001f, 0 8px 16px -4px #0000000f;
   --shadow-datepicker:
-    0 10px 25px -5px #00000033, 0 8px 10px -6px rgba(0, 0, 0, 0.2);
-  --shadow-button: 0 4px 14px 0 rgba(16, 185, 129, 0.38);
-  --shadow-button-hover: 0 6px 20px 0 rgba(16, 185, 129, 0.5);
+    0 10px 25px -5px #00000033, 0 8px 10px -6px #00000033;
+  --shadow-button: 0 4px 14px 0 #10b98161;
+  --shadow-button-hover: 0 6px 20px 0 #10b98180;
 
   /* Navbar aliases */
   --navbar-bg: var(--surface);
@@ -57,8 +57,6 @@
   --navbar-brand: var(--text-heading);
 
   /* Hero aliases */
-  --hero-bg: var(--bg-landing);
-  --hero-text-primary: var(--text-heading);
   --hero-btn-gradient: linear-gradient(
     135deg,
     var(--accent),
@@ -104,7 +102,6 @@
   --spec-view-all-text: var(--accent-deep);
 
   /* Doctors aliases */
-  --doctor-section-bg: var(--bg-landing);
   --doctor-card-bg: var(--surface);
   --doctor-card-border: var(--border-default);
   --doctor-card-text: var(--text-heading);
@@ -118,7 +115,6 @@
   --doctors-summary-gradient-to: #19ac67;
 
   /* Testimonials aliases */
-  --testimonial-section-bg: var(--bg-landing);
   --testimonial-card-bg: var(--surface);
   --testimonial-card-border: var(--border-default);
   --testimonial-card-shadow: var(--shadow-card);
@@ -199,7 +195,6 @@
   --navbar-brand: #e2e8f0;
 
   /* Hero aliases */
-  --hero-bg: var(--bg-landing);
   --hero-text-primary: var(--text-heading);
   --hero-btn-gradient: linear-gradient(
     135deg,
@@ -220,7 +215,7 @@
   --hero-text-secondary: #cbd5e1;
   --hero-text-tertiary: #94a3b8;
   --hero-icon-bg: #334155;
-  --hero-icon-bg-accent: rgba(147, 238, 205, 0.12);
+  --hero-icon-bg-accent: #93eecd1f;
   --hero-icon: var(--green-400);
   --hero-badge-text: var(--green-400);
   --hero-badge-bg: rgba(52, 211, 153, 0.15);
@@ -246,7 +241,6 @@
   --spec-view-all-text: var(--green-400);
 
   /* Doctors aliases */
-  --doctor-section-bg: var(--bg-landing);
   --doctor-card-bg: var(--surface);
   --doctor-card-border: var(--border-default);
   --doctor-card-text: var(--text-heading);
@@ -260,7 +254,6 @@
   --doctors-summary-gradient-to: #114d2c;
 
   /* Testimonials aliases */
-  --testimonial-section-bg: var(--bg-landing);
   --testimonial-card-bg: var(--surface);
   --testimonial-card-border: var(--border-default);
   --testimonial-card-shadow: var(--shadow-card);

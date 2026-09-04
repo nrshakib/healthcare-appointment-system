@@ -132,7 +132,7 @@ export default function Testimonials() {
   );
 
   return (
-    <div className="testimonials py-12 sm:py-16 lg:py-20">
+    <div className="dark-bg py-12 sm:py-16 lg:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:max-w-[75%]">
         <div className="text-center mb-4 sm:mb-6 lg:mb-12">
           <p className="testimonial-subtitle text-xs sm:text-sm font-bold tracking-[0.15em] uppercase mb-2">

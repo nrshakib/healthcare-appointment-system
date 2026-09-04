@@ -1,8 +1,17 @@
-/* hero section */
-.hero-section {
+/* unified */
+.dark-bg {
   background: var(--bg-landing);
 }
 
+.darker-bg {
+  background: var(--spec-bg);
+}
+
+.text-heading {
+  color: var(--text-heading);
+}
+
+/* hero section */
 .hero-floating-card {
   background: var(--hero-card-bg);
   border: 1px solid var(--hero-card-border);
@@ -15,10 +24,6 @@
 
 .hero-search-divider {
   border-color: var(--hero-search-border);
-}
-
-.hero-text-primary {
-  color: var(--text-heading);
 }
 
 .hero-text-secondary {
@@ -69,9 +74,6 @@
 }
 
 /* specialities */
-.spec-section {
-  background: var(--spec-bg);
-}
 
 .spec-card {
   background: var(--spec-card-bg);
@@ -90,10 +92,6 @@
 
 .spec-skeleton {
   background: var(--spec-skeleton-bg);
-}
-
-.spec-title {
-  color: var(--text-heading);
 }
 
 .spec-detail {
@@ -119,10 +117,6 @@
 }
 
 /* doctors section */
-.doctor-section {
-  background: var(--doctor-section-bg);
-}
-
 .doctor-card {
   background: var(--doctor-card-bg);
   border: 1px solid var(--doctor-card-border);
@@ -175,24 +169,12 @@
 }
 
 /* how it works section */
-.howItWorkSection {
-  background: var(--spec-bg);
-}
-
 .how-badge {
   color: var(--accent);
 }
 
-.how-heading {
-  color: var(--text-heading);
-}
-
 .how-heading-accent {
   color: var(--accent);
-}
-
-.how-step-title {
-  color: var(--text-heading);
 }
 
 .how-step-desc {
@@ -279,10 +261,6 @@
 
 .testimonial-subtitle {
   color: var(--accent-deep);
-}
-
-.testimonial-heading {
-  color: var(--text-heading);
 }
 
 .dark .testimonial-subtitle {
@@ -379,10 +357,6 @@
 }
 
 /* health articles section */
-.articles-section {
-  background: var(--spec-bg);
-}
-
 .articles-card {
   background: var(--testimonial-card-bg) !important;
   border: 1px solid var(--testimonial-card-border);
@@ -408,10 +382,6 @@
 
 .articles-green-text {
   color: var(--accent);
-}
-
-.articles-heading {
-  color: var(--text-heading);
 }
 
 .articles-slider .slick-track {
@@ -468,16 +438,12 @@
   }
 }
 
-.articles-heading {
-  color: var(--text-heading) !important;
-}
-
 .articles-heading-accent {
   color: var(--testimonial-heading-accent);
 }
 
 .articles-dots {
-  display: flex;
+  display: flex-wrap;
   align-items: center;
   justify-content: center;
   gap: 8px;
