@@ -15,6 +15,7 @@
   --surface: #ffffff;
   --surface-card: #ffffffe6;
   --surface-raised: #fffffffa;
+  --bg-hero-soft: #eaf6f4;
 
   --text-heading: #0f172a;
   --text-body: #1e293b;
@@ -33,10 +34,8 @@
   --skeleton: #e2e8f0;
 
   --shadow-card: 0 1px 3px 0 #00000014;
-  --shadow-card-hover:
-    0 20px 40px -8px #0000001f, 0 8px 16px -4px #0000000f;
-  --shadow-datepicker:
-    0 10px 25px -5px #00000033, 0 8px 10px -6px #00000033;
+  --shadow-card-hover: 0 20px 40px -8px #0000001f, 0 8px 16px -4px #0000000f;
+  --shadow-datepicker: 0 10px 25px -5px #00000033, 0 8px 10px -6px #00000033;
   --shadow-button: 0 4px 14px 0 #10b98161;
   --shadow-button-hover: 0 6px 20px 0 #10b98180;
 
@@ -114,6 +113,23 @@
   --doctors-summary-gradient-from: #0b7761;
   --doctors-summary-gradient-to: #19ac67;
 
+  /* Doctors page aliases */
+  --doctor-bottom-section-bg: #ffffff;
+  --doctors-hero-bg: var(--bg-hero-soft);
+  --doctors-hero-border: rgba(6, 131, 107, 0.1);
+  --doctors-heading-text: var(--text-heading);
+  --doctors-breadcrumb-text: var(--text-muted);
+  --text-accent: var(--primary);
+  --doctors-empty-heading: var(--text-heading);
+  --doctors-empty-text: var(--text-muted);
+  --doctors-available-tomorrow: #d97706;
+  --doctors-not-available: var(--text-subtle);
+  --doctors-video-badge-bg: #f0f9ff;
+  --doctors-video-badge-text: #0369a1;
+  --doctors-inperson-badge-bg: #eef2ff;
+  --doctors-inperson-badge-text: #4338ca;
+  --doctors-card-shadow: var(--shadow-card);
+
   /* Testimonials aliases */
   --testimonial-card-bg: var(--surface);
   --testimonial-card-border: var(--border-default);
@@ -153,6 +169,7 @@
   --surface: #1e293b;
   --surface-card: #1e293b;
   --surface-raised: #0f172a;
+  --bg-hero-soft: #092e23;
 
   --text-heading: #f9fafb;
   --text-body: #cbd5e1;
@@ -252,6 +269,23 @@
   --doctor-green-text: var(--green-400);
   --doctors-summary-gradient-from: #095a4a;
   --doctors-summary-gradient-to: #114d2c;
+
+  /* Doctors page aliases */
+  --doctor-bottom-section-bg: #101a2f;
+  --doctors-hero-bg: linear-gradient(180deg, #0b1f24 0%, #101a2f 100%);
+  --doctors-hero-border: rgba(51, 65, 85, 0.45);
+  --doctors-heading-text: var(--text-heading);
+  --doctors-breadcrumb-text: var(--text-muted);
+  --text-accent: var(--accent);
+  --doctors-empty-heading: var(--text-heading);
+  --doctors-empty-text: var(--text-body);
+  --doctors-available-tomorrow: #fbbf24;
+  --doctors-not-available: var(--text-subtle);
+  --doctors-video-badge-bg: rgba(52, 211, 153, 0.12);
+  --doctors-video-badge-text: var(--green-300);
+  --doctors-inperson-badge-bg: rgba(129, 140, 248, 0.15);
+  --doctors-inperson-badge-text: #c7d2fe;
+  --doctors-card-shadow: var(--shadow-card);
 
   /* Testimonials aliases */
   --testimonial-card-bg: var(--surface);

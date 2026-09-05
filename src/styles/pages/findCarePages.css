@@ -1,0 +1,156 @@
+.doctorsHeroBg {
+  background: var(--doctors-hero-bg);
+}
+
+.doctors-search-box {
+  background: var(--surface);
+  border: 1px solid var(--border-default);
+}
+
+.doctors-search-divider {
+  border-color: var(--border-default);
+}
+
+.doctors-search-label {
+  color: var(--text-muted);
+}
+
+.doctors-search-box .MuiInputBase-root {
+  color: var(--text-heading);
+}
+
+.doctors-search-box .MuiInputBase-input {
+  color: var(--text-heading) !important;
+}
+
+.doctors-search-box .MuiInputBase-input::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
+}
+
+.dark .doctors-search-box .MuiInputBase-input {
+  color: #f9fafb !important;
+}
+
+.dark .doctors-search-box .MuiInputBase-input::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+.doctors-mobile-drawer {
+  background: var(--surface);
+}
+
+.doctors-close-btn {
+  color: var(--text-muted);
+}
+
+.doctors-close-btn:hover {
+  color: var(--text-heading);
+}
+
+.doctors-filter-sidebar {
+  background: var(--surface);
+}
+
+.doctors-bottom-section {
+  background: var(--doctor-bottom-section-bg);
+}
+
+.doctors-heading {
+  color: var(--doctors-heading-text);
+}
+
+.doctors-breadcrumb-home {
+  color: var(--doctor-green-text);
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.doctors-breadcrumb-home:hover {
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.doctors-breadcrumb-item {
+  color: var(--doctors-breadcrumb-text);
+  transition: color 0.2s ease;
+}
+
+.doctors-breadcrumb-item:hover {
+  color: var(--text-heading);
+}
+
+.doctors-breadcrumb-icon,
+.doctors-breadcrumb-active {
+  color: var(--doctor-green-text);
+}
+
+.doctors-empty-heading {
+  color: var(--doctors-empty-heading);
+}
+
+.doctors-empty-text {
+  color: var(--doctors-empty-text);
+}
+
+.doctors-card {
+  background: var(--doctor-card-bg) !important;
+  border: 1px solid var(--doctor-card-border);
+  box-shadow: var(--doctors-card-shadow);
+}
+
+.doctors-card-text {
+  color: var(--doctor-card-text);
+}
+
+.doctors-card-muted {
+  color: var(--doctor-card-muted);
+}
+
+.doctors-speciality-text {
+  color: var(--doctor-green-text);
+}
+
+.doctors-rating-text {
+  color: var(--doctor-card-text);
+}
+
+.doctors-reviews-text {
+  color: var(--doctor-card-muted);
+}
+
+.doctors-price-text {
+  color: var(--doctor-card-text);
+}
+
+.doctors-price-muted {
+  color: var(--doctor-card-muted);
+}
+
+.doctors-available-today {
+  color: var(--doctor-green-text);
+}
+
+.doctors-available-tomorrow {
+  color: var(--doctors-available-tomorrow);
+}
+
+.doctors-not-available {
+  color: var(--doctors-not-available);
+}
+
+.doctors-video-badge {
+  background: var(--doctors-video-badge-bg);
+  color: var(--doctors-video-badge-text);
+}
+
+.doctors-inperson-badge {
+  background: var(--doctors-inperson-badge-bg);
+  color: var(--doctors-inperson-badge-text);
+}
+
+.doctors-summary-text {
+  color: var(--doctors-summary-gradient-from);
+}

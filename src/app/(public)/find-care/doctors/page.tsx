@@ -136,39 +136,48 @@ export default function Doctors() {
   return (
     <div>
       {/* top section */}
-      <div className="bg-[#eaf6f4] py-6">
+      <div className="doctorsHeroBg py-6">
         <div className="mx-auto max-w-[95%] px-4 xl:max-w-[80%] xl:px-0">
           <Breadcrumbs
-            separator=">"
+            separator="›"
             aria-label="breadcrumb"
             sx={{
               fontSize: { xs: "11px", sm: "14px" },
               py: { xs: 2, sm: 3 },
+              color: "var(--doctors-breadcrumb-text)",
               "& .MuiBreadcrumbs-separator": {
                 mx: { xs: 0.5, sm: 1 },
+                color: "var(--text-subtle)",
+                opacity: 0.8,
               },
-              "& p": {
+              "& .MuiBreadcrumbs-ol": {
+                alignItems: "center",
+              },
+              "& p, & span, & a": {
                 fontSize: "inherit",
               },
             }}
           >
             <Link
               href="/"
-              className="text-primary hover:text-emerald-600 transition-colors"
+              className="doctors-breadcrumb-home hover:text-emerald-500 transition-colors"
+              aria-label="Home"
             >
               <TbHome2Filled className="text-lg" />
             </Link>
-            <p>Find Care</p>
-            <p className="text-primary font-medium">Doctors</p>
+            <span className="doctors-breadcrumb-item">Find Care</span>
+            <span className="doctors-breadcrumb-active font-medium">Doctors</span>
           </Breadcrumbs>
-          <p className="text-2xl sm:text-3xl font-semibold">Find Doctors</p>
+          <p className="doctors-heading text-2xl sm:text-3xl font-semibold">
+            Find Doctors
+          </p>
 
           {/* Search Box */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-white rounded-2xl shadow-sm p-4 mt-4 w-full">
-            <div className="flex items-center gap-3 flex-1 border-b sm:border-b-0 sm:border-r border-gray-200 pb-3 sm:pb-0 sm:pr-4 min-w-0">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 doctors-search-box rounded-2xl shadow-sm p-4 mt-4 w-full">
+            <div className="flex items-center gap-3 flex-1 border-b sm:border-b-0 sm:border-r doctors-search-divider pb-3 sm:pb-0 sm:pr-4 min-w-0">
               <FaSearch className="text-[#10B981] text-base lg:text-lg shrink-0" />
               <div className="w-full min-w-0 text-left">
-                <p className="text-gray-600 text-xs sm:text-sm font-semibold">
+                <p className="doctors-search-label text-xs sm:text-sm font-semibold">
                   Search Doctor
                 </p>
                 <TextField
@@ -183,14 +192,23 @@ export default function Doctors() {
                     },
                   }}
                   fullWidth
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      color: "var(--text-heading)",
+                      "&::placeholder": {
+                        color: "var(--text-muted)",
+                        opacity: 1,
+                      },
+                    },
+                  }}
                 />
               </div>
             </div>
 
-            <div className="flex items-center gap-3 flex-1 border-b sm:border-b-0 sm:border-r border-gray-200 pb-3 sm:pb-0 sm:pr-4 min-w-0">
+            <div className="flex items-center gap-3 flex-1 border-b sm:border-b-0 sm:border-r doctors-search-divider pb-3 sm:pb-0 sm:pr-4 min-w-0">
               <FaMapMarkerAlt className="text-[#10B981] text-base lg:text-lg shrink-0" />
               <div className="w-full min-w-0 text-left">
-                <p className="text-gray-600 text-xs sm:text-sm font-semibold">
+                <p className="doctors-search-label text-xs sm:text-sm font-semibold">
                   Location
                 </p>
                 <TextField
@@ -205,6 +223,15 @@ export default function Doctors() {
                     },
                   }}
                   fullWidth
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      color: "var(--text-heading)",
+                      "&::placeholder": {
+                        color: "var(--text-muted)",
+                        opacity: 1,
+                      },
+                    },
+                  }}
                 />
               </div>
             </div>
@@ -272,65 +299,67 @@ export default function Doctors() {
       </div>
 
       {/* bottom section */}
-      <div className="mx-auto max-w-[95%] xl:max-w-[90%] grid grid-cols-1 lg:grid-cols-7 xl:grid-cols-5 gap-6 py-4">
-        {/* filtering section — sidebar on desktop */}
-        <div className="hidden lg:block col-span-1 md:col-span-2 xl:col-span-1 p-4 shadow-lg rounded-xl h-fit sticky top-4">
-          <FilteringSection
-            filters={filters}
-            onChange={setFilters}
-            onClearAll={handleClearAll}
-            minFee={MIN_FEE}
-            maxFee={MAX_FEE}
-            specialityOptions={specialityOptions}
-          />
-        </div>
-
-        {/* mobile drawer */}
-        {mobileFiltersOpen && (
-          <div className="fixed inset-0 z-50 lg:hidden">
-            <div
-              className="absolute inset-0 bg-black/40"
-              onClick={() => setMobileFiltersOpen(false)}
+      <div className="doctors-bottom-section">
+        <div className="mx-auto max-w-[95%] xl:max-w-[90%] grid grid-cols-1 lg:grid-cols-7 xl:grid-cols-5 gap-6 py-4">
+          {/* filtering section — sidebar on desktop */}
+          <div className="hidden lg:block col-span-1 md:col-span-2 xl:col-span-1 p-4 shadow-lg rounded-xl h-fit sticky top-4 doctors-filter-sidebar">
+            <FilteringSection
+              filters={filters}
+              onChange={setFilters}
+              onClearAll={handleClearAll}
+              minFee={MIN_FEE}
+              maxFee={MAX_FEE}
+              specialityOptions={specialityOptions}
             />
-            <div className="absolute left-0 top-16 h-full w-[85%] max-w-sm bg-white shadow-xl overflow-y-auto p-4">
-              <div className="flex items-center justify-end mb-1">
-                <button
-                  onClick={() => setMobileFiltersOpen(false)}
-                  aria-label="Close filters"
-                  className="text-gray-500 hover:text-gray-800"
-                >
-                  <FaTimes size={18} />
-                </button>
-              </div>
-              <FilteringSection
-                filters={filters}
-                onChange={setFilters}
-                onClearAll={handleClearAll}
-                minFee={MIN_FEE}
-                maxFee={MAX_FEE}
-                specialityOptions={specialityOptions}
-              />
-              <Button
-                fullWidth
-                variant="contained"
-                onClick={() => setMobileFiltersOpen(false)}
-                sx={{
-                  mt: 3,
-                  backgroundColor: "#10B981",
-                  borderRadius: "10px",
-                  textTransform: "none",
-                  "&:hover": { backgroundColor: "#059669" },
-                }}
-              >
-                Apply Filters ({filteredDoctors.length})
-              </Button>
-            </div>
           </div>
-        )}
 
-        {/* main section */}
-        <div className="col-span-1 md:col-span-5 xl:col-span-4">
-          <DoctorsSection doctors={filteredDoctors} />
+          {/* mobile drawer */}
+          {mobileFiltersOpen && (
+            <div className="fixed inset-0 z-50 lg:hidden">
+              <div
+                className="absolute inset-0 bg-black/40"
+                onClick={() => setMobileFiltersOpen(false)}
+              />
+              <div className="absolute left-0 top-16 h-full w-[85%] max-w-sm doctors-mobile-drawer shadow-xl overflow-y-auto p-4">
+                <div className="flex items-center justify-end mb-1">
+                  <button
+                    onClick={() => setMobileFiltersOpen(false)}
+                    aria-label="Close filters"
+                    className="doctors-close-btn"
+                  >
+                    <FaTimes size={18} />
+                  </button>
+                </div>
+                <FilteringSection
+                  filters={filters}
+                  onChange={setFilters}
+                  onClearAll={handleClearAll}
+                  minFee={MIN_FEE}
+                  maxFee={MAX_FEE}
+                  specialityOptions={specialityOptions}
+                />
+                <Button
+                  fullWidth
+                  variant="contained"
+                  onClick={() => setMobileFiltersOpen(false)}
+                  sx={{
+                    mt: 3,
+                    backgroundColor: "#10B981",
+                    borderRadius: "10px",
+                    textTransform: "none",
+                    "&:hover": { backgroundColor: "#059669" },
+                  }}
+                >
+                  Apply Filters ({filteredDoctors.length})
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* main section */}
+          <div className="col-span-1 md:col-span-5 xl:col-span-4">
+            <DoctorsSection doctors={filteredDoctors} />
+          </div>
         </div>
       </div>
     </div>

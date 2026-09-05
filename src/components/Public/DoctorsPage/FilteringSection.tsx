@@ -37,16 +37,16 @@ const filterOptionLabelSx = {
   "& .MuiFormControlLabel-label": {
     fontSize: "14px",
     lineHeight: "17px",
-    color: "#4B5563",
+    color: "var(--doctor-card-muted)",
   },
 };
 
 const radioSx = {
   padding: 0,
   marginRight: "8px",
-  color: "#10B981",
+  color: "var(--doctor-green-text)",
   "& .MuiSvgIcon-root": { fontSize: 18 },
-  "&.Mui-checked": { color: "#10B981" },
+  "&.Mui-checked": { color: "var(--doctor-green-text)" },
 };
 
 export default function FilteringSection({
@@ -72,19 +72,24 @@ export default function FilteringSection({
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
-        <p className="text-lg font-semibold">Filters</p>
+        <p className="text-lg font-semibold doctors-card-text">Filters</p>
         <Button
           onClick={onClearAll}
-          sx={{ textTransform: "none", color: "#10B981" }}
+          sx={{
+            textTransform: "none",
+            color: "var(--doctor-green-text)",
+            fontSize: "12px",
+            fontWeight: 500,
+          }}
         >
           Clear All
         </Button>
       </div>
 
       <div>
-        <p className="text-lg font-semibold mb-2">
+        <p className="text-lg font-semibold mb-2 doctors-card-text">
           Specialities{" "}
-          <span className="text-sm text-gray-500">
+          <span className="text-sm doctors-card-muted">
             ({specialityOptions.length})
           </span>
         </p>
@@ -102,9 +107,9 @@ export default function FilteringSection({
                     sx={{
                       padding: 0,
                       marginRight: "8px",
-                      color: "#10B981",
+                      color: "var(--doctor-green-text)",
                       "& .MuiSvgIcon-root": { fontSize: 18 },
-                      "&.Mui-checked": { color: "#10B981" },
+                      "&.Mui-checked": { color: "var(--doctor-green-text)" },
                     }}
                   />
                 }
@@ -118,7 +123,7 @@ export default function FilteringSection({
             onClick={() => setShowMore((prev) => !prev)}
             sx={{
               textTransform: "none",
-              color: "#10B981",
+              color: "var(--doctor-green-text)",
               padding: 0,
               marginTop: "8px",
             }}
@@ -129,7 +134,9 @@ export default function FilteringSection({
       </div>
 
       <div>
-        <p className="text-lg font-semibold mb-2">Experience</p>
+        <p className="text-lg font-semibold mb-2 doctors-card-text">
+          Experience
+        </p>
         <RadioGroup
           value={filters.experience}
           onChange={(e) => update({ experience: e.target.value })}
@@ -150,7 +157,7 @@ export default function FilteringSection({
       </div>
 
       <div>
-        <p className="text-lg font-semibold mb-2">Gender</p>
+        <p className="text-lg font-semibold mb-2 doctors-card-text">Gender</p>
         <RadioGroup
           value={filters.gender}
           onChange={(e) => update({ gender: e.target.value })}
@@ -169,7 +176,9 @@ export default function FilteringSection({
       </div>
 
       <div>
-        <p className="text-lg font-semibold mb-2">Consultation Type</p>
+        <p className="text-lg font-semibold mb-2 doctors-card-text">
+          Consultation Type
+        </p>
         <RadioGroup
           value={filters.consultationType}
           onChange={(e) => update({ consultationType: e.target.value })}
@@ -188,7 +197,9 @@ export default function FilteringSection({
       </div>
 
       <div>
-        <p className="text-lg font-semibold mb-2">Availability</p>
+        <p className="text-lg font-semibold mb-2 doctors-card-text">
+          Availability
+        </p>
         <RadioGroup
           value={filters.availability}
           onChange={(e) => update({ availability: e.target.value })}
@@ -207,7 +218,9 @@ export default function FilteringSection({
       </div>
 
       <div>
-        <p className="text-lg font-semibold mb-2">Price Range</p>
+        <p className="text-lg font-semibold mb-2 doctors-card-text">
+          Price Range
+        </p>
         <div className="w-full max-w-xs px-1">
           <Slider
             value={filters.priceRange}
@@ -217,13 +230,13 @@ export default function FilteringSection({
             max={maxFee}
             step={10}
             sx={{
-              color: "#10B981",
+              color: "var(--doctor-green-text)",
               height: 6,
               "& .MuiSlider-thumb": { width: 16, height: 16 },
               "& .MuiSlider-rail": { opacity: 0.25 },
             }}
           />
-          <div className="mt-1 flex items-center justify-between text-sm font-medium text-gray-700">
+          <div className="mt-1 flex items-center justify-between text-sm font-medium doctors-card-muted">
             <span>৳{filters.priceRange[0]}</span>
             <span>৳{filters.priceRange[1]}</span>
           </div>

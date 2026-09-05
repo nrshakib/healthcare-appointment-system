@@ -138,7 +138,7 @@ export default function Testimonials() {
           <p className="testimonial-subtitle text-xs sm:text-sm font-bold tracking-[0.15em] uppercase mb-2">
             Patients Love Us
           </p>
-          <h2 className="testimonial-heading text-2xl sm:text-3xl lg:text-4xl font-bold">
+          <h2 className="text-heading text-2xl sm:text-3xl lg:text-4xl font-bold">
             What our{" "}
             <span className="testimonial-heading-accent">patients say</span>
           </h2>

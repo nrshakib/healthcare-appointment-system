@@ -62,10 +62,10 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
   if (doctors.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center px-4">
-        <p className="text-lg font-semibold text-gray-700">
+        <p className="doctors-empty-heading text-lg font-semibold">
           No doctors match your filters
         </p>
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="doctors-empty-text text-sm mt-1">
           Try adjusting your search or clearing some filters.
         </p>
       </div>
@@ -74,8 +74,8 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
 
   return (
     <div className="p-2">
-      <p className="text-sm text-gray-500 mb-3 font-medium">
-        <span className="text-primary">{doctors.length}</span> doctor
+      <p className="doctors-card-muted text-sm mb-3 font-medium">
+        <span className="doctors-speciality-text">{doctors.length}</span> doctor
         {doctors.length !== 1 ? "s" : ""} found
       </p>
 
@@ -88,14 +88,18 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
           return (
             <Card
               key={doctor.id}
+              className="doctors-card"
               sx={{
                 width: "100%",
                 borderRadius: 3,
-                boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+                bgcolor: "transparent",
+                backgroundColor: "var(--doctor-card-bg)",
+                border: "1px solid var(--doctor-card-border)",
+                boxShadow: "var(--doctors-card-shadow)",
                 transition: "0.3s",
                 "&:hover": {
-                  boxShadow: "0 6px 20px rgba(0,0,0,0.1)",
                   transform: "translateY(-2px)",
+                  boxShadow: "var(--shadow-card-hover)",
                 },
               }}
             >
@@ -122,21 +126,21 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
 
                 {/* Main info */}
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-gray-900 text-lg sm:text-xl mb-1 sm:mb-2">
+                  <p className="doctors-card-text font-semibold text-lg sm:text-xl mb-1 sm:mb-2">
                     {doctor.name}
                   </p>
 
                   <div className="text-sm lg:text-base">
                     <p className="flex flex-wrap gap-x-1">
-                      <span className="text-blue-700 font-medium">
+                      <span className="doctors-speciality-text font-medium">
                         {doctor.speciality}
                       </span>
-                      <span className="text-gray-600">
+                      <span className="doctors-card-muted">
                         • {doctor.experience} Years Exp.
                       </span>
                     </p>
 
-                    <p className="flex items-center gap-2 text-gray-500 mt-1">
+                    <p className="flex items-center gap-2 doctors-card-muted mt-1">
                       <FaBookMedical className="text-lg font-medium text-primary shrink-0" />
                       <span className="truncate">{doctor.degree}</span>
                     </p>
@@ -145,10 +149,10 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
                   <div className="flex items-center flex-wrap gap-x-4 gap-y-1 mt-2 sm:mt-3">
                     <div className="flex items-center gap-1">
                       <AiFillStar className="text-amber-400" size={16} />
-                      <span className="font-semibold text-sm text-gray-800">
+                      <span className="doctors-rating-text font-semibold text-sm">
                         {doctor.rating}
                       </span>
-                      <span className="text-sm text-gray-500">
+                      <span className="doctors-reviews-text text-sm">
                         ({doctor.reviewCount} reviews)
                       </span>
                     </div>
@@ -156,10 +160,10 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
                     <div
                       className={`flex items-center gap-1 text-sm font-medium ${
                         isAvailableToday
-                          ? "text-primary"
+                          ? "doctors-available-today"
                           : isAvailableTomorrow
-                            ? "text-amber-600"
-                            : "text-gray-400"
+                            ? "doctors-available-tomorrow"
+                            : "doctors-not-available"
                       }`}
                     >
                       <IoMdCheckmarkCircle size={16} />
@@ -171,11 +175,11 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
                     </div>
                   </div>
 
-                  <div className="flex items-center flex-wrap gap-x-4 gap-y-1 mt-2 sm:mt-3 text-sm text-gray-600">
+                  <div className="flex items-center flex-wrap gap-x-4 gap-y-1 mt-2 sm:mt-3 text-sm doctors-card-muted">
                     {doctor.consultationType
                       ?.toLowerCase()
                       .includes("online") && (
-                      <Badge className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-medium text-sky-700 sm:text-sm">
+                      <Badge className="doctors-video-badge inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium sm:text-sm">
                         <HiOutlineVideoCamera />
                         Video Consultation
                       </Badge>
@@ -183,7 +187,7 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
                     {doctor.consultationType
                       ?.toLowerCase()
                       .includes("person") && (
-                      <Badge className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700 sm:text-sm">
+                      <Badge className="doctors-inperson-badge inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium sm:text-sm">
                         <FiUserCheck />
                         In-person
                       </Badge>
@@ -194,10 +198,10 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
                 {/* Price + CTA */}
                 <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-gray-100">
                   <div className="flex sm:flex-col items-baseline sm:items-end gap-1 sm:gap-0">
-                    <p className="text-xl sm:text-2xl font-bold text-gray-900">
+                    <p className="doctors-price-text text-xl sm:text-2xl font-bold">
                       ৳{doctor.consultationFee}
                     </p>
-                    <p className="text-xs text-gray-400 sm:-mt-1">
+                    <p className="doctors-price-muted text-xs sm:-mt-1">
                       / Consultation
                     </p>
                   </div>
@@ -225,14 +229,15 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
               "& .MuiPaginationItem-root": {
                 fontWeight: 500,
                 borderRadius: "8px",
+                color: "var(--doctor-card-muted)",
               },
               "& .MuiPaginationItem-root.Mui-selected": {
-                backgroundColor: "#10B981",
-                color: "white",
-                "&:hover": { backgroundColor: "#059669" },
+                backgroundColor: "var(--primary)",
+                color: "var(--white)",
+                "&:hover": { backgroundColor: "var(--accent-deep)" },
               },
               "& .MuiPaginationItem-root:hover": {
-                backgroundColor: "rgba(16, 185, 129, 0.1)",
+                backgroundColor: "var(--accent-soft)",
               },
             }}
           />
