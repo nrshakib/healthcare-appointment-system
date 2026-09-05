@@ -19,6 +19,13 @@
   color: var(--text-heading);
 }
 
+.doctors-heading-text {
+  color: var(--text-heading);
+}
+.doctors-info-text {
+  color: var(--text-body);
+}
+
 .doctors-search-box .MuiInputBase-input {
   color: var(--text-heading) !important;
 }
@@ -65,7 +72,9 @@
   color: var(--doctor-green-text);
   display: inline-flex;
   align-items: center;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .doctors-breadcrumb-home:hover {
@@ -153,4 +162,52 @@
 
 .doctors-summary-text {
   color: var(--doctors-summary-gradient-from);
+}
+
+.doctors-location-text {
+  color: var(--doctors-location-text);
+}
+
+.doctor-services {
+  background: var(--accent);
+  color: var(--border-default);
+}
+
+/* Doctor details buttons dark mode */
+.dark .doctor-message-btn {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+.dark .doctor-message-btn:hover {
+  border-color: var(--accent-deep) !important;
+  color: var(--accent-deep) !important;
+  background-color: rgba(52, 211, 153, 0.1) !important;
+}
+
+.dark .doctor-save-btn {
+  border-color: var(--border-default) !important;
+  color: var(--text-muted) !important;
+}
+
+.dark .doctor-save-btn.Mui-disabled {
+  border-color: var(--border-default) !important;
+  color: var(--text-muted) !important;
+  opacity: 0.6 !important;
+}
+
+.dark .doctor-save-btn:hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  color: var(--text-heading) !important;
+}
+
+.dark .doctor-back-link {
+  border-color: var(--border-default) !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--border-default) !important;
+}
+
+.dark .doctor-back-link:hover {
+  color: var(--accent-deep) !important;
+  background-color: rgba(6, 131, 107, 0.2) !important;
 }

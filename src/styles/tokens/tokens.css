@@ -129,6 +129,7 @@
   --doctors-inperson-badge-bg: #eef2ff;
   --doctors-inperson-badge-text: #4338ca;
   --doctors-card-shadow: var(--shadow-card);
+  --doctors-location-text: #046a59;
 
   /* Testimonials aliases */
   --testimonial-card-bg: var(--surface);
@@ -286,6 +287,7 @@
   --doctors-inperson-badge-bg: rgba(129, 140, 248, 0.15);
   --doctors-inperson-badge-text: #c7d2fe;
   --doctors-card-shadow: var(--shadow-card);
+  --doctors-location-text: #22d0cb;
 
   /* Testimonials aliases */
   --testimonial-card-bg: var(--surface);

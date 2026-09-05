@@ -156,9 +156,9 @@ export default function HeroSection() {
                     fullWidth
                     sx={{
                       "& .MuiInputBase-input": {
-                        color: isDark ? "#fff" : "#000",
+                        color: "var(--text-heading)",
                         "&::placeholder": {
-                          color: isDark ? "#CBD5E1" : "#6B6B6B",
+                          color: "var(--text-muted)",
                           opacity: 1,
                         },
                       },
@@ -189,9 +189,9 @@ export default function HeroSection() {
                     fullWidth
                     sx={{
                       "& .MuiInputBase-input": {
-                        color: isDark ? "#fff" : "#000",
+                        color: "var(--text-heading)",
                         "&::placeholder": {
-                          color: isDark ? "#CBD5E1" : "#6B6B6B",
+                          color: "var(--text-muted)",
                           opacity: 1,
                         },
                       },
@@ -282,14 +282,7 @@ export default function HeroSection() {
                               },
                               "& .MuiPickersSectionList-root": {
                                 fontSize: "0.8rem",
-                                color: (theme) =>
-                                  date
-                                    ? theme.palette.mode === "dark"
-                                      ? "#fff"
-                                      : "#000"
-                                    : theme.palette.mode === "dark"
-                                      ? "#CBD5E1"
-                                      : "#6B6B6B",
+                                color: "var(--text-heading)",
                               },
                             },
                           },
