@@ -27,26 +27,26 @@ export default function DoctorPickerModal({
 
   return (
     <div className="fixed inset-0 z-50 top-10 flex items-center justify-center p-3 sm:p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative w-full sm:max-w-[80%] xl:max-w-3xl bg-white rounded-xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col max-h-[85vh]">
+      <div className="doctors-card relative w-full sm:max-w-[80%] xl:max-w-3xl rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
         {/* Header */}
-        <div className="flex items-center justify-between px-5 sm:px-7 py-4 border-b border-slate-100 shrink-0">
+        <div className="flex items-center justify-between px-5 sm:px-7 py-4 border-b border-slate-100 dark:border-slate-800 shrink-0">
           <div className="flex items-center gap-2">
-            <FaExchangeAlt className="text-[#06836b]" />
-            <h3 className="font-bold text-slate-900 text-base sm:text-lg">
+            <FaExchangeAlt className="text-[#06836b] dark:text-[#34d399]" />
+            <h3 className="doctors-heading-text font-bold text-base sm:text-lg">
               Select a Doctor
             </h3>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
+            className="text-slate-700 hover:text-slate-400 dark:hover:text-slate-200 p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           >
             <FaTimes />
           </button>
         </div>
 
         {/* Search Input */}
-        <div className="p-4 sm:p-5 border-b border-slate-100 shrink-0 bg-[#fafcfb]">
+        <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 shrink-0 bg-[#fafcfb] dark:bg-slate-900/50">
           <div className="relative flex items-center">
             <FaSearch className="absolute left-3.5 text-slate-400 text-sm" />
             <input
@@ -54,25 +54,25 @@ export default function DoctorPickerModal({
               placeholder="Search doctor by name, speciality, or hospital..."
               value={searchQuery}
               onChange={(e) => onSearchQueryChange(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06836b] bg-white text-xs sm:text-sm"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-[#06836b] dark:focus:border-emerald-500 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-xs sm:text-sm"
             />
           </div>
         </div>
 
         {/* Doctors List */}
-        <div className="p-4 sm:p-5 overflow-y-auto flex-1 divide-y divide-slate-100 space-y-2">
+        <div className="p-4 sm:p-5 overflow-y-auto flex-1 divide-y divide-slate-100 dark:divide-slate-800 space-y-2">
           {doctors.map((doc) => (
             <div
               key={doc.id}
               onClick={() => onSelectDoctor(doc)}
-              className={`p-3 rounded-2xl flex items-center justify-between gap-3 hover:bg-emerald-50/50 transition-colors cursor-pointer ${
+              className={`p-3 rounded-2xl flex items-center justify-between gap-3 hover:bg-emerald-50/50 dark:hover:bg-slate-800/60 transition-colors cursor-pointer ${
                 selectedDoctorId === doc.id
-                  ? "bg-emerald-50 border border-emerald-200"
+                  ? "bg-[#4acd90] dark:bg-[#056336be] border border-emerald-200 dark:border-emerald-800/60"
                   : ""
               }`}
             >
               <div className="flex items-center gap-3 min-w-0">
-                <div className="size-12 rounded-xl overflow-hidden bg-slate-100 shrink-0">
+                <div className="size-12 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 shrink-0">
                   <Image
                     src={doc.image || "/images/doctors/doctor-1.png"}
                     alt={doc.name}
@@ -82,23 +82,23 @@ export default function DoctorPickerModal({
                   />
                 </div>
                 <div className="min-w-0">
-                  <p className="font-bold text-slate-900 text-xs sm:text-sm truncate">
+                  <p className="doctors-heading-text font-bold text-xs sm:text-sm truncate">
                     {doc.name}
                   </p>
-                  <p className="text-xs text-[#06836b] font-medium truncate">
+                  <p className="doctors-speciality-text text-xs font-medium truncate">
                     {doc.speciality}
                   </p>
-                  <p className="text-[11px] text-slate-500 truncate">
+                  <p className="doctors-info-text text-[11px] truncate">
                     {doc.location}
                   </p>
                 </div>
               </div>
 
               <div className="text-right shrink-0">
-                <span className="font-bold text-[#06836b] text-sm">
+                <span className="font-bold text-[#06836b] dark:text-[#34d399] text-sm">
                   ৳{doc.consultationFee}
                 </span>
-                <span className="block text-[10px] text-slate-400">
+                <span className="doctors-info-text block text-[10px]">
                   / Session
                 </span>
               </div>

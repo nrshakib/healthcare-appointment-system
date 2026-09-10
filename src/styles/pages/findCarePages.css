@@ -211,3 +211,20 @@
   color: var(--accent-deep) !important;
   background-color: rgba(6, 131, 107, 0.2) !important;
 }
+
+/* Doctor switch button dark mode */
+.dark .doctor-switch-btn {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  color: var(--text-heading) !important;
+  border-color: var(--border-default) !important;
+}
+
+.dark .doctor-switch-btn:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: var(--text-heading) !important;
+  border-color: var(--accent) !important;
+}
+
+.dark .doctor-switch-icon {
+  color: var(--accent) !important;
+}

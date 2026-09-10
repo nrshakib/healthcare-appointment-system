@@ -16,7 +16,7 @@ export default function DoctorSummaryCard({
   onChangeDoctorClick,
 }: DoctorSummaryCardProps) {
   return (
-    <section className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-100 shadow-md">
+    <section className="doctors-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg">
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div className="grid grid-cols-1 gap-4">
           {/* Doctor Avatar */}
@@ -34,27 +34,31 @@ export default function DoctorSummaryCard({
           {/* Doctor Info */}
           <div className="space-y-1 min-w-0">
             <div className="">
-              <h2 className="text-lg sm:text-xl font-bold text-slate-900">
+              <h2 className="doctors-heading-text text-lg sm:text-xl font-bold ">
                 {doctor.name}
               </h2>
             </div>
 
-            <p className="text-xs sm:text-sm font-semibold text-[#06836b]">
+            <p className="doctors-speciality-text text-xs sm:text-sm font-semibold">
               {doctor.speciality}
             </p>
 
-            <p className="text-xs text-slate-500 truncate">{doctor.degree}</p>
+            <p className="doctors-info-text text-xs truncate">
+              {doctor.degree}
+            </p>
 
             <div className="flex items-center flex-wrap gap-3 text-xs text-slate-600 pt-1">
               <span className="flex items-center gap-1 font-semibold text-amber-500">
                 <FaStar className="text-xs" />
                 {doctor.rating} ({doctor.reviewCount} reviews)
               </span>
-              <span>•</span>
-              <span>{doctor.experience} Years Exp.</span>
+              <span className="doctors-info-text">•</span>
+              <span className="doctors-speciality-text">
+                {doctor.experience} Years Exp.
+              </span>
             </div>
 
-            <div className="flex items-center gap-1 text-xs text-slate-500 pt-1">
+            <div className="doctors-location-text flex items-center gap-1 text-xs pt-1">
               <FaMapMarkerAlt className="text-primary shrink-0" />
               <span className="truncate">{doctor.location}</span>
             </div>
@@ -67,7 +71,10 @@ export default function DoctorSummaryCard({
             type="button"
             onClick={onChangeDoctorClick}
             disableElevation
-            startIcon={<FaExchangeAlt className="text-[#06836b]" />}
+            className="doctor-switch-btn"
+            startIcon={
+              <FaExchangeAlt className="doctor-switch-icon text-[#06836b] dark:text-[#34d399] transition-colors" />
+            }
             sx={{
               width: { xs: "100%", sm: "auto" },
               display: "inline-flex",
@@ -83,10 +90,22 @@ export default function DoctorSummaryCard({
               fontWeight: 600,
               textTransform: "none",
               border: "1px solid #e2e8f0",
-              transition: "background-color 0.2s ease",
+              transition: "all 0.2s ease",
               cursor: "pointer",
               "&:hover": {
                 backgroundColor: "#f1f5f9",
+              },
+              ".dark &": {
+                backgroundColor: "rgba(255, 255, 255, 0.06)",
+                color: "var(--text-heading)",
+                borderColor: "var(--border-default)",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.12)",
+                  borderColor: "var(--accent)",
+                },
+                "& .doctor-switch-icon": {
+                  color: "var(--accent)",
+                },
               },
             }}
           >

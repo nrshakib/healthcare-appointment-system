@@ -5,7 +5,6 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Breadcrumbs } from "@mui/material";
-import { FaShieldAlt } from "react-icons/fa";
 import { TbHome2Filled } from "react-icons/tb";
 
 import doctors from "@/utils/doctors";
@@ -38,7 +37,7 @@ export default function BookAppointmentClient() {
 
     // 1. Match by slug
     const bySlug = doctors.find(
-      (d) => slugify(d.name).toLowerCase() === cleanParam
+      (d) => slugify(d.name).toLowerCase() === cleanParam,
     );
     if (bySlug) return bySlug;
 
@@ -46,7 +45,7 @@ export default function BookAppointmentClient() {
     const byName = doctors.find(
       (d) =>
         d.name.toLowerCase() === cleanParam ||
-        d.name.toLowerCase().includes(cleanParam)
+        d.name.toLowerCase().includes(cleanParam),
     );
     if (byName) return byName;
 
@@ -62,7 +61,9 @@ export default function BookAppointmentClient() {
   const [doctorSearchQuery, setDoctorSearchQuery] = useState("");
 
   // Consultation Type
-  const [consultationType, setConsultationType] = useState<"Online" | "In-Person">(() => {
+  const [consultationType, setConsultationType] = useState<
+    "Online" | "In-Person"
+  >(() => {
     const isOnlineSupported = initialDoctor.consultationType
       ?.toLowerCase()
       .includes("online");
@@ -151,7 +152,7 @@ export default function BookAppointmentClient() {
   });
 
   // Switch doctor handler
-  const handleSelectDoctor = (doc: typeof doctors[0]) => {
+  const handleSelectDoctor = (doc: (typeof doctors)[0]) => {
     setSelectedDoctor(doc);
     setIsDoctorPickerOpen(false);
 
@@ -227,7 +228,7 @@ export default function BookAppointmentClient() {
       (d) =>
         d.name.toLowerCase().includes(q) ||
         d.speciality.toLowerCase().includes(q) ||
-        d.location?.toLowerCase().includes(q)
+        d.location?.toLowerCase().includes(q),
     );
   }, [doctorSearchQuery]);
 
@@ -289,11 +290,11 @@ export default function BookAppointmentClient() {
     setIsSubmitting(true);
 
     const bookingId = `MED-${new Date().getFullYear()}-${Math.floor(
-      100000 + Math.random() * 900000
+      100000 + Math.random() * 900000,
     )}`;
 
     const selectedDateObj = calendarDates.find(
-      (d) => d.formattedIso === selectedDate
+      (d) => d.formattedIso === selectedDate,
     );
     const dateFormatted = selectedDateObj
       ? `${selectedDateObj.dayName}, ${selectedDateObj.monthShort} ${selectedDateObj.dayNumber}, ${selectedDateObj.fullDate.getFullYear()}`
@@ -335,23 +336,32 @@ export default function BookAppointmentClient() {
   }
 
   const selectedDateObj = calendarDates.find(
-    (d) => d.formattedIso === selectedDate
+    (d) => d.formattedIso === selectedDate,
   );
   const selectedDateLabel = selectedDateObj?.dayName || selectedDate;
 
   return (
-    <div className="min-h-screen bg-[#fafcfb] pb-16">
+    <div className="doctors-bottom-section min-h-screen pb-16">
       {/* Breadcrumb Header */}
-      <div className="bg-[#eaf6f4] py-3 border-b border-emerald-100/50">
+      <div className="doctorsHeroBg py-3">
         <div className="mx-auto max-w-[95%] px-4 xl:max-w-[85%] xl:px-0">
           <Breadcrumbs
             separator=">"
             aria-label="breadcrumb"
             sx={{
-              fontSize: { xs: "12px", sm: "14px" },
-              py: { xs: 1, sm: 2 },
+              fontSize: { xs: "11px", sm: "14px" },
+              py: { xs: 2, sm: 3 },
+              color: "var(--doctors-breadcrumb-text)",
               "& .MuiBreadcrumbs-separator": {
                 mx: { xs: 0.5, sm: 1 },
+                color: "var(--text-subtle)",
+                opacity: 0.8,
+              },
+              "& .MuiBreadcrumbs-ol": {
+                alignItems: "center",
+              },
+              "& p, & span, & a": {
+                fontSize: "inherit",
               },
             }}
           >
@@ -363,17 +373,19 @@ export default function BookAppointmentClient() {
             </Link>
             <Link
               href="/find-care/doctors"
-              className="text-slate-600 hover:text-primary transition-colors"
+              className="doctors-breadcrumb-item transition-colors font-semibold"
             >
               Find Care
             </Link>
             <Link
               href={`/find-care/doctors/${slugify(selectedDoctor.name)}`}
-              className="text-slate-600 hover:text-primary transition-colors truncate max-w-[150px] sm:max-w-none"
+              className="doctors-breadcrumb-active font-semibold"
             >
               {selectedDoctor.name}
             </Link>
-            <p className="text-primary font-semibold">Book Appointment</p>
+            <p className="doctors-breadcrumb-item font-semibold">
+              Book Appointment
+            </p>
           </Breadcrumbs>
         </div>
       </div>
@@ -381,14 +393,13 @@ export default function BookAppointmentClient() {
       {/* Page Title & Intro */}
       <div className="mx-auto max-w-[95%] xl:max-w-[85%] pt-6 sm:pt-8 px-4 xl:px-0">
         <div>
-          <h1 className="text-xl sm:text-3xl font-bold text-slate-900">
+          <h1 className="doctors-heading-text text-xl sm:text-3xl font-bold">
             Book Doctor Appointment
           </h1>
-          <p className="text-[13px] sm:text-sm text-slate-600 mt-1">
+          <p className="doctors-info-text text-[13px] sm:text-sm mt-1">
             Select your preferred date, time slot, and consultation mode to
             confirm instant booking.
           </p>
-
         </div>
       </div>
 

@@ -38,7 +38,8 @@ export default function DateTimeSlotPicker({
   // Check scroll position to enable/disable arrow buttons
   const checkScrollPosition = () => {
     if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
       setCanScrollLeft(scrollLeft > 4);
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 4);
     }
@@ -67,7 +68,7 @@ export default function DateTimeSlotPicker({
   };
 
   return (
-    <section className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-slate-100 shadow-md space-y-5">
+    <section className="doctors-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-slate-100 shadow-md space-y-5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <span className="size-7 rounded-full bg-[#06836b] text-white text-xs font-bold flex items-center justify-center">

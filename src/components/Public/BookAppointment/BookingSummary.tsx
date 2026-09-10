@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaCalendarCheck, FaLock, FaShieldAlt, FaArrowLeft } from "react-icons/fa";
+import {
+  FaCalendarCheck,
+  FaLock,
+  FaShieldAlt,
+  FaArrowLeft,
+} from "react-icons/fa";
 
 interface BookingSummarySidebarProps {
   doctor: {
@@ -41,7 +46,7 @@ export default function BookingSummary({
 
   return (
     <div className="lg:col-span-5 xl:col-span-4 sticky top-24 space-y-4">
-      <div className="bg-white rounded-3xl p-5 sm:p-6 border border-slate-100 shadow-xl space-y-5">
+      <div className="doctors-card rounded-3xl p-5 sm:p-6 border border-slate-100 shadow-xl space-y-5">
         <h3 className="font-extrabold text-slate-900 text-lg sm:text-xl pb-3 border-b border-slate-100">
           Booking Summary
         </h3>
