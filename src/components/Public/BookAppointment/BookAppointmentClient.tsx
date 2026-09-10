@@ -155,6 +155,7 @@ export default function BookAppointmentClient() {
   const handleSelectDoctor = (doc: (typeof doctors)[0]) => {
     setSelectedDoctor(doc);
     setIsDoctorPickerOpen(false);
+    setDoctorSearchQuery("");
 
     // Ensure consultation type is compatible
     const isOnline = doc.consultationType?.toLowerCase().includes("online");
@@ -492,7 +493,10 @@ export default function BookAppointmentClient() {
       {/* DOCTOR PICKER MODAL */}
       <DoctorPickerModal
         isOpen={isDoctorPickerOpen}
-        onClose={() => setIsDoctorPickerOpen(false)}
+        onClose={() => {
+          setIsDoctorPickerOpen(false);
+          setDoctorSearchQuery("");
+        }}
         doctors={filteredDoctorsForPicker}
         selectedDoctorId={selectedDoctor.id}
         onSelectDoctor={handleSelectDoctor}
