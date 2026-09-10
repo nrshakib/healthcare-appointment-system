@@ -18,10 +18,10 @@ export default function ConsultationModeSelector({
     <section className="doctors-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 space-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <span className="size-5 sm:size-7 rounded-full bg-[#06836b] text-white text-xs font-bold flex items-center justify-center">
+          <span className="consultation-step-badge size-5 sm:size-7 rounded-full text-xs font-bold flex items-center justify-center">
             1
           </span>
-          <h3 className="text-sm sm:text-lg font-bold text-slate-900">
+          <h3 className="doctors-heading-text text-sm sm:text-lg font-bold">
             Select Consultation Mode
           </h3>
         </div>
@@ -33,49 +33,23 @@ export default function ConsultationModeSelector({
           type="button"
           onClick={() => onConsultationTypeChange("Online")}
           disableRipple
-          sx={{
-            p: 2,
-            borderRadius: "16px",
-            border: "2px solid",
-            borderColor: consultationType === "Online" ? "#06836b" : "#e2e8f0",
-            backgroundColor:
-              consultationType === "Online" ? "#f0fdf9" : "#ffffff",
-            boxShadow:
-              consultationType === "Online"
-                ? "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
-                : "none",
-            textAlign: "left",
-            textTransform: "none",
-            transition: "all 0.2s ease-in-out",
-            cursor: "pointer",
-            position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "stretch",
-            "&:hover": {
-              borderColor:
-                consultationType === "Online" ? "#06836b" : "#cbd5e1",
-              backgroundColor:
-                consultationType === "Online" ? "#f0fdf9" : "#ffffff",
-            },
-          }}
+          className={`consultation-mode-btn ${consultationType === "Online" ? "active" : ""}`}
         >
           <div className="flex items-start justify-between gap-2 w-full">
-            <div className="size-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center text-xl">
+            <div className="consultation-video-icon size-10 rounded-xl flex items-center justify-center text-xl">
               <HiOutlineVideoCamera />
             </div>
             {consultationType === "Online" && (
-              <span className="size-5 rounded-full bg-[#06836b] text-white flex items-center justify-center text-xs">
+              <span className="consultation-check-badge size-5 rounded-full flex items-center justify-center text-xs">
                 <FaCheck />
               </span>
             )}
           </div>
           <div className="mt-3 space-y-1 w-full">
-            <p className="font-bold text-slate-900 text-sm sm:text-base">
+            <p className="doctors-heading-text font-bold text-sm sm:text-base">
               Video Consultation
             </p>
-            <p className="text-xs text-slate-500 font-normal normal-case">
+            <p className="doctors-card-muted text-xs font-normal normal-case">
               Join from phone or computer. Instant digital prescription
               included.
             </p>
@@ -87,50 +61,23 @@ export default function ConsultationModeSelector({
           type="button"
           onClick={() => onConsultationTypeChange("In-Person")}
           disableRipple
-          sx={{
-            p: 2,
-            borderRadius: "16px",
-            border: "2px solid",
-            borderColor:
-              consultationType === "In-Person" ? "#06836b" : "#e2e8f0",
-            backgroundColor:
-              consultationType === "In-Person" ? "#f0fdf9" : "#ffffff",
-            boxShadow:
-              consultationType === "In-Person"
-                ? "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
-                : "none",
-            textAlign: "left",
-            textTransform: "none",
-            transition: "all 0.2s ease-in-out",
-            cursor: "pointer",
-            position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "stretch",
-            "&:hover": {
-              borderColor:
-                consultationType === "In-Person" ? "#06836b" : "#cbd5e1",
-              backgroundColor:
-                consultationType === "In-Person" ? "#f0fdf9" : "#ffffff",
-            },
-          }}
+          className={`consultation-mode-btn ${consultationType === "In-Person" ? "active" : ""}`}
         >
           <div className="flex items-start justify-between gap-2 w-full">
-            <div className="size-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center text-xl">
+            <div className="consultation-inperson-icon size-10 rounded-xl flex items-center justify-center text-xl">
               <FiUserCheck />
             </div>
             {consultationType === "In-Person" && (
-              <span className="size-5 rounded-full bg-[#06836b] text-white flex items-center justify-center text-xs">
+              <span className="consultation-check-badge size-5 rounded-full flex items-center justify-center text-xs">
                 <FaCheck />
               </span>
             )}
           </div>
           <div className="mt-3 space-y-1 w-full">
-            <p className="font-bold text-slate-900 text-sm sm:text-base">
+            <p className="doctors-heading-text font-bold text-sm sm:text-base">
               In-Person Chamber Visit
             </p>
-            <p className="text-xs text-slate-500 truncate font-normal normal-case">
+            <p className="doctors-card-muted text-xs truncate font-normal normal-case">
               At {doctorLocation || "Hospital Chamber"}.
               <br className="xl:hidden" />
               <span>Physical examination.</span>
@@ -141,3 +88,4 @@ export default function ConsultationModeSelector({
     </section>
   );
 }
+

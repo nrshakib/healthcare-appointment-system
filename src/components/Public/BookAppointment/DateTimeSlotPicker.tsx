@@ -68,13 +68,13 @@ export default function DateTimeSlotPicker({
   };
 
   return (
-    <section className="doctors-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-slate-100 shadow-md space-y-5">
+    <section className="doctors-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 space-y-5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <span className="size-7 rounded-full bg-[#06836b] text-white text-xs font-bold flex items-center justify-center">
+          <span className="consultation-step-badge size-7 rounded-full text-xs font-bold flex items-center justify-center">
             2
           </span>
-          <h3 className="text-base sm:text-lg font-bold text-slate-900">
+          <h3 className="doctors-heading-text text-base sm:text-lg font-bold">
             Choose Date & Available Slot
           </h3>
         </div>
@@ -83,7 +83,7 @@ export default function DateTimeSlotPicker({
       {/* Date Carousel with Left & Right Arrow Navigation */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+          <label className="doctors-info-text block text-xs font-bold uppercase tracking-wider">
             Select Appointment Date
           </label>
           <div className="flex items-center gap-1.5">
@@ -92,7 +92,7 @@ export default function DateTimeSlotPicker({
               onClick={slideLeft}
               disabled={!canScrollLeft}
               aria-label="Previous date"
-              className="size-7 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-600 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-xs transition-colors cursor-pointer"
+              className="date-nav-btn size-7 rounded-lg disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-xs cursor-pointer"
             >
               <FaChevronLeft />
             </button>
@@ -101,7 +101,7 @@ export default function DateTimeSlotPicker({
               onClick={slideRight}
               disabled={!canScrollRight}
               aria-label="Next date"
-              className="size-7 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-600 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-xs transition-colors cursor-pointer"
+              className="date-nav-btn size-7 rounded-lg disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-xs cursor-pointer"
             >
               <FaChevronRight />
             </button>
@@ -122,36 +122,20 @@ export default function DateTimeSlotPicker({
                   key={item.formattedIso}
                   type="button"
                   onClick={() => onDateSelect(item.formattedIso)}
-                  className={`shrink-0 w-20 sm:w-22 py-3 px-2 rounded-2xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center gap-1 ${
-                    isSelected
-                      ? "bg-[#06836b] text-white border-[#06836b] shadow-md scale-102"
-                      : "bg-slate-50 hover:bg-emerald-50/70 border-slate-200/80 text-slate-700 hover:border-emerald-200"
+                  className={`date-slot-card shrink-0 w-20 sm:w-22 py-3 px-2 rounded-2xl text-center cursor-pointer flex flex-col items-center justify-center gap-1 ${
+                    isSelected ? "active scale-102" : ""
                   }`}
                 >
-                  <span
-                    className={`text-[11px] font-semibold ${
-                      isSelected ? "text-emerald-100" : "text-slate-500"
-                    }`}
-                  >
+                  <span className="date-day-label text-[11px] font-semibold">
                     {item.shortDay}
                   </span>
-                  <span className="text-lg sm:text-xl font-extrabold leading-none">
+                  <span className="date-number text-lg sm:text-xl font-extrabold leading-none">
                     {item.dayNumber}
                   </span>
-                  <span
-                    className={`text-[10px] uppercase font-bold tracking-tight ${
-                      isSelected ? "text-emerald-100" : "text-slate-400"
-                    }`}
-                  >
+                  <span className="date-month-label text-[10px] uppercase font-bold tracking-tight">
                     {item.monthShort}
                   </span>
-                  <span
-                    className={`text-[9px] font-medium px-1.5 py-0.5 rounded ${
-                      isSelected
-                        ? "bg-white/20 text-white"
-                        : "bg-emerald-100 text-[#06836b]"
-                    }`}
-                  >
+                  <span className="date-available-badge text-[9px] font-medium px-1.5 py-0.5 rounded">
                     Available
                   </span>
                 </button>
@@ -162,13 +146,13 @@ export default function DateTimeSlotPicker({
       </div>
 
       {/* Time Slots Grid */}
-      <div className="space-y-2 pt-2 border-t border-slate-100">
+      <div className="space-y-2 pt-2 border-t doctors-search-divider">
         <div className="flex items-center justify-between">
-          <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+          <label className="doctors-heading-text block text-xs font-bold uppercase tracking-wider">
             Select Time Slot
           </label>
-          <span className="text-xs text-slate-500 flex items-center gap-1">
-            <FaRegClock className="text-[#06836b]" />
+          <span className="doctors-card-muted text-xs flex items-center gap-1">
+            <FaRegClock className="doctors-speciality-text" />
             30 mins per session
           </span>
         </div>
@@ -181,17 +165,11 @@ export default function DateTimeSlotPicker({
                 key={slot}
                 type="button"
                 onClick={() => onSlotSelect(slot)}
-                className={`px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border text-center transition-all cursor-pointer flex items-center justify-center gap-2 ${
-                  isSelected
-                    ? "bg-[#06836b] text-white border-[#06836b] shadow-xs"
-                    : "bg-slate-50 hover:bg-emerald-50/60 text-slate-700 border-slate-200"
+                className={`time-slot-btn px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-center cursor-pointer flex items-center justify-center gap-2 ${
+                  isSelected ? "active" : ""
                 }`}
               >
-                <FaRegClock
-                  className={`text-xs ${
-                    isSelected ? "text-white" : "text-primary"
-                  }`}
-                />
+                <FaRegClock className="time-slot-icon text-xs" />
                 <span>{slot}</span>
               </button>
             );

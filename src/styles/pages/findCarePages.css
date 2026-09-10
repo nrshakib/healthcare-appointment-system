@@ -292,3 +292,285 @@ input.doctors-search-box:focus {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: var(--accent);
 }
+
+/* Consultation Mode Selector */
+.consultation-step-badge {
+  background-color: var(--accent);
+  color: #feffef;
+}
+
+.consultation-mode-btn {
+  width: 100% !important;
+  padding: 16px !important;
+  border-radius: 16px !important;
+  border: 2px solid var(--border-default) !important;
+  background-color: var(--surface) !important;
+  text-align: left !important;
+  text-transform: none !important;
+  transition: all 0.2s ease-in-out !important;
+  cursor: pointer !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justifyContent: space-between !important;
+  align-items: stretch !important;
+  box-shadow: none !important;
+  font-family: inherit !important;
+  line-height: inherit !important;
+}
+
+.consultation-mode-btn:hover {
+  border-color: #cbd5e1 !important;
+  background-color: var(--surface) !important;
+}
+
+.consultation-mode-btn.active {
+  border-color: var(--primary) !important;
+  background-color: #f0fdf9 !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.consultation-mode-btn.active:hover {
+  border-color: var(--primary) !important;
+  background-color: #f0fdf9 !important;
+}
+
+/* Dark mode for consultation mode selector */
+.dark .consultation-mode-btn {
+  border-color: var(--border-default) !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.dark .consultation-mode-btn:hover {
+  border-color: #475569 !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.dark .consultation-mode-btn.active {
+  border-color: var(--accent) !important;
+  background-color: var(--accent-soft) !important;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .consultation-mode-btn.active:hover {
+  border-color: var(--accent-deep) !important;
+  background-color: rgba(72, 172, 152, 0.35) !important;
+}
+
+/* Consultation mode badges and icons */
+.consultation-video-icon {
+  background-color: #c0def3;
+  color: #0369a1;
+}
+
+.dark .consultation-video-icon {
+  background-color: rgba(56, 189, 248, 0.15);
+  color: #5dc8f9;
+}
+
+.consultation-inperson-icon {
+  background-color: #d4ddf9;
+  color: #4338ca;
+}
+
+.dark .consultation-inperson-icon {
+  background-color: rgba(129, 140, 248, 0.15);
+  color: #bec9fe;
+}
+
+.consultation-check-badge {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.dark .consultation-check-badge {
+  background-color: var(--accent);
+  color: #0f172a;
+}
+
+/* Date Time Slot Picker */
+.date-nav-btn {
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+  color: #475569;
+  transition: all 0.2s ease;
+}
+
+.date-nav-btn:hover:not(:disabled) {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+.dark .date-nav-btn {
+  border-color: var(--border-default);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-heading);
+}
+
+.dark .date-nav-btn:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent);
+}
+
+/* Date Carousel Card */
+.date-slot-card {
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+  color: #334155;
+  transition: all 0.2s ease;
+}
+
+.date-slot-card:hover {
+  background-color: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+.date-slot-card.active {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.date-slot-card .date-day-label {
+  color: #64748b;
+}
+
+.date-slot-card.active .date-day-label {
+  color: #d1fae5;
+}
+
+.date-slot-card .date-number {
+  color: #0f172a;
+}
+
+.date-slot-card.active .date-number {
+  color: #ffffff;
+}
+
+.date-slot-card .date-month-label {
+  color: #94a3b8;
+}
+
+.date-slot-card.active .date-month-label {
+  color: #d1fae5;
+}
+
+.date-slot-card .date-available-badge {
+  background-color: #d1fae5;
+  color: #06836b;
+}
+
+.date-slot-card.active .date-available-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Dark mode for date carousel card */
+.dark .date-slot-card {
+  border-color: var(--border-default);
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--text-heading);
+}
+
+.dark .date-slot-card:hover {
+  background-color: rgba(6, 131, 107, 0.15);
+  border-color: var(--accent);
+}
+
+.dark .date-slot-card.active {
+  background-color: #06836b;
+  border-color: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(6, 131, 107, 0.35);
+}
+
+.dark .date-slot-card .date-day-label {
+  color: var(--text-muted);
+}
+
+.dark .date-slot-card.active .date-day-label {
+  color: #d1fae5;
+}
+
+.dark .date-slot-card .date-number {
+  color: var(--text-heading);
+}
+
+.dark .date-slot-card.active .date-number {
+  color: #ffffff;
+}
+
+.dark .date-slot-card .date-month-label {
+  color: var(--text-muted);
+}
+
+.dark .date-slot-card.active .date-month-label {
+  color: #d1fae5;
+}
+
+.dark .date-slot-card .date-available-badge {
+  background-color: rgba(52, 211, 153, 0.15);
+  color: var(--accent);
+}
+
+.dark .date-slot-card.active .date-available-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Time Slot Buttons */
+.time-slot-btn {
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+  color: #334155;
+  transition: all 0.2s ease;
+}
+
+.time-slot-btn:hover {
+  background-color: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+.time-slot-btn .time-slot-icon {
+  color: var(--primary);
+}
+
+.time-slot-btn.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.time-slot-btn.active .time-slot-icon {
+  color: #ffffff;
+}
+
+/* Dark mode for time slot buttons */
+.dark .time-slot-btn {
+  border-color: var(--border-default);
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--text-heading);
+}
+
+.dark .time-slot-btn:hover {
+  background-color: rgba(6, 131, 107, 0.15);
+  border-color: var(--accent);
+}
+
+.dark .time-slot-btn .time-slot-icon {
+  color: var(--accent);
+}
+
+.dark .time-slot-btn.active {
+  background-color: #06836b;
+  border-color: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(6, 131, 107, 0.35);
+}
+
+.dark .time-slot-btn.active .time-slot-icon {
+  color: #ffffff;
+}
+
