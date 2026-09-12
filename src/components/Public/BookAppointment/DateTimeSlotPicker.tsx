@@ -83,7 +83,7 @@ export default function DateTimeSlotPicker({
       {/* Date Carousel with Left & Right Arrow Navigation */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="doctors-info-text block text-xs font-bold uppercase tracking-wider">
+          <label className="doctors-info-text block text-[10px] sm:text-xs font-bold uppercase tracking-wider">
             Select Appointment Date
           </label>
           <div className="flex items-center gap-1.5">
@@ -122,9 +122,8 @@ export default function DateTimeSlotPicker({
                   key={item.formattedIso}
                   type="button"
                   onClick={() => onDateSelect(item.formattedIso)}
-                  className={`date-slot-card shrink-0 w-20 sm:w-22 py-3 px-2 rounded-2xl text-center cursor-pointer flex flex-col items-center justify-center gap-1 ${
-                    isSelected ? "active scale-102" : ""
-                  }`}
+                  className={`slot-items shrink-0 w-20 sm:w-22 py-3 px-2 rounded-2xl text-center cursor-pointer flex flex-col items-center justify-center gap-1 ${isSelected ? "active scale-102" : ""
+                    }`}
                 >
                   <span className="date-day-label text-[11px] font-semibold">
                     {item.shortDay}
@@ -148,10 +147,10 @@ export default function DateTimeSlotPicker({
       {/* Time Slots Grid */}
       <div className="space-y-2 pt-2 border-t doctors-search-divider">
         <div className="flex items-center justify-between">
-          <label className="doctors-heading-text block text-xs font-bold uppercase tracking-wider">
+          <label className="doctors-heading-text block text-[10px] sm:text-xs font-bold uppercase tracking-wider">
             Select Time Slot
           </label>
-          <span className="doctors-card-muted text-xs flex items-center gap-1">
+          <span className="doctors-card-muted text-[10px] sm:text-xs flex items-center gap-1">
             <FaRegClock className="doctors-speciality-text" />
             30 mins per session
           </span>
@@ -165,9 +164,8 @@ export default function DateTimeSlotPicker({
                 key={slot}
                 type="button"
                 onClick={() => onSlotSelect(slot)}
-                className={`time-slot-btn px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-center cursor-pointer flex items-center justify-center gap-2 ${
-                  isSelected ? "active" : ""
-                }`}
+                className={`slot-items px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-center cursor-pointer flex items-center justify-center gap-2 ${isSelected ? "active" : ""
+                  }`}
               >
                 <FaRegClock className="time-slot-icon text-xs" />
                 <span>{slot}</span>

@@ -29,7 +29,7 @@ export function FindCareDropdown({
   };
 
   return (
-    <div className="absolute top-full left-0 mt-2 w-72 rounded-xl shadow-2xl overflow-visible z-50 navbar-dropdown border border-(--navbar-border)">
+    <div className="custom-scrollbar absolute top-full left-0 mt-2 w-72 rounded-xl shadow-2xl overflow-visible z-50 navbar-dropdown border border-(--navbar-border)">
       <div className="py-2">
         {findCareItems.map((item) => (
           <Link

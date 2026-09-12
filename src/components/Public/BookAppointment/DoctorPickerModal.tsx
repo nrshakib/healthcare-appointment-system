@@ -76,7 +76,7 @@ export default function DoctorPickerModal({
         </div>
 
         {/* Doctors List */}
-        <div className="doctor-picker-scroll p-4 sm:p-5 overflow-y-auto flex-1 divide-y doctors-search-divider space-y-2">
+        <div className="custom-scrollbar p-4 sm:p-5 overflow-y-auto flex-1 divide-y doctors-search-divider space-y-2">
           {doctors.map((doc) => (
             <div
               key={doc.id}
