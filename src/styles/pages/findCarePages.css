@@ -262,36 +262,7 @@ input.doctors-search-box:focus {
   border: 1px solid var(--border-default);
 }
 
-/* Custom scrollbar styling */
-.doctor-picker-scroll,
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-deep) transparent;
-}
 
-.doctor-picker-scroll::-webkit-scrollbar,
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-.doctor-picker-scroll::-webkit-scrollbar-track,
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-  margin: 4px 0;
-}
-
-.doctor-picker-scroll::-webkit-scrollbar-thumb,
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: var(--border-default);
-  border-radius: 9999px;
-  transition: background-color 0.2s ease;
-}
-
-.doctor-picker-scroll::-webkit-scrollbar-thumb:hover,
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: var(--accent);
-}
 
 /* Consultation Mode Selector */
 .consultation-step-badge {
@@ -412,165 +383,382 @@ input.doctors-search-box:focus {
   border-color: var(--accent);
 }
 
-/* Date Carousel Card */
-.date-slot-card {
+/* Slot items styling */
+.slot-items {
   border: 1px solid #e2e8f0;
   background-color: #f8fafc;
   color: #334155;
   transition: all 0.2s ease;
 }
 
-.date-slot-card:hover {
+.slot-items:hover {
   background-color: #ecfdf5;
   border-color: #a7f3d0;
 }
 
-.date-slot-card.active {
+.slot-items.active {
   background-color: var(--primary);
   color: #ffffff;
   border-color: var(--primary);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.date-slot-card .date-day-label {
+.slot-items .date-day-label {
   color: #64748b;
 }
 
-.date-slot-card.active .date-day-label {
+.slot-items.active .date-day-label {
   color: #d1fae5;
 }
 
-.date-slot-card .date-number {
+.slot-items .date-number {
   color: #0f172a;
 }
 
-.date-slot-card.active .date-number {
+.slot-items.active .date-number {
   color: #ffffff;
 }
 
-.date-slot-card .date-month-label {
+.slot-items .date-month-label {
   color: #94a3b8;
 }
 
-.date-slot-card.active .date-month-label {
+.slot-items.active .date-month-label {
   color: #d1fae5;
 }
 
-.date-slot-card .date-available-badge {
+.slot-items .date-available-badge {
   background-color: #d1fae5;
   color: #06836b;
 }
 
-.date-slot-card.active .date-available-badge {
+.slot-items.active .date-available-badge {
   background-color: rgba(255, 255, 255, 0.2);
   color: #ffffff;
 }
 
 /* Dark mode for date carousel card */
-.dark .date-slot-card {
+.dark .slot-items {
   border-color: var(--border-default);
   background-color: rgba(255, 255, 255, 0.03);
   color: var(--text-heading);
 }
 
-.dark .date-slot-card:hover {
+.dark .slot-items:hover {
   background-color: rgba(6, 131, 107, 0.15);
   border-color: var(--accent);
 }
 
-.dark .date-slot-card.active {
+.dark .slot-items.active {
   background-color: #06836b;
   border-color: var(--accent);
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(6, 131, 107, 0.35);
 }
 
-.dark .date-slot-card .date-day-label {
+.dark .slot-items .date-day-label {
   color: var(--text-muted);
 }
 
-.dark .date-slot-card.active .date-day-label {
+.dark .slot-items.active .date-day-label {
   color: #d1fae5;
 }
 
-.dark .date-slot-card .date-number {
+.dark .slot-items .date-number {
   color: var(--text-heading);
 }
 
-.dark .date-slot-card.active .date-number {
+.dark .slot-items.active .date-number {
   color: #ffffff;
 }
 
-.dark .date-slot-card .date-month-label {
+.dark .slot-items .date-month-label {
   color: var(--text-muted);
 }
 
-.dark .date-slot-card.active .date-month-label {
+.dark .slot-items.active .date-month-label {
   color: #d1fae5;
 }
 
-.dark .date-slot-card .date-available-badge {
+.dark .slot-items .date-available-badge {
   background-color: rgba(52, 211, 153, 0.15);
   color: var(--accent);
 }
 
-.dark .date-slot-card.active .date-available-badge {
+.dark .slot-items.active .date-available-badge {
   background-color: rgba(255, 255, 255, 0.2);
   color: #ffffff;
 }
 
-/* Time Slot Buttons */
-.time-slot-btn {
-  border: 1px solid #e2e8f0;
-  background-color: #f8fafc;
-  color: #334155;
-  transition: all 0.2s ease;
-}
 
-.time-slot-btn:hover {
-  background-color: #ecfdf5;
-  border-color: #a7f3d0;
-}
-
-.time-slot-btn .time-slot-icon {
+.slot-items .time-slot-icon {
   color: var(--primary);
 }
 
-.time-slot-btn.active {
-  background-color: var(--primary);
-  border-color: var(--primary);
-  color: #ffffff;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-
-.time-slot-btn.active .time-slot-icon {
+.slot-items.active .time-slot-icon {
   color: #ffffff;
 }
 
 /* Dark mode for time slot buttons */
-.dark .time-slot-btn {
+.dark .slot-items .time-slot-icon {
+  color: var(--accent);
+}
+
+
+.dark .slot-items.active .time-slot-icon {
+  color: #ffffff;
+}
+
+/* ── Patient Fields – MUI Component Overrides (Light + Dark) ── */
+
+/* Labels */
+.patient-fields-section .patient-field-label {
+  color: var(--text-body);
+}
+
+.dark .patient-fields-section .patient-field-label {
+  color: var(--text-heading);
+}
+
+/* ── MUI TextField (Input) ── */
+.patient-fields-section .patient-mui-field .MuiOutlinedInput-root {
+  border-radius: 12px;
+  background-color: rgba(248, 250, 252, 0.5);
+  font-size: 0.8125rem;
+  color: var(--text-body);
+  transition: background-color 0.2s ease;
+}
+
+.patient-fields-section .patient-mui-field .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-default);
+  transition: border-color 0.2s ease;
+}
+
+.patient-fields-section .patient-mui-field .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #94a3b8;
+}
+
+.patient-fields-section .patient-mui-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary);
+  border-width: 1.5px;
+}
+
+.patient-fields-section .patient-mui-field .MuiInputLabel-root {
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+}
+
+.patient-fields-section .patient-mui-field .MuiInputLabel-root.Mui-focused {
+  color: var(--primary);
+}
+
+.patient-fields-section .patient-mui-field .MuiInputBase-input {
+  color: var(--text-body);
+}
+
+.patient-fields-section .patient-mui-field .MuiInputBase-input::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+.patient-fields-section .patient-field-icon {
+  color: var(--text-muted);
+}
+
+/* Dark mode – TextField */
+.dark .patient-fields-section .patient-mui-field .MuiOutlinedInput-root {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--text-heading);
+}
+
+.dark .patient-fields-section .patient-mui-field .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-default);
+}
+
+.dark .patient-fields-section .patient-mui-field .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #475569;
+}
+
+.dark .patient-fields-section .patient-mui-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--accent);
+}
+
+.dark .patient-fields-section .patient-mui-field .MuiInputLabel-root {
+  color: var(--text-muted);
+}
+
+.dark .patient-fields-section .patient-mui-field .MuiInputLabel-root.Mui-focused {
+  color: var(--accent);
+}
+
+.dark .patient-fields-section .patient-mui-field .MuiInputBase-input {
+  color: var(--text-heading);
+}
+
+.dark .patient-fields-section .patient-mui-field .MuiInputBase-input::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+.dark .patient-fields-section .patient-field-icon {
+  color: var(--text-muted);
+}
+
+/* ── MUI Select (trigger / field) ── */
+.patient-fields-section .patient-mui-field .MuiSelect-select {
+  color: var(--text-body);
+  font-size: 0.875rem;
+}
+
+.patient-fields-section .patient-mui-field .MuiSvgIcon-root {
+  color: var(--text-muted);
+}
+
+/* Dark mode – Select trigger */
+.dark .patient-fields-section .patient-mui-field .MuiSelect-select {
+  color: var(--text-heading);
+}
+
+.dark .patient-fields-section .patient-mui-field .MuiSvgIcon-root {
+  color: var(--text-muted);
+}
+
+/* ── Notification Preferences Checkboxes ── */
+.notification-pref-label {
+  color: var(--text-body);
+  user-select: none;
+}
+
+.dark .notification-pref-label {
+  color: var(--text-heading);
+}
+
+
+/* ── MUI Radio ── */
+.patient-fields-section .patient-mui-radio-group .MuiFormControlLabel-label {
+  font-size: 0.75rem;
+  color: var(--text-body);
+}
+
+.dark .patient-fields-section .patient-mui-radio-group .MuiFormControlLabel-label {
+  color: var(--text-heading);
+}
+
+/* ── Booking For Buttons (slot-items override) ── */
+.patient-booking-btn.MuiButton-root {
+  border-color: #e2e8f0;
+  background-color: #f8fafc;
+  color: #475569;
+  border-radius: 12px;
+  padding: 7px 12px;
+}
+
+.patient-fields-section .patient-booking-btn.MuiButton-root:hover {
+  background-color: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+.patient-fields-section .patient-booking-btn.MuiButton-root.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.dark .patient-fields-section .patient-booking-btn.MuiButton-root {
   border-color: var(--border-default);
   background-color: rgba(255, 255, 255, 0.03);
   color: var(--text-heading);
 }
 
-.dark .time-slot-btn:hover {
+.dark .patient-fields-section .patient-booking-btn.MuiButton-root:hover {
   background-color: rgba(6, 131, 107, 0.15);
   border-color: var(--accent);
 }
 
-.dark .time-slot-btn .time-slot-icon {
-  color: var(--accent);
-}
-
-.dark .time-slot-btn.active {
+.dark .patient-fields-section .patient-booking-btn.MuiButton-root.active {
   background-color: #06836b;
   border-color: var(--accent);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(6, 131, 107, 0.35);
+  box-shadow: 0 4px 12px rgba(6, 131, 107, 0.35);
 }
 
-.dark .time-slot-btn.active .time-slot-icon {
-  color: #ffffff;
+/* ── Gender Buttons ── */
+.patient-fields-section .patient-field-gender-btn.MuiButton-root {
+  border-color: #e2e8f0;
+  background-color: #f8fafc;
+  color: #475569;
+  border-radius: 12px;
+  transition: all 0.2s ease;
 }
 
+.patient-fields-section .patient-field-gender-btn.MuiButton-root:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.patient-fields-section .patient-field-gender-btn.MuiButton-root.selected {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+.dark .patient-fields-section .patient-field-gender-btn.MuiButton-root {
+  border-color: var(--border-default);
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--text-heading);
+}
+
+.dark .patient-fields-section .patient-field-gender-btn.MuiButton-root:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #475569;
+}
+
+.dark .patient-fields-section .patient-field-gender-btn.MuiButton-root.selected {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #0f172a !important;
+}
+
+/* ── Upload Area ── */
+.dark .patient-fields-section .patient-field-upload-area {
+  border-color: var(--border-default);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.patient-fields-section .patient-field-upload-text {
+  color: var(--text-body);
+}
+
+.patient-fields-section .patient-field-upload-text:last-child {
+  color: var(--text-muted);
+}
+
+.dark .patient-fields-section .patient-field-upload-text {
+  color: var(--text-heading);
+}
+
+.dark .patient-fields-section .patient-field-upload-text:last-child {
+  color: var(--text-muted);
+}
+
+/* ── File Tags ── */
+.patient-fields-section .patient-field-tag {
+  background-color: #ecfdf5;
+  color: #06836b;
+  border-color: #d1fae5;
+}
+
+.dark .patient-fields-section .patient-field-tag {
+  background-color: rgba(52, 211, 153, 0.15);
+  color: var(--accent);
+  border-color: rgba(52, 211, 153, 0.25);
+}
+
+.dark .patient-fields-section .patient-field-tag button {
+  color: var(--text-muted);
+}
+
+.dark .patient-fields-section .patient-field-tag button:hover {
+  color: #f43f5e;
+}
