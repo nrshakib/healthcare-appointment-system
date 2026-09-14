@@ -407,7 +407,7 @@ export default function PatientInfoForm({
                   className="patient-field-tag inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-50 text-[#06836b] text-xs font-medium border border-emerald-100"
                 >
                   <FaFileMedical />
-                  <span className="max-w-[140px] truncate">{file}</span>
+                  <span className="max-w-35 truncate">{file}</span>
                   <button
                     type="button"
                     onClick={() => onRemoveFile(idx)}

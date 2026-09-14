@@ -11,15 +11,15 @@
   border-color: var(--border-default);
 }
 
-.doctors-search-label {
+.doctors-search-label,
+.doctors-close-btn {
   color: var(--text-muted);
 }
 
-.doctors-search-box .MuiInputBase-root {
-  color: var(--text-heading);
-}
-
-.doctors-heading-text {
+.doctors-search-box .MuiInputBase-root,
+.doctors-heading-text,
+.doctors-close-btn:hover,
+.doctors-breadcrumb-item:hover {
   color: var(--text-heading);
 }
 
@@ -47,14 +47,6 @@
 
 .doctors-mobile-drawer {
   background: var(--surface);
-}
-
-.doctors-close-btn {
-  color: var(--text-muted);
-}
-
-.doctors-close-btn:hover {
-  color: var(--text-heading);
 }
 
 .doctors-filter-sidebar {
@@ -88,10 +80,6 @@
   transition: color 0.2s ease;
 }
 
-.doctors-breadcrumb-item:hover {
-  color: var(--text-heading);
-}
-
 .doctors-breadcrumb-icon,
 .doctors-breadcrumb-active {
   color: var(--doctor-green-text);
@@ -111,11 +99,9 @@
   box-shadow: var(--doctors-card-shadow);
 }
 
-.doctors-card-text {
-  color: var(--doctor-card-text);
-}
-
-.doctors-card-muted {
+.doctors-card-muted,
+.doctors-reviews-text,
+.doctors-price-muted {
   color: var(--doctor-card-muted);
 }
 
@@ -123,20 +109,10 @@
   color: var(--doctor-green-text);
 }
 
-.doctors-rating-text {
-  color: var(--doctor-card-text);
-}
-
-.doctors-reviews-text {
-  color: var(--doctor-card-muted);
-}
-
+.doctors-card-text,
+.doctors-rating-text,
 .doctors-price-text {
   color: var(--doctor-card-text);
-}
-
-.doctors-price-muted {
-  color: var(--doctor-card-muted);
 }
 
 .doctors-available-today {
@@ -262,8 +238,6 @@ input.doctors-search-box:focus {
   border: 1px solid var(--border-default);
 }
 
-
-
 /* Consultation Mode Selector */
 .consultation-step-badge {
   background-color: var(--accent);
@@ -283,7 +257,7 @@ input.doctors-search-box:focus {
   position: relative !important;
   display: flex !important;
   flex-direction: column !important;
-  justifyContent: space-between !important;
+  justify-content: space-between !important;
   align-items: stretch !important;
   box-shadow: none !important;
   font-family: inherit !important;
@@ -456,7 +430,20 @@ input.doctors-search-box:focus {
   box-shadow: 0 4px 12px rgba(6, 131, 107, 0.35);
 }
 
-.dark .slot-items .date-day-label {
+.dark .slot-items .date-day-label,
+.dark .slot-items .date-month-label,
+.patient-fields-section
+  .patient-field-icon
+  .dark
+  .patient-fields-section
+  .patient-mui-field
+  .MuiInputLabel-root,
+.dark .patient-fields-section .patient-field-icon,
+.patient-fields-section .patient-mui-field .MuiSvgIcon-root,
+.dark .patient-fields-section .patient-mui-field .MuiSvgIcon-root,
+.patient-fields-section .patient-field-upload-text:last-child,
+.dark .patient-fields-section .patient-field-upload-text:last-child,
+.dark .patient-fields-section .patient-field-tag button {
   color: var(--text-muted);
 }
 
@@ -464,16 +451,8 @@ input.doctors-search-box:focus {
   color: #d1fae5;
 }
 
-.dark .slot-items .date-number {
-  color: var(--text-heading);
-}
-
 .dark .slot-items.active .date-number {
   color: #ffffff;
-}
-
-.dark .slot-items .date-month-label {
-  color: var(--text-muted);
 }
 
 .dark .slot-items.active .date-month-label {
@@ -490,7 +469,6 @@ input.doctors-search-box:focus {
   color: #ffffff;
 }
 
-
 .slot-items .time-slot-icon {
   color: var(--primary);
 }
@@ -504,7 +482,6 @@ input.doctors-search-box:focus {
   color: var(--accent);
 }
 
-
 .dark .slot-items.active .time-slot-icon {
   color: #ffffff;
 }
@@ -516,10 +493,6 @@ input.doctors-search-box:focus {
   color: var(--text-body);
 }
 
-.dark .patient-fields-section .patient-field-label {
-  color: var(--text-heading);
-}
-
 /* ── MUI TextField (Input) ── */
 .patient-fields-section .patient-mui-field .MuiOutlinedInput-root {
   border-radius: 12px;
@@ -529,16 +502,25 @@ input.doctors-search-box:focus {
   transition: background-color 0.2s ease;
 }
 
-.patient-fields-section .patient-mui-field .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+.patient-fields-section
+  .patient-mui-field
+  .MuiOutlinedInput-root
+  .MuiOutlinedInput-notchedOutline {
   border-color: var(--border-default);
   transition: border-color 0.2s ease;
 }
 
-.patient-fields-section .patient-mui-field .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+.patient-fields-section
+  .patient-mui-field
+  .MuiOutlinedInput-root:hover
+  .MuiOutlinedInput-notchedOutline {
   border-color: #94a3b8;
 }
 
-.patient-fields-section .patient-mui-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+.patient-fields-section
+  .patient-mui-field
+  .MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
   border-color: var(--primary);
   border-width: 1.5px;
 }
@@ -561,47 +543,49 @@ input.doctors-search-box:focus {
   opacity: 1;
 }
 
-.patient-fields-section .patient-field-icon {
-  color: var(--text-muted);
-}
-
 /* Dark mode – TextField */
 .dark .patient-fields-section .patient-mui-field .MuiOutlinedInput-root {
   background-color: rgba(255, 255, 255, 0.03);
   color: var(--text-heading);
 }
 
-.dark .patient-fields-section .patient-mui-field .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+.dark
+  .patient-fields-section
+  .patient-mui-field
+  .MuiOutlinedInput-root
+  .MuiOutlinedInput-notchedOutline {
   border-color: var(--border-default);
 }
 
-.dark .patient-fields-section .patient-mui-field .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+.dark
+  .patient-fields-section
+  .patient-mui-field
+  .MuiOutlinedInput-root:hover
+  .MuiOutlinedInput-notchedOutline {
   border-color: #475569;
 }
 
-.dark .patient-fields-section .patient-mui-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+.dark
+  .patient-fields-section
+  .patient-mui-field
+  .MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
   border-color: var(--accent);
 }
 
-.dark .patient-fields-section .patient-mui-field .MuiInputLabel-root {
-  color: var(--text-muted);
-}
-
-.dark .patient-fields-section .patient-mui-field .MuiInputLabel-root.Mui-focused {
+.dark
+  .patient-fields-section
+  .patient-mui-field
+  .MuiInputLabel-root.Mui-focused {
   color: var(--accent);
 }
 
-.dark .patient-fields-section .patient-mui-field .MuiInputBase-input {
-  color: var(--text-heading);
-}
-
-.dark .patient-fields-section .patient-mui-field .MuiInputBase-input::placeholder {
+.dark
+  .patient-fields-section
+  .patient-mui-field
+  .MuiInputBase-input::placeholder {
   color: var(--text-muted);
   opacity: 1;
-}
-
-.dark .patient-fields-section .patient-field-icon {
-  color: var(--text-muted);
 }
 
 /* ── MUI Select (trigger / field) ── */
@@ -610,17 +594,14 @@ input.doctors-search-box:focus {
   font-size: 0.875rem;
 }
 
-.patient-fields-section .patient-mui-field .MuiSvgIcon-root {
-  color: var(--text-muted);
-}
-
 /* Dark mode – Select trigger */
-.dark .patient-fields-section .patient-mui-field .MuiSelect-select {
+.dark .slot-items .date-number,
+.dark .patient-fields-section .patient-field-label,
+.dark .patient-fields-section .patient-mui-field .MuiInputBase-input,
+.dark .patient-fields-section .patient-mui-field .MuiSelect-select,
+.dark .notification-pref-label,
+.dark .patient-fields-section .patient-field-upload-text {
   color: var(--text-heading);
-}
-
-.dark .patient-fields-section .patient-mui-field .MuiSvgIcon-root {
-  color: var(--text-muted);
 }
 
 /* ── Notification Preferences Checkboxes ── */
@@ -629,18 +610,16 @@ input.doctors-search-box:focus {
   user-select: none;
 }
 
-.dark .notification-pref-label {
-  color: var(--text-heading);
-}
-
-
 /* ── MUI Radio ── */
 .patient-fields-section .patient-mui-radio-group .MuiFormControlLabel-label {
   font-size: 0.75rem;
   color: var(--text-body);
 }
 
-.dark .patient-fields-section .patient-mui-radio-group .MuiFormControlLabel-label {
+.dark
+  .patient-fields-section
+  .patient-mui-radio-group
+  .MuiFormControlLabel-label {
   color: var(--text-heading);
 }
 
@@ -714,10 +693,37 @@ input.doctors-search-box:focus {
   border-color: #475569;
 }
 
-.dark .patient-fields-section .patient-field-gender-btn.MuiButton-root.selected {
+.dark
+  .patient-fields-section
+  .patient-field-gender-btn.MuiButton-root.selected {
   background-color: var(--accent) !important;
   border-color: var(--accent) !important;
   color: #0f172a !important;
+}
+
+/* ── Promo Code Apply Button (Booking Summary) ── */
+.promoCodeButton.MuiButton-root {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+.promoCodeButton.MuiButton-root:hover {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #ffffff !important;
+}
+
+.dark .promoCodeButton.MuiButton-root {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: rgb(38, 67, 55) !important;
+}
+
+.dark .promoCodeButton.MuiButton-root:hover {
+  background-color: var(--accent-deep) !important;
+  border-color: var(--accent-deep) !important;
+  color: #153d2c !important;
 }
 
 /* ── Upload Area ── */
@@ -728,18 +734,6 @@ input.doctors-search-box:focus {
 
 .patient-fields-section .patient-field-upload-text {
   color: var(--text-body);
-}
-
-.patient-fields-section .patient-field-upload-text:last-child {
-  color: var(--text-muted);
-}
-
-.dark .patient-fields-section .patient-field-upload-text {
-  color: var(--text-heading);
-}
-
-.dark .patient-fields-section .patient-field-upload-text:last-child {
-  color: var(--text-muted);
 }
 
 /* ── File Tags ── */
@@ -753,10 +747,6 @@ input.doctors-search-box:focus {
   background-color: rgba(52, 211, 153, 0.15);
   color: var(--accent);
   border-color: rgba(52, 211, 153, 0.25);
-}
-
-.dark .patient-fields-section .patient-field-tag button {
-  color: var(--text-muted);
 }
 
 .dark .patient-fields-section .patient-field-tag button:hover {

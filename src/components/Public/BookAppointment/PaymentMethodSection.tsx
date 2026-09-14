@@ -1,4 +1,4 @@
-import { FaCheckCircle, FaCreditCard, FaMoneyBillWave } from "react-icons/fa";
+import { FaCreditCard, FaMoneyBillWave } from "react-icons/fa";
 import { BsWhatsapp } from "react-icons/bs";
 import { Button, Checkbox, Divider, FormControlLabel } from "@mui/material";
 import { FaCheck } from "react-icons/fa6";

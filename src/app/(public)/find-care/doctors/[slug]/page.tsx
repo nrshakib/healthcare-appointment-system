@@ -163,8 +163,8 @@ export default async function DoctorDetails({ params }: PageProps) {
             </div>
 
             <div className="col-span-1 h-fit rounded-xl border-t border-gray-100 p-2 md:p-3 xl:p-5 lg:border-t-0">
-              <div className="space-y-4 text-sm text-gray-600">
-                <div className="flex items-end justify-center gap-1 xl:gap-3 border-b border-gray-100 pb-2">
+              <div className="space-y-4 text-sm">
+                <div className="flex items-end justify-center gap-1 xl:gap-3 ">
                   <span className="doctors-price-text text-2xl xl:text-3xl font-bold">
                     ৳{doctor.consultationFee}
                   </span>
@@ -173,6 +173,14 @@ export default async function DoctorDetails({ params }: PageProps) {
                   </span>
                 </div>
               </div>
+
+              <Divider
+                sx={{
+                  my: 2,
+                  // px: 3,
+                  borderColor: "var(--accent-deep)",
+                }}
+              />
 
               {/* buttons section */}
               <div className="flex flex-col items-center gap-3 py-2 xl:py-4 sm:items-stretch sm:gap-3">
