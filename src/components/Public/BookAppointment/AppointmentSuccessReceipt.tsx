@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaCheckCircle, FaPrint, FaCalendarAlt, FaShieldAlt } from "react-icons/fa";
+import {
+  FaCheckCircle,
+  FaPrint,
+  FaCalendarAlt,
+  FaShieldAlt,
+} from "react-icons/fa";
 import { HiOutlineVideoCamera } from "react-icons/hi2";
 import { FiUserCheck } from "react-icons/fi";
 
@@ -33,25 +38,25 @@ export default function AppointmentSuccessReceipt({
   onBookAnother,
 }: AppointmentSuccessReceiptProps) {
   return (
-    <div className="min-h-screen bg-[#f8fafc] py-10 px-4 sm:px-6 lg:px-8">
+    <div className="doctors-bottom-section min-h-screen py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto space-y-6">
         {/* Success Banner */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-100 shadow-xl text-center space-y-5">
-          <div className="size-20 rounded-full bg-emerald-50 text-[#06836b] flex items-center justify-center mx-auto text-4xl shadow-inner animate-bounce">
+        <div className="doctors-card rounded-3xl p-6 sm:p-10 border border-slate-100 shadow-xl text-center space-y-5">
+          <div className="size-20 rounded-full bg-emerald-100 text-[#06836b] flex items-center justify-center mx-auto text-4xl shadow-inner animate-bounce">
             <FaCheckCircle />
           </div>
 
           <div className="space-y-2">
-            <span className="inline-block px-3.5 py-1 rounded-full bg-emerald-100/70 text-[#06836b] text-xs sm:text-sm font-bold">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-emerald-100/90 text-primary text-xs sm:text-sm font-bold">
               Appointment Confirmed
             </span>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+            <h1 className="doctors-heading-text text-2xl sm:text-3xl font-extrabold">
               Your Appointment is Scheduled!
             </h1>
-            <p className="text-sm sm:text-base text-slate-600 max-w-lg mx-auto">
-              We have sent an instant SMS and email confirmation with all
-              the appointment instructions to{" "}
-              <span className="font-semibold text-slate-800">
+            <p className="doctors-card-muted text-sm sm:text-base max-w-lg mx-auto">
+              We have sent an instant SMS and email confirmation with all the
+              appointment instructions to{" "}
+              <span className="font-semibold doctors-info-text">
                 {data.email}
               </span>
               .
@@ -71,7 +76,7 @@ export default function AppointmentSuccessReceipt({
           {/* Appointment Details Printable Receipt */}
           <div
             id="appointment-receipt"
-            className="bg-slate-50/90 rounded-2xl p-5 sm:p-7 border border-slate-200/70 text-left space-y-5 text-sm"
+            className="doctors-bottom-section rounded-2xl p-5 sm:p-7 border border-slate-200/70 text-left space-y-5 text-sm"
           >
             {/* Doctor Row */}
             <div className="flex items-center gap-4 pb-4 border-b border-slate-200">
@@ -86,15 +91,15 @@ export default function AppointmentSuccessReceipt({
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2">
-                  <h3 className="font-bold text-slate-900 text-base sm:text-lg">
+                  <h3 className="doctors-heading-text font-bold text-base sm:text-lg">
                     {data.doctor.name}
                   </h3>
                   <FaCheckCircle className="text-[#06836b] text-sm shrink-0" />
                 </div>
-                <p className="text-xs sm:text-sm text-[#06836b] font-semibold">
+                <p className="doctors-speciality-text text-xs sm:text-sm font-semibold">
                   {data.doctor.speciality}
                 </p>
-                <p className="text-xs text-slate-500 truncate mt-0.5">
+                <p className="doctors-info-text text-xs truncate mt-0.5">
                   {data.doctor.degree} • {data.doctor.location}
                 </p>
               </div>
@@ -103,16 +108,20 @@ export default function AppointmentSuccessReceipt({
             {/* Booking Info Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
               <div>
-                <span className="text-slate-500 block">Date & Time:</span>
-                <span className="font-bold text-slate-800">{data.date}</span>
-                <span className="block font-semibold text-[#06836b] mt-0.5">
+                <span className="doctors-info-text block">Date & Time:</span>
+                <span className="font-bold doctors-heading-text">
+                  {data.date}
+                </span>
+                <span className="block font-semibold doctors-speciality-text mt-0.5">
                   {data.timeSlot}
                 </span>
               </div>
 
               <div>
-                <span className="text-slate-500 block">Consultation Type:</span>
-                <span className="font-bold text-slate-800 flex items-center gap-1.5 mt-0.5">
+                <span className="doctors-info-text block">
+                  Consultation Type:
+                </span>
+                <span className="font-bold doctors-search-label flex items-center gap-1.5 mt-0.5">
                   {data.consultationType === "Online" ? (
                     <>
                       <HiOutlineVideoCamera className="text-sky-600 text-base" />
@@ -128,21 +137,23 @@ export default function AppointmentSuccessReceipt({
               </div>
 
               <div>
-                <span className="text-slate-500 block">Patient Name:</span>
-                <span className="font-bold text-slate-800">
+                <span className="doctors-info-text block">Patient Name:</span>
+                <span className="font-bold doctors-info-text">
                   {data.patientName}
                 </span>
-                <span className="block text-slate-500 text-xs mt-0.5">
+                <span className="block doctors-info-text text-xs mt-0.5">
                   Phone: {data.phoneNumber}
                 </span>
               </div>
 
               <div>
-                <span className="text-slate-500 block">Payment Summary:</span>
-                <span className="font-bold text-[#06836b] text-base">
+                <span className="doctors-info-text block">
+                  Payment Summary:
+                </span>
+                <span className="font-bold doctors-speciality-text text-base">
                   ৳{data.totalAmount}
                 </span>
-                <span className="block text-slate-500 text-xs mt-0.5 uppercase font-medium">
+                <span className="block doctors-info-text text-xs mt-0.5 uppercase font-medium">
                   Method: {data.paymentMethod} (Confirmed)
                 </span>
               </div>
@@ -155,14 +166,15 @@ export default function AppointmentSuccessReceipt({
                 {data.consultationType === "Online" ? (
                   <p>
                     <strong>Video Link Details:</strong> Your HD Video Room link
-                    has been generated and sent to your email and SMS. Please join
-                    5 minutes prior to the scheduled time.
+                    has been generated and sent to your email and SMS. Please
+                    join 5 minutes prior to the scheduled time.
                   </p>
                 ) : (
                   <p>
                     <strong>Hospital Visit Note:</strong> Please present your
-                    Booking Reference ID (<strong>{data.bookingId}</strong>)
-                    at the reception desk upon your arrival at {data.doctor.location}.
+                    Booking Reference ID (<strong>{data.bookingId}</strong>) at
+                    the reception desk upon your arrival at{" "}
+                    {data.doctor.location}.
                   </p>
                 )}
               </div>
@@ -174,7 +186,7 @@ export default function AppointmentSuccessReceipt({
             <button
               type="button"
               onClick={() => window.print()}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-colors cursor-pointer shadow-md"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs lg:text-sm transition-colors cursor-pointer shadow-md"
             >
               <FaPrint />
               Print / Save Receipt
@@ -182,13 +194,13 @@ export default function AppointmentSuccessReceipt({
 
             <Link
               href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-                `Doctor Appointment with ${data.doctor.name}`
+                `Doctor Appointment with ${data.doctor.name}`,
               )}&details=${encodeURIComponent(
-                `Medicare Appointment: ${data.consultationType} consultation.\nReference ID: ${data.bookingId}\nDoctor: ${data.doctor.name} (${data.doctor.speciality})`
+                `Medicare Appointment: ${data.consultationType} consultation.\nReference ID: ${data.bookingId}\nDoctor: ${data.doctor.name} (${data.doctor.speciality})`,
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 font-semibold text-sm transition-colors cursor-pointer shadow-xs"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 font-semibold text-xs lg:text-sm transition-colors cursor-pointer shadow-xs"
             >
               <FaCalendarAlt className="text-[#06836b]" />
               Add to Google Calendar
@@ -197,7 +209,7 @@ export default function AppointmentSuccessReceipt({
             <button
               type="button"
               onClick={onBookAnother}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#06836b] hover:bg-[#056f5a] text-white font-semibold text-sm transition-colors cursor-pointer shadow-md"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#06836b] hover:bg-[#056f5a] text-white font-semibold text-xs lg:text-sm transition-colors cursor-pointer shadow-md"
             >
               Book Another Appointment
             </button>
