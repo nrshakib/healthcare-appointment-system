@@ -34,7 +34,7 @@ export default function AvailableTodayHero() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-x-clip overflow-y-hidden border-b border-emerald-100/60 bg-linear-to-br from-[#ebfaf5] via-[#f2fdf9] to-[#e6f7f2] py-6 sm:py-8 lg:py-10">
+    <section className="doctorsHeroBg relative overflow-x-clip overflow-y-hidden py-6 sm:py-8 lg:py-10">
       {/* Ambient background glows */}
       <div
         aria-hidden
@@ -63,14 +63,14 @@ export default function AvailableTodayHero() {
         >
           <motion.h1
             variants={fadeUp}
-            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold leading-tight sm:leading-tight lg:leading-[1.15] tracking-tight text-slate-900"
+            className="doctors-heading-text text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight sm:leading-tight lg:leading-[1.15] tracking-tight"
           >
-            Doctors Available <span className="text-[#06836b]">Today</span>
+            Doctors Available <span className="text-primary">Today</span>
           </motion.h1>
 
           <motion.p
             variants={fadeUp}
-            className="mt-2 sm:mt-3 text-balance text-xs sm:text-sm md:text-base text-slate-600 max-w-xl mx-auto lg:mx-0"
+            className="doctors-card-muted mt-2 sm:mt-3 text-balance text-xs sm:text-sm md:text-base max-w-xl mx-auto lg:mx-0"
           >
             Find a trusted doctor with an appointment available today. Book
             online in minutes.

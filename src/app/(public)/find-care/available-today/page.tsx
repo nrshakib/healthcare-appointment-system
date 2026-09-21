@@ -10,8 +10,7 @@ import AvailableTodayHero from "@/components/Public/AvailableToday/AvailableToda
 import AvailableTodayFilters, {
   Filters,
 } from "@/components/Public/AvailableToday/AvailableTodayFilters";
-import AvailableTodayDoctorCard, {
-} from "@/components/Public/AvailableToday/AvailableTodayDoctorCard";
+import AvailableTodayDoctorCard from "@/components/Public/AvailableToday/AvailableTodayDoctorCard";
 import AvailableTodayFeatures from "@/components/Public/AvailableToday/AvailableTodayFeatures";
 
 const dayNames = [
@@ -161,7 +160,7 @@ export default function AvailableTodayPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fafbfc]">
+    <div className="doctors-bottom-section min-h-screen">
       {/* Hero Section */}
       <AvailableTodayHero />
 
@@ -172,7 +171,7 @@ export default function AvailableTodayPage() {
       >
         <div className="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-12 gap-6 xl:gap-8 items-start">
           {/* Left Column: Filters Sidebar (Desktop) */}
-          <aside className="hidden lg:block lg:col-span-1 xl:col-span-3 sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto bg-white p-5 rounded-2xl border border-slate-100/90 shadow-lg">
+          <aside className="hidden lg:block lg:col-span-1 xl:col-span-3 sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto p-5 rounded-2xl shadow-lg doctors-filter-sidebar">
             <AvailableTodayFilters
               filters={filters}
               onChange={(f) => {
@@ -191,8 +190,8 @@ export default function AvailableTodayPage() {
             {/* Header: Count & Sort Dropdown */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-1">
               <div className="flex items-center justify-between gap-2.5">
-                <h2 className="text-base min-[400px]:text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 leading-tight">
-                  <span className="text-[#06836b]">
+                <h2 className="doctors-card-muted text-base min-[400px]:text-lg sm:text-xl lg:text-2xl font-bold leading-tight">
+                  <span className="doctors-speciality-text">
                     {filteredDoctors.length}
                   </span>{" "}
                   doctors available today
@@ -216,7 +215,9 @@ export default function AvailableTodayPage() {
 
               {/* Sort By Dropdown */}
               <div className="flex items-center justify-between gap-2 mb-4 sm:mb-0 bg-white sm:bg-transparent p-3 sm:p-0 rounded-xl border border-gray-200/80 sm:border-none shadow-sm sm:shadow-none">
-                <p className="text-sm font-semibold text-gray-700">Sort by:</p>
+                <p className="text-sm font-semibold doctor-card-muted">
+                  Sort by:
+                </p>
                 <FormControl size="small" sx={{ minWidth: 160 }}>
                   <Select
                     value={sortBy}

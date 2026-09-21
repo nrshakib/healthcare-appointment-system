@@ -67,7 +67,7 @@ export default function AvailableTodayDoctorCard({
   const locationText = doctor.location || "City Medical Center, Dhaka";
 
   return (
-    <div className="group bg-white rounded-2xl p-4 sm:p-5 lg:p-6 border border-slate-100/90 shadow-lg hover:shadow-xl transition-all duration-300">
+    <div className="group doctors-card rounded-2xl p-4 sm:p-5 lg:p-6 border border-slate-100/90 shadow-lg hover:shadow-xl transition-all duration-300">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:items-center justify-between gap-4 sm:gap-5 lg:gap-6">
         {/* Left & Center: Doctor Info */}
         <div className="flex items-start gap-3 sm:gap-4 lg:gap-5 flex-1 min-w-0">
@@ -90,37 +90,37 @@ export default function AvailableTodayDoctorCard({
             <div className="flex items-center flex-wrap gap-1.5">
               <Link
                 href={`/find-care/doctors/${slugify(doctor.name)}`}
-                className="font-bold text-slate-900 text-sm sm:text-base md:text-lg hover:text-[#06836b] transition-colors line-clamp-1"
+                className="doctors-card-text font-bold text-sm sm:text-base md:text-lg hover:text-[#06836b] transition-colors line-clamp-1"
               >
                 {doctor.name}
               </Link>
             </div>
 
             {/* Speciality */}
-            <p className="text-xs sm:text-sm font-semibold text-[#06836b] truncate">
+            <p className="doctors-speciality-text text-xs sm:text-sm font-semibold truncate">
               {doctor.speciality}
             </p>
 
             {/* Rating & Reviews */}
             <div className="flex items-center gap-1.5 text-xs sm:text-sm">
-              <div className="flex items-center gap-1 font-bold text-amber-500">
+              <div className="flex items-center gap-1 font-semibold text-amber-500">
                 <FaStar className="text-xs shrink-0" />
                 <span>{doctor.rating.toFixed(1)}</span>
               </div>
-              <span className="text-slate-400 font-normal">
+              <span className="doctors-reviews-text font-normal">
                 ({doctor.reviewCount} reviews)
               </span>
             </div>
 
             {/* Experience */}
-            <p className="text-xs sm:text-sm text-slate-600">
+            <p className="text-xs sm:text-sm doctors-card-muted">
               {doctor.experience} years experience
             </p>
 
             {/* Location */}
-            <div className="flex items-start gap-1 lg:gap-2 text-xs text-slate-500 pt-0.5">
-              <FaMapMarkerAlt className="text-slate-400 shrink-0" />
-              <span className="">{locationText}</span>
+            <div className="flex items-center gap-1 lg:gap-2 text-xs text-slate-500 pt-0.5">
+              <FaMapMarkerAlt className="doctors-breadcrumb-icon shrink-0" />
+              <span className="doctors-location-text">{locationText}</span>
             </div>
 
             {/* Tags: Online / In-Person */}
@@ -165,7 +165,7 @@ export default function AvailableTodayDoctorCard({
 
           {/* Next Available Slots */}
           <div className="w-full space-y-1.5">
-            <p className="text-xs font-medium text-slate-500">
+            <p className="text-xs font-medium doctors-card-muted">
               Next available slots
             </p>
             <div className="flex flex-wrap items-center gap-1.5">
@@ -175,7 +175,7 @@ export default function AvailableTodayDoctorCard({
                   label={slot}
                   size="small"
                   sx={{
-                    backgroundColor: "rgba(6, 131, 107, 0.08)",
+                    backgroundColor: "#d1f0eb",
                     color: "#06836b",
                     fontWeight: 600,
                     fontSize: "0.75rem",
@@ -190,7 +190,7 @@ export default function AvailableTodayDoctorCard({
                 <button
                   type="button"
                   onClick={() => setShowAllSlots(true)}
-                  className="px-2.5 py-0.5 rounded-lg text-xs font-medium bg-slate-50 hover:bg-slate-100 text-slate-600 border border-slate-200 transition-colors cursor-pointer"
+                  className="slot-items px-2.5 py-0.5 rounded-lg text-xs font-medium transition-colors cursor-pointer"
                 >
                   +{remainingCount} More
                 </button>
@@ -202,10 +202,10 @@ export default function AvailableTodayDoctorCard({
           <div className="w-full space-y-2.5 pt-0.5">
             {/* Consultation Fee */}
             <div className="flex items-baseline justify-between sm:justify-start gap-1.5 w-full">
-              <span className="text-xs text-slate-500 font-medium">
+              <span className="text-xs doctors-price-muted font-medium">
                 Consultation Fee:
               </span>
-              <span className="text-xl sm:text-2xl font-extrabold text-[#06836b]">
+              <span className="doctors-speciality-text text-xl sm:text-2xl font-extrabold">
                 {currencySymbol}
                 {displayFee}
               </span>
